@@ -17,16 +17,16 @@ public class InputManager : MonoBehaviour {
 	public bool hd_B; //button is being held down
 	public bool hd_C; //button is being held down
 
-	// Use this for initialization
-	void Start () {
+
+	void Awake () {
 		if (Input.GetJoystickNames().Length == 0) {
 			print("No Joysticks connected.");
 		} else {
 			print("Joystick connected: " + Input.GetJoystickNames()[0]);
 		}
 	}
+
 	
-	// Update is called once per frame
 	void Update () {
 		if (Input.GetButtonDown("Select")) select = true;
 		else if (Input.GetButtonUp("Select")) select = false;
@@ -86,7 +86,7 @@ public class InputManager : MonoBehaviour {
 
 		// quick fix for resetting the game
 		if (start && select) {
-			Application.LoadLevel("Dadako");
+			//Application.LoadLevel("Dadako");
 		}
 	}
 }

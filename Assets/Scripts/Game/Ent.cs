@@ -87,8 +87,8 @@ public class Ent : MonoBehaviour {
 			jumpingDown = false;
 		}
 
-		if (velocity.y < -2f) { 
-			jumpingDown = false; 
+		if (velocity.y < -18f) {
+			jumpingDown = false;
 		}
 	}
 
@@ -120,6 +120,7 @@ public class Ent : MonoBehaviour {
 		}	
 
 		// set 2d controller move
+		//print (jumpingDown);
 		controller.Move (velocity * Time.deltaTime, jumpingDown);
 	}
 
@@ -199,11 +200,10 @@ public class Ent : MonoBehaviour {
 
 		// attack parameters
 		float weaponRange = 1f;
-		float knockback = 1f;
+		float knockback = 1.0f;
 		float directionX = Mathf.Sign(transform.localScale.x);
 
 		StartCoroutine(PushBackwards(directionX * Vector2.right * 1f , 0.05f)); // yield return 
-
 
 		// project a ray forward
 		Vector2 rayOrigin = new Vector2 (transform.position.x, transform.position.y + transform.localScale.y / 2);
@@ -219,7 +219,6 @@ public class Ent : MonoBehaviour {
 		}
 
 		yield return null;
-
 		yield return StartCoroutine(PushBackwards(-directionX * Vector2.right * 0.5f , 0.1f));
 
 		input = Vector2.zero;
@@ -255,6 +254,7 @@ public class Ent : MonoBehaviour {
 
 	protected void CheckCollisionTarget () {
 		if (controller.collisions.below) { return; }
+		
 		// check if we jumped over a monster, if so, rebound in him and kill it
 		if (controller.collisions.target && velocity.y < 0){
 			Ent target = controller.collisions.target.GetComponent<Ent>();
