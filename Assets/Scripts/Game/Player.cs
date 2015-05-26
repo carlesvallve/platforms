@@ -23,5 +23,9 @@ public class Player : Ent {
 			SetJump(inputManager.down, inputManager.up ? 1.25f : 1f);
 			//Audio.play("Audio/Fx/Jump3", 0.5f);
 		}
+
+		if (inputManager.B) { SetActionB(); }
+
+		if (inputManager.C) { SetActionC(); }
 	}
 }

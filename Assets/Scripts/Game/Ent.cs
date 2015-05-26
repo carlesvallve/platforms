@@ -12,6 +12,7 @@ public class Ent : MonoBehaviour {
 	public float accelerationTimeGrounded = 0;
 	public float moveSpeed = 5f;
 	public float runSpeed = 5f;
+	public bool affectedByGravity = true;
 	
 	protected Vector2 input;
 	protected float speed = 1.0f;
@@ -24,7 +25,10 @@ public class Ent : MonoBehaviour {
 	protected bool jumping = false;
 	protected bool jumpingDown = false;
 
-	protected bool affectedByGravity = true;
+	protected Ent interactiveObject = null;
+	protected Ent pickedUpObject = null;
+
+	public LayerMask attackCollisionMask;
 
 
 	public virtual void Awake () {
@@ -43,6 +47,36 @@ public class Ent : MonoBehaviour {
 	}
 
 
+	// ===========================================================
+	// Actions
+	// ===========================================================
+	
+	protected void SetActionB () {
+		if (pickedUpObject) {
+			ThrowItem(pickedUpObject);
+			return;
+		}
+
+		Attack();
+	}
+
+
+	protected void SetActionC () {
+		PickItem(interactiveObject);
+	}
+
+
+	// ===========================================================
+	// Movement
+	// ===========================================================
+
+	protected void ApplyGravity () {
+		if (affectedByGravity) {
+			velocity.y += gravity * Time.deltaTime;
+		}
+	}
+
+
 	protected void Reset () {
 		if (controller.collisions.above || controller.collisions.below) { //} || IsOnLadder()) {
 			if (jumping) { velocity.x = 0; }
@@ -56,8 +90,11 @@ public class Ent : MonoBehaviour {
 		}
 	}
 
+
 	protected virtual void SetInput () {
-		input = Vector2.zero;
+		input.x *= 0.99f;
+		if (controller.collisions.left || controller.collisions.right) { input.x = 0; }
+		if (controller.collisions.above || controller.collisions.below) { input.x *= 0.9f; }
 	}
 
 
@@ -72,9 +109,14 @@ public class Ent : MonoBehaviour {
 		velocity.x = Mathf.SmoothDamp (velocity.x, targetVelocityX, ref velocityXSmoothing, (controller.collisions.below)?accelerationTimeGrounded:accelerationTimeAirborne);
 
 		// set velocity y (apply gravity)
-		if (affectedByGravity) {
-			velocity.y += gravity * Time.deltaTime;
-		}
+		ApplyGravity();
+
+		if (velocity.x != 0) { 
+			transform.localScale = new Vector2(Mathf.Sign(velocity.x) * Mathf.Abs(transform.localScale.x), transform.localScale.y); 
+			/*if (pickedUpObject) {	
+				pickedUpObject.transform.localScale = new Vector2(Mathf.Sign(velocity.x), 1); // * pickedUpObject.transform.localScale.y; 
+			}*/
+		}	
 
 		// set 2d controller move
 		controller.Move (velocity * Time.deltaTime, jumpingDown);
@@ -92,4 +134,109 @@ public class Ent : MonoBehaviour {
 			velocity.y *= 0.5f;
 		}
 	}
+
+
+	// ===========================================================
+	// Item interaction
+	// ===========================================================
+
+	protected void OnTriggerStay2D (Collider2D collider) {
+		interactiveObject = collider.gameObject.GetComponent<Ent>();
+	}
+
+
+	protected void OnTriggerExit2D (Collider2D collider) {
+		interactiveObject = null;
+	}
+
+
+	protected void PickItem (Ent ent) {
+		if (pickedUpObject) { DropItem(pickedUpObject); }
+		if (!ent) { return; }
+
+		Vector2 sc = ent.transform.localScale;
+		ent.affectedByGravity = false;
+		ent.input = Vector2.zero;
+		ent.transform.SetParent(transform);
+		ent.transform.localPosition = new Vector2(0, 1f);
+
+		ent.transform.localScale = new Vector2(sc.x / (Mathf.Abs(transform.localScale.x)), sc.y / (transform.localScale.y)); //new Vector3(ent.transform.localScale.x, ent.transform.localScale.y) ;
+
+		pickedUpObject = ent;
+		interactiveObject = null;
+	}
+
+
+	protected void DropItem (Ent ent) {
+		if (!ent) { return; }
+
+		ent.affectedByGravity = true;
+		ent.transform.SetParent(transform.parent);
+
+		pickedUpObject = null;
+		interactiveObject = ent;
+	}
+
+
+	protected void ThrowItem (Ent ent) {
+		if (!ent) { return; }
+
+		float dir  = Mathf.Sign(transform.localScale.x);
+		ent.input = new Vector2(dir * 1.5f, 0);
+		ent.velocity.y = 10f; 
+
+		DropItem(ent);
+	}
+
+
+	// ===========================================================
+	// Combat
+	// ===========================================================
+
+	protected void Attack () {
+		float weaponRange = 0.8f;
+		float directionX = transform.localScale.x;
+		float knockback = 1f;
+
+		// project a ray forward
+		Vector2 rayOrigin = new Vector2 (transform.position.x, transform.position.y + transform.localScale.y / 2);
+		//RaycastHit2D[] hits = Physics2D.RaycastAll(rayOrigin, Vector2.right * directionX, weaponRange, attackCollisionMask);
+		RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.right * directionX, weaponRange, attackCollisionMask);
+		Debug.DrawRay(rayOrigin, Vector2.right * directionX * weaponRange, Color.yellow);
+
+		//foreach (RaycastHit2D hit in hits) {
+		if (hit) {
+			Ent target = hit.transform.GetComponent<Ent>();
+			Vector2 d = (target.transform.position - transform.position).normalized * knockback;
+			StartCoroutine(target.Hurt(d + Vector2.up * 5));
+		}
+	}
+
+
+	public virtual IEnumerator Hurt (Vector2 vec) {
+		// reset
+		input = Vector2.zero;
+
+		// push backwards
+		yield return StartCoroutine(PushBackwards(vec, 0.5f));
+	}
+
+
+	public virtual IEnumerator PushBackwards (Vector2 vec, float duration) {
+		// push backwards
+		Vector2 pos = new Vector2(transform.position.x + vec.x, transform.position.y);
+		velocity.y = vec.y;
+
+		float startTime = Time.time;
+		while (Time.time <= startTime + duration) {
+			float targetVelocityX = (pos.x - transform.position.x) * 10f;
+			velocity.x = Mathf.Lerp(targetVelocityX, 0, Time.deltaTime * 5f);
+			ApplyGravity();
+			controller.Move (velocity * Time.deltaTime, jumpingDown);
+
+			yield return null;
+		}
+	}
+			
+	
 }
