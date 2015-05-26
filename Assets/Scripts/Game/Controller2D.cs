@@ -5,6 +5,7 @@ using System.Collections;
 public class Controller2D : MonoBehaviour {
 
 	public LayerMask collisionMask;
+	public LayerMask attackCollisionMask;
 
 	const float skinWidth = .015f;
 	public int horizontalRayCount = 4;
@@ -21,7 +22,7 @@ public class Controller2D : MonoBehaviour {
 	public CollisionInfo collisions;
 
 
-	void Start() {
+	void Awake() {
 		boxCollider = GetComponent<BoxCollider2D> ();
 		CalculateRaySpacing ();
 	}
@@ -45,6 +46,7 @@ public class Controller2D : MonoBehaviour {
 		}
 		if (velocity.y != 0) {
 			VerticalCollisions (ref velocity, jumpingDown);
+			AttackCollisions (ref velocity);
 		}
 
 		transform.Translate (velocity);
@@ -64,15 +66,15 @@ public class Controller2D : MonoBehaviour {
 
 			if (hit) {
 				// handle one way collision layer
-				if (hit.transform.gameObject.layer == LayerMask.NameToLayer("OnewayPlatform")) {
+				if (hit.transform.gameObject.layer == LayerMask.NameToLayer("OneWayPlatform")) {
 					return;
 				}
 
 				// handle monster collision layer
-				/*if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Monster")) {
+				if (hit.transform.gameObject.layer == attackCollisionMask) { //LayerMask.NameToLayer("Monster")) {
 					//collisions.monster = hit.transform.gameObject;
 					return;
-				}*/
+				}
 
 				float slopeAngle = Vector2.Angle(hit.normal, Vector2.up);
 
@@ -119,16 +121,16 @@ public class Controller2D : MonoBehaviour {
 
 			if (hit) {
 				// handle one way collision layer
-				if (hit.transform.gameObject.layer == LayerMask.NameToLayer("OnewayPlatform")) {
+				if (hit.transform.gameObject.layer == LayerMask.NameToLayer("OneWayPlatform")) {
 					if (directionY == 1 || (directionY == - 1 && jumpingDown)) {
 						return;
 					}
 				}
 
-				// handle monster collision layer
-				/*if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Monster")) {
+				// handle attack collision layer
+				/*if (hit.transform.gameObject.layer == attackCollisionMask) { //LayerMask.NameToLayer("Monster")) {
 					if (directionY == -1) { 
-						collisions.monster = hit.transform.gameObject; 
+						collisions.target = hit.transform.gameObject; 
 					}
 					return;
 				}*/
@@ -157,6 +159,30 @@ public class Controller2D : MonoBehaviour {
 					velocity.x = (hit.distance - skinWidth) * directionX;
 					collisions.slopeAngle = slopeAngle;
 				}
+			}
+		}
+	}
+
+
+	void AttackCollisions(ref Vector3 velocity) {
+		float directionY = Mathf.Sign (velocity.y);
+		if (directionY != -1) { return; } 
+
+		float rayLength = Mathf.Abs (velocity.y) + skinWidth;
+
+		for (int i = 0; i < verticalRayCount; i ++) {
+			Vector2 rayOrigin = (directionY == -1)?raycastOrigins.bottomLeft:raycastOrigins.topLeft;
+			rayOrigin += Vector2.right * (verticalRaySpacing * i + velocity.x);
+			RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.up * directionY, rayLength, attackCollisionMask);
+
+			Debug.DrawRay(rayOrigin, Vector2.up * directionY * rayLength,Color.red);
+
+			if (hit) {
+				collisions.target = hit.transform.gameObject; 
+
+				velocity.y = 0;
+				//rayLength = hit.distance;
+				//collisions.below = directionY == -1;
 			}
 		}
 	}
@@ -233,24 +259,23 @@ public class Controller2D : MonoBehaviour {
 	public struct CollisionInfo {
 		public bool above, below;
 		public bool left, right;
-
-		public GameObject monster;
-
 		public bool climbingSlope;
 		public bool descendingSlope;
 		public float slopeAngle, slopeAngleOld;
 		public Vector3 velocityOld;
+
+		public GameObject target; // we set it when we collide with something that we can attack
+
 
 		public void Reset() {
 			above = below = false;
 			left = right = false;
 			climbingSlope = false;
 			descendingSlope = false;
-
-			monster = null;
-
 			slopeAngleOld = slopeAngle;
 			slopeAngle = 0;
+
+			target = null;
 		}
 	}
 

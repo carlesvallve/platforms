@@ -28,7 +28,7 @@ public class Ent : MonoBehaviour {
 	protected Ent interactiveObject = null;
 	protected Ent pickedUpObject = null;
 
-	public LayerMask attackCollisionMask;
+	protected bool attacking;
 
 
 	public virtual void Awake () {
@@ -40,6 +40,8 @@ public class Ent : MonoBehaviour {
 
 
 	public virtual void Update () {
+		CheckCollisionTarget();
+
 		Reset();
 		SetInput();
 		SetSpeed();
@@ -57,7 +59,7 @@ public class Ent : MonoBehaviour {
 			return;
 		}
 
-		Attack();
+		StartCoroutine(Attack());
 	}
 
 
@@ -78,7 +80,7 @@ public class Ent : MonoBehaviour {
 
 
 	protected void Reset () {
-		if (controller.collisions.above || controller.collisions.below) { //} || IsOnLadder()) {
+		if (controller.collisions.above || controller.collisions.below) {
 			if (jumping) { velocity.x = 0; }
 			velocity.y = 0;
 			jumping = false;
@@ -104,6 +106,8 @@ public class Ent : MonoBehaviour {
 
 
 	protected void SetMove () {
+		if (attacking) { return; }
+
 		// set velocity x
 		float targetVelocityX = input.x * speed;
 		velocity.x = Mathf.SmoothDamp (velocity.x, targetVelocityX, ref velocityXSmoothing, (controller.collisions.below)?accelerationTimeGrounded:accelerationTimeAirborne);
@@ -113,9 +117,6 @@ public class Ent : MonoBehaviour {
 
 		if (velocity.x != 0) { 
 			transform.localScale = new Vector2(Mathf.Sign(velocity.x) * Mathf.Abs(transform.localScale.x), transform.localScale.y); 
-			/*if (pickedUpObject) {	
-				pickedUpObject.transform.localScale = new Vector2(Mathf.Sign(velocity.x), 1); // * pickedUpObject.transform.localScale.y; 
-			}*/
 		}	
 
 		// set 2d controller move
@@ -193,15 +194,21 @@ public class Ent : MonoBehaviour {
 	// Combat
 	// ===========================================================
 
-	protected void Attack () {
-		float weaponRange = 0.8f;
-		float directionX = transform.localScale.x;
+	protected IEnumerator Attack () {
+		attacking = true;
+
+		// attack parameters
+		float weaponRange = 1f;
 		float knockback = 1f;
+		float directionX = Mathf.Sign(transform.localScale.x);
+
+		StartCoroutine(PushBackwards(directionX * Vector2.right * 1f , 0.05f)); // yield return 
+
 
 		// project a ray forward
 		Vector2 rayOrigin = new Vector2 (transform.position.x, transform.position.y + transform.localScale.y / 2);
 		//RaycastHit2D[] hits = Physics2D.RaycastAll(rayOrigin, Vector2.right * directionX, weaponRange, attackCollisionMask);
-		RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.right * directionX, weaponRange, attackCollisionMask);
+		RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.right * directionX, weaponRange, controller.attackCollisionMask);
 		Debug.DrawRay(rayOrigin, Vector2.right * directionX * weaponRange, Color.yellow);
 
 		//foreach (RaycastHit2D hit in hits) {
@@ -210,23 +217,30 @@ public class Ent : MonoBehaviour {
 			Vector2 d = (target.transform.position - transform.position).normalized * knockback;
 			StartCoroutine(target.Hurt(d + Vector2.up * 5));
 		}
+
+		yield return null;
+
+		yield return StartCoroutine(PushBackwards(-directionX * Vector2.right * 0.5f , 0.1f));
+
+		input = Vector2.zero;
+		velocity = Vector2.zero;
+		attacking = false;
 	}
 
 
 	public virtual IEnumerator Hurt (Vector2 vec) {
-		// reset
-		input = Vector2.zero;
-
 		// push backwards
+		input = Vector2.zero;
+		velocity = Vector2.zero;
 		yield return StartCoroutine(PushBackwards(vec, 0.5f));
 	}
 
 
 	public virtual IEnumerator PushBackwards (Vector2 vec, float duration) {
-		// push backwards
-		Vector2 pos = new Vector2(transform.position.x + vec.x, transform.position.y);
-		velocity.y = vec.y;
 
+		velocity.y = vec.y;
+		Vector2 pos = new Vector2(transform.position.x + vec.x, transform.position.y);
+		
 		float startTime = Time.time;
 		while (Time.time <= startTime + duration) {
 			float targetVelocityX = (pos.x - transform.position.x) * 10f;
@@ -237,6 +251,21 @@ public class Ent : MonoBehaviour {
 			yield return null;
 		}
 	}
+
+
+	protected void CheckCollisionTarget () {
+		if (controller.collisions.below) { return; }
+		// check if we jumped over a monster, if so, rebound in him and kill it
+		if (controller.collisions.target && velocity.y < 0){
+			Ent target = controller.collisions.target.GetComponent<Ent>();
+
+			jumping = false;
+			SetJump(false, 1f);
+
+			float knockback = 1f;
+			Vector2 d = (target.transform.position - transform.position).normalized * knockback;
+			StartCoroutine(target.Hurt(d));
+		}
+	}
 			
-	
 }
