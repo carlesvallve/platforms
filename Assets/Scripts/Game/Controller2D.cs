@@ -126,7 +126,7 @@ public class Controller2D : MonoBehaviour {
 				//print (hit.transform.gameObject.layer + " " + jumpingDown);
 				if (hit.transform.gameObject.layer == LayerMask.NameToLayer("OneWayPlatform")) {
 					if (directionY == 1 || (directionY == - 1 && jumpingDown)) {
-						return;
+						continue;
 					}
 				}
 
@@ -183,8 +183,8 @@ public class Controller2D : MonoBehaviour {
 
 				if (hit) {
 					collisions.target = hit.transform.gameObject; 
-					
-					//velocity.y = 0;
+					//velocity = Vector2.zero;
+					velocity.y = 0;
 					//rayLength = hit.distance;
 					//collisions.below = directionY == -1;
 					return;
@@ -205,7 +205,9 @@ public class Controller2D : MonoBehaviour {
 
 				if (hit) {
 					collisions.target = hit.transform.gameObject;
-					velocity.x = -velocity.x;
+					//velocity = Vector2.zero;
+					velocity.x = 0;//-velocity.x;
+					//velocity.y = -velocity.y;
 					return;
 				}
 			}

@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
+
 [RequireComponent (typeof (Controller2D))]
 public class Ent : MonoBehaviour {
 
@@ -203,7 +205,9 @@ public class Ent : MonoBehaviour {
 		float knockback = 1.0f;
 		float directionX = Mathf.Sign(transform.localScale.x);
 
-		StartCoroutine(PushBackwards(directionX * Vector2.right * 1f , 0.05f)); // yield return 
+		Vector2 d = directionX * Vector2.right * 1f;
+		StartCoroutine(PushBackwards(d, 0.1f)); // yield return 
+		yield return new WaitForSeconds(0.05f);
 
 		// project a ray forward
 		Vector2 rayOrigin = new Vector2 (transform.position.x, transform.position.y + transform.localScale.y / 2);
@@ -214,12 +218,12 @@ public class Ent : MonoBehaviour {
 		//foreach (RaycastHit2D hit in hits) {
 		if (hit) {
 			Ent target = hit.transform.GetComponent<Ent>();
-			Vector2 d = (target.transform.position - transform.position).normalized * knockback;
+			//Vector2 d = (target.transform.position - transform.position).normalized * knockback;
 			StartCoroutine(target.Hurt(d + Vector2.up * 5));
 		}
 
 		yield return null;
-		yield return StartCoroutine(PushBackwards(-directionX * Vector2.right * 0.5f , 0.1f));
+		yield return StartCoroutine(PushBackwards(-d , 0.1f));
 
 		input = Vector2.zero;
 		velocity = Vector2.zero;
@@ -252,9 +256,9 @@ public class Ent : MonoBehaviour {
 	}
 
 
-	protected void CheckCollisionTarget () {
+	protected virtual void CheckCollisionTarget () {
 		if (controller.collisions.below) { return; }
-		
+
 		// check if we jumped over a monster, if so, rebound in him and kill it
 		if (controller.collisions.target && velocity.y < 0){
 			Ent target = controller.collisions.target.GetComponent<Ent>();
