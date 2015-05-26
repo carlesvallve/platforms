@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 0c2d85c6cae994a679f6d5e4ffe26308
-timeCreated: 1432534300
+timeCreated: 1432629722
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -146,941 +146,881 @@ TextureImporter:
     - name: tiles2_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 1
         y: 264
-        width: 24
-        height: 24
-      alignment: 0
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_1
       rect:
         serializedVersion: 2
-        x: 24
+        x: 25
         y: 264
-        width: 24
-        height: 24
-      alignment: 0
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_2
       rect:
         serializedVersion: 2
-        x: 48
+        x: 49
         y: 264
-        width: 24
-        height: 24
-      alignment: 0
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_3
       rect:
         serializedVersion: 2
-        x: 72
+        x: 73
         y: 264
-        width: 24
-        height: 24
-      alignment: 0
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_4
       rect:
         serializedVersion: 2
-        x: 96
+        x: 97
         y: 264
-        width: 24
-        height: 24
-      alignment: 0
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_5
       rect:
         serializedVersion: 2
-        x: 120
+        x: 121
         y: 264
-        width: 24
-        height: 24
-      alignment: 0
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_6
       rect:
         serializedVersion: 2
-        x: 144
+        x: 145
         y: 264
-        width: 24
-        height: 24
-      alignment: 0
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_7
       rect:
         serializedVersion: 2
-        x: 168
+        x: 169
         y: 264
-        width: 24
-        height: 24
-      alignment: 0
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_8
       rect:
         serializedVersion: 2
-        x: 0
+        x: 1
         y: 240
-        width: 24
-        height: 24
-      alignment: 0
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_9
       rect:
         serializedVersion: 2
-        x: 24
+        x: 25
         y: 240
-        width: 24
-        height: 24
-      alignment: 0
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_10
       rect:
         serializedVersion: 2
-        x: 48
+        x: 49
         y: 240
-        width: 24
-        height: 24
-      alignment: 0
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_11
       rect:
         serializedVersion: 2
-        x: 72
+        x: 73
         y: 240
-        width: 24
-        height: 24
-      alignment: 0
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_12
       rect:
         serializedVersion: 2
-        x: 96
+        x: 97
         y: 240
-        width: 24
-        height: 24
-      alignment: 0
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_13
       rect:
         serializedVersion: 2
-        x: 120
+        x: 121
         y: 240
-        width: 24
-        height: 24
-      alignment: 0
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_14
       rect:
         serializedVersion: 2
-        x: 144
+        x: 145
         y: 240
-        width: 24
-        height: 24
-      alignment: 0
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_15
       rect:
         serializedVersion: 2
-        x: 168
+        x: 169
         y: 240
-        width: 24
-        height: 24
-      alignment: 0
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_16
       rect:
         serializedVersion: 2
-        x: 0
+        x: 1
         y: 216
-        width: 24
-        height: 24
-      alignment: 0
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_17
       rect:
         serializedVersion: 2
-        x: 24
+        x: 25
         y: 216
-        width: 24
-        height: 24
-      alignment: 0
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_18
       rect:
         serializedVersion: 2
-        x: 48
+        x: 49
         y: 216
-        width: 24
-        height: 24
-      alignment: 0
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_19
       rect:
         serializedVersion: 2
-        x: 72
+        x: 73
         y: 216
-        width: 24
-        height: 24
-      alignment: 0
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_20
       rect:
         serializedVersion: 2
-        x: 96
+        x: 97
         y: 216
-        width: 24
-        height: 24
-      alignment: 0
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_21
       rect:
         serializedVersion: 2
-        x: 120
+        x: 121
         y: 216
-        width: 24
-        height: 24
-      alignment: 0
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_22
       rect:
         serializedVersion: 2
-        x: 144
+        x: 145
         y: 216
-        width: 24
-        height: 24
-      alignment: 0
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_23
       rect:
         serializedVersion: 2
-        x: 168
+        x: 169
         y: 216
-        width: 24
-        height: 24
-      alignment: 0
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_24
       rect:
         serializedVersion: 2
-        x: 0
+        x: 1
         y: 192
-        width: 24
-        height: 24
-      alignment: 0
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_25
       rect:
         serializedVersion: 2
-        x: 24
+        x: 25
         y: 192
-        width: 24
-        height: 24
-      alignment: 0
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_26
       rect:
         serializedVersion: 2
-        x: 48
+        x: 49
         y: 192
-        width: 24
-        height: 24
-      alignment: 0
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_27
       rect:
         serializedVersion: 2
-        x: 72
+        x: 73
         y: 192
-        width: 24
-        height: 24
-      alignment: 0
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_28
       rect:
         serializedVersion: 2
-        x: 96
+        x: 97
         y: 192
-        width: 24
-        height: 24
-      alignment: 0
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_29
       rect:
         serializedVersion: 2
-        x: 120
+        x: 121
         y: 192
-        width: 24
-        height: 24
-      alignment: 0
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_30
       rect:
         serializedVersion: 2
-        x: 144
-        y: 192
-        width: 24
-        height: 24
-      alignment: 0
+        x: 1
+        y: 168
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_31
       rect:
         serializedVersion: 2
-        x: 0
+        x: 25
         y: 168
-        width: 24
-        height: 24
-      alignment: 0
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_32
       rect:
         serializedVersion: 2
-        x: 24
+        x: 49
         y: 168
-        width: 24
-        height: 24
-      alignment: 0
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_33
       rect:
         serializedVersion: 2
-        x: 48
+        x: 73
         y: 168
-        width: 24
-        height: 24
-      alignment: 0
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_34
       rect:
         serializedVersion: 2
-        x: 72
+        x: 97
         y: 168
-        width: 24
-        height: 24
-      alignment: 0
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_35
       rect:
         serializedVersion: 2
-        x: 96
+        x: 121
         y: 168
-        width: 24
-        height: 24
-      alignment: 0
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_36
       rect:
         serializedVersion: 2
-        x: 120
+        x: 145
         y: 168
-        width: 24
-        height: 24
-      alignment: 0
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_37
       rect:
         serializedVersion: 2
-        x: 144
+        x: 169
         y: 168
-        width: 24
-        height: 24
-      alignment: 0
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_38
       rect:
         serializedVersion: 2
-        x: 168
-        y: 168
-        width: 24
-        height: 24
-      alignment: 0
+        x: 1
+        y: 144
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_39
       rect:
         serializedVersion: 2
-        x: 0
+        x: 25
         y: 144
-        width: 24
-        height: 24
-      alignment: 0
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_40
       rect:
         serializedVersion: 2
-        x: 24
+        x: 49
         y: 144
-        width: 24
-        height: 24
-      alignment: 0
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_41
       rect:
         serializedVersion: 2
-        x: 48
+        x: 73
         y: 144
-        width: 24
-        height: 24
-      alignment: 0
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_42
       rect:
         serializedVersion: 2
-        x: 72
+        x: 97
         y: 144
-        width: 24
-        height: 24
-      alignment: 0
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_43
       rect:
         serializedVersion: 2
-        x: 96
+        x: 121
         y: 144
-        width: 24
-        height: 24
-      alignment: 0
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_44
       rect:
         serializedVersion: 2
-        x: 120
+        x: 145
         y: 144
-        width: 24
-        height: 24
-      alignment: 0
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_45
       rect:
         serializedVersion: 2
-        x: 144
+        x: 169
         y: 144
-        width: 24
-        height: 24
-      alignment: 0
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_46
       rect:
         serializedVersion: 2
-        x: 168
-        y: 144
-        width: 24
-        height: 24
-      alignment: 0
+        x: 1
+        y: 120
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_47
       rect:
         serializedVersion: 2
-        x: 0
+        x: 25
         y: 120
-        width: 24
-        height: 24
-      alignment: 0
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_48
       rect:
         serializedVersion: 2
-        x: 24
+        x: 49
         y: 120
-        width: 24
-        height: 24
-      alignment: 0
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_49
       rect:
         serializedVersion: 2
-        x: 48
+        x: 73
         y: 120
-        width: 24
-        height: 24
-      alignment: 0
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_50
       rect:
         serializedVersion: 2
-        x: 72
+        x: 97
         y: 120
-        width: 24
-        height: 24
-      alignment: 0
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_51
       rect:
         serializedVersion: 2
-        x: 96
+        x: 121
         y: 120
-        width: 24
-        height: 24
-      alignment: 0
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_52
       rect:
         serializedVersion: 2
-        x: 120
+        x: 145
         y: 120
-        width: 24
-        height: 24
-      alignment: 0
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_53
       rect:
         serializedVersion: 2
-        x: 144
+        x: 169
         y: 120
-        width: 24
-        height: 24
-      alignment: 0
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_54
       rect:
         serializedVersion: 2
-        x: 168
-        y: 120
-        width: 24
-        height: 24
-      alignment: 0
+        x: 97
+        y: 96
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_55
       rect:
         serializedVersion: 2
-        x: 0
+        x: 121
         y: 96
-        width: 24
-        height: 24
-      alignment: 0
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_56
       rect:
         serializedVersion: 2
-        x: 24
+        x: 145
         y: 96
-        width: 24
-        height: 24
-      alignment: 0
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_57
       rect:
         serializedVersion: 2
-        x: 48
+        x: 169
         y: 96
-        width: 24
-        height: 24
-      alignment: 0
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_58
       rect:
         serializedVersion: 2
-        x: 72
-        y: 96
-        width: 24
-        height: 24
-      alignment: 0
+        x: 1
+        y: 72
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_59
       rect:
         serializedVersion: 2
-        x: 96
-        y: 96
-        width: 24
-        height: 24
-      alignment: 0
+        x: 25
+        y: 72
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_60
       rect:
         serializedVersion: 2
-        x: 120
-        y: 96
-        width: 24
-        height: 24
-      alignment: 0
+        x: 49
+        y: 72
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_61
       rect:
         serializedVersion: 2
-        x: 144
-        y: 96
-        width: 24
-        height: 24
-      alignment: 0
+        x: 73
+        y: 72
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_62
       rect:
         serializedVersion: 2
-        x: 168
-        y: 96
-        width: 24
-        height: 24
-      alignment: 0
+        x: 97
+        y: 72
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_63
       rect:
         serializedVersion: 2
-        x: 0
+        x: 121
         y: 72
-        width: 24
-        height: 24
-      alignment: 0
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_64
       rect:
         serializedVersion: 2
-        x: 24
+        x: 145
         y: 72
-        width: 24
-        height: 24
-      alignment: 0
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_65
       rect:
         serializedVersion: 2
-        x: 48
-        y: 72
-        width: 24
-        height: 24
-      alignment: 0
+        x: 1
+        y: 48
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_66
       rect:
         serializedVersion: 2
-        x: 72
-        y: 72
-        width: 24
-        height: 24
-      alignment: 0
+        x: 25
+        y: 48
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_67
       rect:
         serializedVersion: 2
-        x: 96
-        y: 72
-        width: 24
-        height: 24
-      alignment: 0
+        x: 49
+        y: 48
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_68
       rect:
         serializedVersion: 2
-        x: 120
-        y: 72
-        width: 24
-        height: 24
-      alignment: 0
+        x: 73
+        y: 48
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_69
       rect:
         serializedVersion: 2
-        x: 144
-        y: 72
-        width: 24
-        height: 24
-      alignment: 0
+        x: 97
+        y: 48
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_70
       rect:
         serializedVersion: 2
-        x: 0
+        x: 121
         y: 48
-        width: 24
-        height: 24
-      alignment: 0
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_71
       rect:
         serializedVersion: 2
-        x: 24
+        x: 145
         y: 48
-        width: 24
-        height: 24
-      alignment: 0
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_72
       rect:
         serializedVersion: 2
-        x: 48
+        x: 169
         y: 48
-        width: 24
-        height: 24
-      alignment: 0
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_73
       rect:
         serializedVersion: 2
-        x: 72
-        y: 48
-        width: 24
-        height: 24
-      alignment: 0
+        x: 1
+        y: 24
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_74
       rect:
         serializedVersion: 2
-        x: 96
-        y: 48
-        width: 24
-        height: 24
-      alignment: 0
+        x: 25
+        y: 24
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_75
       rect:
         serializedVersion: 2
-        x: 120
-        y: 48
-        width: 24
-        height: 24
-      alignment: 0
+        x: 49
+        y: 24
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_76
       rect:
         serializedVersion: 2
-        x: 144
-        y: 48
-        width: 24
-        height: 24
-      alignment: 0
+        x: 73
+        y: 24
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_77
       rect:
         serializedVersion: 2
-        x: 168
-        y: 48
-        width: 24
-        height: 24
-      alignment: 0
+        x: 97
+        y: 24
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_78
       rect:
         serializedVersion: 2
-        x: 0
+        x: 121
         y: 24
-        width: 24
-        height: 24
-      alignment: 0
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_79
       rect:
         serializedVersion: 2
-        x: 24
+        x: 145
         y: 24
-        width: 24
-        height: 24
-      alignment: 0
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_80
       rect:
         serializedVersion: 2
-        x: 48
+        x: 169
         y: 24
-        width: 24
-        height: 24
-      alignment: 0
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_81
       rect:
         serializedVersion: 2
-        x: 72
-        y: 24
-        width: 24
-        height: 24
-      alignment: 0
+        x: 1
+        y: 0
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_82
       rect:
         serializedVersion: 2
-        x: 96
-        y: 24
-        width: 24
-        height: 24
-      alignment: 0
+        x: 25
+        y: 0
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_83
       rect:
         serializedVersion: 2
-        x: 120
-        y: 24
-        width: 24
-        height: 24
-      alignment: 0
+        x: 49
+        y: 0
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_84
       rect:
         serializedVersion: 2
-        x: 144
-        y: 24
-        width: 24
-        height: 24
-      alignment: 0
+        x: 73
+        y: 0
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_85
       rect:
         serializedVersion: 2
-        x: 168
-        y: 24
-        width: 24
-        height: 24
-      alignment: 0
+        x: 97
+        y: 0
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_86
       rect:
         serializedVersion: 2
-        x: 0
+        x: 121
         y: 0
-        width: 24
-        height: 24
-      alignment: 0
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles2_87
       rect:
         serializedVersion: 2
-        x: 24
+        x: 145
         y: 0
-        width: 24
-        height: 24
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: tiles2_88
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 0
-        width: 24
-        height: 24
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: tiles2_89
-      rect:
-        serializedVersion: 2
-        x: 72
-        y: 0
-        width: 24
-        height: 24
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: tiles2_90
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 0
-        width: 24
-        height: 24
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: tiles2_91
-      rect:
-        serializedVersion: 2
-        x: 120
-        y: 0
-        width: 24
-        height: 24
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: tiles2_92
-      rect:
-        serializedVersion: 2
-        x: 144
-        y: 0
-        width: 24
-        height: 24
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: tiles2_93
-      rect:
-        serializedVersion: 2
-        x: 168
-        y: 0
-        width: 24
-        height: 24
-      alignment: 0
+        width: 23
+        height: 23
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
