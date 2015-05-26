@@ -6,12 +6,12 @@ public class Ent : MonoBehaviour {
 
 	public Controller2D controller;
 	
-	public float jumpHeight = 0.8f;
-	public float timeToJumpApex = 0.3f;
-	public float accelerationTimeAirborne = .2f;
-	public float accelerationTimeGrounded = .1f;
-	public float moveSpeed = 1.0f;
-	public float runSpeed = 3.0f;
+	public float jumpHeight = 2.5f;
+	public float timeToJumpApex = 0.25f;
+	public float accelerationTimeAirborne = 0;
+	public float accelerationTimeGrounded = 0;
+	public float moveSpeed = 5f;
+	public float runSpeed = 5f;
 	
 	protected Vector2 input;
 	protected float speed = 1.0f;
@@ -23,6 +23,8 @@ public class Ent : MonoBehaviour {
 
 	protected bool jumping = false;
 	protected bool jumpingDown = false;
+
+	protected bool affectedByGravity = true;
 
 
 	public virtual void Awake () {
@@ -70,7 +72,9 @@ public class Ent : MonoBehaviour {
 		velocity.x = Mathf.SmoothDamp (velocity.x, targetVelocityX, ref velocityXSmoothing, (controller.collisions.below)?accelerationTimeGrounded:accelerationTimeAirborne);
 
 		// set velocity y (apply gravity)
-		velocity.y += gravity * Time.deltaTime;
+		if (affectedByGravity) {
+			velocity.y += gravity * Time.deltaTime;
+		}
 
 		// set 2d controller move
 		controller.Move (velocity * Time.deltaTime, jumpingDown);
