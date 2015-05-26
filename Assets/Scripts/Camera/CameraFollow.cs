@@ -20,7 +20,7 @@ public class CameraFollow : MonoBehaviour {
 	// Camera Init
 	// ===========================================================
 
-	void Start () {
+	void Awake () {
 		//flash94 = transform.Find("TileLayer").GetComponent<Flashback94_PostProcess>();
 
 		if (!target) {
@@ -108,13 +108,13 @@ public class CameraFollow : MonoBehaviour {
 
 
 	private bool CanFollowVertical () {
-		/*bool ok = false;
 		bool below = target.controller.collisions.below;
-		if (!below && target.transform.position.y < transform.position.y) { ok = true; }
-		if (below || target.IsOnLadder()) { ok = true; }
-		if (target.IsInWater()) { ok = true; }*/
+		if (below) { return true; }
+		if (!below && target.transform.position.y < transform.position.y) { return true; }
+		//if (below || target.IsOnLadder()) { return true; }
+		//if (target.IsInWater()) { return true; }
 
-		return true;
+		return false;
 	}
 
 
