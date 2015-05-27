@@ -8,7 +8,6 @@ public class Ladder : MonoBehaviour {
 	public Sprite spriteCenter;
 	public Sprite spriteBottom;
 
-
 	private Transform top;
 	private Transform bottom;
 

@@ -163,6 +163,11 @@ public class Ent : MonoBehaviour {
 	// Item interaction
 	// ===========================================================
 
+
+	/*protected void OnTriggerEnter2D (Collider2D collider) {
+		interactiveObject = collider.gameObject.GetComponent<Ent>();
+	}*/
+
 	protected void OnTriggerStay2D (Collider2D collider) {
 		interactiveObject = collider.gameObject.GetComponent<Ent>();
 	}
@@ -216,11 +221,11 @@ public class Ent : MonoBehaviour {
 	// Combat
 	// ===========================================================
 
-	public virtual void AttackCollision (GameObject obj) {
+	protected IEnumerator JumpAttack (GameObject obj) {
 		// this function is triggered by controller2D
 		Ent target = obj.GetComponent<Ent>();
 
-		if (transform.position.y <= target.transform.position.y) { return; }
+		if (transform.position.y <= target.transform.position.y) { yield break; }
 
 		jumping = false;
 		SetJump(false, 1f);
@@ -228,6 +233,8 @@ public class Ent : MonoBehaviour {
 		float knockback = 1f;
 		Vector2 d = (target.transform.position - transform.position).normalized * knockback;
 		StartCoroutine(target.Hurt(d));
+
+		yield break;
 	}
 
 
@@ -328,6 +335,20 @@ public class Ent : MonoBehaviour {
 
 	protected void PlayAudioStep () {
 		Audio.play("Audio/sfx/step", 1f, Random.Range(0.5f, 1.5f));
+	}
+
+
+	// ===========================================================
+	// Controller2D Triggers
+	// ===========================================================
+
+	public virtual void TriggerLanding () {
+		PlayAudioStep();
+	}
+
+
+	public virtual void TriggerCollisionAttack (GameObject obj) {
+		StartCoroutine(JumpAttack(obj));
 	}
 			
 }

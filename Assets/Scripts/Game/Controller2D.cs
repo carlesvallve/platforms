@@ -5,6 +5,7 @@ using System.Collections;
 public class Controller2D : MonoBehaviour {
 
 	private Ent ent;
+	private bool landedFlag = false;
 
 	public LayerMask collisionMask;
 	public LayerMask attackCollisionMask;
@@ -110,6 +111,8 @@ public class Controller2D : MonoBehaviour {
 		float directionY = Mathf.Sign (velocity.y);
 		float rayLength = Mathf.Abs (velocity.y) + skinWidth;
 
+
+
 		for (int i = 0; i < verticalRayCount; i ++) {
 			Vector2 rayOrigin = (directionY == -1)?raycastOrigins.bottomLeft:raycastOrigins.topLeft;
 			rayOrigin += Vector2.right * (verticalRaySpacing * i + velocity.x);
@@ -118,11 +121,6 @@ public class Controller2D : MonoBehaviour {
 			Debug.DrawRay(rayOrigin, Vector2.up * directionY * rayLength, Color.red);
 
 			if (hit) {
-
-				//print (collisions.below + " " + directionY);
-				//if (!collisions.below && directionY == -1) {
-					//print ("!!!");
-				//}
 
 				// handle one way collision layer
 				if (hit.transform.gameObject.layer == LayerMask.NameToLayer("OneWayPlatform")) {
@@ -141,8 +139,20 @@ public class Controller2D : MonoBehaviour {
 				collisions.below = directionY == -1;
 				collisions.above = directionY == 1;
 
+				// tell Ent that landed was triggered
+				/*if (!landedFlag && directionY == -1) {
+					ent.TriggerLanding();
+					landedFlag = true;
+				}*/
+
+
+				//break;
 				
 			}
+
+			
+
+			//landedFlag = collisions.below;
 		}
 
 		if (collisions.climbingSlope) {
@@ -177,7 +187,7 @@ public class Controller2D : MonoBehaviour {
 				Debug.DrawRay(rayOrigin, Vector2.up * directionY * rayLength, Color.red);
 
 				if (hit) {
-					ent.AttackCollision(hit.transform.gameObject);
+					ent.TriggerCollisionAttack(hit.transform.gameObject);
 					velocity.y = 0;
 					continue;
 				}
@@ -196,7 +206,7 @@ public class Controller2D : MonoBehaviour {
 				Debug.DrawRay(rayOrigin, Vector2.right * directionX * rayLength, Color.red);
 
 				if (hit) {
-					ent.AttackCollision(hit.transform.gameObject);
+					ent.TriggerCollisionAttack(hit.transform.gameObject);
 					velocity.x = 0;
 					continue;
 				}

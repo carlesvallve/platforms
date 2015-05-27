@@ -127,10 +127,6 @@ public class CameraFollow : MonoBehaviour {
 	}
 
 
-
-
-
-
 	/*public IEnumerator Pixelate (float time) {
 		flash94.downsampling = Flashback94_PostProcess.DownsampleType.RELATIVE;
 		flash94.downsampleRelativeAmount = 2;
