@@ -224,7 +224,7 @@ public class Ent : MonoBehaviour {
 		float knockback = 1.5f;
 		float directionX = Mathf.Sign(transform.localScale.x);
 
-		Vector2 d = directionX * Vector2.right * 0.25f;
+		Vector2 d = directionX * Vector2.right * 0.25f + Vector2.up * 5;
 		StartCoroutine(PushBackwards(d, 0.1f));
 		yield return new WaitForSeconds(0.05f);
 
@@ -256,7 +256,7 @@ public class Ent : MonoBehaviour {
 		// update stats
 		stats.hp -= Random.Range(1, 4);
 		print (stats.hp);
-		if (stats.hp <= 0) { 
+		if (stats.hp <= 0) {
 			stats.hp = 0; 
 			// if no hp left, die instead
 			yield return StartCoroutine(Die());
@@ -264,7 +264,7 @@ public class Ent : MonoBehaviour {
 		}
 
 		// make him bleed
-		Bleed(Random.Range(4, 8));
+		Bleed(Random.Range(3, 6));
 
 		// push backwards
 		yield return StartCoroutine(PushBackwards(vec, 0.5f));
@@ -303,9 +303,10 @@ public class Ent : MonoBehaviour {
 	protected void Bleed (int maxBloodSplats) {
 		if (!bloodPrefab) { return; }
 
+		Transform bloodContainer = GameObject.Find("Blood").transform;
 		for (int i = 0; i < maxBloodSplats; i++) {
 			Blood blood = ((GameObject)Instantiate(bloodPrefab, transform.position, Quaternion.identity)).GetComponent<Blood>();
-			blood.Init();
+			blood.Init(bloodContainer);
 		}
 	}
 
