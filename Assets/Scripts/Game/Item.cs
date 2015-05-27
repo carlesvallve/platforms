@@ -8,7 +8,7 @@ public class Item : Ent {
 	}
 
 
-	protected override void CheckCollisionTarget () {
+	/*protected override void CheckCollisionTarget () {
 		//if (controller.collisions.below) { return; }
 
 		// check if we jumped over a monster, if so, rebound in him and kill it
@@ -22,5 +22,5 @@ public class Item : Ent {
 			Vector2 d = (target.transform.position - transform.position).normalized * knockback;
 			StartCoroutine(target.Hurt(d));
 		}
-	}
+	}*/
 }

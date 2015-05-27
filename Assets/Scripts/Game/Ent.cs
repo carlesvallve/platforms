@@ -62,7 +62,7 @@ public class Ent : MonoBehaviour {
 
 
 	public virtual void Update () {
-		CheckCollisionTarget();
+		//CheckCollisionTarget();
 
 		Reset();
 		SetInput();
@@ -216,6 +216,21 @@ public class Ent : MonoBehaviour {
 	// Combat
 	// ===========================================================
 
+	public virtual void AttackCollision (GameObject obj) {
+		// this function is triggered by controller2D
+		Ent target = obj.GetComponent<Ent>();
+
+		if (transform.position.y <= target.transform.position.y) { return; }
+
+		jumping = false;
+		SetJump(false, 1f);
+
+		float knockback = 1f;
+		Vector2 d = (target.transform.position - transform.position).normalized * knockback;
+		StartCoroutine(target.Hurt(d));
+	}
+
+
 	protected IEnumerator Attack () {
 		state = States.ATTACK;
 
@@ -311,22 +326,8 @@ public class Ent : MonoBehaviour {
 	}
 
 
-	protected virtual void CheckCollisionTarget () {
-		if (controller.collisions.below) { return; }
-
-		// check if we jumped over a monster, if so, rebound in him and kill it
-		if (controller.collisions.target && velocity.y < 0){
-			Ent target = controller.collisions.target.GetComponent<Ent>();
-
-			if (transform.position.y <= target.transform.position.y) { return; }
-
-			jumping = false;
-			SetJump(false, 1f);
-
-			float knockback = 1f;
-			Vector2 d = (target.transform.position - transform.position).normalized * knockback;
-			StartCoroutine(target.Hurt(d));
-		}
+	protected void PlayAudioStep () {
+		Audio.play("Audio/sfx/step", 1f, Random.Range(0.5f, 1.5f));
 	}
 			
 }

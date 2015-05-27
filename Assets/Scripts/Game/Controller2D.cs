@@ -4,6 +4,8 @@ using System.Collections;
 [RequireComponent (typeof (BoxCollider2D))]
 public class Controller2D : MonoBehaviour {
 
+	private Ent ent;
+
 	public LayerMask collisionMask;
 	public LayerMask attackCollisionMask;
 
@@ -23,6 +25,7 @@ public class Controller2D : MonoBehaviour {
 
 
 	void Awake() {
+		ent = GetComponent<Ent>();
 		boxCollider = GetComponent<BoxCollider2D> ();
 		CalculateRaySpacing ();
 	}
@@ -65,16 +68,11 @@ public class Controller2D : MonoBehaviour {
 			Debug.DrawRay(rayOrigin, Vector2.right * directionX * rayLength, Color.red);
 
 			if (hit) {
+
 				// handle one way collision layer
 				if (hit.transform.gameObject.layer == LayerMask.NameToLayer("OneWayPlatform")) {
-					return;
+					continue;
 				}
-
-				// handle monster collision layer
-				/*if (hit.transform.gameObject.layer == attackCollisionMask) { //LayerMask.NameToLayer("Monster")) {
-					//collisions.monster = hit.transform.gameObject;
-					return;
-				}*/
 
 				float slopeAngle = Vector2.Angle(hit.normal, Vector2.up);
 
@@ -112,8 +110,6 @@ public class Controller2D : MonoBehaviour {
 		float directionY = Mathf.Sign (velocity.y);
 		float rayLength = Mathf.Abs (velocity.y) + skinWidth;
 
-		//print (jumpingDown);
-
 		for (int i = 0; i < verticalRayCount; i ++) {
 			Vector2 rayOrigin = (directionY == -1)?raycastOrigins.bottomLeft:raycastOrigins.topLeft;
 			rayOrigin += Vector2.right * (verticalRaySpacing * i + velocity.x);
@@ -122,22 +118,19 @@ public class Controller2D : MonoBehaviour {
 			Debug.DrawRay(rayOrigin, Vector2.up * directionY * rayLength, Color.red);
 
 			if (hit) {
+
+				//print (collisions.below + " " + directionY);
+				//if (!collisions.below && directionY == -1) {
+					//print ("!!!");
+				//}
+
 				// handle one way collision layer
-				//print (hit.transform.gameObject.layer + " " + jumpingDown);
 				if (hit.transform.gameObject.layer == LayerMask.NameToLayer("OneWayPlatform")) {
 					if (directionY == 1 || (directionY == - 1 && jumpingDown)) {
 						continue;
 					}
 				}
 
-				// handle attack collision layer
-				/*if (hit.transform.gameObject.layer == attackCollisionMask) { //LayerMask.NameToLayer("Monster")) {
-					if (directionY == -1) { 
-						collisions.target = hit.transform.gameObject; 
-					}
-					return;
-				}*/
-				
 				velocity.y = (hit.distance - skinWidth) * directionY;
 				rayLength = hit.distance;
 
@@ -147,6 +140,8 @@ public class Controller2D : MonoBehaviour {
 
 				collisions.below = directionY == -1;
 				collisions.above = directionY == 1;
+
+				
 			}
 		}
 
@@ -182,12 +177,9 @@ public class Controller2D : MonoBehaviour {
 				Debug.DrawRay(rayOrigin, Vector2.up * directionY * rayLength, Color.red);
 
 				if (hit) {
-					collisions.target = hit.transform.gameObject; 
-					//velocity = Vector2.zero;
+					ent.AttackCollision(hit.transform.gameObject);
 					velocity.y = 0;
-					//rayLength = hit.distance;
-					//collisions.below = directionY == -1;
-					return;
+					continue;
 				}
 			}
 		}
@@ -204,11 +196,9 @@ public class Controller2D : MonoBehaviour {
 				Debug.DrawRay(rayOrigin, Vector2.right * directionX * rayLength, Color.red);
 
 				if (hit) {
-					collisions.target = hit.transform.gameObject;
-					//velocity = Vector2.zero;
-					velocity.x = 0;//-velocity.x;
-					//velocity.y = -velocity.y;
-					return;
+					ent.AttackCollision(hit.transform.gameObject);
+					velocity.x = 0;
+					continue;
 				}
 			}
 		}
@@ -296,7 +286,7 @@ public class Controller2D : MonoBehaviour {
 		public float slopeAngle, slopeAngleOld;
 		public Vector3 velocityOld;
 
-		public GameObject target; // we set it when we collide with something that we can attack
+		//public GameObject target; // we set it when we collide with something that we can attack
 
 
 		public void Reset() {
@@ -307,7 +297,7 @@ public class Controller2D : MonoBehaviour {
 			slopeAngleOld = slopeAngle;
 			slopeAngle = 0;
 
-			target = null;
+			//target = null;
 		}
 	}
 
