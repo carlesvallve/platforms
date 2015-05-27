@@ -4,7 +4,13 @@ using System.Collections;
 public enum States {
 	IDLE = 0,
 	ATTACK = 2,
-	HURT = 3
+	HURT = 3,
+	//DIE = 4
+}
+
+
+public class Stats {
+	public int hp = 1;
 }
 
 
@@ -14,6 +20,7 @@ public class Ent : MonoBehaviour {
 	public Controller2D controller;
 
 	public States state;
+	public Stats stats;
 
 	public float jumpHeight = 2.5f;
 	public float timeToJumpApex = 0.25f;
@@ -22,6 +29,8 @@ public class Ent : MonoBehaviour {
 	public float moveSpeed = 5f;
 	public float runSpeed = 5f;
 	public bool affectedByGravity = true;
+
+	public GameObject bloodPrefab;
 	
 	protected Vector2 input;
 	protected float speed = 1.0f;
@@ -38,6 +47,12 @@ public class Ent : MonoBehaviour {
 	protected Ent pickedUpObject = null;
 
 
+
+
+	// ===========================================================
+	// Init
+	// ===========================================================
+
 	public virtual void Awake () {
 		controller = GetComponent<Controller2D>();
 
@@ -45,6 +60,7 @@ public class Ent : MonoBehaviour {
 		jumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
 
 		state = States.IDLE;
+		stats = new Stats();
 	}
 
 
@@ -235,12 +251,38 @@ public class Ent : MonoBehaviour {
 	}
 
 
+	public virtual IEnumerator Die () {
+		// instantiate blood splats
+		if (bloodPrefab) {
+			int max = Random.Range(8, 16);
+			for (int i = 0; i < max; i++) {
+				Blood blood = ((GameObject)Instantiate(bloodPrefab, transform.position, Quaternion.identity)).GetComponent<Blood>();
+				blood.Init();
+			}
+		}
+		
+		// destroy entity
+		yield return null;
+		Destroy(gameObject);
+	}
+
+
 	public virtual IEnumerator Hurt (Vector2 vec) {
 		state = States.HURT;
-
-		// push backwards
 		input = Vector2.zero;
 		velocity = Vector2.zero;
+
+		// update stats
+		stats.hp -= Random.Range(1, 4);
+		print (stats.hp);
+		if (stats.hp <= 0) { 
+			stats.hp = 0; 
+			// if no hp left, die instead
+			yield return StartCoroutine(Die());
+			yield break;
+		}
+
+		// push backwards
 		yield return StartCoroutine(PushBackwards(vec, 0.5f));
 
 		state = States.IDLE;
