@@ -5,12 +5,11 @@ public enum States {
 	IDLE = 0,
 	ATTACK = 2,
 	HURT = 3,
-	//DIE = 4
 }
 
 
 public class Stats {
-	public int hp = 1;
+	public int hp = 8;
 }
 
 
@@ -45,8 +44,6 @@ public class Ent : MonoBehaviour {
 
 	protected Ent interactiveObject = null;
 	protected Ent pickedUpObject = null;
-
-
 
 
 	// ===========================================================
@@ -251,22 +248,6 @@ public class Ent : MonoBehaviour {
 	}
 
 
-	public virtual IEnumerator Die () {
-		// instantiate blood splats
-		if (bloodPrefab) {
-			int max = Random.Range(8, 16);
-			for (int i = 0; i < max; i++) {
-				Blood blood = ((GameObject)Instantiate(bloodPrefab, transform.position, Quaternion.identity)).GetComponent<Blood>();
-				blood.Init();
-			}
-		}
-		
-		// destroy entity
-		yield return null;
-		Destroy(gameObject);
-	}
-
-
 	public virtual IEnumerator Hurt (Vector2 vec) {
 		state = States.HURT;
 		input = Vector2.zero;
@@ -282,10 +263,23 @@ public class Ent : MonoBehaviour {
 			yield break;
 		}
 
+		// make him bleed
+		Bleed(Random.Range(4, 8));
+
 		// push backwards
 		yield return StartCoroutine(PushBackwards(vec, 0.5f));
 
 		state = States.IDLE;
+	}
+
+
+	public virtual IEnumerator Die () {
+		// instantiate blood splats
+		Bleed(Random.Range(8, 16));
+		
+		// destroy entity
+		yield return null;
+		Destroy(gameObject);
 	}
 
 
@@ -306,12 +300,24 @@ public class Ent : MonoBehaviour {
 	}
 
 
+	protected void Bleed (int maxBloodSplats) {
+		if (!bloodPrefab) { return; }
+
+		for (int i = 0; i < maxBloodSplats; i++) {
+			Blood blood = ((GameObject)Instantiate(bloodPrefab, transform.position, Quaternion.identity)).GetComponent<Blood>();
+			blood.Init();
+		}
+	}
+
+
 	protected virtual void CheckCollisionTarget () {
 		if (controller.collisions.below) { return; }
 
 		// check if we jumped over a monster, if so, rebound in him and kill it
 		if (controller.collisions.target && velocity.y < 0){
 			Ent target = controller.collisions.target.GetComponent<Ent>();
+
+			if (transform.position.y <= target.transform.position.y) { return; }
 
 			jumping = false;
 			SetJump(false, 1f);
