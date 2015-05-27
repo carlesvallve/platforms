@@ -41,14 +41,17 @@ public class CameraFollow : MonoBehaviour {
 	void Update () {
 		if (!target) { return; }
 
+		float x = transform.position.x;
+		float y = transform.position.y;
+
 		// follow horizontally
-		float targetX = target.transform.position.x + (displaceX * target.transform.localScale.x);
-		float x = Mathf.Lerp(transform.position.x, targetX, Time.deltaTime * speedX); //  / 5
+		if (CanFollowHorizontal()) {
+			float targetX = target.transform.position.x + (displaceX * target.transform.localScale.x);
+			x = Mathf.Lerp(transform.position.x, targetX, Time.deltaTime * speedX); //  / 5
+		}
 		
 		
 		// follow vertically
-		float y = transform.position.y;
-		
 		if (CanFollowVertical()) {
 			float speed = speedY;
 			//if (!below && target.transform.position.y < transform.position.y) { speed = speedY * 5; }
@@ -61,6 +64,23 @@ public class CameraFollow : MonoBehaviour {
 
 		// limit camera position to scene bounds
 		//ApplyBoundLimits();
+	}
+
+
+	private bool CanFollowHorizontal () {
+		if (target.state == States.ATTACK || target.state == States.HURT) { return false; }
+		return true;
+	}
+
+	
+	private bool CanFollowVertical () {
+		bool below = target.controller.collisions.below;
+		if (below) { return true; }
+		if (!below && target.transform.position.y < transform.position.y) { return true; }
+		//if (below || target.IsOnLadder()) { return true; }
+		//if (target.IsInWater()) { return true; }
+
+		return false;
 	}
 
 
@@ -107,15 +127,8 @@ public class CameraFollow : MonoBehaviour {
 	}
 
 
-	private bool CanFollowVertical () {
-		bool below = target.controller.collisions.below;
-		if (below) { return true; }
-		if (!below && target.transform.position.y < transform.position.y) { return true; }
-		//if (below || target.IsOnLadder()) { return true; }
-		//if (target.IsInWater()) { return true; }
 
-		return false;
-	}
+
 
 
 	/*public IEnumerator Pixelate (float time) {

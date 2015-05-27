@@ -1,13 +1,20 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+public enum States {
+	IDLE = 0,
+	ATTACK = 2,
+	HURT = 3
+}
 
 
 [RequireComponent (typeof (Controller2D))]
 public class Ent : MonoBehaviour {
 
 	public Controller2D controller;
-	
+
+	public States state;
+
 	public float jumpHeight = 2.5f;
 	public float timeToJumpApex = 0.25f;
 	public float accelerationTimeAirborne = 0;
@@ -30,14 +37,14 @@ public class Ent : MonoBehaviour {
 	protected Ent interactiveObject = null;
 	protected Ent pickedUpObject = null;
 
-	protected bool attacking;
-
 
 	public virtual void Awake () {
 		controller = GetComponent<Controller2D>();
 
 		gravity = -((2 * jumpHeight) / Mathf.Pow (timeToJumpApex, 2));
 		jumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
+
+		state = States.IDLE;
 	}
 
 
@@ -108,7 +115,7 @@ public class Ent : MonoBehaviour {
 
 
 	protected void SetMove () {
-		if (attacking) { return; }
+		if (state == States.ATTACK || state == States.HURT) { return; };
 
 		// set velocity x
 		float targetVelocityX = input.x * speed;
@@ -122,7 +129,6 @@ public class Ent : MonoBehaviour {
 		}	
 
 		// set 2d controller move
-		//print (jumpingDown);
 		controller.Move (velocity * Time.deltaTime, jumpingDown);
 	}
 
@@ -164,7 +170,7 @@ public class Ent : MonoBehaviour {
 		ent.transform.SetParent(transform);
 		ent.transform.localPosition = new Vector2(0, 1f);
 
-		ent.transform.localScale = new Vector2(sc.x / (Mathf.Abs(transform.localScale.x)), sc.y / (transform.localScale.y)); //new Vector3(ent.transform.localScale.x, ent.transform.localScale.y) ;
+		ent.transform.localScale = new Vector2(sc.x / (Mathf.Abs(transform.localScale.x)), sc.y / (transform.localScale.y));
 
 		pickedUpObject = ent;
 		interactiveObject = null;
@@ -198,15 +204,15 @@ public class Ent : MonoBehaviour {
 	// ===========================================================
 
 	protected IEnumerator Attack () {
-		attacking = true;
+		state = States.ATTACK;
 
 		// attack parameters
-		float weaponRange = 1f;
-		float knockback = 1.0f;
+		float weaponRange = 0.8f;
+		float knockback = 1.5f;
 		float directionX = Mathf.Sign(transform.localScale.x);
 
-		Vector2 d = directionX * Vector2.right * 1f;
-		StartCoroutine(PushBackwards(d, 0.1f)); // yield return 
+		Vector2 d = directionX * Vector2.right * 0.25f;
+		StartCoroutine(PushBackwards(d, 0.1f));
 		yield return new WaitForSeconds(0.05f);
 
 		// project a ray forward
@@ -218,24 +224,26 @@ public class Ent : MonoBehaviour {
 		//foreach (RaycastHit2D hit in hits) {
 		if (hit) {
 			Ent target = hit.transform.GetComponent<Ent>();
-			//Vector2 d = (target.transform.position - transform.position).normalized * knockback;
-			StartCoroutine(target.Hurt(d + Vector2.up * 5));
+			StartCoroutine(target.Hurt(directionX * Vector2.right * knockback + Vector2.up * 5));
 		}
 
-		yield return null;
 		yield return StartCoroutine(PushBackwards(-d , 0.1f));
 
 		input = Vector2.zero;
 		velocity = Vector2.zero;
-		attacking = false;
+		state = States.IDLE;
 	}
 
 
 	public virtual IEnumerator Hurt (Vector2 vec) {
+		state = States.HURT;
+
 		// push backwards
 		input = Vector2.zero;
 		velocity = Vector2.zero;
 		yield return StartCoroutine(PushBackwards(vec, 0.5f));
+
+		state = States.IDLE;
 	}
 
 
