@@ -41,9 +41,13 @@ public class Ent : MonoBehaviour {
 
 	protected bool jumping = false;
 	protected bool jumpingDown = false;
+	protected bool jumpingFromLadder = false;
 
 	protected Ent interactiveObject = null;
 	protected Ent pickedUpObject = null;
+
+	protected Transform ladder;
+	//private Vector2 ladderPos;
 
 
 	// ===========================================================
@@ -62,8 +66,6 @@ public class Ent : MonoBehaviour {
 
 
 	public virtual void Update () {
-		//CheckCollisionTarget();
-
 		Reset();
 		SetInput();
 		SetSpeed();
@@ -107,10 +109,16 @@ public class Ent : MonoBehaviour {
 			velocity.y = 0;
 			jumping = false;
 			jumpingDown = false;
+			jumpingFromLadder = false;
 		}
 
-		if (velocity.y < -18f) {
+		if (velocity.y < -18f && !jumpingFromLadder) {
 			jumpingDown = false;
+			
+		}
+
+		if (velocity.y < -4f && !jumpingDown) {
+			jumpingFromLadder = false;
 		}
 	}
 
@@ -133,16 +141,25 @@ public class Ent : MonoBehaviour {
 		// set velocity x
 		float targetVelocityX = input.x * speed;
 		velocity.x = Mathf.SmoothDamp (velocity.x, targetVelocityX, ref velocityXSmoothing, (controller.collisions.below)?accelerationTimeGrounded:accelerationTimeAirborne);
-
-		// set velocity y (apply gravity)
-		ApplyGravity();
-
+		
 		if (velocity.x != 0) { 
 			transform.localScale = new Vector2(Mathf.Sign(velocity.x) * Mathf.Abs(transform.localScale.x), transform.localScale.y); 
-		}	
+		}
 
-		// set 2d controller move
+		// set velocity y
+		if (IsOnLadder()) { 
+			SetMoveOnLadder();
+		} else {
+			ApplyGravity();
+		}
+
+		// apply controller2d movement
 		controller.Move (velocity * Time.deltaTime, jumpingDown);
+
+		// snap to ladders
+		if (IsOnLadder()) { 
+			SnapToLadder(); 
+		}
 	}
 
 
@@ -152,9 +169,68 @@ public class Ent : MonoBehaviour {
 		velocity.y = jumpVelocity * intensity; 
 
 		jumping = true;
+		jumpingFromLadder = IsOnLadder();
+
 		if (isJumpingDown) {
-			jumpingDown = true; 
+			jumpingDown = true;
 			velocity.y *= 0.5f;
+		}
+	}
+
+
+	// ===========================================================
+	// Triggers and Interactive Objects
+	// ===========================================================
+
+	protected void OnTriggerStay2D (Collider2D collider) {
+		if (state == States.ATTACK) { return; }
+
+		switch (collider.gameObject.tag) {
+			case "Ladder":
+				ladder = collider.transform;
+				break;
+		}
+
+		interactiveObject = collider.gameObject.GetComponent<Ent>();
+	}
+
+
+	protected void OnTriggerExit2D (Collider2D collider) {
+		switch (collider.gameObject.tag) {
+			case "Ladder":
+				ladder = null;
+				break;
+		}
+
+		interactiveObject = null;
+	}
+
+
+	// ===========================================================
+	// Ladders
+	// ===========================================================
+
+	public bool IsOnLadder() {
+		if (state == States.ATTACK) { return false; }
+		return ladder && !jumpingFromLadder;
+	}
+
+
+	protected void SetMoveOnLadder () {
+		if (!jumpingFromLadder) {
+			if (jumping || (velocity.y < 0 && input.y >= 0)) { PlayAudioStep(); }
+			jumping = false;
+		}
+
+		float targetVelocityY = input.y * speed;
+		velocity.y = targetVelocityY ;
+	}
+
+
+	private void SnapToLadder () {
+		if (!controller.landed && !jumpingFromLadder) {
+			Vector2 pos = new Vector2(ladder.position.x, transform.position.y);
+			transform.position = Vector2.Lerp(transform.position, pos, Time.deltaTime * 15f);
 		}
 	}
 
@@ -162,21 +238,6 @@ public class Ent : MonoBehaviour {
 	// ===========================================================
 	// Item interaction
 	// ===========================================================
-
-
-	/*protected void OnTriggerEnter2D (Collider2D collider) {
-		interactiveObject = collider.gameObject.GetComponent<Ent>();
-	}*/
-
-	protected void OnTriggerStay2D (Collider2D collider) {
-		interactiveObject = collider.gameObject.GetComponent<Ent>();
-	}
-
-
-	protected void OnTriggerExit2D (Collider2D collider) {
-		interactiveObject = null;
-	}
-
 
 	protected void PickItem (Ent ent) {
 		if (pickedUpObject) { DropItem(pickedUpObject); }
@@ -222,15 +283,9 @@ public class Ent : MonoBehaviour {
 	// ===========================================================
 
 	protected IEnumerator JumpAttack (GameObject obj) {
-		//if (state == States.ATTACK) { yield break; }
-		
 		Ent target = obj.GetComponent<Ent>();
 
-		if (velocity.y < 0 && transform.position.y > target.transform.position.y + transform.localScale.y / 2) { 
-
-			//state = States.ATTACK;
-			PlayAudioStep();
-			
+		if (velocity.y < 0 && transform.position.y > target.transform.position.y + transform.localScale.y * 0.75f) { 
 			jumping = false;
 			jumpingDown = false;
 			SetJump(false, 1f);
@@ -239,7 +294,7 @@ public class Ent : MonoBehaviour {
 			Vector2 d = new Vector2(Mathf.Sign(target.transform.position.x - transform.position.x) * knockback, 0);
 			StartCoroutine(target.Hurt(d));
 
-			//state = States.IDLE;
+			PlayAudioStep();
 		}
 
 		
@@ -249,15 +304,18 @@ public class Ent : MonoBehaviour {
 
 	protected IEnumerator Attack () {
 		if (state == States.ATTACK) { yield break; }
+		if (IsOnLadder() && !controller.landed) { yield break; }
+		//if (!controller.landed) { yield break; } // TODO: if we are on the air we only can attack once
 
 		state = States.ATTACK;
-		//Audio.play("Audio/sfx/swishA", 0.05f, Random.Range(1.0f, 1.0f));
+		Audio.play("Audio/sfx/swishA", 0.025f, Random.Range(0.5f, 0.5f));
 		
 		// attack parameters
 		float weaponRange = 0.8f;
 		float knockback = 1.5f;
 		float directionX = Mathf.Sign(transform.localScale.x);
 
+		// push attacker forward
 		Vector2 d = directionX * Vector2.right * 0.25f + Vector2.up * 5;
 		StartCoroutine(PushBackwards(d, 0.1f));
 		yield return new WaitForSeconds(0.05f);
@@ -270,30 +328,32 @@ public class Ent : MonoBehaviour {
 
 		//foreach (RaycastHit2D hit in hits) {
 		if (hit) {
+			// push target forward
 			Ent target = hit.transform.GetComponent<Ent>();
 			StartCoroutine(target.Hurt(directionX * Vector2.right * knockback)); // + Vector2.up * 5));
+
+			// push attacker backwards
+			yield return StartCoroutine(PushBackwards(-d , 0.1f));
 		}
 
-		yield return StartCoroutine(PushBackwards(-d , 0.1f));
-
+		
+		yield return new WaitForSeconds(0.1f);
 		input = Vector2.zero;
 		velocity = Vector2.zero;
+		
 		state = States.IDLE;
 	}
 
 
 	public virtual IEnumerator Hurt (Vector2 vec) {
-		if (state == States.HURT) { yield break; }
-
-		Audio.play("Audio/sfx/step", 1f, Random.Range(2.5f, 2.5f));
-
 		state = States.HURT;
 		input = Vector2.zero;
 		velocity = Vector2.zero;
 
+		Audio.play("Audio/sfx/step", 1f, Random.Range(2.5f, 2.5f));
+
 		// update stats
 		stats.hp -= Random.Range(1, 4);
-		print (stats.hp);
 		if (stats.hp <= 0) {
 			stats.hp = 0; 
 			// if no hp left, die instead
@@ -336,6 +396,9 @@ public class Ent : MonoBehaviour {
 
 			yield return null;
 		}
+
+		ApplyGravity();
+		controller.Move (velocity * Time.deltaTime, jumpingDown);
 	}
 
 
@@ -351,7 +414,7 @@ public class Ent : MonoBehaviour {
 
 
 	protected void PlayAudioStep () {
-		Audio.play("Audio/sfx/step", 1f, Random.Range(1.5f, 1.5f));
+		Audio.play("Audio/sfx/step", 1f, Random.Range(1.25f, 1.75f));
 	}
 
 
@@ -360,8 +423,6 @@ public class Ent : MonoBehaviour {
 	// ===========================================================
 
 	public virtual void TriggerLanding () {
-		if (state == States.ATTACK) { return; }
-
 		PlayAudioStep();
 	}
 

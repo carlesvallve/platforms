@@ -68,7 +68,7 @@ public class CameraFollow : MonoBehaviour {
 
 
 	private bool CanFollowHorizontal () {
-		if (target.state == States.ATTACK || target.state == States.HURT) { return false; }
+		//if (target.state == States.ATTACK || target.state == States.HURT) { return false; }
 		return true;
 	}
 
@@ -77,7 +77,7 @@ public class CameraFollow : MonoBehaviour {
 		bool below = target.controller.collisions.below;
 		if (below) { return true; }
 		if (!below && target.transform.position.y < transform.position.y) { return true; }
-		//if (below || target.IsOnLadder()) { return true; }
+		if (target.IsOnLadder()) { return true; }
 		//if (target.IsInWater()) { return true; }
 
 		return false;

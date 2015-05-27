@@ -5,7 +5,7 @@ using System.Collections;
 public class Controller2D : MonoBehaviour {
 
 	private Ent ent;
-	private bool landed = false;
+	public bool landed = false;
 
 	public LayerMask collisionMask;
 	public LayerMask attackCollisionMask;
@@ -47,11 +47,16 @@ public class Controller2D : MonoBehaviour {
 		if (velocity.y < 0) {
 			DescendSlope(ref velocity);
 		}
+
 		if (velocity.x != 0) {
 			HorizontalCollisions (ref velocity);
 		}
+
 		if (velocity.y != 0) {
 			VerticalCollisions (ref velocity, jumpingDown);
+		}
+
+		if (velocity.x != 0 || velocity.y != 0) { 
 			AttackCollisions (ref velocity);
 		}
 
@@ -165,7 +170,7 @@ public class Controller2D : MonoBehaviour {
 	}
 
 
-	void AttackCollisions(ref Vector3 velocity) {
+	void AttackCollisions(ref Vector3 velocity, bool jumpingDown = false) {
 		float rayLength;
 
 		// vertical
@@ -181,8 +186,7 @@ public class Controller2D : MonoBehaviour {
 
 				if (hit) {
 					if (triggerEvents) { ent.TriggerCollisionAttack(hit.transform.gameObject); }
-					velocity.y = 0;
-					continue;
+					return;
 				}
 			}
 		}
@@ -200,8 +204,7 @@ public class Controller2D : MonoBehaviour {
 
 				if (hit) {
 					if (triggerEvents) { ent.TriggerCollisionAttack(hit.transform.gameObject); }
-					velocity.x = 0;
-					continue;
+					return;
 				}
 			}
 		}

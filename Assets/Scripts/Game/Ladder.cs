@@ -3,21 +3,20 @@ using System.Collections;
 
 public class Ladder : MonoBehaviour {
 
-	public int height = 3;
+
 	public Sprite spriteTop;
 	public Sprite spriteCenter;
 	public Sprite spriteBottom;
 
 	private Transform top;
 	private Transform bottom;
+	private int height;
 
 
 	void Awake () {
 		top = transform.Find("Top");
 		bottom = transform.Find("Bottom");
-
-		bottom.transform.localPosition = Vector3.up * 0;
-		top.transform.localPosition = Vector3.up * (height - 1);
+		height = (int)top.transform.position.y;
 
 		for (int i = 1; i < height - 1; i++) {
 			Transform tile = ((Transform)Instantiate(bottom, transform.position + Vector3.up * i, Quaternion.identity));

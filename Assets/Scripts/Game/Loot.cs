@@ -1,13 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Blood : Ent {
+public class Loot : Ent {
 
-	public void Init (Transform bloodContainer) {
-		transform.SetParent(bloodContainer);
+	public void Init (Transform container) {
+		transform.SetParent(container);
 		
-		float sc = Random.Range(0.25f, 0.75f);
-		transform.localScale = new Vector2(sc, sc);
+		//float sc = Random.Range(0.25f, 0.75f);
+		//transform.localScale = new Vector2(sc, sc);
 		transform.position += Vector3.up * 0.5f;
 		Vector2 vec = new Vector3(Random.Range(-1f, 1f), Random.Range(0, 5f)) * Random.Range(1f, 4f);
 		StartCoroutine (Spawn(vec));
@@ -30,6 +30,6 @@ public class Blood : Ent {
 			yield return null;
 		}
 
-		Destroy(gameObject);
+		//Destroy(gameObject);
 	}
 }
