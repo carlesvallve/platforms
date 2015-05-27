@@ -24,7 +24,7 @@ public class Ladder : MonoBehaviour {
 			Transform tile = ((Transform)Instantiate(bottom, transform.position + Vector3.up * i, Quaternion.identity));
 			tile.GetComponent<SpriteRenderer>().sprite = spriteCenter;
 			tile.SetParent(transform);
-			tile.name = "Center" + i; q
+			tile.name = "Center" + i;
 		}
 
 	}
