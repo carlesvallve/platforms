@@ -222,25 +222,37 @@ public class Ent : MonoBehaviour {
 	// ===========================================================
 
 	protected IEnumerator JumpAttack (GameObject obj) {
-		// this function is triggered by controller2D
+		//if (state == States.ATTACK) { yield break; }
+		
 		Ent target = obj.GetComponent<Ent>();
 
-		if (transform.position.y <= target.transform.position.y) { yield break; }
+		if (velocity.y < 0 && transform.position.y > target.transform.position.y + transform.localScale.y / 2) { 
 
-		jumping = false;
-		SetJump(false, 1f);
+			//state = States.ATTACK;
+			PlayAudioStep();
+			
+			jumping = false;
+			jumpingDown = false;
+			SetJump(false, 1f);
 
-		float knockback = 1f;
-		Vector2 d = (target.transform.position - transform.position).normalized * knockback;
-		StartCoroutine(target.Hurt(d));
+			float knockback = 1f;
+			Vector2 d = new Vector2(Mathf.Sign(target.transform.position.x - transform.position.x) * knockback, 0);
+			StartCoroutine(target.Hurt(d));
 
+			//state = States.IDLE;
+		}
+
+		
 		yield break;
 	}
 
 
 	protected IEnumerator Attack () {
-		state = States.ATTACK;
+		if (state == States.ATTACK) { yield break; }
 
+		state = States.ATTACK;
+		//Audio.play("Audio/sfx/swishA", 0.05f, Random.Range(1.0f, 1.0f));
+		
 		// attack parameters
 		float weaponRange = 0.8f;
 		float knockback = 1.5f;
@@ -259,7 +271,7 @@ public class Ent : MonoBehaviour {
 		//foreach (RaycastHit2D hit in hits) {
 		if (hit) {
 			Ent target = hit.transform.GetComponent<Ent>();
-			StartCoroutine(target.Hurt(directionX * Vector2.right * knockback + Vector2.up * 5));
+			StartCoroutine(target.Hurt(directionX * Vector2.right * knockback)); // + Vector2.up * 5));
 		}
 
 		yield return StartCoroutine(PushBackwards(-d , 0.1f));
@@ -271,6 +283,10 @@ public class Ent : MonoBehaviour {
 
 
 	public virtual IEnumerator Hurt (Vector2 vec) {
+		if (state == States.HURT) { yield break; }
+
+		Audio.play("Audio/sfx/step", 1f, Random.Range(2.5f, 2.5f));
+
 		state = States.HURT;
 		input = Vector2.zero;
 		velocity = Vector2.zero;
@@ -296,6 +312,8 @@ public class Ent : MonoBehaviour {
 
 
 	public virtual IEnumerator Die () {
+		Audio.play("Audio/sfx/bite1", 0.3f, Random.Range(3f, 3f));
+
 		// instantiate blood splats
 		Bleed(Random.Range(8, 16));
 		
@@ -306,7 +324,6 @@ public class Ent : MonoBehaviour {
 
 
 	public virtual IEnumerator PushBackwards (Vector2 vec, float duration) {
-
 		velocity.y = vec.y;
 		Vector2 pos = new Vector2(transform.position.x + vec.x, transform.position.y);
 		
@@ -334,7 +351,7 @@ public class Ent : MonoBehaviour {
 
 
 	protected void PlayAudioStep () {
-		Audio.play("Audio/sfx/step", 1f, Random.Range(0.5f, 1.5f));
+		Audio.play("Audio/sfx/step", 1f, Random.Range(1.5f, 1.5f));
 	}
 
 
@@ -343,6 +360,8 @@ public class Ent : MonoBehaviour {
 	// ===========================================================
 
 	public virtual void TriggerLanding () {
+		if (state == States.ATTACK) { return; }
+
 		PlayAudioStep();
 	}
 

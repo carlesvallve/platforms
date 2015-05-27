@@ -5,7 +5,7 @@ using System.Collections;
 public class Controller2D : MonoBehaviour {
 
 	private Ent ent;
-	private bool landedFlag = false;
+	private bool landed = false;
 
 	public LayerMask collisionMask;
 	public LayerMask attackCollisionMask;
@@ -23,6 +23,8 @@ public class Controller2D : MonoBehaviour {
 	private BoxCollider2D boxCollider;
 	RaycastOrigins raycastOrigins;
 	public CollisionInfo collisions;
+
+	public bool triggerEvents = true;
 
 
 	void Awake() {
@@ -112,7 +114,6 @@ public class Controller2D : MonoBehaviour {
 		float rayLength = Mathf.Abs (velocity.y) + skinWidth;
 
 
-
 		for (int i = 0; i < verticalRayCount; i ++) {
 			Vector2 rayOrigin = (directionY == -1)?raycastOrigins.bottomLeft:raycastOrigins.topLeft;
 			rayOrigin += Vector2.right * (verticalRaySpacing * i + velocity.x);
@@ -138,21 +139,7 @@ public class Controller2D : MonoBehaviour {
 
 				collisions.below = directionY == -1;
 				collisions.above = directionY == 1;
-
-				// tell Ent that landed was triggered
-				/*if (!landedFlag && directionY == -1) {
-					ent.TriggerLanding();
-					landedFlag = true;
-				}*/
-
-
-				//break;
-				
-			}
-
-			
-
-			//landedFlag = collisions.below;
+			} 
 		}
 
 		if (collisions.climbingSlope) {
@@ -169,6 +156,12 @@ public class Controller2D : MonoBehaviour {
 				}
 			}
 		}
+
+
+		// trigger landing on ent
+		if (triggerEvents && !landed && collisions.below && directionY == -1) { ent.TriggerLanding(); } 
+		landed = collisions.below;
+
 	}
 
 
@@ -177,7 +170,7 @@ public class Controller2D : MonoBehaviour {
 
 		// vertical
 		float directionY = Mathf.Sign (velocity.y);
-		if (directionY == -1) { 
+		if (directionY == -1 && !collisions.below) { 
 
 			rayLength = Mathf.Abs (velocity.y) + skinWidth;
 			for (int i = 0; i < verticalRayCount; i ++) {
@@ -187,7 +180,7 @@ public class Controller2D : MonoBehaviour {
 				Debug.DrawRay(rayOrigin, Vector2.up * directionY * rayLength, Color.red);
 
 				if (hit) {
-					ent.TriggerCollisionAttack(hit.transform.gameObject);
+					if (triggerEvents) { ent.TriggerCollisionAttack(hit.transform.gameObject); }
 					velocity.y = 0;
 					continue;
 				}
@@ -196,7 +189,7 @@ public class Controller2D : MonoBehaviour {
 
 		// horizontal
 		float directionX = Mathf.Sign (velocity.x);
-		if (directionX != 0 && !collisions.below) { 
+		if (directionX != 0 && !collisions.below) {
 		
 			rayLength = Mathf.Abs (velocity.x) + skinWidth;
 			for (int i = 0; i < horizontalRayCount; i ++) {
@@ -206,16 +199,12 @@ public class Controller2D : MonoBehaviour {
 				Debug.DrawRay(rayOrigin, Vector2.right * directionX * rayLength, Color.red);
 
 				if (hit) {
-					ent.TriggerCollisionAttack(hit.transform.gameObject);
+					if (triggerEvents) { ent.TriggerCollisionAttack(hit.transform.gameObject); }
 					velocity.x = 0;
 					continue;
 				}
 			}
 		}
-
-
-
-
 		
 	}
 
@@ -296,9 +285,6 @@ public class Controller2D : MonoBehaviour {
 		public float slopeAngle, slopeAngleOld;
 		public Vector3 velocityOld;
 
-		//public GameObject target; // we set it when we collide with something that we can attack
-
-
 		public void Reset() {
 			above = below = false;
 			left = right = false;
@@ -306,8 +292,6 @@ public class Controller2D : MonoBehaviour {
 			descendingSlope = false;
 			slopeAngleOld = slopeAngle;
 			slopeAngle = 0;
-
-			//target = null;
 		}
 	}
 

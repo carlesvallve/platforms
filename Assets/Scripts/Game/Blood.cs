@@ -6,7 +6,7 @@ public class Blood : Ent {
 	public void Init (Transform bloodContainer) {
 		transform.SetParent(bloodContainer);
 		
-		float sc = Random.Range(0.25f, 1f);
+		float sc = Random.Range(0.25f, 0.75f);
 		transform.localScale = new Vector2(sc, sc);
 		transform.position += Vector3.up * 0.5f;
 		Vector2 vec = new Vector3(Random.Range(-1f, 1f), Random.Range(0, 5f)) * Random.Range(1f, 4f);
