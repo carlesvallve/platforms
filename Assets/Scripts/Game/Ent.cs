@@ -207,6 +207,7 @@ public class Ent : MonoBehaviour {
 		switch (collider.gameObject.tag) {
 			case "Ladder":
 				ladder = null;
+				//previouslyOnLadder = false;
 				break;
 		}
 
@@ -218,8 +219,17 @@ public class Ent : MonoBehaviour {
 	// Ladders
 	// ===========================================================
 
+	//private bool previouslyOnLadder;
+
 	public bool IsOnLadder() {
 		if (state == States.ATTACK) { return false; }
+		//if (jumping && velocity.y != 0 && input.y == 0) { return false; }
+		//if (!previouslyOnLadder && input.y == 0) { return false; }
+
+		//bool onLadder = ladder && !jumpingFromLadder;
+		//previouslyOnLadder = onLadder;
+		//return onLadder;
+
 		return ladder && !jumpingFromLadder;
 	}
 
@@ -299,7 +309,7 @@ public class Ent : MonoBehaviour {
 			loot.Init(container);
 		}
 	}
-	
+
 
 	protected virtual void PickCoin (Coin coin) {
 		Audio.play("Audio/sfx/chimes", 0.5f, Random.Range(1.0f, 1.0f));
