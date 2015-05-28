@@ -185,7 +185,9 @@ public class Controller2D : MonoBehaviour {
 				Debug.DrawRay(rayOrigin, Vector2.up * directionY * rayLength, Color.red);
 
 				if (hit) {
-					if (triggerEvents) { ent.TriggerCollisionAttack(hit.transform.gameObject); }
+					if (triggerEvents) { 
+						ent.TriggerCollisionAttack(hit.transform.gameObject); 
+					}
 					return;
 				}
 			}
@@ -203,7 +205,9 @@ public class Controller2D : MonoBehaviour {
 				Debug.DrawRay(rayOrigin, Vector2.right * directionX * rayLength, Color.red);
 
 				if (hit) {
-					if (triggerEvents) { ent.TriggerCollisionAttack(hit.transform.gameObject); }
+					if (triggerEvents) { 
+						ent.TriggerCollisionAttack(hit.transform.gameObject); 
+					}
 					return;
 				}
 			}

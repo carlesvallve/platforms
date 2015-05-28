@@ -24,7 +24,6 @@ public class Ladder : MonoBehaviour {
 			tile.SetParent(transform);
 			tile.name = "Center" + i;
 		}
-
 	}
 	
 }

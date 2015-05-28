@@ -1,15 +1,17 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
+
 
 public class Hud : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
+	Text coins;
+
+	void Awake () {
+		coins = transform.Find("Coins/Text").GetComponent<Text>();
 	}
 	
-	// Update is called once per frame
-	void Update () {
-	
+	public void UpdateCoins (int num) {
+		coins.text = num.ToString();
 	}
 }

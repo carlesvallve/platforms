@@ -4,10 +4,12 @@ using System.Collections;
 public class Player : Ent {
 
 	private InputManager inputManager;
-
+	private Hud hud;
+	
 
 	public override void Awake () {
 		inputManager = GameObject.Find("InputManager").GetComponent<InputManager>();
+		hud = GameObject.Find("Hud").GetComponent<Hud>();
 		base.Awake();
 	}
 
@@ -26,5 +28,11 @@ public class Player : Ent {
 		if (inputManager.B) { SetActionB(); }
 
 		if (inputManager.C) { SetActionC(); }
+	}
+
+
+	protected override void PickCoin (Coin coin) {
+		base.PickCoin(coin);
+		hud.UpdateCoins(stats.coins);
 	}
 }

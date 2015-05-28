@@ -9,6 +9,7 @@ public enum States {
 
 
 public class Stats {
+	public int coins = 0;
 	public int hp = 8;
 }
 
@@ -29,6 +30,7 @@ public class Ent : MonoBehaviour {
 	public float runSpeed = 5f;
 	public bool affectedByGravity = true;
 
+	public GameObject lootPrefab;
 	public GameObject bloodPrefab;
 	
 	protected Vector2 input;
@@ -192,6 +194,12 @@ public class Ent : MonoBehaviour {
 		}
 
 		interactiveObject = collider.gameObject.GetComponent<Ent>();
+
+		
+		if (interactiveObject is Coin) {
+			PickCoin((Coin)interactiveObject);
+			interactiveObject = null;
+		}
 	}
 
 
@@ -275,6 +283,28 @@ public class Ent : MonoBehaviour {
 		ent.velocity.y = 10f; 
 
 		DropItem(ent);
+	}
+
+
+	// ===========================================================
+	// Loot interaction
+	// ===========================================================
+
+	protected void SpawnLoot (int maxLoot) {
+		if (!lootPrefab) { return; }
+
+		Transform container = GameObject.Find("Loot").transform;
+		for (int i = 0; i < maxLoot; i++) {
+			Loot loot = ((GameObject)Instantiate(lootPrefab, transform.position, Quaternion.identity)).GetComponent<Loot>();
+			loot.Init(container);
+		}
+	}
+	
+
+	protected virtual void PickCoin (Coin coin) {
+		Audio.play("Audio/sfx/chimes", 0.5f, Random.Range(1.0f, 1.0f));
+		StartCoroutine(coin.Pickup(this));
+		stats.coins += 1;
 	}
 
 
@@ -372,7 +402,7 @@ public class Ent : MonoBehaviour {
 
 
 	public virtual IEnumerator Die () {
-		Audio.play("Audio/sfx/bite1", 0.3f, Random.Range(3f, 3f));
+		Audio.play("Audio/sfx/bite", 0.3f, Random.Range(3f, 3f));
 
 		// instantiate blood splats
 		Bleed(Random.Range(8, 16));

@@ -3,8 +3,8 @@ using System.Collections;
 
 public class Blood : Ent {
 
-	public void Init (Transform bloodContainer) {
-		transform.SetParent(bloodContainer);
+	public void Init (Transform container) {
+		transform.SetParent(container);
 		
 		float sc = Random.Range(0.25f, 0.75f);
 		transform.localScale = new Vector2(sc, sc);

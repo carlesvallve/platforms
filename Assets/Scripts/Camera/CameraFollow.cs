@@ -13,6 +13,8 @@ public class CameraFollow : MonoBehaviour {
 	private Bounds bounds;
 	public Rect diff = new Rect(2.6f, 1.66f, 2.2f, 0.96f);
 
+	private float z;
+
 	//private Flashback94_PostProcess flash94;
 
 
@@ -28,9 +30,10 @@ public class CameraFollow : MonoBehaviour {
 			return;
 		}
 
+		z = transform.position.z;
 		transform.position = target.transform.position;
 
-		bounds = CalculateBounds(tileMap);
+		//bounds = CalculateBounds(tileMap);
 	}
 
 	
@@ -60,7 +63,7 @@ public class CameraFollow : MonoBehaviour {
 		}
 
 		// locate camera
-		transform.position = new Vector3(x, y, -10);
+		transform.position = new Vector3(x, y, z);
 
 		// limit camera position to scene bounds
 		//ApplyBoundLimits();
@@ -100,7 +103,7 @@ public class CameraFollow : MonoBehaviour {
 			bounds.Encapsulate (renderer.bounds);
 		}
 
-		//print ("Scene bounds: " + bounds);
+		print ("Scene bounds: " + bounds);
 		return bounds;
 	}
 
@@ -110,19 +113,19 @@ public class CameraFollow : MonoBehaviour {
 		if (!tileMap) { return; }
 
 		if (transform.position.x < bounds.min.x + diff.x) {
-			transform.position = new Vector2(bounds.min.x + diff.x, transform.position.y);
+			transform.position = new Vector3(bounds.min.x + diff.x, transform.position.y, z);
 		}
 
 		if (transform.position.x > bounds.max.x - diff.width) {
-			transform.position = new Vector2(bounds.max.x - diff.width, transform.position.y);
+			transform.position = new Vector3(bounds.max.x - diff.width, transform.position.y, z);
 		}
 
 		if (transform.position.y < bounds.min.y + diff.y) {
-			transform.position = new Vector2(transform.position.x, bounds.min.y + diff.y);
+			transform.position = new Vector3(transform.position.x, bounds.min.y + diff.y, z);
 		}
 
 		if (transform.position.y > bounds.max.y - diff.height) {
-			transform.position = new Vector2(transform.position.x, bounds.max.y - diff.height);
+			transform.position = new Vector3(transform.position.x, bounds.max.y - diff.height, z);
 		}
 	}
 
