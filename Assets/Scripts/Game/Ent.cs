@@ -333,10 +333,13 @@ public class Ent : MonoBehaviour {
 	protected IEnumerator JumpAttack (GameObject obj) {
 		Ent target = obj.GetComponent<Ent>();
 
-		if (velocity.y < 0 && transform.position.y > target.transform.position.y + transform.localScale.y * 0.75f) { 
+		if (target.state == States.HURT) { yield break; }
+		if (gameObject.tag == "Item" && velocity.magnitude < 5f) { yield break; }
+
+		if (gameObject.tag == "Item" || velocity.y < 0 && transform.position.y > target.transform.position.y + transform.localScale.y * 0.75f) { 
 			jumping = false;
 			jumpingDown = false;
-			SetJump(false, 1f);
+			SetJump(false, gameObject.tag == "Item" ? 0.5f : 1f);
 
 			float knockback = 1f;
 			Vector2 d = new Vector2(Mathf.Sign(target.transform.position.x - transform.position.x) * knockback, 0);
@@ -344,8 +347,7 @@ public class Ent : MonoBehaviour {
 
 			PlayAudioStep();
 		}
-
-		
+	
 		yield break;
 	}
 

@@ -201,8 +201,8 @@ public class Controller2D : MonoBehaviour {
 
 		// horizontal
 		float directionX = Mathf.Sign (velocity.x);
-		if (directionX != 0 && !collisions.below) {
-		
+		if (directionX != 0) {
+
 			rayLength = Mathf.Abs (velocity.x) + skinWidth;
 			for (int i = 0; i < horizontalRayCount; i ++) {
 				Vector2 rayOrigin = (directionX == -1)?raycastOrigins.bottomLeft:raycastOrigins.bottomRight;
