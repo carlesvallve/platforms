@@ -422,19 +422,14 @@ public class Ent : MonoBehaviour {
 	// ===========================================================
 
 	protected IEnumerator JumpAttack (Ent target) {
-		// set rebound jump intensity
-		float intensity = 0.8f;
-		//if (gameObject.tag == "Item") { intensity = 0.5f; }
-		//if (gameObject.tag == "Block") { intensity = 0.2f; }
-
 		// jump
 		jumping = false;
 		jumpingDown = false;
-		SetJump(false,  atr.jump * intensity);
+		SetJump(false,  atr.jump * 0.75f);
 		
 		// hurt target and knock him back
 		float knockback = 1f;
-		Vector2 d = new Vector2(Mathf.Sign(target.transform.position.x - transform.position.x) * knockback, 0);
+		Vector2 d = new Vector2(Mathf.Sign(target.transform.position.x - transform.position.x) * knockback, 3);
 		StartCoroutine(target.Hurt(d));
 
 		yield break;
@@ -469,7 +464,7 @@ public class Ent : MonoBehaviour {
 		if (hit) {
 			// push target forward
 			Ent target = hit.transform.GetComponent<Ent>();
-			StartCoroutine(target.Hurt(directionX * Vector2.right * knockback)); // + Vector2.up * 5));
+			StartCoroutine(target.Hurt(directionX * Vector2.right * knockback + Vector2.up * 3)); // + Vector2.up * 5));
 
 			// push attacker backwards
 			yield return StartCoroutine(PushBackwards(-d / 2 , 0.05f));
