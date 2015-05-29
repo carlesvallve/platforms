@@ -267,7 +267,7 @@ public class Ent : MonoBehaviour {
 			StartCoroutine(DropItem(pickedUpObject)); 
 		}
 
-		if (!ent || !(ent is Item) || !ent.controller.landed) { yield break; }
+		if (!ent || !(ent is Item)) { yield break; } //  || !ent.controller.landed
 		
 		Item item = (Item)ent;
 		

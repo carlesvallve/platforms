@@ -78,12 +78,12 @@ public class Controller2D : MonoBehaviour {
 			if (hit) {
 
 				// handle one way collision layer
-				if (hit.transform.gameObject.layer == LayerMask.NameToLayer("OneWayPlatform")) {
+				if (hit.transform.gameObject.tag == "OneWayPlatform") { //layer == LayerMask.NameToLayer("OneWayPlatform")) {
 					continue;
 				}
 
 				// handle pushable collision layer
-				if (hit.transform.gameObject.layer == LayerMask.NameToLayer("PushablePlatform")) {
+				if (hit.transform.gameObject.tag == "PushablePlatform") { //layer == LayerMask.NameToLayer("PushablePlatform")) {
 					ent.TriggerPushable(hit.transform.gameObject); 
 				}
 
@@ -135,7 +135,7 @@ public class Controller2D : MonoBehaviour {
 			if (hit) {
 
 				// handle one way collision layer
-				if (hit.transform.gameObject.layer == LayerMask.NameToLayer("OneWayPlatform")) {
+				if (hit.transform.gameObject.tag == "OneWayPlatform") { // layer == LayerMask.NameToLayer("OneWayPlatform")
 					if (directionY == 1 || (directionY == - 1 && jumpingDown)) {
 						continue;
 					}
