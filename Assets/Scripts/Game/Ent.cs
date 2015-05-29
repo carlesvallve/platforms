@@ -49,6 +49,8 @@ public class Ent : MonoBehaviour {
 	protected Ent interactiveObject;
 	protected Ent pickedUpObject;
 
+	protected bool hasAttackedInAir = false;
+
 
 	// ===========================================================
 	// Init
@@ -357,6 +359,7 @@ public class Ent : MonoBehaviour {
 	protected IEnumerator Attack () {
 		if (state == States.ATTACK) { yield break; }
 		if (IsOnLadder() && !controller.landed) { yield break; }
+		if (hasAttackedInAir) { yield break; }
 
 		state = States.ATTACK;
 		Audio.play("Audio/sfx/swishA", 0.025f, Random.Range(0.5f, 0.5f));
@@ -392,6 +395,7 @@ public class Ent : MonoBehaviour {
 
 		yield return new WaitForSeconds(0.1f);
 		state = States.IDLE;
+		hasAttackedInAir = !controller.collisions.below;
 	}
 
 
@@ -471,6 +475,7 @@ public class Ent : MonoBehaviour {
 
 	public virtual void TriggerLanding () {
 		PlayAudioStep();
+		hasAttackedInAir = false;
 	}
 
 
