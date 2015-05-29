@@ -46,8 +46,7 @@ public class Ent : MonoBehaviour {
 	protected float jumpHeight = 2.5f;
 	protected float timeToJumpApex = 0.25f;
 	
-	//public float moveSpeed = 5f;
-
+	public bool isCreature = false;
 	public bool affectedByGravity = true;
 
 	public GameObject lootPrefab;
@@ -97,6 +96,7 @@ public class Ent : MonoBehaviour {
 		SetInput();
 		SetSpeed();
 		SetMove();
+		OutOfBounds();
 	}
 
 
@@ -214,6 +214,18 @@ public class Ent : MonoBehaviour {
 	}
 
 
+	protected void OutOfBounds () {
+		// Ddestroy if is out of bounds
+		if (transform.position.y < -1) {
+			if (isCreature) {
+				StartCoroutine(Die());
+			} else {
+				Destroy(gameObject);
+			}
+		}
+	}
+
+
 	// ===========================================================
 	// Triggers and Interactive Objects
 	// ===========================================================
@@ -278,12 +290,12 @@ public class Ent : MonoBehaviour {
 
 
 	private IEnumerator SetWaterOut () {
-		if (!isWater || velocity.y < 0) { yield break; }
+		if (!isWater || velocity.y < 0) { yield break; } // 
 
 		Audio.play("Audio/sfx/splash", 0.1f, Random.Range(1f, 1.2f));
 		isWater = false;
 
-		if (!IsOnLadder() && gameObject.tag != "Item") { 
+		if (!IsOnLadder() && isCreature) { // gameObject.tag != "Item"
 			velocity.y = 0;
 			jumping = false;
 			SetJump(false, atr.jump * 0.75f); 
@@ -557,7 +569,7 @@ public class Ent : MonoBehaviour {
 		Ent target = obj.GetComponent<Ent>();
 
 		//if (target.state == States.HURT) { return false; }
-		if (gameObject.tag == "Item" || gameObject.tag == "Block") {
+		if (!isCreature) { // gameObject.tag == "Item" || gameObject.tag == "Block"
 			if (velocity.magnitude < 4f) { return false; }
 		}
 
