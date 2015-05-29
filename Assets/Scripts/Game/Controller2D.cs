@@ -44,6 +44,10 @@ public class Controller2D : MonoBehaviour {
 		collisions.Reset ();
 		collisions.velocityOld = velocity;
 
+		if (velocity.x != 0 || velocity.y != 0) { 
+			AttackCollisions (ref velocity);
+		}
+
 		if (velocity.y < 0) {
 			DescendSlope(ref velocity);
 		}
@@ -56,9 +60,7 @@ public class Controller2D : MonoBehaviour {
 			VerticalCollisions (ref velocity, jumpingDown);
 		}
 
-		if (velocity.x != 0 || velocity.y != 0) { 
-			AttackCollisions (ref velocity);
-		}
+		
 
 		transform.Translate (velocity);
 	}
@@ -83,7 +85,7 @@ public class Controller2D : MonoBehaviour {
 				}
 
 				// handle pushable collision layer
-				if (hit.transform.gameObject.tag == "PushablePlatform") { //layer == LayerMask.NameToLayer("PushablePlatform")) {
+				if (hit.transform.gameObject.tag == "Block") { //layer == LayerMask.NameToLayer("PushablePlatform")) {
 					ent.TriggerPushable(hit.transform.gameObject); 
 				}
 

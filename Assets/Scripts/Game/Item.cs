@@ -9,6 +9,7 @@ public class Item : Ent {
 
 
 	public IEnumerator Pickup (Ent collector) {
+		//gameObject.GetComponent<BoxCollider2D>().enabled = false;
 
 		input = Vector2.zero;
 		velocity = Vector2.zero;
