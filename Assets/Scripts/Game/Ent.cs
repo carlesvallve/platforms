@@ -45,11 +45,9 @@ public class Ent : MonoBehaviour {
 	protected bool jumpingDown = false;
 	protected bool jumpingFromLadder = false;
 
-	protected Ent interactiveObject = null;
-	protected Ent pickedUpObject = null;
-
 	protected Ladder ladder;
-	//private Vector2 ladderPos;
+	protected Ent interactiveObject;
+	protected Ent pickedUpObject;
 
 
 	// ===========================================================
@@ -90,7 +88,7 @@ public class Ent : MonoBehaviour {
 
 
 	protected void SetActionC () {
-		PickItem(interactiveObject);
+		StartCoroutine(PickItem(interactiveObject));
 	}
 
 
@@ -192,12 +190,11 @@ public class Ent : MonoBehaviour {
 		switch (collider.gameObject.tag) {
 			case "Ladder":
 				ladder = collider.transform.parent.GetComponent<Ladder>();
-				break;
+				return;
 		}
 
 		interactiveObject = collider.gameObject.GetComponent<Ent>();
 
-		
 		if (interactiveObject is Coin) {
 			PickCoin((Coin)interactiveObject);
 			interactiveObject = null;
@@ -209,7 +206,7 @@ public class Ent : MonoBehaviour {
 		switch (collider.gameObject.tag) {
 			case "Ladder":
 				ladder = null;
-				break;
+				return;
 		}
 
 		interactiveObject = null;
@@ -265,42 +262,46 @@ public class Ent : MonoBehaviour {
 	// Item interaction
 	// ===========================================================
 
-	protected void PickItem (Ent ent) {
-		if (pickedUpObject) { DropItem(pickedUpObject); }
-		if (!ent) { return; }
+	protected IEnumerator PickItem (Ent ent) {
+		if (pickedUpObject) { 
+			StartCoroutine(DropItem(pickedUpObject)); 
+		}
 
-		Vector2 sc = ent.transform.localScale;
-		ent.affectedByGravity = false;
-		ent.input = Vector2.zero;
-		ent.transform.SetParent(transform);
-		ent.transform.localPosition = new Vector2(0, 1f);
-
-		ent.transform.localScale = new Vector2(sc.x / (Mathf.Abs(transform.localScale.x)), sc.y / (transform.localScale.y));
+		if (!ent || !(ent is Item) || !ent.controller.landed) { yield break; }
+		
+		Item item = (Item)ent;
+		
+		yield return StartCoroutine(item.Pickup(this));
 
 		pickedUpObject = ent;
-		interactiveObject = null;
 	}
 
 
-	protected void DropItem (Ent ent) {
-		if (!ent) { return; }
+	protected IEnumerator DropItem (Ent ent) {
+		if (!ent) { yield break; }
 
 		ent.affectedByGravity = true;
-		ent.transform.SetParent(transform.parent);
+		ent.transform.SetParent(World.itemContainer);
 
 		pickedUpObject = null;
-		interactiveObject = ent;
 	}
 
 
 	protected void ThrowItem (Ent ent) {
 		if (!ent) { return; }
 
+		StartCoroutine(DropItem(ent));
+
 		float dir  = Mathf.Sign(transform.localScale.x);
 		ent.input = new Vector2(dir * 1.5f, 0);
-		ent.velocity.y = 10f; 
+		ent.velocity.y = 10f; 	
+	}
 
-		DropItem(ent);
+
+	protected void PushItem (GameObject obj) {
+		if (state != States.IDLE) { return; }
+		Ent ent = obj.GetComponent<Ent>();
+		ent.input.x = input.x * 0.25f;
 	}
 
 
@@ -311,10 +312,9 @@ public class Ent : MonoBehaviour {
 	protected void SpawnLoot (int maxLoot) {
 		if (!lootPrefab) { return; }
 
-		Transform container = GameObject.Find("Loot").transform;
 		for (int i = 0; i < maxLoot; i++) {
 			Loot loot = ((GameObject)Instantiate(lootPrefab, transform.position, Quaternion.identity)).GetComponent<Loot>();
-			loot.Init(container);
+			loot.Init(World.lootContainer);
 		}
 	}
 
@@ -353,7 +353,6 @@ public class Ent : MonoBehaviour {
 	protected IEnumerator Attack () {
 		if (state == States.ATTACK) { yield break; }
 		if (IsOnLadder() && !controller.landed) { yield break; }
-		//if (!controller.landed) { yield break; } // TODO: if we are on the air we only can attack once
 
 		state = States.ATTACK;
 		Audio.play("Audio/sfx/swishA", 0.025f, Random.Range(0.5f, 0.5f));
@@ -450,10 +449,9 @@ public class Ent : MonoBehaviour {
 	protected void Bleed (int maxBloodSplats) {
 		if (!bloodPrefab) { return; }
 
-		Transform bloodContainer = GameObject.Find("Blood").transform;
 		for (int i = 0; i < maxBloodSplats; i++) {
 			Blood blood = ((GameObject)Instantiate(bloodPrefab, transform.position, Quaternion.identity)).GetComponent<Blood>();
-			blood.Init(bloodContainer);
+			blood.Init(World.bloodContainer);
 		}
 	}
 
@@ -474,6 +472,11 @@ public class Ent : MonoBehaviour {
 
 	public virtual void TriggerCollisionAttack (GameObject obj) {
 		StartCoroutine(JumpAttack(obj));
+	}
+
+
+	public virtual void TriggerPushable (GameObject obj) {
+		PushItem(obj);
 	}
 			
 }

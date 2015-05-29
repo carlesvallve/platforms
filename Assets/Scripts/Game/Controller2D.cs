@@ -82,6 +82,12 @@ public class Controller2D : MonoBehaviour {
 					continue;
 				}
 
+				// handle pushable collision layer
+				if (hit.transform.gameObject.layer == LayerMask.NameToLayer("PushablePlatform")) {
+					ent.TriggerPushable(hit.transform.gameObject); 
+				}
+
+
 				float slopeAngle = Vector2.Angle(hit.normal, Vector2.up);
 
 				if (i == 0 && slopeAngle <= maxClimbAngle) {

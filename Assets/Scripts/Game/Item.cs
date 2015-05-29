@@ -8,19 +8,26 @@ public class Item : Ent {
 	}
 
 
-	/*protected override void CheckCollisionTarget () {
-		//if (controller.collisions.below) { return; }
+	public IEnumerator Pickup (Ent collector) {
 
-		// check if we jumped over a monster, if so, rebound in him and kill it
-		if (controller.collisions.target) {
-			Ent target = controller.collisions.target.GetComponent<Ent>();
+		input = Vector2.zero;
+		velocity = Vector2.zero;
+		affectedByGravity = false;
 
-			//jumping = false;
-			//SetJump(false, 1f);
+		Vector2 sc = transform.localScale;
+		transform.SetParent(collector.transform);
+		transform.localScale = new Vector2(sc.x / (Mathf.Abs(collector.transform.localScale.x)), sc.y / (collector.transform.localScale.y));
 
-			float knockback = 1f;
-			Vector2 d = (target.transform.position - transform.position).normalized * knockback;
-			StartCoroutine(target.Hurt(d));
+		float duration = 0.2f;
+		Vector3 pos = Vector3.up * 1f;
+		
+		float startTime = Time.time;
+		while (Time.time <= startTime + duration) {
+			transform.localPosition = Vector3.Lerp(transform.localPosition, pos, Time.deltaTime * 25f);
+			yield return null;
 		}
-	}*/
+
+		transform.localPosition = pos;
+	}
+
 }
