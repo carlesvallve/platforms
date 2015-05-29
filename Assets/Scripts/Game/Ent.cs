@@ -7,13 +7,32 @@ public enum States {
 	HURT = 3,
 }
 
-
+[System.Serializable]
 public class Stats {
-	public int coins = 0;
-	public int hp = 8;
+	public int str = 1;
+	public int dex = 1;
+	public int con = 1;
+	public int wis = 1;
+	public int cha = 1;
 }
 
 
+[System.Serializable]
+public class Atr {
+	public int hp = 8;
+	public float speed = 5f;
+	public float atkSpeed = 1f;
+	public int[] dmg = { 1, 3 };
+	public float jump = 1f;
+}
+
+
+[System.Serializable]
+public class Inv {
+	public int coins = 0;
+}
+
+	
 [RequireComponent (typeof (Controller2D))]
 public class Ent : MonoBehaviour {
 
@@ -21,13 +40,14 @@ public class Ent : MonoBehaviour {
 
 	public States state;
 	public Stats stats;
+	public Atr atr;
+	public Inv inv;
 
-	public float jumpHeight = 2.5f;
-	public float timeToJumpApex = 0.25f;
-	public float accelerationTimeAirborne = 0;
-	public float accelerationTimeGrounded = 0;
-	public float moveSpeed = 5f;
-	public float runSpeed = 5f;
+	protected float jumpHeight = 2.5f;
+	protected float timeToJumpApex = 0.25f;
+	
+	//public float moveSpeed = 5f;
+
 	public bool affectedByGravity = true;
 
 	public GameObject lootPrefab;
@@ -38,8 +58,11 @@ public class Ent : MonoBehaviour {
 	protected float gravity;
 	protected float jumpVelocity;
 	protected Vector2 velocity;
-	protected float velocityXSmoothing;
-	protected float velocityYSmoothing;
+
+	//public float accelerationTimeAirborne = 0;
+	//public float accelerationTimeGrounded = 0;
+	//protected float velocityXSmoothing;
+	//protected float velocityYSmoothing;
 
 	protected bool jumping = false;
 	protected bool jumpingDown = false;
@@ -61,8 +84,8 @@ public class Ent : MonoBehaviour {
 	public virtual void Awake () {
 		controller = GetComponent<Controller2D>();
 
-		gravity = -((2 * jumpHeight) / Mathf.Pow (timeToJumpApex, 2));
-		jumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
+		gravity = -((2 * jumpHeight) / Mathf.Pow (timeToJumpApex, 2)); // -80
+		jumpVelocity = Mathf.Abs(gravity) * timeToJumpApex; // 20
 
 		state = States.IDLE;
 		stats = new Stats();
@@ -139,7 +162,7 @@ public class Ent : MonoBehaviour {
 
 
 	protected virtual void SetSpeed () {
-		speed = moveSpeed;
+		speed = atr.speed;
 	}
 
 
@@ -148,8 +171,9 @@ public class Ent : MonoBehaviour {
 
 		// set velocity x
 		float targetVelocityX = input.x * speed;
-		velocity.x = Mathf.SmoothDamp (velocity.x, targetVelocityX, ref velocityXSmoothing, (controller.collisions.below)?accelerationTimeGrounded:accelerationTimeAirborne);
-		
+		velocity.x = targetVelocityX;
+		//velocity.x = Mathf.SmoothDamp (velocity.x, targetVelocityX, ref velocityXSmoothing, (controller.collisions.below)?accelerationTimeGrounded:accelerationTimeAirborne);
+			
 		if (velocity.x != 0) { 
 			if (state != States.ATTACK && state != States.HURT) {
 				transform.localScale = new Vector2(Mathf.Sign(velocity.x) * Mathf.Abs(transform.localScale.x), transform.localScale.y); 
@@ -157,7 +181,7 @@ public class Ent : MonoBehaviour {
 		}
 
 		// set velocity y
-		if (IsOnLadder()) { 
+		if (IsOnLadder()) {
 			SetMoveOnLadder();
 		} else {
 			ApplyGravity();
@@ -193,15 +217,6 @@ public class Ent : MonoBehaviour {
 	// ===========================================================
 	// Triggers and Interactive Objects
 	// ===========================================================
-
-	/*protected void OnTriggerEnter2D (Collider2D collider) {
-		switch (collider.gameObject.tag) {
-			case "Water":
-			if (!IsOnWater()) { StartCoroutine(SetWaterIn()); }
-			break;
-		}
-	}*/
-
 
 	protected void OnTriggerStay2D (Collider2D collider) {
 		if (state == States.ATTACK) { return; }
@@ -246,67 +261,34 @@ public class Ent : MonoBehaviour {
 	// ===========================================================
 
 	public bool IsOnWater () {
-		return isWater; // && !IsOnLadder();
+		return isWater;
 	}
 
 
 	private IEnumerator SetWaterIn () {
 		if (isWater || velocity.y >= 0) { yield break; }
 
-		Audio.play("Audio/sfx/splash", 0.2f, Random.Range(0.8f, 1f));
-
+		Audio.play("Audio/sfx/splash", 0.1f, Random.Range(0.8f, 1f));
 		isWater = true;
 		velocity.x *= 0.1f;
 		velocity.y = 0;
-		//particleBubbles.SetActive(true);
-
-		//GameObject obj = (GameObject)Instantiate(splashInPrefab);
-		//obj.transform.parent = GameObject.Find("Projectiles").transform;
-		//obj.transform.position = transform.position - Vector3.up * 0.16f / 2;
-		//Animator anim = obj.GetComponent<Animator>();
-		//anim.Play("waterin");
-
-		//yield return null;
-
-		//AnimationClip clip = animator.GetCurrentAnimatorClipInfo(0)[0].clip;
-		//yield return new WaitForSeconds(clip.length);
-
-		//Destroy(obj);
 
 		yield break;
 	}
 
 
 	private IEnumerator SetWaterOut () {
-		//if (!isWater) { yield break; } // || velocity.y < 0
+		if (!isWater || velocity.y < 0) { yield break; }
 
-		Audio.play("Audio/sfx/splash", 0.2f, Random.Range(1f, 1.2f));
-
-		//Debug.Log("pete has left the water!");
-		
-		//particleBubbles.SetActive(false);
-
+		Audio.play("Audio/sfx/splash", 0.1f, Random.Range(1f, 1.2f));
 		isWater = false;
 
 		if (!IsOnLadder() && gameObject.tag != "Item") { 
 			velocity.y = 0;
 			jumping = false;
-			SetJump(false, 0.75f); 
+			SetJump(false, atr.jump * 0.75f); 
 		}
 
-		
-		//GameObject obj = (GameObject)Instantiate(splashOutPrefab);
-		//obj.transform.parent = GameObject.Find("Projectiles").transform;
-		//obj.transform.position = transform.position - Vector3.up * 0.16f;
-		//Animator anim = obj.GetComponent<Animator>();
-		//anim.Play("waterout");
-
-		//yield return null;
-
-		//AnimationClip clip = animator.GetCurrentAnimatorClipInfo(0)[0].clip;
-		//yield return new WaitForSeconds(clip.length);
-
-		//Destroy(obj);
 		yield break;
 	}
 
@@ -365,7 +347,7 @@ public class Ent : MonoBehaviour {
 			StartCoroutine(DropItem(pickedUpObject)); 
 		}
 
-		if (!ent || !(ent is Item)) { yield break; } //  || !ent.controller.landed
+		if (!ent || !(ent is Item)) { yield break; }
 		
 		Item item = (Item)ent;
 		
@@ -420,7 +402,7 @@ public class Ent : MonoBehaviour {
 	protected virtual void PickCoin (Coin coin) {
 		Audio.play("Audio/sfx/chimes", 1f, Random.Range(1.0f, 1.0f));
 		StartCoroutine(coin.Pickup(this));
-		stats.coins += 1;
+		inv.coins += 1;
 	}
 
 
@@ -428,31 +410,22 @@ public class Ent : MonoBehaviour {
 	// Combat
 	// ===========================================================
 
-	protected IEnumerator JumpAttack (GameObject obj) {
-		Ent target = obj.GetComponent<Ent>();
+	protected IEnumerator JumpAttack (Ent target) {
+		// set rebound jump intensity
+		float intensity = 0.8f;
+		if (gameObject.tag == "Item") { intensity = 0.5f; }
+		if (gameObject.tag == "Block") { intensity = 0.2f; }
 
-		if (target.state == States.HURT) { yield break; }
+		// jump
+		jumping = false;
+		jumpingDown = false;
+		SetJump(false,  atr.jump * intensity);
 		
-		if (gameObject.tag == "Item" || gameObject.tag == "Block") {
-			if (velocity.magnitude < 5f) { yield break; }
-		}
+		// hurt target and knock him back
+		float knockback = 1f;
+		Vector2 d = new Vector2(Mathf.Sign(target.transform.position.x - transform.position.x) * knockback, 0);
+		StartCoroutine(target.Hurt(d));
 
-		if (velocity.y < 0 && transform.position.y > target.transform.position.y + transform.localScale.y * 0.75f) { 
-			float intensity = 1f;
-			if (gameObject.tag == "Item") { intensity = 0.5f; }
-			if (gameObject.tag == "Block") { intensity = 0.2f; }
-
-			jumping = false;
-			jumpingDown = false;
-			SetJump(false,  intensity);
-			
-			float knockback = 1f;
-			Vector2 d = new Vector2(Mathf.Sign(target.transform.position.x - transform.position.x) * knockback, 0);
-			StartCoroutine(target.Hurt(d));
-
-			PlayAudioStep();
-		}
-	
 		yield break;
 	}
 
@@ -508,9 +481,9 @@ public class Ent : MonoBehaviour {
 		Audio.play("Audio/sfx/step", 1f, Random.Range(2.5f, 2.5f));
 
 		// update stats
-		stats.hp -= Random.Range(1, 4);
-		if (stats.hp <= 0) {
-			stats.hp = 0; 
+		atr.hp -= Random.Range(atr.dmg[0], atr.dmg[1]);
+		if (atr.hp <= 0) {
+			atr.hp = 0; 
 			// if no hp left, die instead
 			yield return StartCoroutine(Die());
 			yield break;
@@ -580,8 +553,20 @@ public class Ent : MonoBehaviour {
 	}
 
 
-	public virtual void TriggerCollisionAttack (GameObject obj) {
-		StartCoroutine(JumpAttack(obj));
+	public virtual bool TriggerCollisionAttack (GameObject obj) {
+		Ent target = obj.GetComponent<Ent>();
+
+		//if (target.state == States.HURT) { return false; }
+		if (gameObject.tag == "Item" || gameObject.tag == "Block") {
+			if (velocity.magnitude < 4f) { return false; }
+		}
+
+		if (velocity.y < 0 && transform.position.y > target.transform.position.y + transform.localScale.y * 0.75f) { 
+			StartCoroutine(JumpAttack(target));
+			return true;
+		}
+
+		return false;
 	}
 
 

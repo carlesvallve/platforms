@@ -33,6 +33,6 @@ public class Player : Ent {
 
 	protected override void PickCoin (Coin coin) {
 		base.PickCoin(coin);
-		hud.UpdateCoins(stats.coins);
+		hud.UpdateCoins(inv.coins);
 	}
 }

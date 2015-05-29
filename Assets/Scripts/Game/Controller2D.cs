@@ -45,7 +45,8 @@ public class Controller2D : MonoBehaviour {
 		collisions.velocityOld = velocity;
 
 		if (velocity.x != 0 || velocity.y != 0) { 
-			AttackCollisions (ref velocity);
+			bool jumped = AttackCollisions (ref velocity);
+			if (jumped) { return; }
 		}
 
 		if (velocity.y < 0) {
@@ -60,9 +61,52 @@ public class Controller2D : MonoBehaviour {
 			VerticalCollisions (ref velocity, jumpingDown);
 		}
 
-		
-
 		transform.Translate (velocity);
+	}
+
+
+	bool AttackCollisions(ref Vector3 velocity, bool jumpingDown = false) {
+		float rayLength;
+
+		// vertical
+		float directionY = Mathf.Sign (velocity.y);
+		if (directionY == -1 && !collisions.below && !landed) { 
+
+			rayLength = Mathf.Abs (velocity.y) + skinWidth;
+			for (int i = 0; i < verticalRayCount; i ++) {
+				Vector2 rayOrigin = (directionY == -1)?raycastOrigins.bottomLeft:raycastOrigins.topLeft;
+				rayOrigin += Vector2.right * (verticalRaySpacing * i + velocity.x);
+				RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.up * directionY, rayLength, attackCollisionMask);
+				Debug.DrawRay(rayOrigin, Vector2.up * directionY * rayLength, Color.red);
+
+				if (hit) {
+					if (triggerEvents) { 
+						return ent.TriggerCollisionAttack(hit.transform.gameObject); 
+					}
+				}
+			}
+		}
+
+		// horizontal
+		float directionX = Mathf.Sign (velocity.x);
+		if (directionX != 0 && (directionY == -1 && !collisions.below && !landed)) {
+
+			rayLength = Mathf.Abs (velocity.x) + skinWidth;
+			for (int i = 0; i < horizontalRayCount; i ++) {
+				Vector2 rayOrigin = (directionX == -1)?raycastOrigins.bottomLeft:raycastOrigins.bottomRight;
+				rayOrigin += Vector2.up * (horizontalRaySpacing * i);
+				RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.right * directionX, rayLength, attackCollisionMask);
+				Debug.DrawRay(rayOrigin, Vector2.right * directionX * rayLength, Color.red);
+
+				if (hit) {
+					if (triggerEvents) { 
+						return ent.TriggerCollisionAttack(hit.transform.gameObject); 
+					}
+				}
+			}
+		}
+		
+		return false;
 	}
 
 
@@ -122,7 +166,7 @@ public class Controller2D : MonoBehaviour {
 	}
 
 	
-	void VerticalCollisions(ref Vector3 velocity, bool jumpingDown = false) {
+	void VerticalCollisions(ref Vector3 velocity, bool jumpingDown = false, bool jumped = false) {
 		float directionY = Mathf.Sign (velocity.y);
 		float rayLength = Mathf.Abs (velocity.y) + skinWidth;
 
@@ -149,7 +193,7 @@ public class Controller2D : MonoBehaviour {
 				if (collisions.climbingSlope) {
 					velocity.x = velocity.y / Mathf.Tan(collisions.slopeAngle * Mathf.Deg2Rad) * Mathf.Sign(velocity.x);
 				}
-
+				
 				collisions.below = directionY == -1;
 				collisions.above = directionY == 1;
 			} 
@@ -175,52 +219,6 @@ public class Controller2D : MonoBehaviour {
 		if (triggerEvents && !landed && collisions.below && directionY == -1) { ent.TriggerLanding(); } 
 		landed = collisions.below;
 
-	}
-
-
-	void AttackCollisions(ref Vector3 velocity, bool jumpingDown = false) {
-		float rayLength;
-
-		// vertical
-		float directionY = Mathf.Sign (velocity.y);
-		if (directionY == -1 && !collisions.below) { 
-
-			rayLength = Mathf.Abs (velocity.y) + skinWidth;
-			for (int i = 0; i < verticalRayCount; i ++) {
-				Vector2 rayOrigin = (directionY == -1)?raycastOrigins.bottomLeft:raycastOrigins.topLeft;
-				rayOrigin += Vector2.right * (verticalRaySpacing * i + velocity.x);
-				RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.up * directionY, rayLength, attackCollisionMask);
-				Debug.DrawRay(rayOrigin, Vector2.up * directionY * rayLength, Color.red);
-
-				if (hit) {
-					if (triggerEvents) { 
-						ent.TriggerCollisionAttack(hit.transform.gameObject); 
-					}
-					return;
-				}
-			}
-		}
-
-		// horizontal
-		float directionX = Mathf.Sign (velocity.x);
-		if (directionX != 0) {
-
-			rayLength = Mathf.Abs (velocity.x) + skinWidth;
-			for (int i = 0; i < horizontalRayCount; i ++) {
-				Vector2 rayOrigin = (directionX == -1)?raycastOrigins.bottomLeft:raycastOrigins.bottomRight;
-				rayOrigin += Vector2.up * (horizontalRaySpacing * i);
-				RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.right * directionX, rayLength, attackCollisionMask);
-				Debug.DrawRay(rayOrigin, Vector2.right * directionX * rayLength, Color.red);
-
-				if (hit) {
-					if (triggerEvents) { 
-						ent.TriggerCollisionAttack(hit.transform.gameObject); 
-					}
-					return;
-				}
-			}
-		}
-		
 	}
 
 
