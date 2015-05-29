@@ -48,7 +48,7 @@ public class Ent : MonoBehaviour {
 	protected Ent interactiveObject = null;
 	protected Ent pickedUpObject = null;
 
-	protected Transform ladder;
+	protected Ladder ladder;
 	//private Vector2 ladderPos;
 
 
@@ -189,7 +189,7 @@ public class Ent : MonoBehaviour {
 
 		switch (collider.gameObject.tag) {
 			case "Ladder":
-				ladder = collider.transform;
+				ladder = collider.transform.parent.GetComponent<Ladder>();
 				break;
 		}
 
@@ -207,7 +207,6 @@ public class Ent : MonoBehaviour {
 		switch (collider.gameObject.tag) {
 			case "Ladder":
 				ladder = null;
-				//previouslyOnLadder = false;
 				break;
 		}
 
@@ -219,18 +218,25 @@ public class Ent : MonoBehaviour {
 	// Ladders
 	// ===========================================================
 
-	//private bool previouslyOnLadder;
+	private bool previouslyOnLadder;
+
 
 	public bool IsOnLadder() {
-		if (state == States.ATTACK) { return false; }
-		//if (jumping && velocity.y != 0 && input.y == 0) { return false; }
-		//if (!previouslyOnLadder && input.y == 0) { return false; }
+		bool onLadder = ladder && !jumpingFromLadder;
 
-		//bool onLadder = ladder && !jumpingFromLadder;
-		//previouslyOnLadder = onLadder;
-		//return onLadder;
+		if (state == States.ATTACK) { onLadder = false; }
+		
+		if (!previouslyOnLadder && velocity.y != 0 && input.y == 0) { onLadder = false; }
 
-		return ladder && !jumpingFromLadder;
+		if (ladder && !jumpingFromLadder &&
+			transform.position.y - ladder.transform.position.y > ladder.GetHeight() - 1) {
+			onLadder = true;
+		}
+
+		if (onLadder) { previouslyOnLadder = true; }
+		if (controller.landed) { previouslyOnLadder = false; }
+
+		return onLadder;
 	}
 
 
@@ -247,8 +253,8 @@ public class Ent : MonoBehaviour {
 
 	private void SnapToLadder () {
 		if (!controller.landed && !jumpingFromLadder) {
-			Vector2 pos = new Vector2(ladder.position.x, transform.position.y);
-			transform.position = Vector2.Lerp(transform.position, pos, Time.deltaTime * 15f);
+			Vector2 pos = new Vector2(ladder.transform.position.x, transform.position.y);
+			transform.position = Vector2.Lerp(transform.position, pos, Time.deltaTime * 20f);
 		}
 	}
 

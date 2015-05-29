@@ -25,5 +25,10 @@ public class Ladder : MonoBehaviour {
 			tile.name = "Center" + i;
 		}
 	}
+
+
+	public float GetHeight () {
+		return (float)(height - 1);
+	}
 	
 }
