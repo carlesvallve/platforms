@@ -334,7 +334,9 @@ public class Ent : MonoBehaviour {
 		Ent target = obj.GetComponent<Ent>();
 
 		if (target.state == States.HURT) { yield break; }
-		if (gameObject.tag == "Item" && velocity.magnitude < 5f) { yield break; }
+		if (gameObject.tag == "Item") {
+			if (velocity.magnitude < 5f) { yield break; }
+		}
 
 		if (gameObject.tag == "Item" || velocity.y < 0 && transform.position.y > target.transform.position.y + transform.localScale.y * 0.75f) { 
 			jumping = false;
