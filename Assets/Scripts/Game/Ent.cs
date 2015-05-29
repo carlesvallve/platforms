@@ -367,7 +367,7 @@ public class Ent : MonoBehaviour {
 		float directionX = Mathf.Sign(transform.localScale.x);
 
 		// push attacker forward
-		Vector2 d = directionX * Vector2.right * 0.5f + Vector2.up * 5;
+		Vector2 d = directionX * Vector2.right * 0.5f + Vector2.up * 3;
 		StartCoroutine(PushBackwards(d, 0.1f));
 		yield return new WaitForSeconds(0.05f);
 
@@ -384,7 +384,7 @@ public class Ent : MonoBehaviour {
 			StartCoroutine(target.Hurt(directionX * Vector2.right * knockback)); // + Vector2.up * 5));
 
 			// push attacker backwards
-			yield return StartCoroutine(PushBackwards(-d , 0.1f));
+			yield return StartCoroutine(PushBackwards(-d / 2 , 0.05f));
 		}
 
 		input = Vector2.zero;
