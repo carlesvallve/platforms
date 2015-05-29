@@ -267,7 +267,6 @@ public class Ent : MonoBehaviour {
 	}
 
 
-
 	// ===========================================================
 	// Water
 	// ===========================================================
@@ -290,12 +289,12 @@ public class Ent : MonoBehaviour {
 
 
 	private IEnumerator SetWaterOut () {
-		if (!isWater || velocity.y < 0) { yield break; } // 
+		if (!isWater || velocity.y < 0) { yield break; }
 
 		Audio.play("Audio/sfx/splash", 0.1f, Random.Range(1f, 1.2f));
 		isWater = false;
 
-		if (!IsOnLadder() && isCreature) { // gameObject.tag != "Item"
+		if (!IsOnLadder() && isCreature) {
 			velocity.y = 0;
 			jumping = false;
 			SetJump(false, atr.jump * 0.75f); 
@@ -569,7 +568,8 @@ public class Ent : MonoBehaviour {
 		Ent target = obj.GetComponent<Ent>();
 
 		//if (target.state == States.HURT) { return false; }
-		if (!isCreature) { // gameObject.tag == "Item" || gameObject.tag == "Block"
+
+		if (!isCreature) {
 			if (velocity.magnitude < 4f) { return false; }
 		}
 

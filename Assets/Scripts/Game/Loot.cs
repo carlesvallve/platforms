@@ -27,7 +27,5 @@ public class Loot : Ent {
 
 			yield return null;
 		}
-
-		//Destroy(gameObject);
 	}
 }
