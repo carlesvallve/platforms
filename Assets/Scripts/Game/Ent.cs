@@ -279,7 +279,7 @@ public class Ent : MonoBehaviour {
 	private IEnumerator SetWaterIn () {
 		if (isWater || velocity.y >= 0) { yield break; }
 
-		Audio.play("Audio/sfx/splash", 0.1f, Random.Range(0.8f, 1f));
+		Audio.play("Audio/sfx/splash", 0.05f, Random.Range(0.8f, 1f));
 		isWater = true;
 		velocity.x *= 0.1f;
 		velocity.y = 0;
@@ -291,7 +291,7 @@ public class Ent : MonoBehaviour {
 	private IEnumerator SetWaterOut () {
 		if (!isWater || velocity.y < 0) { yield break; }
 
-		Audio.play("Audio/sfx/splash", 0.1f, Random.Range(1f, 1.2f));
+		Audio.play("Audio/sfx/splash", 0.05f, Random.Range(1f, 1.2f));
 		isWater = false;
 
 		if (!IsOnLadder() && isCreature) {
@@ -424,8 +424,8 @@ public class Ent : MonoBehaviour {
 	protected IEnumerator JumpAttack (Ent target) {
 		// set rebound jump intensity
 		float intensity = 0.8f;
-		if (gameObject.tag == "Item") { intensity = 0.5f; }
-		if (gameObject.tag == "Block") { intensity = 0.2f; }
+		//if (gameObject.tag == "Item") { intensity = 0.5f; }
+		//if (gameObject.tag == "Block") { intensity = 0.2f; }
 
 		// jump
 		jumping = false;
