@@ -9,7 +9,7 @@ public class Player : Ent {
 
 	public override void Awake () {
 		inputManager = GameObject.Find("InputManager").GetComponent<InputManager>();
-		hud = GameObject.Find("Hud").GetComponent<Hud>();
+		//hud = GameObject.Find("Hud").GetComponent<Hud>();
 		base.Awake();
 	}
 
@@ -33,6 +33,6 @@ public class Player : Ent {
 
 	protected override void PickCoin (Coin coin) {
 		base.PickCoin(coin);
-		hud.UpdateCoins(stats.coins);
+		//hud.UpdateCoins(stats.coins);
 	}
 }
