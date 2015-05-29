@@ -138,14 +138,16 @@ public class Ent : MonoBehaviour {
 
 
 	protected void SetMove () {
-		if (state == States.ATTACK || state == States.HURT) { return; };
+		//if (state == States.ATTACK || state == States.HURT) { return; };
 
 		// set velocity x
 		float targetVelocityX = input.x * speed;
 		velocity.x = Mathf.SmoothDamp (velocity.x, targetVelocityX, ref velocityXSmoothing, (controller.collisions.below)?accelerationTimeGrounded:accelerationTimeAirborne);
 		
 		if (velocity.x != 0) { 
-			transform.localScale = new Vector2(Mathf.Sign(velocity.x) * Mathf.Abs(transform.localScale.x), transform.localScale.y); 
+			if (state != States.ATTACK && state != States.HURT) {
+				transform.localScale = new Vector2(Mathf.Sign(velocity.x) * Mathf.Abs(transform.localScale.x), transform.localScale.y); 
+			}
 		}
 
 		// set velocity y
@@ -362,7 +364,7 @@ public class Ent : MonoBehaviour {
 		float directionX = Mathf.Sign(transform.localScale.x);
 
 		// push attacker forward
-		Vector2 d = directionX * Vector2.right * 0.25f + Vector2.up * 5;
+		Vector2 d = directionX * Vector2.right * 0.5f + Vector2.up * 5;
 		StartCoroutine(PushBackwards(d, 0.1f));
 		yield return new WaitForSeconds(0.05f);
 
@@ -382,11 +384,10 @@ public class Ent : MonoBehaviour {
 			yield return StartCoroutine(PushBackwards(-d , 0.1f));
 		}
 
-		
-		yield return new WaitForSeconds(0.1f);
 		input = Vector2.zero;
 		velocity = Vector2.zero;
-		
+
+		yield return new WaitForSeconds(0.1f);
 		state = States.IDLE;
 	}
 
@@ -437,13 +438,11 @@ public class Ent : MonoBehaviour {
 		while (Time.time <= startTime + duration) {
 			float targetVelocityX = (pos.x - transform.position.x) * 10f;
 			velocity.x = Mathf.Lerp(targetVelocityX, 0, Time.deltaTime * 5f);
-			ApplyGravity();
 			controller.Move (velocity * Time.deltaTime, jumpingDown);
 
 			yield return null;
 		}
 
-		ApplyGravity();
 		controller.Move (velocity * Time.deltaTime, jumpingDown);
 	}
 
