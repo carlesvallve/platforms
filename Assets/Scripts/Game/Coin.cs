@@ -14,8 +14,8 @@ public class Coin : Loot {
 		
 		while (Vector2.Distance(transform.position, pos) > 0.1f) { //(Time.time <= startTime + duration) {
 			pos = collector.transform.position + Vector3.up * collector.transform.localScale.y * 0.5f;
-			transform.position = Vector3.Lerp(transform.position, pos, Time.deltaTime * 10f);
-			transform.localScale = Vector3.Lerp(transform.localScale, Vector3.zero, Time.deltaTime * 1f);
+			transform.position = Vector3.Lerp(transform.position, pos, Time.deltaTime * 15f);
+			//transform.localScale = Vector3.Lerp(transform.localScale, Vector3.zero, Time.deltaTime * 5f);
 			yield return null;
 		}
 

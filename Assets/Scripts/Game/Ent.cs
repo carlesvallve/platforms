@@ -81,6 +81,8 @@ public class Ent : MonoBehaviour {
 
 	protected TextMesh info;
 
+	protected GameObject sprite;
+
 
 	// ===========================================================
 	// Init
@@ -88,6 +90,8 @@ public class Ent : MonoBehaviour {
 
 	public virtual void Awake () {
 		controller = GetComponent<Controller2D>();
+
+		sprite = transform.Find("Sprite").gameObject;
 
 		hpBar = transform.Find("Bar");
 		hpPercent = transform.Find("Bar/Percent");
@@ -197,7 +201,7 @@ public class Ent : MonoBehaviour {
 			
 		if (velocity.x != 0) { 
 			if (state != States.ATTACK && state != States.HURT) {
-				transform.localScale = new Vector2(Mathf.Sign(velocity.x) * Mathf.Abs(transform.localScale.x), transform.localScale.y); 
+				sprite.transform.localScale = new Vector2(Mathf.Sign(velocity.x) * Mathf.Abs(sprite.transform.localScale.x), sprite.transform.localScale.y); 
 			}
 		}
 
@@ -411,7 +415,7 @@ public class Ent : MonoBehaviour {
 
 		StartCoroutine(DropItem(ent));
 
-		float dir  = Mathf.Sign(transform.localScale.x);
+		float dir  = Mathf.Sign(sprite.transform.localScale.x);
 		ent.input = new Vector2(dir * 1.5f, 0);
 		ent.velocity.y = 10f; 	
 	}
@@ -456,8 +460,9 @@ public class Ent : MonoBehaviour {
 		
 		// hurt target and knock him back
 		float knockback = 1f;
+		int dmg = Random.Range(atr.dmg[0], atr.dmg[1]);
 		Vector2 d = new Vector2(Mathf.Sign(target.transform.position.x - transform.position.x) * knockback, 3);
-		StartCoroutine(target.Hurt(d));
+		StartCoroutine(target.Hurt(dmg, d));
 
 		yield break;
 	}
@@ -474,7 +479,7 @@ public class Ent : MonoBehaviour {
 		// attack parameters
 		float weaponRange = 0.8f;
 		float knockback = 1.5f;
-		float directionX = Mathf.Sign(transform.localScale.x);
+		float directionX = Mathf.Sign(sprite.transform.localScale.x);
 
 		// push attacker forward
 		Vector2 d = directionX * Vector2.right * 0.5f + Vector2.up * (IsOnWater() ? 1f : 3f);
@@ -482,7 +487,7 @@ public class Ent : MonoBehaviour {
 		yield return new WaitForSeconds(0.05f);
 
 		// project a ray forward
-		Vector2 rayOrigin = new Vector2 (transform.position.x, transform.position.y + transform.localScale.y / 2);
+		Vector2 rayOrigin = new Vector2 (transform.position.x, transform.position.y + sprite.transform.localScale.y / 2);
 		//RaycastHit2D[] hits = Physics2D.RaycastAll(rayOrigin, Vector2.right * directionX, weaponRange, attackCollisionMask);
 		RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.right * directionX, weaponRange, controller.attackCollisionMask);
 		Debug.DrawRay(rayOrigin, Vector2.right * directionX * weaponRange, Color.yellow);
@@ -491,7 +496,9 @@ public class Ent : MonoBehaviour {
 		if (hit) {
 			// push target forward
 			Ent target = hit.transform.GetComponent<Ent>();
-			StartCoroutine(target.Hurt(directionX * Vector2.right * knockback + Vector2.up * 3)); // + Vector2.up * 5));
+			int dmg = Random.Range(atr.dmg[0], atr.dmg[1]);
+			Vector2 dd = directionX * Vector2.right * knockback + Vector2.up * 3;
+			StartCoroutine(target.Hurt(dmg, dd));
 
 			// push attacker backwards
 			yield return StartCoroutine(PushBackwards(-d / 2 , 0.05f));
@@ -506,7 +513,7 @@ public class Ent : MonoBehaviour {
 	}
 
 
-	public virtual IEnumerator Hurt (Vector2 vec) {
+	public virtual IEnumerator Hurt (int dmg, Vector2 vec) {
 		state = States.HURT;
 		input = Vector2.zero;
 		velocity = Vector2.zero;
@@ -514,19 +521,20 @@ public class Ent : MonoBehaviour {
 		Audio.play("Audio/sfx/step", 1f, Random.Range(2.5f, 2.5f));
 
 		// update stats
-		atr.hp -= 1 + Random.Range(atr.dmg[0], atr.dmg[1]);
+		atr.hp -= dmg;
+		if (atr.hp <= 0) { atr.hp = 0; }
+
+		// update hp bar
+		StartCoroutine(UpdateHpBar());
+
+		// if no hp left, die instead
 		if (atr.hp <= 0) {
-			atr.hp = 0;
-			// if no hp left, die instead
 			yield return StartCoroutine(Die());
 			yield break;
 		}
 
 		// make him bleed
 		Bleed(Random.Range(3, 6));
-
-		// update hp bar
-		StartCoroutine(UpdateHpBar());
 
 		// push backwards
 		yield return StartCoroutine(PushBackwards(vec, 0.5f));
@@ -538,31 +546,16 @@ public class Ent : MonoBehaviour {
 	protected virtual IEnumerator UpdateHpBar () {
 		if (!hpBar) { yield break; }
 
-		if (atr.hp == hpMax) {
-			hpBar.gameObject.SetActive(false);
-			yield break;
-		}
+		hpBar.gameObject.SetActive(atr.hp < hpMax);
 
-		hpBar.gameObject.SetActive(true);
-		float percent = atr.hp / hpMax;
-
-		float startTime = Time.time;
-		while (Time.time <= startTime + 0.5f) {
-			hpPercent.localScale = Vector2.Lerp(hpPercent.localScale, new Vector2(percent, 1), Time.deltaTime * 5f);
-			hpPercent.localPosition = Vector2.Lerp(hpPercent.localPosition, new Vector2(-0.5f + percent / 2, 0), Time.deltaTime * 5f);
-			yield return null;
-		}
+		float percent = atr.hp / (float)hpMax;
+		hpPercent.localScale = new Vector2(percent, 1);
+		hpPercent.localPosition = new Vector2((-0.5f + percent / 2) * transform.localScale.x, 0);
 	}
 
 
 	public virtual IEnumerator UpdateInfo (string str) {
 		if (!info) { yield break; }
-
-		if (transform.localScale.x > 0) {
-			info.transform.localScale = new Vector2(1, 1);
-		} else {
-			info.transform.localScale = new Vector2(-1, 1);
-		}
 
 		info.gameObject.SetActive(str != null);
 		if (str == null) { yield break; }
