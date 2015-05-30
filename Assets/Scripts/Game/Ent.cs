@@ -596,7 +596,7 @@ public class Ent : MonoBehaviour {
 
 		if (isCreature) {
 			// decide if alive being is gonna hit
-			if (velocity.y > -4) { return false; }
+			if (velocity.y > -2) { return false; }
 			if (transform.position.y < target.transform.position.y + transform.localScale.y * 0.75f) { 
 				return false;
 			}
