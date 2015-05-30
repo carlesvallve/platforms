@@ -43,7 +43,7 @@ public class Item : Ent {
 
 		float t = 5;
 
-		float duration = 0.5f;
+		float duration = 1f;
 		float startTime = Time.time;
 		while (Time.time <= startTime + duration) {
 			if (opening == false) { yield break; }
@@ -51,16 +51,23 @@ public class Item : Ent {
 			StartCoroutine(UpdateInfo(t.ToString()));
 			t--;
 
-			yield return new WaitForSeconds(0.1f);
+			yield return new WaitForSeconds(0.2f);
 		}
 
-		StartCoroutine(UpdateInfo(null));
+		
 		Open(collector);
+
+		StartCoroutine(UpdateInfo("OPEN"));
+		yield return new WaitForSeconds(0.2f);
+		StartCoroutine(UpdateInfo(null));
+
+		Destroy(gameObject);
 	}
 
 
 	public void CancelOpening () {
 		opening = false;
+		StartCoroutine(UpdateInfo(null));
 	}
 
 
@@ -69,7 +76,7 @@ public class Item : Ent {
 		Audio.play("Audio/sfx/chest-open", 0.4f, Random.Range(0.9f, 1.1f));
 		
 		StartCoroutine(SpawnLoot(Random.Range(8, 16)));
-		Destroy(gameObject);
+		
 	}
 
 }

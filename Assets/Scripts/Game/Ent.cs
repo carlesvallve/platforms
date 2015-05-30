@@ -488,7 +488,7 @@ public class Ent : MonoBehaviour {
 		velocity = Vector2.zero;
 
 		//Audio.play("Audio/sfx/step", 1f, Random.Range(2.5f, 2.5f));
-		Audio.play("Audio/sfx/punch2", 0.2f, Random.Range(1f, 3f));
+		Audio.play("Audio/sfx/punch2", 0.2f, Random.Range(1f, 1.5f));
 
 		// update stats
 		atr.hp -= dmg;
