@@ -32,7 +32,7 @@ public class Player : Ent {
 		if (Input.GetButtonUp("C")) { 
 			hd_C = 0;
 
-			Item item = (Item)interactiveObject;
+			Item item = interactiveObject && (interactiveObject is Item) ? (Item)interactiveObject : null;
 			if (item) { 
 				if (item.opening) {
 					item.CancelOpening();
