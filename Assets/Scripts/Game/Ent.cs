@@ -441,7 +441,6 @@ public class Ent : MonoBehaviour {
 
 	protected virtual void PickCoin (Coin coin) {
 		StartCoroutine(coin.Pickup(this));
-		inv.coins += 1;
 	}
 
 
@@ -515,9 +514,9 @@ public class Ent : MonoBehaviour {
 		Audio.play("Audio/sfx/step", 1f, Random.Range(2.5f, 2.5f));
 
 		// update stats
-		atr.hp -= Random.Range(atr.dmg[0], atr.dmg[1]);
+		atr.hp -= 1 + Random.Range(atr.dmg[0], atr.dmg[1]);
 		if (atr.hp <= 0) {
-			atr.hp = 0; 
+			atr.hp = 0;
 			// if no hp left, die instead
 			yield return StartCoroutine(Die());
 			yield break;
@@ -558,6 +557,12 @@ public class Ent : MonoBehaviour {
 
 	public virtual IEnumerator UpdateInfo (string str) {
 		if (!info) { yield break; }
+
+		if (transform.localScale.x > 0) {
+			info.transform.localScale = new Vector2(1, 1);
+		} else {
+			info.transform.localScale = new Vector2(-1, 1);
+		}
 
 		info.gameObject.SetActive(str != null);
 		if (str == null) { yield break; }

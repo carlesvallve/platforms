@@ -19,7 +19,14 @@ public class Coin : Loot {
 			yield return null;
 		}
 
-		Audio.play("Audio/sfx/chimes", 1f, Random.Range(1.0f, 1.0f));
+		Audio.play("Audio/sfx/chimes", 1f, Random.Range(1.25f, 2.0f));
+		collector.inv.coins += 1;
+		
+		if (collector is Player) {
+			Player player = (Player)collector;
+			player.hud.UpdateCoins(player.inv.coins);
+		}
+
 		Destroy(gameObject);
 	}
 }

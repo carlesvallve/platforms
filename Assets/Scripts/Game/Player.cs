@@ -4,7 +4,7 @@ using System.Collections;
 public class Player : Ent {
 
 	private InputManager inputManager;
-	private Hud hud;
+	public Hud hud;
 
 	private int hd_C = 0;
 	
@@ -50,11 +50,5 @@ public class Player : Ent {
 				SetActionCHold();
 			}
 		}
-	}
-
-
-	protected override void PickCoin (Coin coin) {
-		base.PickCoin(coin);
-		hud.UpdateCoins(inv.coins);
 	}
 }
