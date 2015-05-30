@@ -543,26 +543,6 @@ public class Ent : MonoBehaviour {
 	}
 
 
-	protected virtual IEnumerator UpdateHpBar () {
-		if (!hpBar) { yield break; }
-
-		hpBar.gameObject.SetActive(atr.hp < hpMax);
-
-		float percent = atr.hp / (float)hpMax;
-		hpPercent.localScale = new Vector2(percent, 1);
-		hpPercent.localPosition = new Vector2((-0.5f + percent / 2) * transform.localScale.x, 0);
-	}
-
-
-	public virtual IEnumerator UpdateInfo (string str) {
-		if (!info) { yield break; }
-
-		info.gameObject.SetActive(str != null);
-		if (str == null) { yield break; }
-		info.text = str;
-	}
-
-
 	public virtual IEnumerator Die () {
 		Audio.play("Audio/sfx/bite", 0.5f, Random.Range(3f, 3f));
 
@@ -604,6 +584,30 @@ public class Ent : MonoBehaviour {
 
 	protected void PlayAudioStep () {
 		Audio.play("Audio/sfx/step", 1f, Random.Range(1.25f, 1.75f));
+	}
+
+
+	// ===========================================================
+	// Hud
+	// ===========================================================
+
+	protected virtual IEnumerator UpdateHpBar () {
+		if (!hpBar) { yield break; }
+
+		hpBar.gameObject.SetActive(atr.hp < hpMax);
+
+		float percent = atr.hp / (float)hpMax;
+		hpPercent.localScale = new Vector2(percent, 1);
+		hpPercent.localPosition = new Vector2((-0.5f + percent / 2) * transform.localScale.x, 0);
+	}
+
+
+	public virtual IEnumerator UpdateInfo (string str) {
+		if (!info) { yield break; }
+
+		info.gameObject.SetActive(str != null);
+		if (str == null) { yield break; }
+		info.text = str;
 	}
 
 
