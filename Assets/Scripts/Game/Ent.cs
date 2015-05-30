@@ -81,7 +81,7 @@ public class Ent : MonoBehaviour {
 
 	protected TextMesh info;
 
-	protected GameObject sprite;
+	public Transform sprite;
 
 
 	// ===========================================================
@@ -91,7 +91,7 @@ public class Ent : MonoBehaviour {
 	public virtual void Awake () {
 		controller = GetComponent<Controller2D>();
 
-		sprite = transform.Find("Sprite").gameObject;
+		sprite = transform.Find("Sprite");
 
 		hpBar = transform.Find("Bar");
 		hpPercent = transform.Find("Bar/Percent");
@@ -201,7 +201,7 @@ public class Ent : MonoBehaviour {
 			
 		if (velocity.x != 0) { 
 			if (state != States.ATTACK && state != States.HURT) {
-				sprite.transform.localScale = new Vector2(Mathf.Sign(velocity.x) * Mathf.Abs(sprite.transform.localScale.x), sprite.transform.localScale.y); 
+				sprite.localScale = new Vector2(Mathf.Sign(velocity.x) * Mathf.Abs(sprite.localScale.x), sprite.localScale.y); 
 			}
 		}
 
@@ -266,7 +266,10 @@ public class Ent : MonoBehaviour {
 	private IEnumerator SetWaterIn () {
 		if (isWater || velocity.y >= 0) { yield break; }
 
-		Audio.play("Audio/sfx/splash", 0.05f, Random.Range(0.8f, 1f));
+		if (sprite.localScale.x > 0.25f && gameObject.tag != "Fx") {
+			Audio.play("Audio/sfx/splash", 0.05f, Random.Range(0.8f, 1f));
+		}
+		
 		isWater = true;
 		velocity.x *= 0.1f;
 		velocity.y = 0;
@@ -278,7 +281,10 @@ public class Ent : MonoBehaviour {
 	private IEnumerator SetWaterOut () {
 		if (!isWater || velocity.y < 0) { yield break; }
 
-		Audio.play("Audio/sfx/splash", 0.05f, Random.Range(1f, 1.2f));
+		if (sprite.localScale.x > 0.25f && gameObject.tag != "Fx") {
+			Audio.play("Audio/sfx/splash", 0.05f, Random.Range(1f, 1.2f));
+		}
+
 		isWater = false;
 
 		if (!IsOnLadder() && isCreature) {
@@ -377,7 +383,7 @@ public class Ent : MonoBehaviour {
 
 		StartCoroutine(DropItem(ent));
 
-		float dir  = Mathf.Sign(sprite.transform.localScale.x);
+		float dir  = Mathf.Sign(sprite.localScale.x);
 		ent.input = new Vector2(dir * 1.5f, 0);
 		ent.velocity.y = 10f; 	
 	}
@@ -394,13 +400,12 @@ public class Ent : MonoBehaviour {
 	// Loot interaction
 	// ===========================================================
 
-	protected IEnumerator SpawnLoot (int maxLoot, float delay = 0) {
+	protected IEnumerator SpawnLoot (int maxLoot) {
 		if (!lootPrefab) { yield break; }
 
 		for (int i = 0; i < maxLoot; i++) {
-			Loot loot = ((GameObject)Instantiate(lootPrefab, transform.position, Quaternion.identity)).GetComponent<Loot>();
-			loot.Init(World.lootContainer);
-			//yield return new WaitForSeconds(delay);
+			Loot loot = ((GameObject)Instantiate(lootPrefab)).GetComponent<Loot>();
+			loot.Init(World.lootContainer, this);
 		}
 	}
 
@@ -441,7 +446,7 @@ public class Ent : MonoBehaviour {
 		// attack parameters
 		float weaponRange = 0.8f;
 		float knockback = 1.5f;
-		float directionX = Mathf.Sign(sprite.transform.localScale.x);
+		float directionX = Mathf.Sign(sprite.localScale.x);
 
 		// push attacker forward
 		Vector2 d = directionX * Vector2.right * 0.5f + Vector2.up * (IsOnWater() ? 1f : 3f);
@@ -449,7 +454,7 @@ public class Ent : MonoBehaviour {
 		yield return new WaitForSeconds(0.05f);
 
 		// project a ray forward
-		Vector2 rayOrigin = new Vector2 (transform.position.x, transform.position.y + sprite.transform.localScale.y / 2);
+		Vector2 rayOrigin = new Vector2 (transform.position.x, transform.position.y + sprite.localScale.y / 2);
 		//RaycastHit2D[] hits = Physics2D.RaycastAll(rayOrigin, Vector2.right * directionX, weaponRange, attackCollisionMask);
 		RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.right * directionX, weaponRange, controller.attackCollisionMask);
 		Debug.DrawRay(rayOrigin, Vector2.right * directionX * weaponRange, Color.yellow);
@@ -486,6 +491,9 @@ public class Ent : MonoBehaviour {
 		atr.hp -= dmg;
 		if (atr.hp <= 0) { atr.hp = 0; }
 
+		// make him bleed
+		Bleed(Random.Range(3, 6));
+
 		// update hp bar
 		StartCoroutine(UpdateHpBar());
 
@@ -494,9 +502,6 @@ public class Ent : MonoBehaviour {
 			yield return StartCoroutine(Die());
 			yield break;
 		}
-
-		// make him bleed
-		Bleed(Random.Range(3, 6));
 
 		// push backwards
 		yield return StartCoroutine(PushBackwards(vec, 0.5f));
@@ -509,7 +514,7 @@ public class Ent : MonoBehaviour {
 		Audio.play("Audio/sfx/bite", 0.5f, Random.Range(3f, 3f));
 
 		// instantiate blood splats
-		Bleed(Random.Range(8, 16));
+		//Bleed(Random.Range(8, 16));
 		
 		// destroy entity
 		yield return null;
@@ -538,8 +543,8 @@ public class Ent : MonoBehaviour {
 		if (!bloodPrefab) { return; }
 
 		for (int i = 0; i < maxBloodSplats; i++) {
-			Blood blood = ((GameObject)Instantiate(bloodPrefab, transform.position, Quaternion.identity)).GetComponent<Blood>();
-			blood.Init(World.bloodContainer);
+			Blood blood = ((GameObject)Instantiate(bloodPrefab)).GetComponent<Blood>();
+			blood.Init(World.bloodContainer, this);
 		}
 	}
 
@@ -560,7 +565,7 @@ public class Ent : MonoBehaviour {
 
 		float percent = atr.hp / (float)hpMax;
 		hpPercent.localScale = new Vector2(percent, 1);
-		hpPercent.localPosition = new Vector2((-0.5f + percent / 2) * transform.localScale.x, 0);
+		hpPercent.localPosition = new Vector2((-0.5f + percent / 2) * hpBar.transform.localScale.x, 0);
 	}
 
 

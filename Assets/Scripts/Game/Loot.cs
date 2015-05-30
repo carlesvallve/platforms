@@ -5,20 +5,30 @@ public class Loot : Ent {
 
 	protected bool spawning = false;
 
-	public void Init (Transform container) {
+	public void Init (Transform container, Ent source) {
 		transform.SetParent(container);
-
+		transform.position = source.transform.position + Vector3.up * source.sprite.localScale.y * 0.5f;
 		spawning = true;
-		
-		transform.position += Vector3.up * 0.5f;
-		Vector2 vec = new Vector3(Random.Range(-1f, 1f), Random.Range(0, 5f)) * Random.Range(1f, 4f);
-		StartCoroutine (Spawn(vec));
+		affectedByGravity = false;
+
+		Vector2 vec = new Vector3(Random.Range(-2f, 2f), Random.Range(8f, 12f));
+		StartCoroutine (Spawn(source, vec));
 	}
 
 
-	private IEnumerator Spawn (Vector2 vec) {
+	private IEnumerator Spawn (Ent source, Vector2 vec) {
+
+		sprite.gameObject.SetActive(false);
+		yield return new WaitForSeconds(Random.Range(0f, 0.5f));
+		sprite.gameObject.SetActive(true);
+
 		float duration = Random.Range(0.5f, 1f);
 
+		if (source) {
+			transform.position = source.transform.position + Vector3.up * source.sprite.localScale.y * 0.5f;
+		}
+		
+		affectedByGravity = true;
 		velocity.y = vec.y;
 		Vector2 pos = new Vector2(transform.position.x + vec.x, transform.position.y);
 
@@ -28,6 +38,10 @@ public class Loot : Ent {
 			velocity.x = Mathf.Lerp(targetVelocityX, 0, Time.deltaTime * 5f);
 			ApplyGravity();
 			controller.Move (velocity * Time.deltaTime, jumpingDown);
+
+			if (Time.time >= startTime + duration / 2) {
+				spawning = false;
+			}
 
 			yield return null;
 		}
