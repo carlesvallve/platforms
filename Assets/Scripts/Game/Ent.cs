@@ -75,6 +75,10 @@ public class Ent : MonoBehaviour {
 
 	protected bool isWater = false;
 
+	protected Transform hpBar;
+	protected Transform hpPercent;
+	protected float hpMax;
+
 
 	// ===========================================================
 	// Init
@@ -82,6 +86,11 @@ public class Ent : MonoBehaviour {
 
 	public virtual void Awake () {
 		controller = GetComponent<Controller2D>();
+
+		hpBar = transform.Find("Bar");
+		hpPercent = transform.Find("Bar/Percent");
+		hpMax = (float)atr.hp;
+		StartCoroutine(UpdateHpBar());
 
 		gravity = -((2 * jumpHeight) / Mathf.Pow (timeToJumpApex, 2)); // -80
 		jumpVelocity = Mathf.Abs(gravity) * timeToJumpApex; // 20
@@ -498,10 +507,33 @@ public class Ent : MonoBehaviour {
 		// make him bleed
 		Bleed(Random.Range(3, 6));
 
+		// update hp bar
+		StartCoroutine(UpdateHpBar());
+
 		// push backwards
 		yield return StartCoroutine(PushBackwards(vec, 0.5f));
 
 		state = States.IDLE;
+	}
+
+
+	protected virtual IEnumerator UpdateHpBar () {
+		if (!hpBar) { yield break; }
+
+		if (atr.hp == hpMax) {
+			hpBar.gameObject.SetActive(false);
+			yield break;
+		}
+
+		hpBar.gameObject.SetActive(true);
+		float percent = atr.hp / hpMax;
+
+		float startTime = Time.time;
+		while (Time.time <= startTime + 0.5f) {
+			hpPercent.localScale = Vector2.Lerp(hpPercent.localScale, new Vector2(percent, 1), Time.deltaTime * 5f);
+			hpPercent.localPosition = Vector2.Lerp(hpPercent.localPosition, new Vector2(-0.5f + percent / 2, 0), Time.deltaTime * 5f);
+			yield return null;
+		}
 	}
 
 
