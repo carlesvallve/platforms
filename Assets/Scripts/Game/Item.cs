@@ -3,6 +3,10 @@ using System.Collections;
 
 public class Item : Ent {
 
+	public bool opening = false;
+	private bool opened = false;
+
+
 	public override void Awake () {
 		base.Awake();
 	}
@@ -29,6 +33,40 @@ public class Item : Ent {
 		}
 
 		transform.localPosition = pos;
+	}
+
+	public void CancelOpening () {
+		opening = false;
+	}
+
+	public IEnumerator Opening (Ent collector) {
+		if (opened) { yield break; }
+
+		opening = true;
+
+		float t = 5;
+
+		float duration = 0.5f;
+		float startTime = Time.time;
+		while (Time.time <= startTime + duration) {
+			if (opening == false) { yield break; }
+
+			StartCoroutine(collector.UpdateInfo(t.ToString()));
+			t--;
+
+			yield return new WaitForSeconds(0.1f);
+		}
+
+		StartCoroutine(collector.UpdateInfo(null));
+		Open(collector);
+	}
+
+
+	protected void Open (Ent collector) {
+		opened = true;
+		
+		StartCoroutine(SpawnLoot(Random.Range(8, 16)));
+		Destroy(gameObject);
 	}
 
 }

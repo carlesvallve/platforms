@@ -4,7 +4,7 @@ using System.Collections;
 public enum States {
 	IDLE = 0,
 	ATTACK = 2,
-	HURT = 3,
+	HURT = 3
 }
 
 [System.Serializable]
@@ -79,6 +79,8 @@ public class Ent : MonoBehaviour {
 	protected Transform hpPercent;
 	protected float hpMax;
 
+	protected TextMesh info;
+
 
 	// ===========================================================
 	// Init
@@ -91,6 +93,12 @@ public class Ent : MonoBehaviour {
 		hpPercent = transform.Find("Bar/Percent");
 		hpMax = (float)atr.hp;
 		StartCoroutine(UpdateHpBar());
+
+		Transform obj = transform.Find("Info");
+		if (obj) {
+			info = obj.GetComponent<TextMesh>();
+			StartCoroutine(UpdateInfo(null));
+		}
 
 		gravity = -((2 * jumpHeight) / Mathf.Pow (timeToJumpApex, 2)); // -80
 		jumpVelocity = Mathf.Abs(gravity) * timeToJumpApex; // 20
@@ -125,6 +133,10 @@ public class Ent : MonoBehaviour {
 
 	protected void SetActionC () {
 		StartCoroutine(PickItem(interactiveObject));
+	}
+
+	protected void SetActionCHold () {
+		StartCoroutine(OpenItem(interactiveObject));
 	}
 
 
@@ -362,6 +374,14 @@ public class Ent : MonoBehaviour {
 	// Item interaction
 	// ===========================================================
 
+	protected IEnumerator OpenItem (Ent ent) {
+		if (!ent || !(ent is Item)) { yield break; }
+		Item item = (Item)ent;
+		
+		yield return StartCoroutine(item.Opening(this));
+	}
+
+
 	protected IEnumerator PickItem (Ent ent) {
 		if (pickedUpObject) { 
 			StartCoroutine(DropItem(pickedUpObject)); 
@@ -370,7 +390,6 @@ public class Ent : MonoBehaviour {
 		if (!ent || !(ent is Item)) { yield break; }
 		
 		Item item = (Item)ent;
-		
 		yield return StartCoroutine(item.Pickup(this));
 
 		pickedUpObject = ent;
@@ -409,18 +428,18 @@ public class Ent : MonoBehaviour {
 	// Loot interaction
 	// ===========================================================
 
-	protected void SpawnLoot (int maxLoot) {
-		if (!lootPrefab) { return; }
+	protected IEnumerator SpawnLoot (int maxLoot, float delay = 0) {
+		if (!lootPrefab) { yield break; }
 
 		for (int i = 0; i < maxLoot; i++) {
 			Loot loot = ((GameObject)Instantiate(lootPrefab, transform.position, Quaternion.identity)).GetComponent<Loot>();
 			loot.Init(World.lootContainer);
+			//yield return new WaitForSeconds(delay);
 		}
 	}
 
 
 	protected virtual void PickCoin (Coin coin) {
-		Audio.play("Audio/sfx/chimes", 1f, Random.Range(1.0f, 1.0f));
 		StartCoroutine(coin.Pickup(this));
 		inv.coins += 1;
 	}
@@ -534,6 +553,15 @@ public class Ent : MonoBehaviour {
 			hpPercent.localPosition = Vector2.Lerp(hpPercent.localPosition, new Vector2(-0.5f + percent / 2, 0), Time.deltaTime * 5f);
 			yield return null;
 		}
+	}
+
+
+	public virtual IEnumerator UpdateInfo (string str) {
+		if (!info) { yield break; }
+
+		info.gameObject.SetActive(str != null);
+		if (str == null) { yield break; }
+		info.text = str;
 	}
 
 

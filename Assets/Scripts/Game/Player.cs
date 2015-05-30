@@ -5,6 +5,8 @@ public class Player : Ent {
 
 	private InputManager inputManager;
 	private Hud hud;
+
+	private int hd_C = 0;
 	
 
 	public override void Awake () {
@@ -27,7 +29,27 @@ public class Player : Ent {
 
 		if (inputManager.B) { SetActionB(); }
 
-		if (inputManager.C) { SetActionC(); }
+		if (Input.GetButtonUp("C")) { 
+			hd_C = 0;
+
+			Item item = (Item)interactiveObject;
+			if (item) { 
+				if (item.opening) {
+					item.CancelOpening();
+				} else {
+					SetActionC();
+				}
+			} else {
+				SetActionC();
+			}
+		}
+
+		if (Input.GetButton("C")) { 
+			hd_C += 1;
+			if (hd_C == 10) {
+				SetActionCHold();
+			}
+		}
 	}
 
 

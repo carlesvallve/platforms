@@ -3,8 +3,12 @@ using System.Collections;
 
 public class Loot : Ent {
 
+	protected bool spawning = false;
+
 	public void Init (Transform container) {
 		transform.SetParent(container);
+
+		spawning = true;
 		
 		transform.position += Vector3.up * 0.5f;
 		Vector2 vec = new Vector3(Random.Range(-1f, 1f), Random.Range(0, 5f)) * Random.Range(1f, 4f);
@@ -13,7 +17,7 @@ public class Loot : Ent {
 
 
 	private IEnumerator Spawn (Vector2 vec) {
-		float duration = Random.Range(0.25f, 0.75f);
+		float duration = Random.Range(0.5f, 1f);
 
 		velocity.y = vec.y;
 		Vector2 pos = new Vector2(transform.position.x + vec.x, transform.position.y);
@@ -27,5 +31,7 @@ public class Loot : Ent {
 
 			yield return null;
 		}
+
+		spawning = false;
 	}
 }

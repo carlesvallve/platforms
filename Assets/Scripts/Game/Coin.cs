@@ -5,6 +5,8 @@ using System.Collections;
 public class Coin : Loot {
 
 	public IEnumerator Pickup (Ent collector) {
+		if (spawning) { yield break; }
+
 		gameObject.GetComponent<BoxCollider2D>().enabled = false;
 		affectedByGravity = false;
 
@@ -17,6 +19,7 @@ public class Coin : Loot {
 			yield return null;
 		}
 
+		Audio.play("Audio/sfx/chimes", 1f, Random.Range(1.0f, 1.0f));
 		Destroy(gameObject);
 	}
 }

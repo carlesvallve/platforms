@@ -11,7 +11,7 @@ public class Monster : Ent {
 
 	public override IEnumerator Die () {
 		StartCoroutine(base.Die());
-		SpawnLoot(Random.Range(1, 3));
+		StartCoroutine(SpawnLoot(Random.Range(1, 3)));
 		yield break;
 	}
 
