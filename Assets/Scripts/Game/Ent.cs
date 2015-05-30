@@ -360,8 +360,6 @@ public class Ent : MonoBehaviour {
 		}
 
 		if (!ent || !(ent is Item)) { yield break; }
-
-		yield return new WaitForSeconds(Random.Range(0, 0.5f));
 		
 		Item item = (Item)ent;
 		yield return StartCoroutine(item.Pickup(this));
