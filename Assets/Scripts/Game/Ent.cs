@@ -251,45 +251,7 @@ public class Ent : MonoBehaviour {
 	}
 
 
-	// ===========================================================
-	// Triggers and Interactive Objects
-	// ===========================================================
-
-	protected void OnTriggerStay2D (Collider2D collider) {
-		if (state == States.ATTACK) { return; }
-
-		switch (collider.gameObject.tag) {
-			case "Water":
-			if (!IsOnWater()) { StartCoroutine(SetWaterIn()); }
-			return;
-
-			case "Ladder":
-			ladder = collider.transform.parent.GetComponent<Ladder>();
-			return;
-		}
-
-		interactiveObject = collider.gameObject.GetComponent<Ent>();
-
-		if (interactiveObject is Coin) {
-			PickCoin((Coin)interactiveObject);
-			interactiveObject = null;
-		}
-	}
-
-
-	protected void OnTriggerExit2D (Collider2D collider) {
-		switch (collider.gameObject.tag) {
-			case "Water":
-			if (IsOnWater()) { StartCoroutine(SetWaterOut()); }
-			return;
-
-			case "Ladder":
-			ladder = null;
-			return;
-		}
-
-		interactiveObject = null;
-	}
+	
 
 
 	// ===========================================================
@@ -645,6 +607,50 @@ public class Ent : MonoBehaviour {
 
 	public virtual void TriggerPushable (GameObject obj) {
 		PushItem(obj);
+	}
+
+
+	// ===========================================================
+	// Collision Triggers and Interactive Objects
+	// ===========================================================
+
+	protected void OnTriggerStay2D (Collider2D collider) {
+		if (state == States.ATTACK) { return; }
+
+		switch (collider.gameObject.tag) {
+			case "Water":
+			if (!IsOnWater()) { StartCoroutine(SetWaterIn()); }
+			break;
+
+			case "Ladder":
+			ladder = collider.transform.parent.GetComponent<Ladder>();
+			break;
+
+			case "Item":
+				interactiveObject = collider.gameObject.GetComponent<Ent>();
+				if (interactiveObject is Coin) {
+					PickCoin((Coin)interactiveObject);
+					interactiveObject = null;
+				}
+				break;
+		}
+	}
+
+
+	protected void OnTriggerExit2D (Collider2D collider) {
+		switch (collider.gameObject.tag) {
+			case "Water":
+			if (IsOnWater()) { StartCoroutine(SetWaterOut()); }
+			break;
+
+			case "Ladder":
+			ladder = null;
+			break;
+
+			case "Item":
+			interactiveObject = null;
+			break;
+		}
 	}
 			
 }
