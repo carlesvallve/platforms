@@ -11,7 +11,7 @@ public class Loot : Ent {
 		spawning = true;
 		affectedByGravity = false;
 
-		Vector2 vec = new Vector3(Random.Range(-2f, 2f), Random.Range(8f, 12f));
+		Vector2 vec = new Vector3(Random.Range(-1.5f, 1.5f), Random.Range(6f, 12f));
 		StartCoroutine (Spawn(source, vec));
 	}
 
@@ -22,7 +22,7 @@ public class Loot : Ent {
 		yield return new WaitForSeconds(Random.Range(0f, 0.5f));
 		sprite.gameObject.SetActive(true);
 
-		float duration = Random.Range(0.5f, 1f);
+		float duration = Random.Range(0.25f, 0.5f);
 
 		if (source) {
 			transform.position = source.transform.position + Vector3.up * source.sprite.localScale.y * 0.5f;

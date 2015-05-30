@@ -11,14 +11,14 @@ public class Blood : Ent {
 		float sc = Random.Range(0.25f, 0.75f);
 		transform.localScale = new Vector2(sc, sc);
 		//transform.position += Vector3.up * 0.5f;
-		Vector2 vec = new Vector3(Random.Range(-2f, 2f), Random.Range(8f, 12f));
+		Vector2 vec = new Vector3(Random.Range(-1f, 1f), Random.Range(8f, 16f));
 		StartCoroutine (Spawn(source, vec));
 	}
 
 
 	private IEnumerator Spawn (Ent source, Vector2 vec) {
 
-		float duration = Random.Range(0.5f, 1f);
+		float duration = Random.Range(0.25f, 0.5f);
 
 		if (source) {
 			transform.position = source.transform.position + Vector3.up * source.sprite.localScale.y * 0.5f;
