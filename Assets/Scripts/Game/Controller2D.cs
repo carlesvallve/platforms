@@ -89,7 +89,7 @@ public class Controller2D : MonoBehaviour {
 
 		// horizontal
 		float directionX = Mathf.Sign (velocity.x);
-		if (directionX != 0 && (directionY == -1 && !collisions.below && !landed)) {
+		if (directionX != 0) { // } && (directionY == -1 && !collisions.below && !landed)) {
 
 			rayLength = Mathf.Abs (velocity.x) + skinWidth;
 			for (int i = 0; i < horizontalRayCount; i ++) {

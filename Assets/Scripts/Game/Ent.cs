@@ -562,18 +562,22 @@ public class Ent : MonoBehaviour {
 	public virtual bool TriggerCollisionAttack (GameObject obj) {
 		Ent target = obj.GetComponent<Ent>();
 
-		//if (target.state == States.HURT) { return false; }
-
-		if (!isCreature) {
+		if (isCreature) {
+			// decide if alive being is gonna hit
+			if (velocity.y > -4) { return false; }
+			if (transform.position.y < target.transform.position.y + transform.localScale.y * 0.75f) { 
+				return false;
+			}
+		} else {
+			// decide if item/block is gonna hit
+			if (target.state == States.HURT) { return false; }
 			if (velocity.magnitude < 4f) { return false; }
+			if (velocity.y > 0) { return false; }
 		}
 
-		if (velocity.y < 0 && transform.position.y > target.transform.position.y + transform.localScale.y * 0.75f) { 
-			StartCoroutine(JumpAttack(target));
-			return true;
-		}
-
-		return false;
+		// execute jump attack
+		StartCoroutine(JumpAttack(target));
+		return true;
 	}
 
 
