@@ -35,10 +35,7 @@ public class Item : Ent {
 		transform.localPosition = pos;
 	}
 
-	public void CancelOpening () {
-		opening = false;
-	}
-
+	
 	public IEnumerator Opening (Ent collector) {
 		if (opened) { yield break; }
 
@@ -51,14 +48,19 @@ public class Item : Ent {
 		while (Time.time <= startTime + duration) {
 			if (opening == false) { yield break; }
 
-			StartCoroutine(collector.UpdateInfo(t.ToString()));
+			StartCoroutine(UpdateInfo(t.ToString()));
 			t--;
 
 			yield return new WaitForSeconds(0.1f);
 		}
 
-		StartCoroutine(collector.UpdateInfo(null));
+		StartCoroutine(UpdateInfo(null));
 		Open(collector);
+	}
+
+
+	public void CancelOpening () {
+		opening = false;
 	}
 
 
