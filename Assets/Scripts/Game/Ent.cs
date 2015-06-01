@@ -112,7 +112,7 @@ public class Ent : MonoBehaviour {
 	}
 
 
-	public virtual void Update () {
+	public virtual void LateUpdate () {
 		Reset();
 		SetInput();
 		SetSpeed();
