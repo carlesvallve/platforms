@@ -251,9 +251,6 @@ public class Ent : MonoBehaviour {
 	}
 
 
-	
-
-
 	// ===========================================================
 	// Water
 	// ===========================================================
@@ -441,7 +438,8 @@ public class Ent : MonoBehaviour {
 		if (hasAttackedInAir) { yield break; }
 
 		state = States.ATTACK;
-		Audio.play("Audio/sfx/swishA", 0.025f, Random.Range(0.5f, 0.5f));
+		//Audio.play("Audio/sfx/swishA", 0.025f, Random.Range(0.5f, 0.5f));
+		Audio.play("Audio/sfx/woosh", 0.15f, Random.Range(1.0f, 1.5f));
 		
 		// attack parameters
 		float weaponRange = 0.8f;
@@ -486,14 +484,11 @@ public class Ent : MonoBehaviour {
 		velocity = Vector2.zero;
 
 		//Audio.play("Audio/sfx/step", 1f, Random.Range(2.5f, 2.5f));
-		Audio.play("Audio/sfx/punch2", 0.2f, Random.Range(1f, 1.5f));
+		Audio.play("Audio/sfx/punch", 0.15f, Random.Range(1f, 1.5f));
 
 		// update stats
 		atr.hp -= dmg;
 		if (atr.hp <= 0) { atr.hp = 0; }
-
-		// make him bleed
-		Bleed(Random.Range(3, 6));
 
 		// update hp bar
 		StartCoroutine(UpdateHpBar());
@@ -503,6 +498,9 @@ public class Ent : MonoBehaviour {
 			yield return StartCoroutine(Die());
 			yield break;
 		}
+
+		// make him bleed
+		Bleed(Random.Range(3, 6));
 
 		// push backwards
 		yield return StartCoroutine(PushBackwards(vec, 0.5f));
@@ -515,7 +513,7 @@ public class Ent : MonoBehaviour {
 		Audio.play("Audio/sfx/bite", 0.5f, Random.Range(3f, 3f));
 
 		// instantiate blood splats
-		//Bleed(Random.Range(8, 16));
+		Bleed(Random.Range(8, 16));
 		
 		// destroy entity
 		yield return null;
@@ -551,7 +549,7 @@ public class Ent : MonoBehaviour {
 
 
 	protected void PlayAudioStep () {
-		Audio.play("Audio/sfx/step", 1f, Random.Range(1.25f, 1.75f));
+		Audio.play("Audio/sfx/step", 1f, Random.Range(2.0f, 3.0f));
 	}
 
 
