@@ -4,7 +4,30 @@ using System.Collections;
 
 public class Coin : Loot {
 
-	public IEnumerator Pickup (Ent collector) {
+
+	public override IEnumerator Pickup (Ent collector) {
+		if (spawning) { yield break; }
+		yield return StartCoroutine(base.Pickup(collector));
+
+		Audio.play("Audio/sfx/coin", 0.2f, Random.Range(3f, 5.0f)); // chimes
+
+		//collector.AddLootToInventory(this);
+
+		/*for (int n = 0; n < collector.inv.items.Count; n++) {
+			InvItem item = collector.inv.items[n];
+			print(item.loot.name);
+		}*/
+		//collector.inv.coins += 1;
+		
+		//if (collector is Player) {
+			//Player player = (Player)collector;
+			//player.hud.UpdateCoins(player.inv.coins);
+		//}
+		//yield return null; //new WaitForSeconds(0.1f);
+		Destroy(gameObject);
+	}
+
+	/*public IEnumerator Pickup (Ent collector) {
 		if (spawning) { yield break; }
 
 		gameObject.GetComponent<BoxCollider2D>().enabled = false;
@@ -28,5 +51,5 @@ public class Coin : Loot {
 		}
 
 		Destroy(gameObject);
-	}
+	}*/
 }

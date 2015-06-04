@@ -1,0 +1,1111 @@
+fileFormatVersion: 2
+guid: 951590eaff7ac451c98a27ce59ebaf21
+timeCreated: 1433393988
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: weapons-and-equipment_0
+    21300002: weapons-and-equipment_1
+    21300004: weapons-and-equipment_2
+    21300006: weapons-and-equipment_3
+    21300008: weapons-and-equipment_4
+    21300010: weapons-and-equipment_5
+    21300012: weapons-and-equipment_6
+    21300014: weapons-and-equipment_7
+    21300016: weapons-and-equipment_8
+    21300018: weapons-and-equipment_9
+    21300020: weapons-and-equipment_10
+    21300022: weapons-and-equipment_11
+    21300024: weapons-and-equipment_12
+    21300026: weapons-and-equipment_13
+    21300028: weapons-and-equipment_14
+    21300030: weapons-and-equipment_15
+    21300032: weapons-and-equipment_16
+    21300034: weapons-and-equipment_17
+    21300036: weapons-and-equipment_18
+    21300038: weapons-and-equipment_19
+    21300040: weapons-and-equipment_20
+    21300042: weapons-and-equipment_21
+    21300044: weapons-and-equipment_22
+    21300046: weapons-and-equipment_23
+    21300048: weapons-and-equipment_24
+    21300050: weapons-and-equipment_25
+    21300052: weapons-and-equipment_26
+    21300054: weapons-and-equipment_27
+    21300056: weapons-and-equipment_28
+    21300058: weapons-and-equipment_29
+    21300060: weapons-and-equipment_30
+    21300062: weapons-and-equipment_31
+    21300064: weapons-and-equipment_32
+    21300066: weapons-and-equipment_33
+    21300068: weapons-and-equipment_34
+    21300070: weapons-and-equipment_35
+    21300072: weapons-and-equipment_36
+    21300074: weapons-and-equipment_37
+    21300076: weapons-and-equipment_38
+    21300078: weapons-and-equipment_39
+    21300080: weapons-and-equipment_40
+    21300082: weapons-and-equipment_41
+    21300084: weapons-and-equipment_42
+    21300086: weapons-and-equipment_43
+    21300088: weapons-and-equipment_44
+    21300090: weapons-and-equipment_45
+    21300092: weapons-and-equipment_46
+    21300094: weapons-and-equipment_47
+    21300096: weapons-and-equipment_48
+    21300098: weapons-and-equipment_49
+    21300100: weapons-and-equipment_50
+    21300102: weapons-and-equipment_51
+    21300104: weapons-and-equipment_52
+    21300106: weapons-and-equipment_53
+    21300108: weapons-and-equipment_54
+    21300110: weapons-and-equipment_55
+    21300112: weapons-and-equipment_56
+    21300114: weapons-and-equipment_57
+    21300116: weapons-and-equipment_58
+    21300118: weapons-and-equipment_59
+    21300120: weapons-and-equipment_60
+    21300122: weapons-and-equipment_61
+    21300124: weapons-and-equipment_62
+    21300126: weapons-and-equipment_63
+    21300128: weapons-and-equipment_64
+    21300130: weapons-and-equipment_65
+    21300132: weapons-and-equipment_66
+    21300134: weapons-and-equipment_67
+    21300136: weapons-and-equipment_68
+    21300138: weapons-and-equipment_69
+    21300140: weapons-and-equipment_70
+    21300142: weapons-and-equipment_71
+    21300144: weapons-and-equipment_72
+    21300146: weapons-and-equipment_73
+    21300148: weapons-and-equipment_74
+    21300150: weapons-and-equipment_75
+    21300152: weapons-and-equipment_76
+    21300154: weapons-and-equipment_77
+    21300156: weapons-and-equipment_78
+    21300158: weapons-and-equipment_79
+    21300160: weapons-and-equipment_80
+    21300162: weapons-and-equipment_81
+    21300164: weapons-and-equipment_82
+    21300166: weapons-and-equipment_83
+    21300168: weapons-and-equipment_84
+    21300170: weapons-and-equipment_85
+    21300172: weapons-and-equipment_86
+    21300174: weapons-and-equipment_87
+    21300176: weapons-and-equipment_88
+    21300178: weapons-and-equipment_89
+    21300180: weapons-and-equipment_90
+    21300182: weapons-and-equipment_91
+    21300184: weapons-and-equipment_92
+    21300186: weapons-and-equipment_93
+    21300188: weapons-and-equipment_94
+    21300190: weapons-and-equipment_95
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 24
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: weapons-and-equipment_0
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 229
+        width: 24
+        height: 20
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_1
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 231
+        width: 23
+        height: 17
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_2
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 228
+        width: 24
+        height: 24
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_3
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 228
+        width: 23
+        height: 23
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_4
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 229
+        width: 18
+        height: 22
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_5
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 229
+        width: 23
+        height: 23
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_6
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 228
+        width: 23
+        height: 22
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_7
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 228
+        width: 24
+        height: 22
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_8
+      rect:
+        serializedVersion: 2
+        x: 262
+        y: 231
+        width: 18
+        height: 17
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_9
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 229
+        width: 21
+        height: 21
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_10
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 231
+        width: 23
+        height: 16
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_11
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 230
+        width: 22
+        height: 19
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_12
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 197
+        width: 22
+        height: 23
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_13
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 197
+        width: 24
+        height: 22
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_14
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 200
+        width: 14
+        height: 14
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_15
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 197
+        width: 20
+        height: 20
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_16
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 197
+        width: 24
+        height: 21
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_17
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 199
+        width: 24
+        height: 19
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_18
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 198
+        width: 19
+        height: 18
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_19
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 199
+        width: 19
+        height: 18
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_20
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 197
+        width: 23
+        height: 21
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_21
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 198
+        width: 23
+        height: 21
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_22
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 198
+        width: 23
+        height: 19
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_23
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 197
+        width: 20
+        height: 20
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_24
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 164
+        width: 24
+        height: 23
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_25
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 167
+        width: 24
+        height: 19
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_26
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 165
+        width: 18
+        height: 22
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_27
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 167
+        width: 24
+        height: 20
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_28
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 166
+        width: 23
+        height: 19
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_29
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 164
+        width: 19
+        height: 17
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_30
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 164
+        width: 24
+        height: 24
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_31
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 164
+        width: 23
+        height: 23
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_32
+      rect:
+        serializedVersion: 2
+        x: 262
+        y: 165
+        width: 22
+        height: 22
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_33
+      rect:
+        serializedVersion: 2
+        x: 293
+        y: 165
+        width: 22
+        height: 22
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_34
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 165
+        width: 23
+        height: 22
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_35
+      rect:
+        serializedVersion: 2
+        x: 358
+        y: 164
+        width: 21
+        height: 24
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_36
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 133
+        width: 23
+        height: 21
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_37
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 134
+        width: 23
+        height: 21
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_38
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 143
+        width: 7
+        height: 9
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_39
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 135
+        width: 20
+        height: 18
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_40
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 132
+        width: 24
+        height: 24
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_41
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 132
+        width: 24
+        height: 24
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_42
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 132
+        width: 24
+        height: 24
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_43
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 132
+        width: 23
+        height: 23
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_44
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 133
+        width: 20
+        height: 23
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_45
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 132
+        width: 21
+        height: 24
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_46
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 134
+        width: 21
+        height: 17
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_47
+      rect:
+        serializedVersion: 2
+        x: 358
+        y: 133
+        width: 20
+        height: 22
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_48
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 103
+        width: 14
+        height: 18
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_49
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 104
+        width: 15
+        height: 15
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_50
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 101
+        width: 19
+        height: 19
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_51
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 100
+        width: 24
+        height: 24
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_52
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 100
+        width: 24
+        height: 24
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_53
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 100
+        width: 23
+        height: 23
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_54
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 100
+        width: 24
+        height: 24
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_55
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 100
+        width: 23
+        height: 23
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_56
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 104
+        width: 16
+        height: 15
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_57
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 100
+        width: 19
+        height: 23
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_58
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 100
+        width: 24
+        height: 22
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_59
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 100
+        width: 20
+        height: 22
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_60
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 69
+        width: 20
+        height: 22
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_61
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 68
+        width: 23
+        height: 23
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_62
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 71
+        width: 18
+        height: 18
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_63
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 70
+        width: 21
+        height: 21
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_64
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 68
+        width: 23
+        height: 23
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_65
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 68
+        width: 24
+        height: 24
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_66
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 68
+        width: 24
+        height: 24
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_67
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 68
+        width: 24
+        height: 24
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_68
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 70
+        width: 22
+        height: 21
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_69
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 70
+        width: 21
+        height: 20
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_70
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 68
+        width: 24
+        height: 24
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_71
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 68
+        width: 21
+        height: 23
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_72
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 36
+        width: 24
+        height: 24
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_73
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 36
+        width: 24
+        height: 24
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_74
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 36
+        width: 23
+        height: 23
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_75
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 36
+        width: 11
+        height: 24
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_76
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 38
+        width: 18
+        height: 18
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_77
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 38
+        width: 20
+        height: 19
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_78
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 36
+        width: 21
+        height: 23
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_79
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 37
+        width: 22
+        height: 22
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_80
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 37
+        width: 19
+        height: 21
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_81
+      rect:
+        serializedVersion: 2
+        x: 293
+        y: 37
+        width: 23
+        height: 22
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_82
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 36
+        width: 23
+        height: 22
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_83
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 37
+        width: 24
+        height: 22
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_84
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 4
+        width: 23
+        height: 24
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_85
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 4
+        width: 24
+        height: 24
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_86
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 4
+        width: 24
+        height: 24
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_87
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 4
+        width: 22
+        height: 24
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_88
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 5
+        width: 24
+        height: 23
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_89
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 7
+        width: 21
+        height: 18
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_90
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 5
+        width: 24
+        height: 21
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_91
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 6
+        width: 21
+        height: 20
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_92
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 5
+        width: 24
+        height: 22
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_93
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 4
+        width: 24
+        height: 24
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_94
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 4
+        width: 24
+        height: 24
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons-and-equipment_95
+      rect:
+        serializedVersion: 2
+        x: 358
+        y: 4
+        width: 21
+        height: 23
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

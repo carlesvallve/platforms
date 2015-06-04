@@ -3,9 +3,13 @@ using System.Collections;
 
 public class Loot : Ent {
 
+	public GameObject lootPrefab;
 	protected bool spawning = false;
 
-	public void Init (Transform container, Ent source) {
+
+	public void Init (Transform container, Ent source, GameObject lootPrefab) {
+		this.lootPrefab = lootPrefab;
+		this.name = lootPrefab.name;
 		transform.SetParent(container);
 		transform.position = source.transform.position + Vector3.up * source.sprite.localScale.y * 0.5f;
 		spawning = true;
@@ -47,5 +51,27 @@ public class Loot : Ent {
 		}
 
 		spawning = false;
+	}
+
+
+	public virtual IEnumerator Pickup (Ent collector) {
+		if (spawning || collector == null) { yield break; }
+
+		gameObject.GetComponent<BoxCollider2D>().enabled = false;
+		affectedByGravity = false;
+
+		Vector3 pos = transform.position + Vector3.up * collector.sprite.localScale.y * 0.5f;
+		
+		while (Vector2.Distance(transform.position, pos) > 0.1f) {
+			if (spawning || collector == null) { yield break; }
+
+			pos = collector.transform.position + Vector3.up * collector.sprite.localScale.y * 0.5f;
+			transform.position = Vector3.Lerp(transform.position, pos, Time.deltaTime * 15f);
+			transform.localScale = Vector3.Lerp(transform.localScale, Vector3.zero, Time.deltaTime * 2f);
+			yield return null;
+		}
+
+		// add loot to collector's inventory
+		collector.AddLootToInventory(this);
 	}
 }

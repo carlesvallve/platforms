@@ -75,8 +75,7 @@ public class Item : Ent {
 		opened = true;
 		Audio.play("Audio/sfx/chest-open", 0.4f, Random.Range(0.9f, 1.1f));
 		
-		StartCoroutine(SpawnLoot(Random.Range(8, 16)));
-		
+		SpawnLoot();
 	}
 
 }

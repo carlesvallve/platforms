@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+
 
 public enum States {
 	IDLE = 0,
@@ -28,8 +30,15 @@ public class Atr {
 
 
 [System.Serializable]
+public class InvItem {
+	public GameObject loot;
+	public int num;
+}
+
+
+[System.Serializable]
 public class Inv {
-	public int coins = 0;
+	public List<InvItem> items = new List<InvItem>();
 }
 
 	
@@ -43,13 +52,10 @@ public class Ent : MonoBehaviour {
 	public Atr atr;
 	public Inv inv;
 
-	protected float jumpHeight = 2.5f;
-	protected float timeToJumpApex = 0.25f;
-	
 	public bool isCreature = false;
 	public bool affectedByGravity = true;
 
-	public GameObject lootPrefab;
+	public Transform sprite;
 	public GameObject bloodPrefab;
 	
 	protected Vector2 input;
@@ -57,7 +63,8 @@ public class Ent : MonoBehaviour {
 	protected float gravity;
 	protected float jumpVelocity;
 	protected Vector2 velocity;
-
+	protected float jumpHeight = 2.5f;
+	protected float timeToJumpApex = 0.25f;
 	//public float accelerationTimeAirborne = 0;
 	//public float accelerationTimeGrounded = 0;
 	//protected float velocityXSmoothing;
@@ -81,7 +88,7 @@ public class Ent : MonoBehaviour {
 
 	protected TextMesh info;
 
-	public Transform sprite;
+	
 
 
 	// ===========================================================
@@ -397,18 +404,43 @@ public class Ent : MonoBehaviour {
 	// Loot interaction
 	// ===========================================================
 
-	protected IEnumerator SpawnLoot (int maxLoot) {
-		if (!lootPrefab) { yield break; }
-
-		for (int i = 0; i < maxLoot; i++) {
-			Loot loot = ((GameObject)Instantiate(lootPrefab)).GetComponent<Loot>();
-			loot.Init(World.lootContainer, this);
+	protected void SpawnLoot () {
+		// spawn items on inventory
+		for (int n = 0; n < inv.items.Count; n++) {
+			InvItem item = inv.items[n];
+			for (int i = 0; i < item.num; i++) {
+				Loot loot = ((GameObject)Instantiate(item.loot)).GetComponent<Loot>();
+				loot.Init(World.lootContainer, this, item.loot);
+			}
 		}
 	}
 
 
 	protected virtual void PickCoin (Coin coin) {
 		StartCoroutine(coin.Pickup(this));
+	}
+
+
+	protected virtual void PickWeapon (Weapon weapon) {
+		StartCoroutine(weapon.Pickup(this));
+	}
+
+
+	public virtual void AddLootToInventory (Loot loot) {
+		// if we already own this item type, increase item number
+		for (int n = 0; n < inv.items.Count; n++) {
+			InvItem item = inv.items[n];
+			if (item == null) { continue; }
+			if (item.loot.name == loot.name) {
+				item.num += 1;
+				return;
+			}
+		}
+
+		// otherwise, add item to inventory
+		inv.items.Add(new InvItem());
+		inv.items[inv.items.Count -1].loot = loot.lootPrefab;
+		inv.items[inv.items.Count -1].num = 1;
 	}
 
 
@@ -634,6 +666,9 @@ public class Ent : MonoBehaviour {
 				interactiveObject = collider.gameObject.GetComponent<Ent>();
 				if (interactiveObject is Coin) {
 					PickCoin((Coin)interactiveObject);
+					interactiveObject = null;
+				} else if (interactiveObject is Weapon) {
+					PickWeapon((Weapon)interactiveObject);
 					interactiveObject = null;
 				}
 				break;
