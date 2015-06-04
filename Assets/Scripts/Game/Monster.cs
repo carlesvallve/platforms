@@ -37,13 +37,13 @@ public class Monster : Ent {
 				// turn versus player and attack
 				float dir = Mathf.Sign(player.transform.position.x - transform.position.x);
 				sprite.localScale = new Vector2(dir * Mathf.Abs(sprite.localScale.x), sprite.localScale.y); 
-				yield return new WaitForSeconds(0.1f);
+				//yield return new WaitForSeconds(0.1f);
 				StartCoroutine(Attack());
 			}
 		}
 		
 
-		yield return new WaitForSeconds(1f);
+		//yield return new WaitForSeconds(1f);
 
 		StartCoroutine(Think());
 	}

@@ -419,25 +419,7 @@ public class Ent : MonoBehaviour {
 				Loot loot = ((GameObject)Instantiate(Resources.Load(path))).GetComponent<Loot>();
 				loot.Init(World.lootContainer, this, item.path); //, item.lootPrefab);
 			}
-
-			//item.num = 0;
-			//inv.items.Remove(item);
 		}
-
-		// spawn collected items in inventory transform
-		/*if (inventory) {
-			foreach (Transform child in inventory.transform) 	{
-  				//print (">>> " + child);
-				Loot loot = child.GetComponent<Loot>();
-				loot.Init(World.lootContainer, this, loot.lootPrefab);
-			}
-		}	*/
-
-
-		/*if (this is Player) {
-			Player player = (Player)this;
-			player.hud.UpdateInventory();
-		}*/
 	}
 
 
@@ -480,8 +462,6 @@ public class Ent : MonoBehaviour {
 			Player player = (Player)this;
 			player.hud.UpdateInventory();
 		}
-
-		//Destroy(loot.gameObject);
 	}
 
 
@@ -506,8 +486,8 @@ public class Ent : MonoBehaviour {
 
 
 	protected IEnumerator Attack () {
-		if (state == States.ATTACK) { yield break; }
-		if (IsOnLadder() && !controller.landed) { yield break; }
+		if (state == States.ATTACK || state == States.HURT) { yield break; }
+		//if (IsOnLadder() && !controller.landed) { yield break; }
 		if (hasAttackedInAir) { yield break; }
 
 		state = States.ATTACK;
@@ -556,7 +536,6 @@ public class Ent : MonoBehaviour {
 		input = Vector2.zero;
 		velocity = Vector2.zero;
 
-		//Audio.play("Audio/sfx/step", 1f, Random.Range(2.5f, 2.5f));
 		Audio.play("Audio/sfx/punch", 0.15f, Random.Range(1f, 1.5f));
 
 		// update stats
@@ -704,15 +683,20 @@ public class Ent : MonoBehaviour {
 			break;
 
 			case "Item":
-				interactiveObject = collider.gameObject.GetComponent<Ent>();
-				if (interactiveObject is Coin) {
-					PickCoin((Coin)interactiveObject);
-					interactiveObject = null;
-				} else if (interactiveObject is Weapon) {
-					PickWeapon((Weapon)interactiveObject);
-					interactiveObject = null;
-				}
-				break;
+			interactiveObject = collider.gameObject.GetComponent<Ent>();
+			if (interactiveObject is Coin) {
+				PickCoin((Coin)interactiveObject);
+				interactiveObject = null;
+			} else if (interactiveObject is Weapon) {
+				PickWeapon((Weapon)interactiveObject);
+				interactiveObject = null;
+			}
+			break;
+
+			case "Trap":
+			Trap trap = collider.gameObject.GetComponent<Trap>();
+			trap.Activate();
+			break;
 		}
 	}
 

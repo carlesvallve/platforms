@@ -81,7 +81,7 @@ public class CameraFollow : MonoBehaviour {
 		if (below) { return true; }
 		if (!below && target.transform.position.y < transform.position.y) { return true; }
 		if (target.IsOnLadder()) { return true; }
-		//if (target.IsInWater()) { return true; }
+		if (target.IsOnWater()) { return true; }
 
 		return false;
 	}

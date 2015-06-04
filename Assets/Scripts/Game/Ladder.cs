@@ -16,9 +16,9 @@ public class Ladder : MonoBehaviour {
 	void Awake () {
 		top = transform.Find("Top");
 		bottom = transform.Find("Bottom");
-		height = (int)top.transform.position.y;
+		height = (int)top.transform.localPosition.y;
 
-		for (int i = 1; i < height - 1; i++) {
+		for (int i = 1; i < height; i++) {
 			Transform tile = ((Transform)Instantiate(bottom, transform.position + Vector3.up * i, Quaternion.identity));
 			tile.GetComponent<SpriteRenderer>().sprite = spriteCenter;
 			tile.SetParent(transform);
@@ -28,7 +28,7 @@ public class Ladder : MonoBehaviour {
 
 
 	public float GetHeight () {
-		return (float)(height - 1);
+		return (float)(height); // - 1
 	}
 	
 }

@@ -51,17 +51,15 @@ public class Loot : Ent {
 			ApplyGravity();
 			controller.Move (velocity * Time.deltaTime, jumpingDown);
 
-			if (Time.time >= startTime + duration / 2) {
+			/*if (Time.time >= startTime + duration / 2) {
 				spawning = false;
 				//gameObject.GetComponent<BoxCollider2D>().enabled = true;
-			}
+			}*/
 
 			yield return null;
 		}
 
 		spawning = false;
-
-		
 	}
 
 
