@@ -14,10 +14,8 @@ public class Weapon : Loot {
 			Player player = (Player)collector;
 			player.hud.UpdateCoins(player.inv.coins);
 		}*/
-		
-
-
 		//yield return null;
-		Destroy(gameObject);
+		//yield return new WaitForSeconds(2f);
+		
 	}
 }

@@ -3,15 +3,21 @@ using System.Collections;
 
 public class Loot : Ent {
 
-	public GameObject lootPrefab;
+	//public GameObject lootPrefab;
 	protected bool spawning = false;
 
+	public string path;
 
-	public void Init (Transform container, Ent source, GameObject lootPrefab) {
-		this.lootPrefab = lootPrefab;
-		this.name = lootPrefab.name;
+
+	public void Init (Transform container, Ent source, string path) { //, GameObject lootPrefab) {
+		//this.lootPrefab = lootPrefab;
+		this.path = path;
+		//this.name = lootPrefab.name;
+
 		transform.SetParent(container);
 		transform.position = source.transform.position + Vector3.up * source.sprite.localScale.y * 0.5f;
+		transform.localScale = new Vector3(1, 1, 1);
+		
 		spawning = true;
 		affectedByGravity = false;
 
@@ -24,7 +30,9 @@ public class Loot : Ent {
 
 		sprite.gameObject.SetActive(false);
 		yield return new WaitForSeconds(Random.Range(0f, 0.5f));
+		
 		sprite.gameObject.SetActive(true);
+		gameObject.GetComponent<BoxCollider2D>().enabled = true;
 
 		float duration = Random.Range(0.25f, 0.5f);
 
@@ -45,12 +53,15 @@ public class Loot : Ent {
 
 			if (Time.time >= startTime + duration / 2) {
 				spawning = false;
+				//gameObject.GetComponent<BoxCollider2D>().enabled = true;
 			}
 
 			yield return null;
 		}
 
 		spawning = false;
+
+		
 	}
 
 
@@ -62,16 +73,24 @@ public class Loot : Ent {
 
 		Vector3 pos = transform.position + Vector3.up * collector.sprite.localScale.y * 0.5f;
 		
-		while (Vector2.Distance(transform.position, pos) > 0.1f) {
-			if (spawning || collector == null) { yield break; }
+		//float startTime = Time.time;
+		while (Vector2.Distance(transform.position, pos) > 0.2f) { //(Time.time <= startTime + 0.2f) { // //
+			if (spawning || collector == null) { 
+				gameObject.GetComponent<BoxCollider2D>().enabled = true;
+				affectedByGravity = true;
+				yield break; 
+			}
 
 			pos = collector.transform.position + Vector3.up * collector.sprite.localScale.y * 0.5f;
 			transform.position = Vector3.Lerp(transform.position, pos, Time.deltaTime * 15f);
-			transform.localScale = Vector3.Lerp(transform.localScale, Vector3.zero, Time.deltaTime * 2f);
+			//transform.localScale = Vector3.Lerp(transform.localScale, Vector3.zero, Time.deltaTime * 5f);
 			yield return null;
 		}
 
 		// add loot to collector's inventory
 		collector.AddLootToInventory(this);
+		//yield return null;
+
+		Destroy(gameObject);
 	}
 }

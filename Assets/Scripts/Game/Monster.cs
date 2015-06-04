@@ -3,16 +3,49 @@ using System.Collections;
 
 public class Monster : Ent {
 
+	protected Player player;
 
 	public override void Awake () {
+		player = GameObject.Find("Player").GetComponent<Player>();
 		base.Awake();
+
+		StartCoroutine(Think());
 	}
 
 
 	public override IEnumerator Die () {
-		StartCoroutine(base.Die());
 		SpawnLoot();
+		StartCoroutine(base.Die());
 		yield break;
+	}
+
+
+	private bool CanThink () {
+		if (!player) { return false; }
+		if (state != States.IDLE) { return false; }
+		return true;
+	}
+
+
+	private IEnumerator Think () {
+
+		yield return new WaitForSeconds(1f);
+
+		if (CanThink()) {
+			float playerDist = Vector2.Distance(transform.position, player.transform.position);
+			if (playerDist < 2) {
+				// turn versus player and attack
+				float dir = Mathf.Sign(player.transform.position.x - transform.position.x);
+				sprite.localScale = new Vector2(dir * Mathf.Abs(sprite.localScale.x), sprite.localScale.y); 
+				yield return new WaitForSeconds(0.1f);
+				StartCoroutine(Attack());
+			}
+		}
+		
+
+		yield return new WaitForSeconds(1f);
+
+		StartCoroutine(Think());
 	}
 
 

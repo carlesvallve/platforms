@@ -31,8 +31,11 @@ public class Atr {
 
 [System.Serializable]
 public class InvItem {
-	public GameObject loot;
+	public string path;
 	public int num;
+	[HideInInspector]
+	public Sprite sprite;
+	//public Loot loot; // will be assigned dynamically
 }
 
 
@@ -55,6 +58,7 @@ public class Ent : MonoBehaviour {
 	public bool isCreature = false;
 	public bool affectedByGravity = true;
 
+	public Transform inventory;
 	public Transform sprite;
 	public GameObject bloodPrefab;
 	
@@ -99,6 +103,8 @@ public class Ent : MonoBehaviour {
 		controller = GetComponent<Controller2D>();
 
 		sprite = transform.Find("Sprite");
+		inventory = transform.Find("Inv");
+		if (inventory) { inventory.gameObject.SetActive(false); }
 
 		hpBar = transform.Find("Bar");
 		hpPercent = transform.Find("Bar/Percent");
@@ -405,14 +411,33 @@ public class Ent : MonoBehaviour {
 	// ===========================================================
 
 	protected void SpawnLoot () {
-		// spawn items on inventory
+		// spawn generic items in inventory
 		for (int n = 0; n < inv.items.Count; n++) {
 			InvItem item = inv.items[n];
 			for (int i = 0; i < item.num; i++) {
-				Loot loot = ((GameObject)Instantiate(item.loot)).GetComponent<Loot>();
-				loot.Init(World.lootContainer, this, item.loot);
+				string path = "Prefabs/Loot/" + item.path;
+				Loot loot = ((GameObject)Instantiate(Resources.Load(path))).GetComponent<Loot>();
+				loot.Init(World.lootContainer, this, item.path); //, item.lootPrefab);
 			}
+
+			//item.num = 0;
+			//inv.items.Remove(item);
 		}
+
+		// spawn collected items in inventory transform
+		/*if (inventory) {
+			foreach (Transform child in inventory.transform) 	{
+  				//print (">>> " + child);
+				Loot loot = child.GetComponent<Loot>();
+				loot.Init(World.lootContainer, this, loot.lootPrefab);
+			}
+		}	*/
+
+
+		/*if (this is Player) {
+			Player player = (Player)this;
+			player.hud.UpdateInventory();
+		}*/
 	}
 
 
@@ -427,20 +452,36 @@ public class Ent : MonoBehaviour {
 
 
 	public virtual void AddLootToInventory (Loot loot) {
+		//loot.transform.SetParent(inventory);
+		//loot.transform.localPosition = Vector3.zero;
+
+		bool stacked = false;
+
 		// if we already own this item type, increase item number
 		for (int n = 0; n < inv.items.Count; n++) {
 			InvItem item = inv.items[n];
-			if (item == null) { continue; }
-			if (item.loot.name == loot.name) {
+			//if (item == null) { continue; }
+			if (item.path == loot.path) {
 				item.num += 1;
-				return;
+				stacked = true;
 			}
 		}
 
 		// otherwise, add item to inventory
-		inv.items.Add(new InvItem());
-		inv.items[inv.items.Count -1].loot = loot.lootPrefab;
-		inv.items[inv.items.Count -1].num = 1;
+		if (!stacked) {
+			inv.items.Add(new InvItem());
+			inv.items[inv.items.Count -1].path = loot.path; 
+			inv.items[inv.items.Count -1].num = 1;
+			inv.items[inv.items.Count -1].sprite = loot.sprite.GetComponent<SpriteRenderer>().sprite;
+		}
+
+		// update hud
+		if (this is Player) {
+			Player player = (Player)this;
+			player.hud.UpdateInventory();
+		}
+
+		//Destroy(loot.gameObject);
 	}
 
 

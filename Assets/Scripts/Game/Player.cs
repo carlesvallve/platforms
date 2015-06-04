@@ -51,4 +51,11 @@ public class Player : Ent {
 			}
 		}
 	}
+
+
+	public override IEnumerator Die () {
+		SpawnLoot();
+		StartCoroutine(base.Die());
+		yield break;
+	}
 }
