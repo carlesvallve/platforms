@@ -28,7 +28,7 @@ public class Monster : Ent {
 
 	protected override void SetInput () {
 		if (!player) { return; }
-		
+
 		float playerDist = Vector2.Distance(transform.position, player.transform.position);
 		if (playerDist < atr.vision && aware) {
 			if (willMoveTowards) {
@@ -69,14 +69,26 @@ public class Monster : Ent {
 			float playerDist = Vector2.Distance(transform.position, player.transform.position);
 
 			if (playerDist <= atr.vision && !aware) {
-				StartCoroutine(SetAware(true));
+				yield return StartCoroutine(SetAware(true));
+				
 			} else if (playerDist > atr.vision && aware) {
-				StartCoroutine(SetAware(false));
+				yield return StartCoroutine(SetAware(false));
+
 			}
+
+
 
 			if (playerDist < atr.vision && aware) {
 				float r = Random.Range(1, 100);
 				willMoveTowards = r <= 50;
+			} else {
+				float r = Random.Range(1, 25);
+				willMoveTowards = r <= 50;
+				if (willMoveTowards) {
+					input.x = Mathf.Sign(Random.Range(-1, 1));
+				} else {
+					input.x = 0;
+				}
 			}
 
 			if (playerDist < 2 && aware) { //atr.vision) { //2) {
@@ -95,6 +107,9 @@ public class Monster : Ent {
 	private IEnumerator SetAware (bool value) {
 		aware = value;
 
+		input.x = 0;
+		willMoveTowards = false;
+
 		if (aware) {
 			float dir = Mathf.Sign(player.transform.position.x - transform.position.x);
 			sprite.localScale = new Vector2(dir * Mathf.Abs(sprite.localScale.x), sprite.localScale.y);
@@ -103,6 +118,8 @@ public class Monster : Ent {
 		StartCoroutine(UpdateInfo(value ? "!" : "?"));
 		yield return new WaitForSeconds(0.5f);
 		StartCoroutine(UpdateInfo(null));
+
+		yield return new WaitForSeconds(ai.atkSpeed);
 	}
 
 
