@@ -8,11 +8,10 @@ public class Ai {
 }
 
 
-
 public class Monster : Ent {
 
 	public Ai ai = new Ai();
-	
+
 	protected Player player;
 	
 

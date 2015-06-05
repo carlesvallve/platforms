@@ -3,16 +3,13 @@ using System.Collections;
 
 public class Loot : Ent {
 
-	//public GameObject lootPrefab;
+	public string path;
+	public int value = 1;
 	protected bool spawning = false;
 
-	public string path;
 
-
-	public void Init (Transform container, Ent source, string path) { //, GameObject lootPrefab) {
-		//this.lootPrefab = lootPrefab;
+	public void Init (Transform container, Ent source, string path) {
 		this.path = path;
-		//this.name = lootPrefab.name;
 
 		transform.SetParent(container);
 		transform.position = source.transform.position + Vector3.up * source.sprite.localScale.y * 0.5f;
@@ -51,11 +48,6 @@ public class Loot : Ent {
 			ApplyGravity();
 			controller.Move (velocity * Time.deltaTime, jumpingDown);
 
-			/*if (Time.time >= startTime + duration / 2) {
-				spawning = false;
-				//gameObject.GetComponent<BoxCollider2D>().enabled = true;
-			}*/
-
 			yield return null;
 		}
 
@@ -87,8 +79,8 @@ public class Loot : Ent {
 
 		// add loot to collector's inventory
 		collector.AddLootToInventory(this);
-		//yield return null;
 
+		// destroy loot
 		Destroy(gameObject);
 	}
 }

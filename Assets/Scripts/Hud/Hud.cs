@@ -8,6 +8,8 @@ public class Hud : MonoBehaviour {
 	Player player;
 	Text coins;
 
+	private int coinsMax = 0;
+
 	//public GameObject weaponPrefab;
 	private List<Transform> weapons = new List<Transform>();
 	private int weaponMax = 0;
@@ -33,7 +35,10 @@ public class Hud : MonoBehaviour {
 	
 
 	public void UpdateInventory () {
-		// hide all weapons
+		// reset coins
+		coinsMax = 0;
+
+		// reset weapons
 		int i;
 		for (i = 0; i < weapons.Count; i ++) {
 			weapons[i].gameObject.SetActive(false);
@@ -44,11 +49,14 @@ public class Hud : MonoBehaviour {
 		for (int n = 0; n < player.inv.items.Count; n++) {
 			InvItem item = player.inv.items[n];
 
-			if (item.path == "Treasure/Coin") {
-				// display coins
-				coins.text = item.num.ToString();
-			} else {
-				// display weapons
+			// get folder / item type
+			string folder = item.path.Split('/')[0];
+			
+			if (folder == "Treasure") {
+				// update coins
+				coinsMax += item.num;
+			} else if (folder == "Weapons") {
+				// update weapons
 				weapons[i].Find("Image").GetComponent<Image>().sprite = item.sprite;
 				weapons[i].Find("Text").GetComponent<Text>().text = item.num.ToString();
 				weapons[i].gameObject.SetActive(true);
@@ -56,6 +64,8 @@ public class Hud : MonoBehaviour {
 				i++;
 			}
 		}
+
+		coins.text = coinsMax.ToString();
 
 		weaponMax = i - 1;
 		selector.gameObject.SetActive(weaponMax > 0);

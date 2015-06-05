@@ -33,6 +33,7 @@ public class Atr {
 public class InvItem {
 	public string path;
 	public int num;
+	public int value;
 	[HideInInspector]
 	public Sprite sprite;
 	//public Loot loot; // will be assigned dynamically
@@ -414,8 +415,16 @@ public class Ent : MonoBehaviour {
 		// spawn generic items in inventory
 		for (int n = 0; n < inv.items.Count; n++) {
 			InvItem item = inv.items[n];
-			for (int i = 0; i < item.num; i++) {
-				string path = "Prefabs/Loot/" + item.path;
+
+			int max = item.num;
+
+			string folder = item.path.Split('/')[0];
+			if (folder == "Treasure") {
+				max = (int)(item.num / (item.value == 0 ? 1 : item.value));
+			}
+
+			string path = "Prefabs/Loot/" + item.path;
+			for (int i = 0; i < max; i++) {
 				Loot loot = ((GameObject)Instantiate(Resources.Load(path))).GetComponent<Loot>();
 				loot.Init(World.lootContainer, this, item.path);
 			}
@@ -444,7 +453,9 @@ public class Ent : MonoBehaviour {
 			InvItem item = inv.items[n];
 			//if (item == null) { continue; }
 			if (item.path == loot.path) {
-				item.num += 1;
+				int num = (loot is Coin) ? loot.value : 1;
+				item.num += num;
+				item.value = loot.value;
 				stacked = true;
 			}
 		}
@@ -453,7 +464,8 @@ public class Ent : MonoBehaviour {
 		if (!stacked) {
 			inv.items.Add(new InvItem());
 			inv.items[inv.items.Count -1].path = loot.path; 
-			inv.items[inv.items.Count -1].num = 1;
+			inv.items[inv.items.Count -1].num = (loot is Coin) ? loot.value : 1;
+			inv.items[inv.items.Count -1].value = loot.value;
 			inv.items[inv.items.Count -1].sprite = loot.sprite.GetComponent<SpriteRenderer>().sprite;
 		}
 
@@ -642,12 +654,13 @@ public class Ent : MonoBehaviour {
 
 		if (isCreature) {
 			// decide if alive being is gonna hit
+			//if (target.state == States.HURT) { return false; }
 			if (velocity.y > -2) { return false; }
 			if (transform.position.y < target.transform.position.y + transform.localScale.y * 0.75f) { 
 				return false;
 			}
 		} else {
-			// decide if item/block is gonna hit
+			// decide if item/block is gonna hit (throwing objects)
 			if (target.state == States.HURT) { return false; }
 			if (velocity.magnitude < 4f) { return false; }
 			if (velocity.y > 0) { return false; }
@@ -702,7 +715,6 @@ public class Ent : MonoBehaviour {
 			int dmg = Random.Range(spike.atr.dmg[0], spike.atr.dmg[1]);
 			Vector2 d = new Vector2(Mathf.Sign(transform.position.x - spike.transform.position.x), 3);
 			StartCoroutine(Hurt(dmg, d));
-			print ("Spike damage " + dmg);
 			break;
 		}
 	}

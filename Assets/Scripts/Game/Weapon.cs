@@ -8,14 +8,5 @@ public class Weapon : Loot {
 		yield return StartCoroutine(base.Pickup(collector));
 
 		Audio.play("Audio/sfx/coin", 0.2f, Random.Range(3f, 5.0f)); // chimes
-		
-		
-		/*if (collector is Player) {
-			Player player = (Player)collector;
-			player.hud.UpdateCoins(player.inv.coins);
-		}*/
-		//yield return null;
-		//yield return new WaitForSeconds(2f);
-		
 	}
 }
