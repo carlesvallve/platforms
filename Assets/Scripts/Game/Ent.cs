@@ -416,8 +416,9 @@ public class Ent : MonoBehaviour {
 			InvItem item = inv.items[n];
 			for (int i = 0; i < item.num; i++) {
 				string path = "Prefabs/Loot/" + item.path;
+				print (path);
 				Loot loot = ((GameObject)Instantiate(Resources.Load(path))).GetComponent<Loot>();
-				loot.Init(World.lootContainer, this, item.path); //, item.lootPrefab);
+				loot.Init(World.lootContainer, this, item.path);
 			}
 		}
 	}
