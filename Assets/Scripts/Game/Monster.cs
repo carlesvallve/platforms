@@ -15,6 +15,7 @@ public class Monster : Ent {
 	protected Player player;
 
 	protected bool aware = false;
+	protected bool willMoveTowards = false;
 
 
 	public override void Awake () {
@@ -22,6 +23,20 @@ public class Monster : Ent {
 		base.Awake();
 
 		StartCoroutine(StartThinking());
+	}
+
+
+	protected override void SetInput () {
+		if (!player) { return; }
+		
+		float playerDist = Vector2.Distance(transform.position, player.transform.position);
+		if (playerDist < atr.vision && aware) {
+			if (willMoveTowards) {
+				input.x = Mathf.Sign(player.transform.position.x - transform.position.x);
+			} else {
+				input.x = 0;
+			}
+		}
 	}
 
 
@@ -50,9 +65,6 @@ public class Monster : Ent {
 
 		yield return new WaitForSeconds(ai.atkSpeed + Random.Range(0, ai.atkSpeed));
 
-
-
-
 		if (CanThink()) {
 			float playerDist = Vector2.Distance(transform.position, player.transform.position);
 
@@ -62,8 +74,12 @@ public class Monster : Ent {
 				StartCoroutine(SetAware(false));
 			}
 
+			if (playerDist < atr.vision && aware) {
+				float r = Random.Range(1, 100);
+				willMoveTowards = r <= 50;
+			}
 
-			if (playerDist < atr.vision) { //2) {
+			if (playerDist < 2 && aware) { //atr.vision) { //2) {
 				// turn versus player and attack
 				float dir = Mathf.Sign(player.transform.position.x - transform.position.x);
 				sprite.localScale = new Vector2(dir * Mathf.Abs(sprite.localScale.x), sprite.localScale.y); 
