@@ -23,10 +23,12 @@ public class Stats {
 [System.Serializable]
 public class Atr {
 	public int hp = 8;
+	public int armor = 0;
+	public float regeneration = 0f;
 	public float speed = 5f;
-	public float atkSpeed = 1f;
-	public int[] dmg = { 1, 3 };
 	public float jump = 1f;
+	public int[] dmg = { 1, 3 };
+	public float vision = 5f;
 }
 
 
@@ -37,7 +39,6 @@ public class InvItem {
 	public int value;
 	[HideInInspector]
 	public Sprite sprite;
-	//public Loot loot; // will be assigned dynamically
 }
 
 
@@ -91,7 +92,7 @@ public class Ent : MonoBehaviour {
 
 	protected Transform hpBar;
 	protected Transform hpPercent;
-	protected float hpMax;
+	protected int hpMax;
 
 	protected TextMesh info;
 
@@ -110,7 +111,7 @@ public class Ent : MonoBehaviour {
 
 		hpBar = transform.Find("Bar");
 		hpPercent = transform.Find("Bar/Percent");
-		hpMax = (float)atr.hp;
+		hpMax = atr.hp;
 		StartCoroutine(UpdateHpBar());
 
 		Transform obj = transform.Find("Info");
@@ -124,6 +125,8 @@ public class Ent : MonoBehaviour {
 
 		state = States.IDLE;
 		stats = new Stats();
+
+		StartCoroutine(Regenerate());
 	}
 
 
@@ -196,6 +199,21 @@ public class Ent : MonoBehaviour {
 		if (velocity.y < -4f && !jumpingDown) {
 			jumpingFromLadder = false;
 		}
+	}
+
+
+	protected IEnumerator Regenerate () {
+		if (atr.regeneration == 0) { yield break; }
+
+		yield return new WaitForSeconds(atr.regeneration);
+
+		if (state != States.HURT) {
+			atr.hp += 1;
+			if (atr.hp > hpMax) { atr.hp = hpMax; }
+			StartCoroutine(UpdateHpBar());
+		}
+		
+		StartCoroutine(Regenerate());
 	}
 
 
@@ -612,13 +630,17 @@ public class Ent : MonoBehaviour {
 		
 		float startTime = Time.time;
 		while (Time.time <= startTime + duration) {
+			
 			float targetVelocityX = (pos.x - transform.position.x) * 10f;
 			velocity.x = Mathf.Lerp(targetVelocityX, 0, Time.deltaTime * 5f);
+
+			if (jumping) { yield break; }
 			controller.Move (velocity * Time.deltaTime, jumpingDown);
 
 			yield return null;
 		}
 
+		if (jumping) { yield break; }
 		controller.Move (velocity * Time.deltaTime, jumpingDown);
 	}
 

@@ -13,13 +13,15 @@ public class Monster : Ent {
 	public Ai ai = new Ai();
 
 	protected Player player;
-	
+
+	protected bool aware = false;
+
 
 	public override void Awake () {
 		player = GameObject.Find("Player").GetComponent<Player>();
 		base.Awake();
 
-		StartCoroutine(Think());
+		StartCoroutine(StartThinking());
 	}
 
 
@@ -39,13 +41,29 @@ public class Monster : Ent {
 
 	// TODO: Refactor this in several methods for each possible though/action
 
+	private IEnumerator StartThinking () {
+		yield return new WaitForSeconds(Random.Range(0, ai.atkSpeed));
+		StartCoroutine(Think());
+	}
+
 	private IEnumerator Think () {
 
-		yield return new WaitForSeconds(ai.atkSpeed);
+		yield return new WaitForSeconds(ai.atkSpeed + Random.Range(0, ai.atkSpeed));
+
+
+
 
 		if (CanThink()) {
 			float playerDist = Vector2.Distance(transform.position, player.transform.position);
-			if (playerDist < 2) {
+
+			if (playerDist <= atr.vision && !aware) {
+				StartCoroutine(SetAware(true));
+			} else if (playerDist > atr.vision && aware) {
+				StartCoroutine(SetAware(false));
+			}
+
+
+			if (playerDist < atr.vision) { //2) {
 				// turn versus player and attack
 				float dir = Mathf.Sign(player.transform.position.x - transform.position.x);
 				sprite.localScale = new Vector2(dir * Mathf.Abs(sprite.localScale.x), sprite.localScale.y); 
@@ -55,6 +73,20 @@ public class Monster : Ent {
 		}
 		
 		StartCoroutine(Think());
+	}
+
+
+	private IEnumerator SetAware (bool value) {
+		aware = value;
+
+		if (aware) {
+			float dir = Mathf.Sign(player.transform.position.x - transform.position.x);
+			sprite.localScale = new Vector2(dir * Mathf.Abs(sprite.localScale.x), sprite.localScale.y);
+		}
+
+		StartCoroutine(UpdateInfo(value ? "!" : "?"));
+		yield return new WaitForSeconds(0.5f);
+		StartCoroutine(UpdateInfo(null));
 	}
 
 
