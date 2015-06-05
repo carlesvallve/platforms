@@ -416,7 +416,6 @@ public class Ent : MonoBehaviour {
 			InvItem item = inv.items[n];
 			for (int i = 0; i < item.num; i++) {
 				string path = "Prefabs/Loot/" + item.path;
-				print (path);
 				Loot loot = ((GameObject)Instantiate(Resources.Load(path))).GetComponent<Loot>();
 				loot.Init(World.lootContainer, this, item.path);
 			}
@@ -488,11 +487,9 @@ public class Ent : MonoBehaviour {
 
 	protected IEnumerator Attack () {
 		if (state == States.ATTACK || state == States.HURT) { yield break; }
-		//if (IsOnLadder() && !controller.landed) { yield break; }
 		if (hasAttackedInAir) { yield break; }
 
 		state = States.ATTACK;
-		//Audio.play("Audio/sfx/swishA", 0.025f, Random.Range(0.5f, 0.5f));
 		Audio.play("Audio/sfx/woosh", 0.15f, Random.Range(1.0f, 1.5f));
 		
 		// attack parameters

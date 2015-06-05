@@ -50,6 +50,10 @@ public class Player : Ent {
 				SetActionCHold();
 			}
 		}
+
+		if (Input.GetKeyDown(KeyCode.LeftShift)) {
+			hud.changeWeapon();
+		}
 	}
 
 
