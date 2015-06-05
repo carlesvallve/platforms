@@ -695,6 +695,15 @@ public class Ent : MonoBehaviour {
 			Trap trap = collider.gameObject.GetComponent<Trap>();
 			trap.Activate();
 			break;
+
+			case "Spike":
+			if (state == States.HURT) { break; }
+			Ent spike = collider.gameObject.GetComponent<Ent>();
+			int dmg = Random.Range(spike.atr.dmg[0], spike.atr.dmg[1]);
+			Vector2 d = new Vector2(Mathf.Sign(transform.position.x - spike.transform.position.x), 3);
+			StartCoroutine(Hurt(dmg, d));
+			print ("Spike damage " + dmg);
+			break;
 		}
 	}
 

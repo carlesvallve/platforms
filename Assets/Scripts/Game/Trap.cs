@@ -1,21 +1,30 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
+public enum TrapTypes {
+	BLOCK = 0,
+	SPIKE = 1
+}
+
+
 public class Trap : MonoBehaviour {
 
-	public float delayActivate = 0.25f;
+	public TrapTypes type = TrapTypes.BLOCK;
+
+	public float delayActivate = 0.3f;
 	public float delayReset = 2f;
 
 	public bool active = false;
 
-	private Ent block;
+	private Ent trap;
 	private TextMesh info;
 
 	private Vector3 originalPos;
 
 	void Awake () {
-		block = transform.Find("Block").GetComponent<Ent>();
-		originalPos = block.transform.position;
+		trap = transform.Find("Trap").GetComponent<Ent>();
+		originalPos = trap.transform.position;
 
 		info = transform.Find("Info").GetComponent<TextMesh>();
 		StartCoroutine(UpdateInfo(null));
@@ -46,28 +55,57 @@ public class Trap : MonoBehaviour {
 		yield return new WaitForSeconds(delayActivate);
 
 		StartCoroutine(UpdateInfo(null));
-		block.affectedByGravity = true;
-
+		
+		if (type == TrapTypes.BLOCK) {
+			StartCoroutine(PlayTrapBlock());
+		} else if (type == TrapTypes.SPIKE) {
+			StartCoroutine(PlayTrapSpike());
+		}
 
 		yield return new WaitForSeconds(delayReset);
 		StartCoroutine(RewindTrap());
 	}
 
 
-	public IEnumerator RewindTrap () {
-		block.affectedByGravity = false;
+	public IEnumerator PlayTrapBlock () {
+		trap.affectedByGravity = true;
+		yield break;
+	}
 
-		Vector3 startPos = block.transform.position;
+
+	public IEnumerator PlayTrapSpike () {
+		trap.affectedByGravity = false;
+
+		Vector3 startPos = trap.transform.position;
+		Vector3 endPos = startPos + Vector3.up * 1f;
 
 		float i = 0;
-		float rate = 1f / 2f;
+		float rate = 1f / 0.1f;
 		while (i < 1f) {
 			i += Time.deltaTime * rate;
-			block.transform.position = Vector3.Lerp(startPos, originalPos, i);
+			trap.transform.position = Vector3.Lerp(startPos, endPos, i);
 			yield return null;
 		}
 
-		block.transform.position = originalPos;
+		trap.transform.position = endPos;
+	}
+
+
+	public IEnumerator RewindTrap () {
+		trap.affectedByGravity = false;
+
+		Vector3 startPos = trap.transform.position;
+		Vector3 endPos = originalPos;
+
+		float i = 0;
+		float rate = 1f / (type == TrapTypes.BLOCK ? 2f : 0.2f);
+		while (i < 1f) {
+			i += Time.deltaTime * rate;
+			trap.transform.position = Vector3.Lerp(startPos, endPos, i);
+			yield return null;
+		}
+
+		trap.transform.position = endPos;
 
 		active = false;
 	}
