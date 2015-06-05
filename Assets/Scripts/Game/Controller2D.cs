@@ -133,6 +133,8 @@ public class Controller2D : MonoBehaviour {
 					ent.TriggerPushable(hit.transform.gameObject); 
 				}
 
+				//ent.TriggerPushable(hit.transform.gameObject); 
+
 
 				float slopeAngle = Vector2.Angle(hit.normal, Vector2.up);
 

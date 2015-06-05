@@ -11,16 +11,14 @@ public enum TrapTypes {
 public class Trap : MonoBehaviour {
 
 	public TrapTypes type = TrapTypes.BLOCK;
-
 	public float delayActivate = 0.3f;
 	public float delayReset = 2f;
-
 	public bool active = false;
 
 	private Ent trap;
 	private TextMesh info;
-
 	private Vector3 originalPos;
+
 
 	void Awake () {
 		trap = transform.Find("Trap").GetComponent<Ent>();

@@ -65,17 +65,18 @@ public class Ent : MonoBehaviour {
 	public GameObject bloodPrefab;
 	
 	protected Vector2 input;
+	public Vector2 velocity;
 	protected float speed = 1.0f;
 	protected float gravity;
 	protected float jumpVelocity;
-	protected Vector2 velocity;
 	protected float jumpHeight = 2.5f;
-	protected float timeToJumpApex = 0.25f;
+	protected float timeToJumpApex = 0.3125f;
 	//public float accelerationTimeAirborne = 0;
 	//public float accelerationTimeGrounded = 0;
 	//protected float velocityXSmoothing;
 	//protected float velocityYSmoothing;
 
+	protected bool running = false;
 	protected bool jumping = false;
 	protected bool jumpingDown = false;
 	protected bool jumpingFromLadder = false;
@@ -94,12 +95,11 @@ public class Ent : MonoBehaviour {
 
 	protected TextMesh info;
 
-	
-
 
 	// ===========================================================
 	// Init
 	// ===========================================================
+
 
 	public virtual void Awake () {
 		controller = GetComponent<Controller2D>();
@@ -127,7 +127,7 @@ public class Ent : MonoBehaviour {
 	}
 
 
-	public virtual void LateUpdate () {
+	public virtual void Update () {
 		Reset();
 		SetInput();
 		SetSpeed();
@@ -140,7 +140,7 @@ public class Ent : MonoBehaviour {
 	// Actions
 	// ===========================================================
 	
-	protected void SetActionB (bool isDown) {
+	protected void SetAttack (bool isDown) {
 		if (pickedUpObject) {
 			ThrowItem(pickedUpObject);
 			return;
@@ -155,11 +155,11 @@ public class Ent : MonoBehaviour {
 	}
 
 
-	protected void SetActionC () {
+	protected void SetAction () {
 		StartCoroutine(PickItem(interactiveObject));
 	}
 
-	protected void SetActionCHold () {
+	protected void SetActionHold () {
 		StartCoroutine(OpenItem(interactiveObject));
 	}
 
@@ -207,7 +207,8 @@ public class Ent : MonoBehaviour {
 
 
 	protected virtual void SetSpeed () {
-		speed = atr.speed;
+		//print (running);
+		speed = running ? atr.speed * 3 : atr.speed;
 	}
 
 
@@ -410,6 +411,7 @@ public class Ent : MonoBehaviour {
 		if (state != States.IDLE) { return; }
 		Ent ent = obj.GetComponent<Ent>();
 		ent.input.x = input.x * 0.25f;
+		ent.input.y = input.y * 0.25f;
 	}
 
 
@@ -500,7 +502,7 @@ public class Ent : MonoBehaviour {
 
 		state = States.IDLE;
 	}
-	
+
 
 	protected IEnumerator JumpAttack (Ent target) {
 		// jump

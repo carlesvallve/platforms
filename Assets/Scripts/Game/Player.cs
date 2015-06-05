@@ -27,7 +27,9 @@ public class Player : Ent {
 			SetJump(inputManager.down, inputManager.up ? 1.25f : 1f);
 		}
 
-		if (inputManager.B) { SetActionB(inputManager.down); }
+		if (inputManager.B) { 
+			SetAttack(inputManager.down); 
+		}
 
 		if (Input.GetButtonUp("C")) { 
 			hd_C = 0;
@@ -37,17 +39,17 @@ public class Player : Ent {
 				if (item.opening) {
 					item.CancelOpening();
 				} else {
-					SetActionC();
+					SetAction();
 				}
 			} else {
-				SetActionC();
+				SetAction();
 			}
 		}
 
 		if (Input.GetButton("C")) { 
 			hd_C += 1;
 			if (hd_C == 10) {
-				SetActionCHold();
+				SetActionHold();
 			}
 		}
 

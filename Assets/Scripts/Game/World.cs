@@ -18,6 +18,12 @@ using System.Collections;
 	- bird
 	- fish
 
+
+- Improvements:
+
+	- Moving platforms, including trap blocks
+	- Double tap left/right to run
+
 */
 
 public class World : MonoBehaviour {
