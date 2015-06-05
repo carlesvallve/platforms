@@ -6,7 +6,8 @@ using System.Collections.Generic;
 public enum States {
 	IDLE = 0,
 	ATTACK = 2,
-	HURT = 3
+	ROLL = 3,
+	HURT = 4
 }
 
 [System.Serializable]
@@ -139,13 +140,18 @@ public class Ent : MonoBehaviour {
 	// Actions
 	// ===========================================================
 	
-	protected void SetActionB () {
+	protected void SetActionB (bool isDown) {
 		if (pickedUpObject) {
 			ThrowItem(pickedUpObject);
 			return;
 		}
 
-		StartCoroutine(Attack());
+		if (isDown) {
+			StartCoroutine (Roll());
+		} else {
+			StartCoroutine(Attack());
+		}
+		
 	}
 
 
@@ -480,6 +486,21 @@ public class Ent : MonoBehaviour {
 	// ===========================================================
 	// Combat
 	// ===========================================================
+
+	protected IEnumerator Roll () {
+		if (state == States.ROLL || state == States.ATTACK || state == States.HURT) { yield break; }
+
+		state = States.ROLL;
+		Audio.play("Audio/sfx/woosh", 0.25f, Random.Range(0.5f, 0.5f));
+
+		// push attacker forward
+		float directionX = Mathf.Sign(sprite.localScale.x);
+		Vector2 d = directionX * Vector2.right * 2.5f; // + Vector2.up * (IsOnWater() ? 1f : 3f);
+		yield return StartCoroutine(PushBackwards(d, 0.4f));
+
+		state = States.IDLE;
+	}
+	
 
 	protected IEnumerator JumpAttack (Ent target) {
 		// jump

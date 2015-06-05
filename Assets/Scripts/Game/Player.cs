@@ -27,7 +27,7 @@ public class Player : Ent {
 			SetJump(inputManager.down, inputManager.up ? 1.25f : 1f);
 		}
 
-		if (inputManager.B) { SetActionB(); }
+		if (inputManager.B) { SetActionB(inputManager.down); }
 
 		if (Input.GetButtonUp("C")) { 
 			hd_C = 0;
