@@ -230,7 +230,7 @@ public class Ent : MonoBehaviour {
 
 
 	protected void SetJump (bool isJumpingDown, float intensity = 1) {
-		if (!controller.landed) { return; }
+		if (!controller.grounded) { return; }
 		if (jumping && !IsOnWater()) { return; }
 
 		if (IsOnWater()) { intensity *= 0.25f; }
@@ -321,7 +321,7 @@ public class Ent : MonoBehaviour {
 		}
 
 		if (onLadder) { previouslyOnLadder = true; }
-		if (controller.landed) { previouslyOnLadder = false; }
+		if (controller.grounded) { previouslyOnLadder = false; }
 
 		return onLadder;
 	}
@@ -339,7 +339,7 @@ public class Ent : MonoBehaviour {
 
 
 	private void SnapToLadder () {
-		if (!controller.landed && !jumpingFromLadder) {
+		if (!controller.grounded && !jumpingFromLadder) {
 			Vector2 pos = new Vector2(ladder.transform.position.x, transform.position.y);
 			transform.position = Vector2.Lerp(transform.position, pos, Time.deltaTime * 20f);
 		}

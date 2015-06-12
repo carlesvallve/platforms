@@ -5,7 +5,7 @@ using System.Collections;
 public class Controller2D : MonoBehaviour {
 
 	private Ent ent;
-	public bool landed = false;
+	public bool grounded = false;
 
 	public LayerMask collisionMask;
 	public LayerMask attackCollisionMask;
@@ -70,7 +70,7 @@ public class Controller2D : MonoBehaviour {
 
 		// vertical
 		float directionY = Mathf.Sign (velocity.y);
-		if (directionY == -1 && !collisions.below && !landed) { 
+		if (directionY == -1 && !collisions.below && !grounded) { 
 
 			rayLength = Mathf.Abs (velocity.y) + skinWidth;
 			for (int i = 0; i < verticalRayCount; i ++) {
@@ -89,7 +89,7 @@ public class Controller2D : MonoBehaviour {
 
 		// horizontal
 		float directionX = Mathf.Sign (velocity.x);
-		if (directionX != 0) { // } && (directionY == -1 && !collisions.below && !landed)) {
+		if (directionX != 0) { // } && (directionY == -1 && !collisions.below && !grounded)) {
 
 			rayLength = Mathf.Abs (velocity.x) + skinWidth;
 			for (int i = 0; i < horizontalRayCount; i ++) {
@@ -216,8 +216,8 @@ public class Controller2D : MonoBehaviour {
 
 
 		// trigger landing on ent
-		if (triggerEvents && !landed && collisions.below && directionY == -1) { ent.TriggerLanding(); } 
-		landed = collisions.below;
+		if (triggerEvents && !grounded && collisions.below && directionY == -1) { ent.TriggerLanding(); } 
+		grounded = collisions.below;
 
 	}
 
