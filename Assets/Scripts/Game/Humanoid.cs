@@ -140,7 +140,7 @@ public class Humanoid : Ent {
 			inv.items[inv.items.Count -1].path = loot.path; 
 			inv.items[inv.items.Count -1].num = (loot is Coin) ? loot.value : 1;
 			inv.items[inv.items.Count -1].value = loot.value;
-			inv.items[inv.items.Count -1].sprite = loot.GetSpriteImage(); //sprite.GetComponent<SpriteRenderer>().sprite;
+			inv.items[inv.items.Count -1].sprite = loot.GetSpriteImage();
 		}
 
 		// update hud
