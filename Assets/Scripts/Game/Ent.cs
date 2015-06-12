@@ -230,6 +230,7 @@ public class Ent : MonoBehaviour {
 
 
 	protected void SetJump (bool isJumpingDown, float intensity = 1) {
+		if (!controller.landed) { return; }
 		if (jumping && !IsOnWater()) { return; }
 
 		if (IsOnWater()) { intensity *= 0.25f; }
