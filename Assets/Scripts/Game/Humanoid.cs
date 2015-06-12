@@ -111,7 +111,7 @@ public class Humanoid : Ent {
 		if (state != States.IDLE) { return; }
 
 		Ent ent = obj.GetComponent<Ent>();
-		ent.SetPush(input, 0.25f);
+		ent.SetPush(input, 1f);
 	}
 
 
@@ -301,18 +301,7 @@ public class Humanoid : Ent {
 			StartCoroutine(collider.gameObject.GetComponent<Loot>().Pickup(this));
 			break;
 
-			case "Trap":
-			Trap trap = collider.gameObject.GetComponent<Trap>();
-			trap.Activate();
-			break;
-
-			case "Spike":
-			if (state == States.HURT) { break; }
-			Ent spike = collider.gameObject.GetComponent<Ent>();
-			int dmg = Random.Range(spike.atr.dmg[0], spike.atr.dmg[1]);
-			Vector2 d = new Vector2(Mathf.Sign(transform.position.x - spike.transform.position.x), 3);
-			StartCoroutine(Hurt(dmg, d));
-			break;
+			
 		}
 	}
 

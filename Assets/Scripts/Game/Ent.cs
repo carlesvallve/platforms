@@ -30,6 +30,7 @@ public class Atr {
 	public float jump = 1f;
 	public int[] dmg = { 1, 3 };
 	public float vision = 5f;
+	public float mass = 1f;
 }
 
 
@@ -118,7 +119,7 @@ public class Ent : MonoBehaviour {
 			StartCoroutine(UpdateInfo(null));
 		}
 
-		gravity = -((2 * jumpHeight) / Mathf.Pow (timeToJumpApex, 2)); // -80
+		gravity = -((2 * jumpHeight) / Mathf.Pow (timeToJumpApex, 2)) * atr.mass; // -80
 		jumpVelocity = Mathf.Abs(gravity) * timeToJumpApex; // 20
 
 		state = States.IDLE;
@@ -219,7 +220,9 @@ public class Ent : MonoBehaviour {
 			
 		if (velocity.x != 0) { 
 			if (state != States.ATTACK && state != States.HURT) {
-				sprite.localScale = new Vector2(Mathf.Sign(velocity.x) * Mathf.Abs(sprite.localScale.x), sprite.localScale.y); 
+				if (this is Humanoid) {
+					sprite.localScale = new Vector2(Mathf.Sign(velocity.x) * Mathf.Abs(sprite.localScale.x), sprite.localScale.y); 
+				}
 			}
 		}
 
@@ -266,13 +269,13 @@ public class Ent : MonoBehaviour {
 
 	public void SetThrow (float dir) {
 		input = new Vector2(dir * 1.5f, 0);
-		velocity.y = 10f;	
+		velocity.y = 20f;
 	}
 
 
 	public void SetPush (Vector2 pusherInput, float factor) {
-		input.x = pusherInput.x * factor;
-		input.y = pusherInput.y * factor;
+		input.x = pusherInput.x * factor / atr.mass;
+		//input.y = pusherInput.y * factor / atr.mass;
 	}
 
 
@@ -317,10 +320,6 @@ public class Ent : MonoBehaviour {
 			SetJump(false, atr.jump * 0.75f);
 			controller.grounded = false;
 		}
-
-		//yield return null;
-
-		
 
 		yield break;
 	}
@@ -482,6 +481,7 @@ public class Ent : MonoBehaviour {
 
 
 	public virtual IEnumerator PushBackwards (Vector2 vec, float duration) {
+		vec /= atr.mass;
 		velocity.y = vec.y;
 		Vector2 pos = new Vector2(transform.position.x + vec.x, transform.position.y);
 		
@@ -546,8 +546,12 @@ public class Ent : MonoBehaviour {
 
 		// decide if item/block is gonna hit (throwing objects)
 		if (target.state == States.HURT) { return false; }
-		if (velocity.magnitude < 3f) { return false; }
-		if (velocity.y > 0) { return false; }
+		//if (velocity.magnitude < 4f) { return false; }
+		if (velocity.y > -4 && Mathf.Abs(velocity.x) < 4) { return false; }
+
+		if (transform.position.y < target.transform.position.y + transform.localScale.y * 0.5f) { 
+			return false;
+		}
 		
 		// execute jump attack
 		StartCoroutine(JumpAttack(target));
@@ -571,11 +575,24 @@ public class Ent : MonoBehaviour {
 	// ===========================================================
 
 	protected virtual void OnTriggerStay2D (Collider2D collider) {
-		if (state == States.ATTACK) { return; }
+		//if (state == States.ATTACK) { return; }
 
 		switch (collider.gameObject.tag) {
 			case "Water":
 			if (!IsOnWater()) { StartCoroutine(SetWaterIn()); }
+			break;
+
+			case "Trap":
+			Trap trap = collider.gameObject.GetComponent<Trap>();
+			trap.Activate();
+			break;
+
+			case "Spike":
+			if (state == States.HURT) { break; }
+			Ent spike = collider.gameObject.GetComponent<Ent>();
+			int dmg = Random.Range(spike.atr.dmg[0], spike.atr.dmg[1]);
+			Vector2 d = new Vector2(Mathf.Sign(transform.position.x - spike.transform.position.x), 3);
+			StartCoroutine(Hurt(dmg, d));
 			break;
 		}
 	}

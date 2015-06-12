@@ -53,7 +53,7 @@ public class Door : Ent {
 		if (!goalDoor) { return; }
 
 		Audio.play("Audio/sfx/chest-open", 0.4f, Random.Range(0.9f, 1.1f));
-		collector.transform.position = goalDoor.transform.position;
+		collector.transform.position = goalDoor.transform.position + Vector3.up * 0.015f;
 	}
 
 }
