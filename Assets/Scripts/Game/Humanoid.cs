@@ -33,18 +33,32 @@ public class Humanoid : Ent {
 			return;
 		}
 
+		// if we are opening a door, cancel the action
+		Door door = interactiveObject && (interactiveObject is Door) ? (Door)interactiveObject : null;
+		if (door && door.opening) {
+			door.CancelOpening();
+			return;
+		}
+
 		// otherwise, pick the interactive object
 		StartCoroutine(PickItem(interactiveObject));
 	}
 
 
 	protected void SetActionHold () {
+		// open chests
 		Chest chest = interactiveObject && (interactiveObject is Chest) ? (Chest)interactiveObject : null;
 		if (chest) {
-			//StartCoroutine(OpenChest(chest));
 			StartCoroutine(chest.Opening(this));
+			return;
 		}
-		
+
+		// open doors
+		Door door = interactiveObject && (interactiveObject is Door) ? (Door)interactiveObject : null;
+		if (door) {
+			StartCoroutine(door.Opening(this));
+			return;
+		}
 	}
 
 
@@ -59,6 +73,7 @@ public class Humanoid : Ent {
 		}
 
 		if (!ent) { yield break; }
+		if (!ent.pickable) { yield break; }
 		
 		yield return StartCoroutine(ent.Pickup(this));
 
@@ -98,18 +113,12 @@ public class Humanoid : Ent {
 	// Loot
 	// ===========================================================
 
-
-	protected virtual void PickCoin (Coin coin) {
-		StartCoroutine(coin.Pickup(this));
-	}
-
-
-	protected virtual void PickWeapon (Weapon weapon) {
-		StartCoroutine(weapon.Pickup(this));
-	}
+	/*protected void PickLoot (Loot loot) {
+		StartCoroutine(loot.Pickup(this));
+	}*/
 
 
-	public virtual void AddLootToInventory (Loot loot) {
+	public void AddLootToInventory (Loot loot) {
 		bool stacked = false;
 
 		// if we already own this item type, increase item number
@@ -240,7 +249,7 @@ public class Humanoid : Ent {
 		Ent target = obj.GetComponent<Ent>();
 
 		// decide if alive being is gonna hit
-		if (velocity.y > -2) { return false; }
+		if (velocity.y > -1.5f) { return false; }
 		if (transform.position.y < target.transform.position.y + transform.localScale.y * 0.75f) { 
 			return false;
 		}
@@ -275,13 +284,10 @@ public class Humanoid : Ent {
 
 			case "Item":
 			interactiveObject = collider.gameObject.GetComponent<Ent>();
-			if (interactiveObject is Coin) {
-				PickCoin((Coin)interactiveObject);
-				interactiveObject = null;
-			} else if (interactiveObject is Weapon) {
-				PickWeapon((Weapon)interactiveObject);
-				interactiveObject = null;
-			}
+			break;
+
+			case "Loot":
+			StartCoroutine(collider.gameObject.GetComponent<Loot>().Pickup(this));
 			break;
 
 			case "Trap":

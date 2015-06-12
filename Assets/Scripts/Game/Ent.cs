@@ -60,6 +60,7 @@ public class Ent : MonoBehaviour {
 	public Inv inv;
 
 	public bool affectedByGravity = true;
+	public bool pickable = false;
 
 	public Transform sprite;
 	public GameObject bloodPrefab;
@@ -235,13 +236,14 @@ public class Ent : MonoBehaviour {
 	}
 
 
-	protected void SetJump (bool isJumpingDown, float intensity = 1) {
-		if (!CanJump()) { return; }
+	protected void SetJump (bool isJumpingDown, float intensity = 1, bool escapeCheck = false) {
+		if (!CanJump() && !escapeCheck) { return; }
 
 		if (IsOnWater()) { intensity *= 0.2f; }
 
 		velocity.y = jumpVelocity * intensity;
 
+		hasAttackedInAir = false;
 		jumping = true;
 		jumpingFromLadder = IsOnLadder();
 
@@ -400,6 +402,7 @@ public class Ent : MonoBehaviour {
 
 			string path = "Prefabs/Loot/" + item.path;
 			for (int i = 0; i < max; i++) {
+				if (path == "Prefabs/Loot/") { continue; }
 				Loot loot = ((GameObject)Instantiate(Resources.Load(path))).GetComponent<Loot>();
 				loot.Init(World.lootContainer, this, item.path);
 			}
@@ -415,7 +418,7 @@ public class Ent : MonoBehaviour {
 		// jump
 		jumping = false;
 		jumpingDown = false;
-		SetJump(false,  atr.jump * 0.75f);
+		SetJump(false,  atr.jump * 0.5f, true);
 		
 		// hurt target and knock him back
 		float knockback = 1f;
@@ -427,7 +430,9 @@ public class Ent : MonoBehaviour {
 	}
 
 	public virtual IEnumerator Hurt (int dmg, Vector2 vec) {
-		//state = States.HURT;
+		//if (state == States.ATTACK || state == States.HURT) { yield break; }
+
+		state = States.HURT;
 		input = Vector2.zero;
 		velocity = Vector2.zero;
 
