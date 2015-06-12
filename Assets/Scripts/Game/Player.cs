@@ -33,17 +33,7 @@ public class Player : Humanoid {
 
 		if (Input.GetButtonUp("C")) { 
 			hd_C = 0;
-
-			Item item = interactiveObject && (interactiveObject is Item) ? (Item)interactiveObject : null;
-			if (item) { 
-				if (item.opening) {
-					item.CancelOpening();
-				} else {
-					SetAction();
-				}
-			} else {
-				SetAction();
-			}
+			SetAction();
 		}
 
 		if (Input.GetButton("C")) { 

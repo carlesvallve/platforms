@@ -25,11 +25,25 @@ public class Humanoid : Ent {
 
 
 	protected void SetAction () {
+		// if we are opening a chest, cancel the action
+		Chest chest = interactiveObject && (interactiveObject is Chest) ? (Chest)interactiveObject : null;
+		if (chest && chest.opening) {
+			chest.CancelOpening();
+			return;
+		}
+
+		// otherwise, pick the interactive object
 		StartCoroutine(PickItem(interactiveObject));
 	}
 
+
 	protected void SetActionHold () {
-		StartCoroutine(OpenItem(interactiveObject));
+		Chest chest = interactiveObject && (interactiveObject is Chest) ? (Chest)interactiveObject : null;
+		if (chest) {
+			//StartCoroutine(OpenChest(chest));
+			StartCoroutine(chest.Opening(this));
+		}
+		
 	}
 
 
@@ -37,23 +51,15 @@ public class Humanoid : Ent {
 	// Item interaction
 	// ===========================================================
 
-	protected IEnumerator OpenItem (Ent ent) {
-		if (!ent || !(ent is Item)) { yield break; }
-		Item item = (Item)ent;
-		
-		yield return StartCoroutine(item.Opening(this));
-	}
-
 
 	protected IEnumerator PickItem (Ent ent) {
 		if (pickedUpObject) { 
 			StartCoroutine(DropItem(pickedUpObject)); 
 		}
 
-		if (!ent || !(ent is Item)) { yield break; }
+		if (!ent) { yield break; }
 		
-		Item item = (Item)ent;
-		yield return StartCoroutine(item.Pickup(this));
+		yield return StartCoroutine(ent.Pickup(this));
 
 		pickedUpObject = ent;
 	}

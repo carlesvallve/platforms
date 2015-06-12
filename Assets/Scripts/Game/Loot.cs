@@ -55,7 +55,7 @@ public class Loot : Ent {
 	}
 
 
-	public virtual IEnumerator Pickup (Humanoid collector) {
+	public override IEnumerator Pickup (Humanoid collector) {
 		if (spawning || collector == null) { yield break; }
 
 		gameObject.GetComponent<BoxCollider2D>().enabled = false;
@@ -64,7 +64,7 @@ public class Loot : Ent {
 		Vector3 pos = transform.position + Vector3.up * collector.sprite.localScale.y * 0.5f;
 		
 		//float startTime = Time.time;
-		while (Vector2.Distance(transform.position, pos) > 0.2f) { //(Time.time <= startTime + 0.2f) { // //
+		while (Vector2.Distance(transform.position, pos) > 0.2f) { //(Time.time <= startTime + 0.2f) {
 			if (spawning || collector == null) { 
 				gameObject.GetComponent<BoxCollider2D>().enabled = true;
 				affectedByGravity = true;
@@ -78,7 +78,6 @@ public class Loot : Ent {
 		}
 
 		// add loot to collector's inventory
-		//Humanoid humanCollector = (Humanoid)collector;
 		collector.AddLootToInventory(this);
 
 		// destroy loot
