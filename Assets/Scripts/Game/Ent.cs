@@ -64,7 +64,6 @@ public class Ent : MonoBehaviour {
 	public bool pushable = false;
 
 	protected Transform sprite;
-	public GameObject bloodPrefab;
 	
 	protected Vector2 input;
 	protected Vector2 velocity;
@@ -315,7 +314,7 @@ public class Ent : MonoBehaviour {
 			velocity.y = 0;
 			jumping = false;
 			controller.grounded = true;
-			SetJump(false, atr.jump * 0.75f); //0.75f);
+			SetJump(false, atr.jump * 0.75f);
 			controller.grounded = false;
 		}
 
@@ -478,13 +477,7 @@ public class Ent : MonoBehaviour {
 	}
 
 
-	protected void Bleed (int maxBloodSplats) {
-		if (!bloodPrefab) { return; }
-
-		for (int i = 0; i < maxBloodSplats; i++) {
-			Blood blood = ((GameObject)Instantiate(bloodPrefab)).GetComponent<Blood>();
-			blood.Init(World.bloodContainer, this);
-		}
+	protected virtual void Bleed (int maxBloodSplats) {
 	}
 
 

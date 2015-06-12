@@ -28,7 +28,7 @@ public class Ladder : MonoBehaviour {
 
 
 	public float GetHeight () {
-		return (float)(height); // - 1
+		return (float)(height);
 	}
 	
 }

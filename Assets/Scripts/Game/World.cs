@@ -1,30 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-/*
-- create weapon class
-- player can store and equip weapons
-- player can attack using equipped weapon
-- if weapon type is melee, attack
-- if weapon type is ranged, shoot
-
-- create projectile class
-
-
-- enemies:
-	- hermit
-	- skeleton
-	- skeleton gold
-	- bird
-	- fish
-
-
-- Improvements:
-
-	- Moving platforms, including trap blocks
-	- Double tap left/right to run
-
-*/
 
 public class World : MonoBehaviour {
 

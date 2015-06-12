@@ -12,7 +12,7 @@ public class Loot : Ent {
 		this.path = path;
 
 		transform.SetParent(container);
-		transform.position = source.transform.position + Vector3.up * source.GetHeight() * 0.5f; //source.sprite.localScale.y * 0.5f;
+		transform.position = source.transform.position + Vector3.up * source.GetHeight() * 0.5f;
 		transform.localScale = new Vector3(1, 1, 1);
 		
 		spawning = true;
@@ -34,7 +34,7 @@ public class Loot : Ent {
 		float duration = Random.Range(0.25f, 0.5f);
 
 		if (source) {
-			transform.position = source.transform.position + Vector3.up * source.GetHeight() * 0.5f; //source.sprite.localScale.y * 0.5f;
+			transform.position = source.transform.position + Vector3.up * source.GetHeight() * 0.5f;
 		}
 		
 		affectedByGravity = true;
@@ -61,7 +61,7 @@ public class Loot : Ent {
 		gameObject.GetComponent<BoxCollider2D>().enabled = false;
 		affectedByGravity = false;
 
-		Vector3 pos = transform.position + Vector3.up * collector.GetHeight() * 0.5f; //collector.sprite.localScale.y * 0.5f;
+		Vector3 pos = transform.position + Vector3.up * collector.GetHeight() * 0.5f;
 		
 		//float startTime = Time.time;
 		while (Vector2.Distance(transform.position, pos) > 0.2f) { //(Time.time <= startTime + 0.2f) {
@@ -71,7 +71,7 @@ public class Loot : Ent {
 				yield break; 
 			}
 
-			pos = collector.transform.position + Vector3.up * collector.GetHeight() * 0.5f; //collector.sprite.localScale.y * 0.5f;
+			pos = collector.transform.position + Vector3.up * collector.GetHeight() * 0.5f;
 			transform.position = Vector3.Lerp(transform.position, pos, Time.deltaTime * 15f);
 			//transform.localScale = Vector3.Lerp(transform.localScale, Vector3.zero, Time.deltaTime * 5f);
 			yield return null;
