@@ -10,6 +10,7 @@ public enum States {
 	HURT = 4
 }
 
+
 [System.Serializable]
 public class Stats {
 	public int str = 1;

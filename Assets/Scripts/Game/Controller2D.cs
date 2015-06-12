@@ -123,21 +123,15 @@ public class Controller2D : MonoBehaviour {
 
 			if (hit) {
 
-				/*if (hit.transform ==  transform) {
-					continue;
-				}*/
-
 				// handle one way collision layer
-				if (hit.transform.gameObject.tag == "OneWayPlatform") { //layer == LayerMask.NameToLayer("OneWayPlatform")) {
+				if (hit.transform.gameObject.tag == "OneWayPlatform") {
 					continue;
 				}
 
 				// handle pushable collision layer
-				if ((ent is Humanoid) && hit.transform.gameObject.tag == "Block") { //layer == LayerMask.NameToLayer("PushablePlatform")) {
+				if ((ent is Humanoid) && hit.transform.gameObject.tag == "Block") {
 					ent.TriggerPushable(hit.transform.gameObject); 
 				}
-
-				//ent.TriggerPushable(hit.transform.gameObject); 
 
 
 				float slopeAngle = Vector2.Angle(hit.normal, Vector2.up);
@@ -186,12 +180,8 @@ public class Controller2D : MonoBehaviour {
 
 			if (hit) {
 
-				/*if (hit.transform ==  transform) {
-					continue;
-				}*/
-
 				// handle one way collision layer
-				if (hit.transform.gameObject.tag == "OneWayPlatform") { // layer == LayerMask.NameToLayer("OneWayPlatform")
+				if (hit.transform.gameObject.tag == "OneWayPlatform") {
 					if (directionY == 1 || (directionY == - 1 && jumpingDown)) {
 						continue;
 					}
