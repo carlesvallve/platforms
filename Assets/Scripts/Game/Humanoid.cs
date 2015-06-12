@@ -35,8 +35,8 @@ public class Humanoid : Ent {
 
 		// if we are opening a door, cancel the action
 		Door door = interactiveObject && (interactiveObject is Door) ? (Door)interactiveObject : null;
-		if (door && door.opening) {
-			door.CancelOpening();
+		if (door) {
+			if (door.opening) { door.CancelOpening(); }
 			return;
 		}
 
@@ -53,10 +53,15 @@ public class Humanoid : Ent {
 			return;
 		}
 
-		// open doors
+		// open closed doors / enter through open doors
 		Door door = interactiveObject && (interactiveObject is Door) ? (Door)interactiveObject : null;
 		if (door) {
-			StartCoroutine(door.Opening(this));
+			if (door.opened) { 
+				door.Enter(this); 
+			} else {
+				StartCoroutine(door.Opening(this));
+			}
+			
 			return;
 		}
 	}
@@ -65,7 +70,6 @@ public class Humanoid : Ent {
 	// ===========================================================
 	// Item interaction
 	// ===========================================================
-
 
 	protected IEnumerator PickItem (Ent ent) {
 		if (pickedUpObject) { 
@@ -113,11 +117,6 @@ public class Humanoid : Ent {
 	// Loot
 	// ===========================================================
 
-	/*protected void PickLoot (Loot loot) {
-		StartCoroutine(loot.Pickup(this));
-	}*/
-
-
 	public void AddLootToInventory (Loot loot) {
 		bool stacked = false;
 
@@ -139,7 +138,7 @@ public class Humanoid : Ent {
 			inv.items[inv.items.Count -1].path = loot.path; 
 			inv.items[inv.items.Count -1].num = (loot is Coin) ? loot.value : 1;
 			inv.items[inv.items.Count -1].value = loot.value;
-			inv.items[inv.items.Count -1].sprite = loot.sprite.GetComponent<SpriteRenderer>().sprite;
+			inv.items[inv.items.Count -1].sprite = loot.GetSpriteImage(); //sprite.GetComponent<SpriteRenderer>().sprite;
 		}
 
 		// update hud

@@ -31,6 +31,10 @@ public class Controller2D : MonoBehaviour {
 		ent = GetComponent<Ent>();
 		boxCollider = GetComponent<BoxCollider2D> ();
 		CalculateRaySpacing ();
+
+		if (ent.affectedByGravity) { 
+			transform.Translate(0, skinWidth, 0); 
+		}
 	}
 
 
@@ -123,13 +127,14 @@ public class Controller2D : MonoBehaviour {
 
 			if (hit) {
 
-				// handle one way collision layer
+				// handle one way collisions
 				if (hit.transform.gameObject.tag == "OneWayPlatform") {
 					continue;
 				}
 
-				// handle pushable collision layer
-				if ((ent is Humanoid) && hit.transform.gameObject.tag == "Block") {
+				// handle pushable objects
+				Ent target = hit.transform.gameObject.GetComponent<Ent>();
+				if (target && target.pushable) {
 					ent.TriggerPushable(hit.transform.gameObject); 
 				}
 
@@ -180,7 +185,7 @@ public class Controller2D : MonoBehaviour {
 
 			if (hit) {
 
-				// handle one way collision layer
+				// handle one way collisions
 				if (hit.transform.gameObject.tag == "OneWayPlatform") {
 					if (directionY == 1 || (directionY == - 1 && jumpingDown)) {
 						continue;

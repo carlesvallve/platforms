@@ -4,7 +4,8 @@ using System.Collections;
 public class Door : Ent {
 
 	public bool opening = false;
-	private bool opened = false;
+	public bool opened = false;
+	public Door goalDoor;
 
 
 	public override void Awake () {
@@ -45,7 +46,15 @@ public class Door : Ent {
 	protected void Open (Ent collector) {
 		opened = true;
 		Audio.play("Audio/sfx/chest-open", 0.4f, Random.Range(0.9f, 1.1f));
-		SpawnLoot();
+		//SpawnLoot();
+	}
+
+
+	public void Enter (Ent collector) {
+		if (!goalDoor) { return; }
+
+		Audio.play("Audio/sfx/chest-open", 0.4f, Random.Range(0.9f, 1.1f));
+		collector.transform.position = goalDoor.transform.position;
 	}
 
 }

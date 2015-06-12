@@ -4,7 +4,7 @@ using System.Collections;
 public class Chest : Ent {
 
 	public bool opening = false;
-	private bool opened = false;
+	public bool opened = false;
 
 
 	public override void Awake () {

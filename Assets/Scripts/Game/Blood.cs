@@ -5,7 +5,7 @@ public class Blood : Ent {
 
 	public void Init (Transform container, Ent source) {
 		transform.SetParent(container);
-		transform.position = source.transform.position + Vector3.up * source.sprite.localScale.y * 0.5f;
+		transform.position = source.transform.position + Vector3.up * source.GetHeight() * 0.5f; //sprite.localScale.y * 0.5f;
 		affectedByGravity = false;
 
 		float sc = Random.Range(0.25f, 0.75f);
@@ -21,7 +21,7 @@ public class Blood : Ent {
 		float duration = Random.Range(0.25f, 0.5f);
 
 		if (source) {
-			transform.position = source.transform.position + Vector3.up * source.sprite.localScale.y * 0.5f;
+			transform.position = source.transform.position + Vector3.up * source.GetHeight() * 0.5f; //source.sprite.localScale.y * 0.5f;
 		}
 
 		affectedByGravity = true;

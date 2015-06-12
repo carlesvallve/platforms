@@ -61,8 +61,9 @@ public class Ent : MonoBehaviour {
 
 	public bool affectedByGravity = true;
 	public bool pickable = false;
+	public bool pushable = false;
 
-	public Transform sprite;
+	protected Transform sprite;
 	public GameObject bloodPrefab;
 	
 	protected Vector2 input;
@@ -134,6 +135,16 @@ public class Ent : MonoBehaviour {
 		SetSpeed();
 		SetMove();
 		OutOfBounds();
+	}
+
+
+	public float GetHeight () {
+		return sprite.localScale.y;
+	}
+
+
+	public Sprite GetSpriteImage () {
+		return sprite.GetComponent<SpriteRenderer>().sprite;
 	}
 
 
@@ -542,7 +553,7 @@ public class Ent : MonoBehaviour {
 
 		// decide if item/block is gonna hit (throwing objects)
 		if (target.state == States.HURT) { return false; }
-		if (velocity.magnitude < 4f) { return false; }
+		if (velocity.magnitude < 3f) { return false; }
 		if (velocity.y > 0) { return false; }
 		
 		// execute jump attack
