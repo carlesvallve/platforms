@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Player : Ent {
+public class Player : Humanoid {
 
 	private InputManager inputManager;
 	public Hud hud;

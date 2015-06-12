@@ -55,7 +55,7 @@ public class Loot : Ent {
 	}
 
 
-	public virtual IEnumerator Pickup (Ent collector) {
+	public virtual IEnumerator Pickup (Humanoid collector) {
 		if (spawning || collector == null) { yield break; }
 
 		gameObject.GetComponent<BoxCollider2D>().enabled = false;
@@ -78,6 +78,7 @@ public class Loot : Ent {
 		}
 
 		// add loot to collector's inventory
+		//Humanoid humanCollector = (Humanoid)collector;
 		collector.AddLootToInventory(this);
 
 		// destroy loot

@@ -123,13 +123,17 @@ public class Controller2D : MonoBehaviour {
 
 			if (hit) {
 
+				/*if (hit.transform ==  transform) {
+					continue;
+				}*/
+
 				// handle one way collision layer
 				if (hit.transform.gameObject.tag == "OneWayPlatform") { //layer == LayerMask.NameToLayer("OneWayPlatform")) {
 					continue;
 				}
 
 				// handle pushable collision layer
-				if (hit.transform.gameObject.tag == "Block") { //layer == LayerMask.NameToLayer("PushablePlatform")) {
+				if ((ent is Humanoid) && hit.transform.gameObject.tag == "Block") { //layer == LayerMask.NameToLayer("PushablePlatform")) {
 					ent.TriggerPushable(hit.transform.gameObject); 
 				}
 
@@ -181,6 +185,10 @@ public class Controller2D : MonoBehaviour {
 			Debug.DrawRay(rayOrigin, Vector2.up * directionY * rayLength, Color.red);
 
 			if (hit) {
+
+				/*if (hit.transform ==  transform) {
+					continue;
+				}*/
 
 				// handle one way collision layer
 				if (hit.transform.gameObject.tag == "OneWayPlatform") { // layer == LayerMask.NameToLayer("OneWayPlatform")

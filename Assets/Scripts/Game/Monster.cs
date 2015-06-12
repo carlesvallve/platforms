@@ -8,7 +8,7 @@ public class Ai {
 }
 
 
-public class Monster : Ent {
+public class Monster : Humanoid {
 
 	public Ai ai = new Ai();
 
@@ -54,16 +54,16 @@ public class Monster : Ent {
 	}
 
 
-	// TODO: Refactor this in several methods for each possible though/action
+	// TODO: Refactor this in several methods for each possible though/action, with different timings...
 
 	private IEnumerator StartThinking () {
-		yield return new WaitForSeconds(Random.Range(0, ai.atkSpeed));
+		yield return new WaitForSeconds(Random.Range(0, ai.atkSpeed * 2));
 		StartCoroutine(Think());
 	}
 
 	private IEnumerator Think () {
 
-		yield return new WaitForSeconds(ai.atkSpeed + Random.Range(0, ai.atkSpeed));
+		yield return new WaitForSeconds(Random.Range(0, ai.atkSpeed)); // ai.atkSpeed + 
 
 		if (CanThink()) {
 			float playerDist = Vector2.Distance(transform.position, player.transform.position);
@@ -80,12 +80,20 @@ public class Monster : Ent {
 
 			if (playerDist < atr.vision && aware) {
 				float r = Random.Range(1, 100);
-				willMoveTowards = r <= 50;
+				willMoveTowards = r <= 75;
 			} else {
-				float r = Random.Range(1, 25);
-				willMoveTowards = r <= 50;
+				//float r = Random.Range(1, 1005);
+				willMoveTowards = true; //r <= 50;
 				if (willMoveTowards) {
-					input.x = Mathf.Sign(Random.Range(-1, 1));
+
+					if (input.x != 0) {
+						input.x = 0;
+					} else {
+						while (input.x == 0) {
+							input.x = Mathf.Sign(Random.Range(-1, 1));
+						}
+					}
+	
 				} else {
 					input.x = 0;
 				}
@@ -119,7 +127,7 @@ public class Monster : Ent {
 		yield return new WaitForSeconds(0.5f);
 		StartCoroutine(UpdateInfo(null));
 
-		yield return new WaitForSeconds(ai.atkSpeed);
+		//yield return new WaitForSeconds(ai.atkSpeed);
 	}
 
 

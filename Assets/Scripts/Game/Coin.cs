@@ -5,7 +5,7 @@ using System.Collections;
 public class Coin : Loot {
 
 
-	public override IEnumerator Pickup (Ent collector) {
+	public override IEnumerator Pickup (Humanoid collector) {
 		if (spawning) { yield break; }
 		yield return StartCoroutine(base.Pickup(collector));
 
