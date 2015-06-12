@@ -22,7 +22,7 @@ public class Monster : Humanoid {
 		player = GameObject.Find("Player").GetComponent<Player>();
 		base.Awake();
 
-		StartCoroutine(StartThinking());
+		//StartCoroutine(StartThinking());
 	}
 
 

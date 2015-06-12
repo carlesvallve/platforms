@@ -229,13 +229,18 @@ public class Ent : MonoBehaviour {
 	}
 
 
+	protected bool CanJump () {
+		if (IsOnWater()) { return true; }
+		return controller.grounded || previouslyOnLadder;
+	}
+
+
 	protected void SetJump (bool isJumpingDown, float intensity = 1) {
-		if (!controller.grounded) { return; }
-		if (jumping && !IsOnWater()) { return; }
+		if (!CanJump()) { return; }
 
-		if (IsOnWater()) { intensity *= 0.25f; }
+		if (IsOnWater()) { intensity *= 0.2f; }
 
-		velocity.y = jumpVelocity * intensity; 
+		velocity.y = jumpVelocity * intensity;
 
 		jumping = true;
 		jumpingFromLadder = IsOnLadder();
@@ -262,6 +267,7 @@ public class Ent : MonoBehaviour {
 	// ===========================================================
 	// Water
 	// ===========================================================
+
 
 	public bool IsOnWater () {
 		return isWater;
@@ -295,8 +301,14 @@ public class Ent : MonoBehaviour {
 		if (!IsOnLadder() && (this is Humanoid)) {
 			velocity.y = 0;
 			jumping = false;
-			SetJump(false, atr.jump * 0.75f); 
+			controller.grounded = true;
+			SetJump(false, atr.jump * 0.75f); //0.75f);
+			controller.grounded = false;
 		}
+
+		//yield return null;
+
+		
 
 		yield break;
 	}

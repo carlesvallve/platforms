@@ -10,6 +10,8 @@ public class Humanoid : Ent {
 	// ===========================================================
 	
 	protected void SetAttack (bool isDown) {
+		if (state == States.ATTACK || state == States.HURT) { return; };
+
 		if (pickedUpObject) {
 			ThrowItem(pickedUpObject);
 			return;
@@ -20,7 +22,6 @@ public class Humanoid : Ent {
 		} else {
 			StartCoroutine(Attack());
 		}
-		
 	}
 
 
