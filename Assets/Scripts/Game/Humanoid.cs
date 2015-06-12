@@ -285,7 +285,8 @@ public class Humanoid : Ent {
 
 
 	protected override void OnTriggerStay2D (Collider2D collider) {
-		if (state == States.ATTACK) { return; }
+		//if (state == States.ATTACK) { return; }
+		
 		base.OnTriggerStay2D(collider);
 
 		switch (collider.gameObject.tag) {
@@ -300,8 +301,6 @@ public class Humanoid : Ent {
 			case "Loot":
 			StartCoroutine(collider.gameObject.GetComponent<Loot>().Pickup(this));
 			break;
-
-			
 		}
 	}
 
