@@ -203,18 +203,21 @@ public class Humanoid : Ent {
 		if (hit) {
 			// push target forward
 			Ent target = hit.transform.GetComponent<Ent>();
-			int dmg = Random.Range(atr.dmg[0], atr.dmg[1]);
-			Vector2 dd = directionX * Vector2.right * knockback + Vector2.up * 3;
-			StartCoroutine(target.Hurt(dmg, dd));
+			if (target && target.destructable) { 
+				int dmg = Random.Range(atr.dmg[0], atr.dmg[1]);
+				Vector2 dd = directionX * Vector2.right * knockback + Vector2.up * 3;
+				StartCoroutine(target.Hurt(dmg, dd));
 
-			// push attacker backwards
-			yield return StartCoroutine(PushBackwards(-d / 2 , 0.05f));
+				// push attacker backwards
+				yield return StartCoroutine(PushBackwards(-d / 2 , 0.05f));
+			}
 		}
 
 		input = Vector2.zero;
 		velocity = Vector2.zero;
 
 		yield return new WaitForSeconds(0.1f);
+
 		state = States.IDLE;
 		hasAttackedInAir = !controller.collisions.below;
 	}
@@ -258,6 +261,7 @@ public class Humanoid : Ent {
 
 	public override bool TriggerCollisionAttack (GameObject obj) {
 		Ent target = obj.GetComponent<Ent>();
+		if (!target || !target.destructableJump) { return false; }
 
 		// decide if alive being is gonna hit
 		if (velocity.y > -1.5f) { return false; }
@@ -295,7 +299,12 @@ public class Humanoid : Ent {
 			break;
 
 			case "Item":
-			interactiveObject = collider.gameObject.GetComponent<Ent>();
+			case "Platform":
+			case "OneWayPlatform":
+			Ent ent = collider.gameObject.GetComponent<Ent>();
+			if (ent && ent.pickable) {
+				interactiveObject = ent;
+			}
 			break;
 
 			case "Loot":
@@ -314,6 +323,8 @@ public class Humanoid : Ent {
 			break;
 
 			case "Item":
+			case "Platform":
+			case "OneWayPlatform":
 			interactiveObject = null;
 			break;
 		}

@@ -63,6 +63,8 @@ public class Ent : MonoBehaviour {
 	public bool affectedByGravity = true;
 	public bool pickable = false;
 	public bool pushable = false;
+	public bool destructable = false;
+	public bool destructableJump = false;
 
 	protected Transform sprite;
 	
@@ -543,6 +545,7 @@ public class Ent : MonoBehaviour {
 
 	public virtual bool TriggerCollisionAttack (GameObject obj) {
 		Ent target = obj.GetComponent<Ent>();
+		if (!target || !target.destructableJump) { return false; }
 
 		// decide if item/block is gonna hit (throwing objects)
 		if (target.state == States.HURT) { return false; }
