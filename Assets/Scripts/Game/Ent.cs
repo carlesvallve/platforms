@@ -64,7 +64,7 @@ public class Ent : MonoBehaviour {
 	public bool pickable = false;
 	public bool pushable = false;
 	public bool destructable = false;
-	public float destructableJumpMinimumMass = 2;
+	public float destructableJumpMass = 0;
 
 	protected Transform sprite;
 	
@@ -103,7 +103,6 @@ public class Ent : MonoBehaviour {
 	// ===========================================================
 	// Init
 	// ===========================================================
-
 
 	public virtual void Awake () {
 		controller = GetComponent<Controller2D>();
@@ -546,7 +545,7 @@ public class Ent : MonoBehaviour {
 
 	public virtual bool TriggerCollisionAttack (GameObject obj) {
 		Ent target = obj.GetComponent<Ent>();
-		if (!target || target.destructableJumpMinimumMass > atr.mass) { return false; }
+		if (!target || target.destructableJumpMass == 0 || target.destructableJumpMass > atr.mass) { return false; }
 
 		// decide if item/block is gonna hit (throwing objects)
 		if (target.state == States.HURT) { return false; }
