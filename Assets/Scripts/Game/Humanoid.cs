@@ -261,7 +261,7 @@ public class Humanoid : Ent {
 
 	public override bool TriggerCollisionAttack (GameObject obj) {
 		Ent target = obj.GetComponent<Ent>();
-		if (!target || !target.destructableJump) { return false; }
+		if (!target || target.destructableJumpMinimumMass > atr.mass) { return false; }
 
 		// decide if alive being is gonna hit
 		if (velocity.y > -1.5f) { return false; }
