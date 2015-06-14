@@ -181,7 +181,7 @@ public class Humanoid : Ent {
 
 
 	protected IEnumerator Attack () {
-		if (state == States.ATTACK || state == States.HURT) { yield break; }
+		if (state == States.ATTACK || state == States.PARRY ||state == States.HURT) { yield break; }
 		if (hasAttackedInAir) { yield break; }
 
 		state = States.ATTACK;
@@ -202,7 +202,7 @@ public class Humanoid : Ent {
 
 		// by distance
 		if (interactiveObject && interactiveObject.destructable) {
-			if (Vector2.Distance(transform.position, interactiveObject.transform.position) < 0.5f) {
+			if (Vector2.Distance(transform.position, interactiveObject.transform.position) < 0.3f) {
 				target = interactiveObject;
 			}
 		} 
@@ -215,14 +215,22 @@ public class Humanoid : Ent {
 			target = hit.transform.GetComponent<Ent>();
 		} 
 	
-		// if we have a target, calculate damage, hurt him, and push him backwards
+		// if we have a destructable target
 		if (target && target.destructable) { 
-			int dmg = Random.Range(atr.dmg[0], atr.dmg[1]);
-			Vector2 dd = directionX * Vector2.right * knockback + Vector2.up * 3;
-			StartCoroutine(target.Hurt(dmg, dd));
+			// if target is attacking lets both parry
+			if (target.state == States.ATTACK) {
+				Humanoid enemy = (Humanoid)target;
+				StartCoroutine(enemy.Parry(d * 1));
+				yield return StartCoroutine(Parry(-d * 1));
+			} else {
+				// calculate damage, hurt target, and push him backwards
+				int dmg = Random.Range(atr.dmg[0], atr.dmg[1]);
+				Vector2 dd = directionX * Vector2.right * knockback + Vector2.up * 3;
+				StartCoroutine(target.Hurt(dmg, dd));
 
-			// push attacker backwards
-			yield return StartCoroutine(PushBackwards(-d / 2 , 0.05f));
+				// push attacker backwards
+				yield return StartCoroutine(PushBackwards(-d / 2 , 0.05f));
+			}
 		}
 
 		// finish attack
@@ -231,6 +239,17 @@ public class Humanoid : Ent {
 		yield return new WaitForSeconds(0.1f);
 		state = States.IDLE;
 		hasAttackedInAir = !controller.collisions.below;
+	}
+
+
+	public override IEnumerator Parry (Vector2 vec) {
+		state = States.PARRY;
+		Audio.play("Audio/sfx/Tick", 1f, Random.Range(1f, 1.5f));
+
+		input = Vector2.zero;
+		velocity = Vector2.zero;
+
+		yield return StartCoroutine(PushBackwards(vec , 0.2f));
 	}
 
 

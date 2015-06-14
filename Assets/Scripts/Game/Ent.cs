@@ -6,8 +6,9 @@ using System.Collections.Generic;
 public enum States {
 	IDLE = 0,
 	ATTACK = 2,
-	ROLL = 3,
-	HURT = 4
+	PARRY = 3,
+	ROLL = 4,
+	HURT = 5
 }
 
 
@@ -448,8 +449,14 @@ public class Ent : MonoBehaviour {
 		yield break;
 	}
 
+
+	public virtual IEnumerator Parry (Vector2 vec) {
+		yield break;
+	}
+
+
 	public virtual IEnumerator Hurt (int dmg, Vector2 vec) {
-		//if (state == States.ATTACK || state == States.HURT) { yield break; }
+		if (state == States.ATTACK || state == States.PARRY ||state == States.HURT) { yield break; }
 
 		state = States.HURT;
 		input = Vector2.zero;
