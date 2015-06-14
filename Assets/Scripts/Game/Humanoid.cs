@@ -35,7 +35,6 @@ public class Humanoid : Ent {
 		}
 
 		// if we are opening a door, cancel the action
-		print (interactiveObject);
 		Door door = interactiveObject && (interactiveObject is Door) ? (Door)interactiveObject : null;
 		if (door) {
 			if (door.opening) { 
