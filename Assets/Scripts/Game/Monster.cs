@@ -4,7 +4,11 @@ using System.Collections;
 
 [System.Serializable]
 public class Ai {
-	public float atkSpeed = 1.5f;
+	public float visionSpeed = 0.5f;
+	public float moveSpeed = 0.5f;
+	public float attackSpeed = 2f;
+
+	public float visionRange = 10f;
 }
 
 
@@ -13,30 +17,21 @@ public class Monster : Humanoid {
 	public Ai ai = new Ai();
 
 	protected Player player;
-
 	protected bool aware = false;
-	protected bool willMoveTowards = false;
 
 
 	public override void Awake () {
 		player = GameObject.Find("Player").GetComponent<Player>();
 		base.Awake();
 
-		//StartCoroutine(StartThinking());
+		// initialize ai loops
+		StartCoroutine(AiVision());
+		StartCoroutine(AiMove());
+		StartCoroutine(AiAttack());
 	}
 
 
 	protected override void SetInput () {
-		if (!player) { return; }
-
-		float playerDist = Vector2.Distance(transform.position, player.transform.position);
-		if (playerDist < atr.vision && aware) {
-			if (willMoveTowards) {
-				input.x = Mathf.Sign(player.transform.position.x - transform.position.x);
-			} else {
-				input.x = 0;
-			}
-		}
 	}
 
 
@@ -47,101 +42,93 @@ public class Monster : Humanoid {
 	}
 
 
-	// TODO: Refactor this in several methods for each possible though/action, with different timings...
+	// ===========================================================
+	// Ai Vision
+	// ===========================================================
 
-	private IEnumerator StartThinking () {
-		yield return new WaitForSeconds(Random.Range(0, ai.atkSpeed * 2));
-		StartCoroutine(Think());
-	}
+	private IEnumerator AiVision () {
 
-	private IEnumerator Think () {
+		yield return new WaitForSeconds(ai.visionSpeed);
 
-		yield return new WaitForSeconds(Random.Range(0, ai.atkSpeed)); // ai.atkSpeed + 
-
-		if (CanThink()) {
-			float playerDist = Vector2.Distance(transform.position, player.transform.position);
-
-			if (playerDist <= atr.vision && !aware) {
-				yield return StartCoroutine(SetAware(true));
-				
-			} else if (playerDist > atr.vision && aware) {
-				yield return StartCoroutine(SetAware(false));
-
-			}
-
-
-
-			if (playerDist < atr.vision && aware) {
-				float r = Random.Range(1, 100);
-				willMoveTowards = r <= 75;
-			} else {
-				//float r = Random.Range(1, 1005);
-				willMoveTowards = true; //r <= 50;
-				if (willMoveTowards) {
-
-					if (input.x != 0) {
-						input.x = 0;
-					} else {
-						while (input.x == 0) {
-							input.x = Mathf.Sign(Random.Range(-1, 1));
-						}
-					}
-	
-				} else {
-					input.x = 0;
-				}
-			}
-
-			if (playerDist < 2 && aware) { //atr.vision) { //2) {
-				// turn versus player and attack
-				float dir = Mathf.Sign(player.transform.position.x - transform.position.x);
-				sprite.localScale = new Vector2(dir * Mathf.Abs(sprite.localScale.x), sprite.localScale.y); 
-				yield return new WaitForSeconds(0.1f);
-				StartCoroutine(Attack());
-			}
+		if (!CanThink()) { 
+			StartCoroutine(AiVision());
+			yield break; 
 		}
+
+		// cast a ray to player to check if we become aware/unaware of him
+		Vector2 rayOrigin = new Vector2 (transform.position.x, transform.position.y + GetHeight() / 2);
+		Vector2 direction = (new Vector2 (player.transform.position.x, player.transform.position.y + GetHeight() / 2) - rayOrigin).normalized;
+		float distance = ai.visionRange;
+
+		RaycastHit2D hit = Physics2D.Raycast(rayOrigin, direction, distance, controller.collisionMask);
+		Debug.DrawRay(rayOrigin, direction * distance, Color.cyan);
+
+		yield return StartCoroutine(SetAware(hit && hit.transform.gameObject.tag == "Player"));
 		
-		StartCoroutine(Think());
+		StartCoroutine(AiVision());
 	}
 
 
 	private IEnumerator SetAware (bool value) {
-		aware = value;
+		if (aware == value) { yield break; }
 
 		input.x = 0;
-		willMoveTowards = false;
+		velocity.x = 0;
 
-		if (aware) {
+		if (value) {
 			float dir = Mathf.Sign(player.transform.position.x - transform.position.x);
 			sprite.localScale = new Vector2(dir * Mathf.Abs(sprite.localScale.x), sprite.localScale.y);
+		} else {
+			aware = value;
 		}
 
 		StartCoroutine(UpdateInfo(value ? "!" : "?"));
 		yield return new WaitForSeconds(0.5f);
 		StartCoroutine(UpdateInfo(null));
 
-		//yield return new WaitForSeconds(ai.atkSpeed);
+		aware = value;
 	}
 
 
 	// ===========================================================
-	// Ai
+	// Ai Movement
 	// ===========================================================
 
-	/*
-	- Vision:
-		- Each monster should be able to see any important objects in a semicircle in the direction he is looking at
+	private IEnumerator AiMove () {
+		yield return new WaitForSeconds(ai.moveSpeed);
 
-	- Decision:
-		- Each monster will evaluate his own interest depending on interesting objects in view
-			- coin, potion, monster, player, 
+		if (!CanThink()) { 
+			StartCoroutine(AiMove());
+			yield break; 
+		}
+		
+		float d = player.transform.position.x - transform.position.x;
+		input.x = aware && Mathf.Abs(d) > 1.5f ? Mathf.Sign(d) : 0;
 
-	- Movement:
-		- each monster casts rays where he is going to move next:
-			- hit is trap -> he wont move there
-			- hit is player -> he will attack or jump over, or escape if he is in bad shape
-			- hit is bottom form current -> if distanceY < jumpDist he will fall to it
-			- hit is top from current -> if distance < jumpDist he will jump to it
-	*/
+		StartCoroutine(AiMove());
+	}
+
+
+	// ===========================================================
+	// Ai Attack
+	// ===========================================================
+
+	private IEnumerator AiAttack () {
+		yield return new WaitForSeconds(ai.attackSpeed);
+
+		float playerDist = Vector2.Distance(transform.position, player.transform.position);
+		if (!CanThink() || playerDist > 1.5f) {
+			StartCoroutine(AiAttack());
+			yield break; 
+		}
+		
+		// turn versus player and attack
+		float dir = Mathf.Sign(player.transform.position.x - transform.position.x);
+		sprite.localScale = new Vector2(dir * Mathf.Abs(sprite.localScale.x), sprite.localScale.y); 
+		
+		yield return StartCoroutine(Attack());
+
+		StartCoroutine(AiAttack());
+	}
 
 }

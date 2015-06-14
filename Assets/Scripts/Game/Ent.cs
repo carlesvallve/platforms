@@ -207,6 +207,7 @@ public class Ent : MonoBehaviour {
 
 
 	protected virtual void SetInput () {
+		// apply friction
 		input.x *= 0.99f;
 		if (controller.collisions.left || controller.collisions.right) { input.x = 0; }
 		if (controller.collisions.above || controller.collisions.below) { input.x *= 0.9f; }
