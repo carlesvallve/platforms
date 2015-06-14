@@ -5,9 +5,9 @@ public class Chest : Ent {
 
 	public bool opening = false;
 	public bool opened = false;
-	public GameObject bloodPrefab;
-	public GameObject damagePrefab;
-	
+	//public GameObject bloodPrefab;
+	//public GameObject damagePrefab;
+
 
 	public override void Awake () {
 		base.Awake();
@@ -67,10 +67,10 @@ public class Chest : Ent {
 
 
 	protected override void Bleed (int maxBloodSplats) {
-		if (!bloodPrefab) { return; }
+		if (!prefabs.bloodPrefab) { return; }
 
 		for (int i = 0; i < maxBloodSplats; i++) {
-			Blood blood = ((GameObject)Instantiate(bloodPrefab)).GetComponent<Blood>();
+			Blood blood = ((GameObject)Instantiate(prefabs.bloodPrefab)).GetComponent<Blood>();
 			blood.Init(World.bloodContainer, this);
 		}
 	}

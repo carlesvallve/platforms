@@ -5,8 +5,8 @@ using System.Collections;
 
 public class Humanoid : Ent {
 
-	public GameObject bloodPrefab;
-	public GameObject damagePrefab;
+	//public GameObject bloodPrefab;
+	//public GameObject damagePrefab;
 
 	// ===========================================================
 	// Actions
@@ -244,12 +244,7 @@ public class Humanoid : Ent {
 
 
 	protected override void Bleed (int maxBloodSplats) {
-		if (!bloodPrefab) { return; }
-
-		for (int i = 0; i < maxBloodSplats; i++) {
-			Blood blood = ((GameObject)Instantiate(bloodPrefab)).GetComponent<Blood>();
-			blood.Init(World.bloodContainer, this);
-		}
+		base.Bleed(maxBloodSplats);
 	}
 
 

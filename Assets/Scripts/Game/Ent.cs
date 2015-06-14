@@ -49,6 +49,12 @@ public class Inv {
 	public List<InvItem> items = new List<InvItem>();
 }
 
+[System.Serializable]
+public class Prefabs {
+	public GameObject bloodPrefab;
+	public GameObject damagePrefab;
+}
+
 	
 [RequireComponent (typeof (Controller2D))]
 public class Ent : MonoBehaviour {
@@ -59,6 +65,7 @@ public class Ent : MonoBehaviour {
 	public Stats stats;
 	public Atr atr;
 	public Inv inv;
+	public Prefabs prefabs;
 
 	public bool affectedByGravity = true;
 	public bool pickable = false;
@@ -479,6 +486,12 @@ public class Ent : MonoBehaviour {
 
 
 	protected virtual void Bleed (int maxBloodSplats) {
+		if (!prefabs.bloodPrefab) { return; }
+
+		for (int i = 0; i < maxBloodSplats; i++) {
+			Blood blood = ((GameObject)Instantiate(prefabs.bloodPrefab)).GetComponent<Blood>();
+			blood.Init(World.bloodContainer, this);
+		}
 	}
 
 
@@ -530,6 +543,26 @@ public class Ent : MonoBehaviour {
 		info.gameObject.SetActive(str != null);
 		if (str == null) { yield break; }
 		info.text = str;
+	}
+
+
+	public virtual IEnumerator DisplayDamage (string str) {
+		if (!prefabs.damagePrefab) { yield break; }
+
+		/*GameObject label = ((GameObject)Instantiate(prefabs.damagePrefab)); //.GetComponent<Blood>();
+		label.transform.position = GetHeight() + 0.2f;
+
+		TextMesh info = label.GetComponent<Text>();
+		info.text = str;
+
+
+		float startTime = Time.time;
+		while (Time.time <= startTime + 1f) {
+			label.transform.position = Vector2.Lerp(label.transform.position, pos, Time.deltaTime * 5f);
+			yield return null;
+		}
+
+		Destroy(label);*/
 	}
 
 
