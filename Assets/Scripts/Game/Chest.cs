@@ -6,6 +6,8 @@ public class Chest : Ent {
 	public bool opening = false;
 	public bool opened = false;
 	public GameObject bloodPrefab;
+	public GameObject damagePrefab;
+	
 
 	public override void Awake () {
 		base.Awake();

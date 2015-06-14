@@ -6,6 +6,7 @@ using System.Collections;
 public class Humanoid : Ent {
 
 	public GameObject bloodPrefab;
+	public GameObject damagePrefab;
 
 	// ===========================================================
 	// Actions
@@ -36,9 +37,14 @@ public class Humanoid : Ent {
 		}
 
 		// if we are opening a door, cancel the action
+		print (interactiveObject);
 		Door door = interactiveObject && (interactiveObject is Door) ? (Door)interactiveObject : null;
 		if (door) {
-			if (door.opening) { door.CancelOpening(); }
+			if (door.opening) { 
+				door.CancelOpening(); 
+			} else {
+				if (door.opened) { door.Enter(this); }
+			}
 			return;
 		}
 
@@ -58,12 +64,9 @@ public class Humanoid : Ent {
 		// open closed doors / enter through open doors
 		Door door = interactiveObject && (interactiveObject is Door) ? (Door)interactiveObject : null;
 		if (door) {
-			if (door.opened) { 
-				door.Enter(this); 
-			} else {
-				StartCoroutine(door.Opening(this));
-			}
-			
+			if (!door.opened) { 
+				StartCoroutine(door.Opening(this)); 
+			} 
 			return;
 		}
 	}
@@ -293,6 +296,8 @@ public class Humanoid : Ent {
 		
 		base.OnTriggerStay2D(collider);
 
+		Ent ent = null;
+
 		switch (collider.gameObject.tag) {
 			case "Ladder":
 			ladder = collider.transform.parent.GetComponent<Ladder>();
@@ -301,10 +306,15 @@ public class Humanoid : Ent {
 			case "Item":
 			case "Platform":
 			case "OneWayPlatform":
-			Ent ent = collider.gameObject.GetComponent<Ent>();
+			ent = collider.gameObject.GetComponent<Ent>();
 			if (ent && ent.pickable) {
 				interactiveObject = ent;
 			}
+			break;
+
+			case "Door":
+			ent = collider.gameObject.GetComponent<Ent>();
+			if (ent) { interactiveObject = ent; }
 			break;
 
 			case "Loot":
@@ -325,6 +335,10 @@ public class Humanoid : Ent {
 			case "Item":
 			case "Platform":
 			case "OneWayPlatform":
+			interactiveObject = null;
+			break;
+
+			case "Door":
 			interactiveObject = null;
 			break;
 		}

@@ -3,9 +3,10 @@ using System.Collections;
 
 public class Player : Humanoid {
 
-	private InputManager inputManager;
+	[HideInInspector]
 	public Hud hud;
 
+	private InputManager inputManager;
 	private int hd_C = 0;
 	
 
