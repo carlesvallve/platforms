@@ -574,8 +574,7 @@ public class Ent : MonoBehaviour {
 
 		// decide if item/block is gonna hit (throwing objects)
 		if (target.state == States.HURT) { return false; }
-		//if (velocity.magnitude < 4f) { return false; }
-		if (velocity.y > -4 && Mathf.Abs(velocity.x) < 4) { return false; }
+		if (velocity.magnitude < 4f) { return false; }
 
 		if (transform.position.y < target.transform.position.y + transform.localScale.y * 0.5f) { 
 			return false;
