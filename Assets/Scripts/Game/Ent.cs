@@ -544,35 +544,18 @@ public class Ent : MonoBehaviour {
 	}
 
 
-	public virtual IEnumerator UpdateInfo (string str) {
+	public virtual IEnumerator UpdateInfo (string str, float duration = 0) {
 		if (!info) { yield break; }
 
 		info.gameObject.SetActive(str != null);
 		if (str == null) { yield break; }
 		info.text = str;
-	}
 
-
-	/*public virtual IEnumerator DisplayDamage (string str) {
-		if (!prefabs.damagePrefab) { yield break; }
-
-		GameObject label = ((GameObject)Instantiate(prefabs.damagePrefab));
-		label.transform.SetParent(World.bloodContainer);
-
-		label.transform.position = new Vector2(transform.position.x, transform.position.y + GetHeight() + 0.2f);
-		Vector2 pos = new Vector2(transform.position.x, transform.position.y + GetHeight() + 1.2f);
-
-		TextMesh info = label.GetComponent<TextMesh>();
-		info.text = str;
-
-		float startTime = Time.time;
-		while (Time.time <= startTime + 0.4f) {
-			label.transform.position = Vector2.Lerp(label.transform.position, pos, Time.deltaTime * 5f);
-			yield return null;
+		if (duration > 0) {
+			yield return new WaitForSeconds(duration);
+			info.gameObject.SetActive(false);
 		}
-
-		Destroy(label);
-	}*/
+	}
 
 
 	// ===========================================================

@@ -40,7 +40,11 @@ public class Humanoid : Ent {
 			if (door.opening) { 
 				door.CancelOpening(); 
 			} else {
-				if (door.opened) { door.Enter(this); }
+				if (door.opened) { 
+					door.Enter(this); 
+				} else {
+					StartCoroutine(door.UpdateInfo("CLOSED", 0.3f));
+				}
 			}
 			return;
 		}
