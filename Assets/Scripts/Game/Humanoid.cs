@@ -200,21 +200,22 @@ public class Humanoid : Ent {
 		// get possible attack target
 		Ent target = null;
 
-
+		// by distance
 		if (interactiveObject && interactiveObject.destructable) {
-			// by distance
 			if (Vector2.Distance(transform.position, interactiveObject.transform.position) < 0.5f) {
 				target = interactiveObject;
 			}
-		} else {
-			// by projecting a ray forward
-			Vector2 rayOrigin = new Vector2 (transform.position.x, transform.position.y + sprite.localScale.y / 2);
-			RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.right * directionX, weaponRange, controller.attackCollisionMask);
-			Debug.DrawRay(rayOrigin, Vector2.right * directionX * weaponRange, Color.yellow);
-			if (hit) { target = hit.transform.GetComponent<Ent>(); } 
-		}
+		} 
 
-		// if we have a target, calculate damage, hurt him and push him backwards
+		// by projecting a ray forward
+		Vector2 rayOrigin = new Vector2 (transform.position.x, transform.position.y + sprite.localScale.y / 2);
+		RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.right * directionX, weaponRange, controller.attackCollisionMask);
+		Debug.DrawRay(rayOrigin, Vector2.right * directionX * weaponRange, Color.yellow);
+		if (hit) { 
+			target = hit.transform.GetComponent<Ent>();
+		} 
+	
+		// if we have a target, calculate damage, hurt him, and push him backwards
 		if (target && target.destructable) { 
 			int dmg = Random.Range(atr.dmg[0], atr.dmg[1]);
 			Vector2 dd = directionX * Vector2.right * knockback + Vector2.up * 3;
