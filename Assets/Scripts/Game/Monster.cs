@@ -40,13 +40,6 @@ public class Monster : Humanoid {
 	}
 
 
-	public override IEnumerator Die () {
-		SpawnLoot();
-		StartCoroutine(base.Die());
-		yield break;
-	}
-
-
 	private bool CanThink () {
 		if (!player) { return false; }
 		if (state != States.IDLE) { return false; }

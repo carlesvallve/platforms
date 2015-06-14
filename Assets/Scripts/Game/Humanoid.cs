@@ -5,8 +5,6 @@ using System.Collections;
 
 public class Humanoid : Ent {
 
-	//public GameObject bloodPrefab;
-	//public GameObject damagePrefab;
 
 	// ===========================================================
 	// Actions
@@ -233,18 +231,16 @@ public class Humanoid : Ent {
 
 	public override IEnumerator Die () {
 		Audio.play("Audio/sfx/bite", 0.5f, Random.Range(3f, 3f));
-
-		// instantiate blood splats
 		Bleed(Random.Range(8, 16));
-		
-		// destroy entity
+		SpawnLoot();
+
 		yield return null;
 		Destroy(gameObject);
 	}
 
 
-	protected override void Bleed (int maxBloodSplats) {
-		base.Bleed(maxBloodSplats);
+	protected override void Bleed (int dmg, int maxBloodSplats) {
+		base.Bleed(dmg, maxBloodSplats);
 	}
 
 

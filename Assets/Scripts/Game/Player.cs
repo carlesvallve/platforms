@@ -48,11 +48,4 @@ public class Player : Humanoid {
 			hud.changeWeapon();
 		}
 	}
-
-
-	public override IEnumerator Die () {
-		SpawnLoot();
-		StartCoroutine(base.Die());
-		yield break;
-	}
 }

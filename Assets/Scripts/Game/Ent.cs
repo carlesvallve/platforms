@@ -463,14 +463,14 @@ public class Ent : MonoBehaviour {
 		// update hp bar
 		StartCoroutine(UpdateHpBar());
 
+		// make him bleed
+		Bleed(Random.Range(3, 6), dmg);
+
 		// if no hp left, die instead
 		if (atr.hp <= 0) {
 			yield return StartCoroutine(Die());
 			yield break;
 		}
-
-		// make him bleed
-		Bleed(Random.Range(3, 6));
 
 		// push backwards
 		yield return StartCoroutine(PushBackwards(vec, 0.5f));
@@ -480,17 +480,24 @@ public class Ent : MonoBehaviour {
 
 
 	public virtual IEnumerator Die () {
+		Bleed(Random.Range(8, 16));
+		
+		yield return null;
 		Destroy(gameObject);
-		yield break;
 	}
 
 
-	protected virtual void Bleed (int maxBloodSplats) {
-		if (!prefabs.bloodPrefab) { return; }
+	protected virtual void Bleed (int maxBloodSplats, int dmg = 0) {
+		if (prefabs.bloodPrefab) {
+			for (int i = 0; i < maxBloodSplats; i++) {
+				Blood blood = ((GameObject)Instantiate(prefabs.bloodPrefab)).GetComponent<Blood>();
+				blood.Init(World.bloodContainer, this);
+			}
+		}
 
-		for (int i = 0; i < maxBloodSplats; i++) {
-			Blood blood = ((GameObject)Instantiate(prefabs.bloodPrefab)).GetComponent<Blood>();
-			blood.Init(World.bloodContainer, this);
+		if (prefabs.damagePrefab && dmg > 0) {
+			Damage damage = ((GameObject)Instantiate(prefabs.damagePrefab)).GetComponent<Damage>();
+			damage.Init(World.bloodContainer, this, "+" + dmg);
 		}
 	}
 
@@ -546,24 +553,26 @@ public class Ent : MonoBehaviour {
 	}
 
 
-	public virtual IEnumerator DisplayDamage (string str) {
+	/*public virtual IEnumerator DisplayDamage (string str) {
 		if (!prefabs.damagePrefab) { yield break; }
 
-		/*GameObject label = ((GameObject)Instantiate(prefabs.damagePrefab)); //.GetComponent<Blood>();
-		label.transform.position = GetHeight() + 0.2f;
+		GameObject label = ((GameObject)Instantiate(prefabs.damagePrefab));
+		label.transform.SetParent(World.bloodContainer);
 
-		TextMesh info = label.GetComponent<Text>();
+		label.transform.position = new Vector2(transform.position.x, transform.position.y + GetHeight() + 0.2f);
+		Vector2 pos = new Vector2(transform.position.x, transform.position.y + GetHeight() + 1.2f);
+
+		TextMesh info = label.GetComponent<TextMesh>();
 		info.text = str;
 
-
 		float startTime = Time.time;
-		while (Time.time <= startTime + 1f) {
+		while (Time.time <= startTime + 0.4f) {
 			label.transform.position = Vector2.Lerp(label.transform.position, pos, Time.deltaTime * 5f);
 			yield return null;
 		}
 
-		Destroy(label);*/
-	}
+		Destroy(label);
+	}*/
 
 
 	// ===========================================================
