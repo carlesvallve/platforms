@@ -197,31 +197,37 @@ public class Humanoid : Ent {
 		StartCoroutine(PushBackwards(d, 0.1f));
 		yield return new WaitForSeconds(0.05f);
 
-		// project a ray forward
-		Vector2 rayOrigin = new Vector2 (transform.position.x, transform.position.y + sprite.localScale.y / 2);
-		//RaycastHit2D[] hits = Physics2D.RaycastAll(rayOrigin, Vector2.right * directionX, weaponRange, attackCollisionMask);
-		RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.right * directionX, weaponRange, controller.attackCollisionMask);
-		Debug.DrawRay(rayOrigin, Vector2.right * directionX * weaponRange, Color.yellow);
+		// get possible attack target
+		Ent target = null;
 
-		//foreach (RaycastHit2D hit in hits) {
-		if (hit) {
-			// push target forward
-			Ent target = hit.transform.GetComponent<Ent>();
-			if (target && target.destructable) { 
-				int dmg = Random.Range(atr.dmg[0], atr.dmg[1]);
-				Vector2 dd = directionX * Vector2.right * knockback + Vector2.up * 3;
-				StartCoroutine(target.Hurt(dmg, dd));
 
-				// push attacker backwards
-				yield return StartCoroutine(PushBackwards(-d / 2 , 0.05f));
+		if (interactiveObject && interactiveObject.destructable) {
+			// by distance
+			if (Vector2.Distance(transform.position, interactiveObject.transform.position) < 0.5f) {
+				target = interactiveObject;
 			}
+		} else {
+			// by projecting a ray forward
+			Vector2 rayOrigin = new Vector2 (transform.position.x, transform.position.y + sprite.localScale.y / 2);
+			RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.right * directionX, weaponRange, controller.attackCollisionMask);
+			Debug.DrawRay(rayOrigin, Vector2.right * directionX * weaponRange, Color.yellow);
+			if (hit) { target = hit.transform.GetComponent<Ent>(); } 
 		}
 
+		// if we have a target, calculate damage, hurt him and push him backwards
+		if (target && target.destructable) { 
+			int dmg = Random.Range(atr.dmg[0], atr.dmg[1]);
+			Vector2 dd = directionX * Vector2.right * knockback + Vector2.up * 3;
+			StartCoroutine(target.Hurt(dmg, dd));
+
+			// push attacker backwards
+			yield return StartCoroutine(PushBackwards(-d / 2 , 0.05f));
+		}
+
+		// finish attack
 		input = Vector2.zero;
 		velocity = Vector2.zero;
-
 		yield return new WaitForSeconds(0.1f);
-
 		state = States.IDLE;
 		hasAttackedInAir = !controller.collisions.below;
 	}
