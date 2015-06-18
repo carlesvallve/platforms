@@ -216,7 +216,9 @@ public class Humanoid : Ent {
 		} 
 	
 		// if we have a destructable target
-		if (target && target.destructable) { 
+		if (target && target.destructable) {
+			sprite.transform.localScale = new Vector3(Mathf.Sign(target.transform.position.x - transform.position.x), 1, 1);
+
 			// if target is attacking lets both parry
 			if (target.state == States.ATTACK) {
 				Humanoid enemy = (Humanoid)target;
@@ -249,9 +251,11 @@ public class Humanoid : Ent {
 		input = Vector2.zero;
 		velocity = Vector2.zero;
 
-		Vector3 pos = transform.position + ((enemy.transform.position - transform.position) / 2) + Vector3.up * GetHeight() / 2;
-		Star star = ((GameObject)Instantiate(Resources.Load("Prefabs/Fx/Star"))).GetComponent<Star>();
-		star.Init(pos, sprite.localScale.x);
+		if (prefabs.parryPrefab) {
+			Vector3 pos = transform.position + ((enemy.transform.position - transform.position) / 2) + Vector3.up * GetHeight() / 2;
+			Star star = ((GameObject)Instantiate(prefabs.parryPrefab)).GetComponent<Star>();
+			star.Init(pos, sprite.localScale.x);
+		}
 		
 		yield return StartCoroutine(PushBackwards(vec , 0.2f));
 	}

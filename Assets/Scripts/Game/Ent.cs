@@ -54,6 +54,7 @@ public class Inv {
 public class Prefabs {
 	public GameObject bloodPrefab;
 	public GameObject damagePrefab;
+	public GameObject parryPrefab;
 }
 
 	
@@ -229,7 +230,7 @@ public class Ent : MonoBehaviour {
 		//velocity.x = Mathf.SmoothDamp (velocity.x, targetVelocityX, ref velocityXSmoothing, (controller.collisions.below)?accelerationTimeGrounded:accelerationTimeAirborne);
 			
 		if (velocity.x != 0) { 
-			if (state != States.ATTACK && state != States.HURT) {
+			if (state != States.ATTACK && state != States.HURT && state != States.PARRY) {
 				if (this is Humanoid) {
 					sprite.localScale = new Vector2(Mathf.Sign(velocity.x) * Mathf.Abs(sprite.localScale.x), sprite.localScale.y); 
 				}
@@ -456,7 +457,7 @@ public class Ent : MonoBehaviour {
 
 
 	public virtual IEnumerator Hurt (int dmg, Vector2 vec) {
-		if (state == States.ATTACK || state == States.PARRY ||state == States.HURT) { yield break; }
+		if (state == States.ATTACK || state == States.PARRY || state == States.HURT) { yield break; }
 
 		state = States.HURT;
 		input = Vector2.zero;
