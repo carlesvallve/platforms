@@ -18,11 +18,15 @@ public class Monster : Humanoid {
 
 	protected Player player;
 	protected bool aware = false;
+	protected bool isThereAnEmptySpace;
+	protected float moveInterval;
 
 
 	public override void Awake () {
 		player = GameObject.Find("Player").GetComponent<Player>();
 		base.Awake();
+
+		moveInterval = ai.moveSpeed;
 
 		// initialize ai loops
 		StartCoroutine(AiVision());
@@ -32,7 +36,18 @@ public class Monster : Humanoid {
 
 
 	protected override void SetInput () {
-		//print (state + " " + CanThink());
+		// ai move speed is different when we are aware or at ease
+		moveInterval = aware && input.x != 0 ? ai.moveSpeed : ai.moveSpeed * 10;
+
+		// turn around if we collided with something not iteractable on the way
+		if (controller.collisions.left && input.x < 0) { input.x = 1; }
+		if (controller.collisions.right && input.x > 0) { input.x = -1; }
+
+		// wait or turn around if we arrived to the end of the platform
+		isThereAnEmptySpace = CheckForEmptySpace(transform.position + Vector3.right * input.x * 0.3f);
+		if (isThereAnEmptySpace) {
+			input.x = aware ? 0 : Random.Range(0, (int)(-input.x * 2)); // -input.x; //
+		}
 	}
 
 
@@ -70,14 +85,22 @@ public class Monster : Humanoid {
 			float dir = Mathf.Sign(player.transform.position.x - transform.position.x);
 			sprite.localScale = new Vector2(dir * Mathf.Abs(sprite.localScale.x), sprite.localScale.y);
 		} else {
-			aware = value;
+			//aware = value;
 		}
 
 		StartCoroutine(UpdateInfo(value ? "!" : "?"));
-		yield return new WaitForSeconds(0.5f);
-		StartCoroutine(UpdateInfo(null));
+		yield return new WaitForSeconds(0.2f);
 
 		aware = value;
+		if (aware) {
+			StopCoroutine(AiMove());
+			StartCoroutine(AiMove());
+		}
+
+		yield return new WaitForSeconds(0.3f);
+		StartCoroutine(UpdateInfo(null));
+
+		//aware = value;
 	}
 
 
@@ -86,12 +109,12 @@ public class Monster : Humanoid {
 	// ===========================================================
 
 	private IEnumerator AiMove () {
-		yield return new WaitForSeconds(ai.moveSpeed);
+		yield return new WaitForSeconds(moveInterval);
 		if (!player) { yield break; }
 
 		if (state == States.IDLE) {
 			float d = player.transform.position.x - transform.position.x;
-			input.x = aware && Mathf.Abs(d) > 1.0f ? Mathf.Sign(d) : 0;
+			input.x = aware && Mathf.Abs(d) > 1.0f ? Mathf.Sign(d) : input.x = Random.Range(-1, 1);
 		}
 
 		StartCoroutine(AiMove());
@@ -121,18 +144,21 @@ public class Monster : Humanoid {
 	}
 
 
+	// ===========================================================
+	// Ai RayCasting
+	// ===========================================================
 
-	// TODO:
+	private bool CheckForEmptySpace (Vector3 pos) {
+		Vector2 rayOrigin = pos + Vector3.up * GetHeight() / 2; //(directionY == -1)?raycastOrigins.bottomLeft:raycastOrigins.topLeft;
+		RaycastHit2D hit = Physics2D.Raycast(rayOrigin, -Vector2.up, 0.6f, controller.collisionMask);
 
-	// monsters will check if there is floor on their next move
-	// if there is no floor they need to check which tile will they go
-	//		- fall to tile below
-	//		- jump to accessible tile in jump range
+		if (hit) {
+			Debug.DrawRay(rayOrigin, -Vector2.up * 0.6f, Color.yellow);
+			return false;
+		}
 
-	// if controller.collisions.left/right
-	//		- check if jump in direction will suceed 
-	//			yes: jump 
-	//			no: move in opposite direction
-
+		Debug.DrawRay(rayOrigin, -Vector2.up * 0.6f, Color.magenta);
+		return true;
+	}
 
 }
