@@ -7,7 +7,6 @@ public class Ai {
 	public float visionSpeed = 0.5f;
 	public float moveSpeed = 0.5f;
 	public float attackSpeed = 2f;
-
 	public float visionRange = 10f;
 }
 
@@ -46,7 +45,7 @@ public class Monster : Humanoid {
 		// wait or turn around if we arrived to the end of the platform
 		isThereAnEmptySpace = CheckForEmptySpace(transform.position + Vector3.right * input.x * 0.3f);
 		if (isThereAnEmptySpace) {
-			input.x = aware ? 0 : Random.Range(0, (int)(-input.x * 2)); // -input.x; //
+			input.x = aware ? 0 : Random.Range(0, (int)(-input.x * 2)); // -input.x;
 		}
 	}
 
@@ -149,15 +148,16 @@ public class Monster : Humanoid {
 	// ===========================================================
 
 	private bool CheckForEmptySpace (Vector3 pos) {
-		Vector2 rayOrigin = pos + Vector3.up * GetHeight() / 2; //(directionY == -1)?raycastOrigins.bottomLeft:raycastOrigins.topLeft;
-		RaycastHit2D hit = Physics2D.Raycast(rayOrigin, -Vector2.up, 0.6f, controller.collisionMask);
+		float h = GetHeight() / 2;
+		Vector2 rayOrigin = pos + Vector3.up * h;
+		RaycastHit2D hit = Physics2D.Raycast(rayOrigin, -Vector2.up, h + 0.1f, controller.collisionMask);
 
 		if (hit) {
-			Debug.DrawRay(rayOrigin, -Vector2.up * 0.6f, Color.yellow);
+			Debug.DrawRay(rayOrigin, -Vector2.up * h, Color.yellow);
 			return false;
 		}
 
-		Debug.DrawRay(rayOrigin, -Vector2.up * 0.6f, Color.magenta);
+		Debug.DrawRay(rayOrigin, -Vector2.up * h, Color.magenta);
 		return true;
 	}
 
