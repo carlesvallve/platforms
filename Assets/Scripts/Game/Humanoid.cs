@@ -205,7 +205,7 @@ public class Humanoid : Ent {
 			if (Vector2.Distance(transform.position, interactiveObject.transform.position) < 0.3f) {
 				target = interactiveObject;
 			}
-		} 
+		}
 
 		// by projecting a ray forward
 		Vector2 rayOrigin = new Vector2 (transform.position.x, transform.position.y + sprite.localScale.y / 2);
@@ -217,7 +217,7 @@ public class Humanoid : Ent {
 	
 		// if we have a destructable target
 		if (target && target.destructable) {
-			sprite.transform.localScale = new Vector3(Mathf.Sign(target.transform.position.x - transform.position.x), 1, 1);
+			sprite.localScale = new Vector2(Mathf.Sign(target.transform.position.x - transform.position.x) * Mathf.Abs(sprite.localScale.x), sprite.localScale.y);
 
 			// if target is attacking lets both parry
 			if (target.state == States.ATTACK) {
