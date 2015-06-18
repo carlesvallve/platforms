@@ -17,8 +17,9 @@ public class Monster : Humanoid {
 
 	protected Player player;
 	protected bool aware = false;
-	protected bool isThereAnEmptySpace;
 	protected float moveInterval;
+
+	private bool stopMoveCycle = false;
 
 
 	public override void Awake () {
@@ -36,16 +37,23 @@ public class Monster : Humanoid {
 
 	protected override void SetInput () {
 		// ai move speed is different when we are aware or at ease
-		moveInterval = aware && input.x != 0 ? ai.moveSpeed : ai.moveSpeed * 10;
+		moveInterval = aware ? ai.moveSpeed : ai.moveSpeed * 10;
 
-		// turn around if we collided with something not iteractable on the way
-		if (controller.collisions.left && input.x < 0) { input.x = 1; }
-		if (controller.collisions.right && input.x > 0) { input.x = -1; }
+		// we dont want to check for turn arounds if we are doing anything else than standing or walking
+		if (state != States.IDLE) {
+			return;
+		}
 
 		// wait or turn around if we arrived to the end of the platform
-		isThereAnEmptySpace = CheckForEmptySpace(transform.position + Vector3.right * input.x * 0.3f);
-		if (isThereAnEmptySpace) {
-			input.x = aware ? 0 : Random.Range(0, (int)(-input.x * 2)); // -input.x;
+		if (!CheckForFloor(transform.position + Vector3.right * input.x * 0.3f)) {
+			input.x = aware ? 0 : Random.Range(0, (int)(-input.x * 2));
+			//ResetMoveCycle();
+		}
+
+		// turn around if we collided with something not iteractable on the way
+		if (CheckForWall(transform.position)) {
+			input.x = -input.x;
+			//ResetMoveCycle();
 		}
 	}
 
@@ -83,23 +91,15 @@ public class Monster : Humanoid {
 		if (value) {
 			float dir = Mathf.Sign(player.transform.position.x - transform.position.x);
 			sprite.localScale = new Vector2(dir * Mathf.Abs(sprite.localScale.x), sprite.localScale.y);
-		} else {
-			//aware = value;
-		}
-
-		StartCoroutine(UpdateInfo(value ? "!" : "?"));
-		yield return new WaitForSeconds(0.2f);
+		} 
 
 		aware = value;
-		if (aware) {
-			StopCoroutine(AiMove());
-			StartCoroutine(AiMove());
-		}
+		moveInterval = aware ? ai.moveSpeed : ai.moveSpeed * 10;
+		ResetMoveCycle();
 
-		yield return new WaitForSeconds(0.3f);
+		StartCoroutine(UpdateInfo(value ? "!" : "?"));
+		yield return new WaitForSeconds(0.5f);
 		StartCoroutine(UpdateInfo(null));
-
-		//aware = value;
 	}
 
 
@@ -107,9 +107,20 @@ public class Monster : Humanoid {
 	// Ai Movement
 	// ===========================================================
 
+	private void ResetMoveCycle () {
+		stopMoveCycle = true;
+		StartCoroutine(AiMove());
+	}
+
+
 	private IEnumerator AiMove () {
 		yield return new WaitForSeconds(moveInterval);
 		if (!player) { yield break; }
+
+		if (stopMoveCycle) { 
+			stopMoveCycle = false;
+			yield break; 
+		}
 
 		if (state == States.IDLE) {
 			float d = player.transform.position.x - transform.position.x;
@@ -147,18 +158,33 @@ public class Monster : Humanoid {
 	// Ai RayCasting
 	// ===========================================================
 
-	private bool CheckForEmptySpace (Vector3 pos) {
+	private bool CheckForFloor (Vector3 pos) {
 		float h = GetHeight() / 2;
 		Vector2 rayOrigin = pos + Vector3.up * h;
 		RaycastHit2D hit = Physics2D.Raycast(rayOrigin, -Vector2.up, h + 0.1f, controller.collisionMask);
 
 		if (hit) {
-			Debug.DrawRay(rayOrigin, -Vector2.up * h, Color.yellow);
-			return false;
+			//Debug.DrawRay(rayOrigin, -Vector2.up * h, Color.yellow);
+			return true;
 		}
 
-		Debug.DrawRay(rayOrigin, -Vector2.up * h, Color.magenta);
-		return true;
+		//Debug.DrawRay(rayOrigin, -Vector2.up * h, Color.magenta);
+		return false;
+	}
+
+
+	private bool CheckForWall (Vector3 pos) {
+		float w = GetHeight() / 2;
+		Vector2 rayOrigin = pos + Vector3.up * w;
+		RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.right * input.x, w + 0.1f, controller.collisionMask);
+
+		if (hit && hit.transform.gameObject.tag != "Player") {
+			Debug.DrawRay(rayOrigin, Vector2.right * input.x * (w + 0.1f), Color.black);
+			return true;
+		}
+
+		Debug.DrawRay(rayOrigin, Vector2.right * input.x * (w + 0.1f), Color.magenta);
+		return false;
 	}
 
 }

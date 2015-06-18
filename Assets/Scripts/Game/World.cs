@@ -7,7 +7,7 @@ public class World : MonoBehaviour {
 	public static Transform itemContainer;
 	public static Transform monsterContainer;
 	public static Transform lootContainer;
-	public static Transform bloodContainer;
+	public static Transform fxContainer;
 
 
 	void Awake () {
@@ -15,7 +15,7 @@ public class World : MonoBehaviour {
 		itemContainer = GameObject.Find("Items").transform;
 		monsterContainer = GameObject.Find("Monsters").transform;
 		lootContainer = GameObject.Find("Loot").transform;
-		bloodContainer = GameObject.Find("Blood").transform;
+		fxContainer = GameObject.Find("Fx").transform;
 	}
 	
 }

@@ -220,8 +220,8 @@ public class Humanoid : Ent {
 			// if target is attacking lets both parry
 			if (target.state == States.ATTACK) {
 				Humanoid enemy = (Humanoid)target;
-				StartCoroutine(enemy.Parry(d * 1));
-				yield return StartCoroutine(Parry(-d * 1));
+				StartCoroutine(enemy.Parry(this, d * 1));
+				yield return StartCoroutine(Parry(enemy, -d * 1));
 			} else {
 				// calculate damage, hurt target, and push him backwards
 				int dmg = Random.Range(atr.dmg[0], atr.dmg[1]);
@@ -242,13 +242,17 @@ public class Humanoid : Ent {
 	}
 
 
-	public override IEnumerator Parry (Vector2 vec) {
+	public override IEnumerator Parry (Humanoid enemy, Vector2 vec) {
 		state = States.PARRY;
-		Audio.play("Audio/sfx/Tick", 1f, Random.Range(1f, 1.5f));
+		Audio.play("Audio/sfx/Sword", 1f, Random.Range(1f, 2f));
 
 		input = Vector2.zero;
 		velocity = Vector2.zero;
 
+		Vector3 pos = transform.position + ((enemy.transform.position - transform.position) / 2) + Vector3.up * GetHeight() / 2;
+		Star star = ((GameObject)Instantiate(Resources.Load("Prefabs/Fx/Star"))).GetComponent<Star>();
+		star.Init(pos, sprite.localScale.x);
+		
 		yield return StartCoroutine(PushBackwards(vec , 0.2f));
 	}
 

@@ -450,7 +450,7 @@ public class Ent : MonoBehaviour {
 	}
 
 
-	public virtual IEnumerator Parry (Vector2 vec) {
+	public virtual IEnumerator Parry (Humanoid enemy, Vector2 vec) {
 		yield break;
 	}
 
@@ -499,13 +499,13 @@ public class Ent : MonoBehaviour {
 		if (prefabs.bloodPrefab) {
 			for (int i = 0; i < maxBloodSplats; i++) {
 				Blood blood = ((GameObject)Instantiate(prefabs.bloodPrefab)).GetComponent<Blood>();
-				blood.Init(World.bloodContainer, this);
+				blood.Init(World.fxContainer, this);
 			}
 		}
 
 		if (prefabs.damagePrefab && dmg > 0) {
 			Damage damage = ((GameObject)Instantiate(prefabs.damagePrefab)).GetComponent<Damage>();
-			damage.Init(World.bloodContainer, this, "+" + dmg);
+			damage.Init(World.fxContainer, this, "+" + dmg);
 		}
 	}
 
