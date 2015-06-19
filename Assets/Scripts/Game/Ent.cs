@@ -76,6 +76,7 @@ public class Ent : MonoBehaviour {
 	public float destructableJumpMass = 0;
 
 	protected Transform sprite;
+	protected BoxCollider2D collider;
 	
 	protected Vector2 input;
 	protected Vector2 velocity;
@@ -119,6 +120,7 @@ public class Ent : MonoBehaviour {
 		controller = GetComponent<Controller2D>();
 		anim = GetComponent<Anim>();
 		sprite = transform.Find("Sprite");
+		collider = GetComponent<BoxCollider2D>(); // we just use this to calculate the height
 
 		hpBar = transform.Find("Bar");
 		hpPercent = transform.Find("Bar/Percent");
@@ -151,7 +153,7 @@ public class Ent : MonoBehaviour {
 
 
 	public float GetHeight () {
-		return sprite.localScale.y;
+		return collider.size.y; //sprite.localScale.y;
 	}
 
 
