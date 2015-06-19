@@ -200,21 +200,21 @@ public class Humanoid : Ent {
 		// get possible attack target
 		Ent target = null;
 
-		// by distance
 		if (interactiveObject && interactiveObject.destructable) {
+			// by distance (in case we are overlapping the target)
 			if (Vector2.Distance(transform.position, interactiveObject.transform.position) < 0.3f) {
 				target = interactiveObject;
 			}
+		} else {
+			// by projecting a ray forward
+			Vector2 rayOrigin = new Vector2 (transform.position.x, transform.position.y + GetHeight() / 2);
+			RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.right * directionX, weaponRange, controller.attackCollisionMask);
+			Debug.DrawRay(rayOrigin, Vector2.right * directionX * (weaponRange + 0.3f), Color.red);
+			if (hit) { 
+				target = hit.transform.GetComponent<Ent>();
+			} 
 		}
 
-		// by projecting a ray forward
-		Vector2 rayOrigin = new Vector2 (transform.position.x, transform.position.y + sprite.localScale.y / 2);
-		RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.right * directionX, weaponRange, controller.attackCollisionMask);
-		Debug.DrawRay(rayOrigin, Vector2.right * directionX * weaponRange, Color.yellow);
-		if (hit) { 
-			target = hit.transform.GetComponent<Ent>();
-		} 
-	
 		// if we have a destructable target
 		if (target && target.destructable) {
 			sprite.localScale = new Vector2(Mathf.Sign(target.transform.position.x - transform.position.x) * Mathf.Abs(sprite.localScale.x), sprite.localScale.y);
@@ -335,7 +335,7 @@ public class Humanoid : Ent {
 			case "Platform":
 			case "OneWayPlatform":
 			ent = collider.gameObject.GetComponent<Ent>();
-			if (ent && ent.pickable) {
+			if (ent && (ent.pickable || ent.destructable)) {
 				interactiveObject = ent;
 			}
 			break;
