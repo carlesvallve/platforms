@@ -405,7 +405,7 @@ public class Ent : MonoBehaviour {
 		//transform.localScale = new Vector2(sc.x / (Mathf.Abs(collector.transform.localScale.x)), sc.y / (collector.transform.localScale.y));
 
 		float duration = 0.2f;
-		Vector3 pos = Vector3.up * collector.sprite.localScale.y;
+		Vector3 pos = Vector3.up * (collector.GetHeight()); //collector.sprite.localScale.y;
 		
 		float startTime = Time.time;
 		while (Time.time <= startTime + duration) {
