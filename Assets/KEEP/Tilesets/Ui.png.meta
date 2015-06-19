@@ -1,0 +1,401 @@
+fileFormatVersion: 2
+guid: 26002b106f107421c965b0bff79f5ea6
+timeCreated: 1433858913
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: black
+    21300002: box_dark
+    21300004: hud_anchor
+    21300006: hud_barracuda
+    21300008: hud_fist
+    21300010: hud_fist
+    21300012: hud_barracuda
+    21300014: hud_anchor
+    21300016: name_pete
+    21300018: heart_full
+    21300020: heart_half
+    21300022: heart_empty
+    21300024: coin
+    21300026: corner_1
+    21300028: corner
+    21300030: corner_3
+    21300032: add_to_ship
+    21300034: dispose
+    21300036: arrow
+    21300038: r
+    21300040: l
+    21300042: r_active
+    21300044: l_active
+    21300046: spot
+    21300048: corner_2
+    21300050: boat_thrust9000
+    21300052: selector
+    21300054: corner_3
+    21300056: chat
+    21300058: button
+    21300060: line_brown
+    21300062: box_medium
+    21300064: box_light
+    21300066: null
+    21300068: noWeapon
+    21300070: textoutline
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 0
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0, y: 1}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 24
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: black
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 496
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: box_dark
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 507
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 2, y: 2, z: 2, w: 2}
+    - name: hud_anchor
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 498
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: hud_barracuda
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 498
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: hud_fist
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 498
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: name_pete
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 496
+        width: 48
+        height: 16
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: heart_full
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 500
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: heart_half
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 500
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: heart_empty
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 500
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: coin
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 500
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: corner_1
+      rect:
+        serializedVersion: 2
+        x: 345
+        y: 427
+        width: 55
+        height: 55
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 27, y: 27, z: 27, w: 27}
+    - name: corner
+      rect:
+        serializedVersion: 2
+        x: 237
+        y: 504
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: corner_3
+      rect:
+        serializedVersion: 2
+        x: 313
+        y: 452
+        width: 31
+        height: 31
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 15, y: 15, z: 15, w: 15}
+    - name: add_to_ship
+      rect:
+        serializedVersion: 2
+        x: 245
+        y: 477
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dispose
+      rect:
+        serializedVersion: 2
+        x: 262
+        y: 493
+        width: 16
+        height: 18
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: arrow
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 498
+        width: 12
+        height: 13
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: r
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 498
+        width: 35
+        height: 13
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: l
+      rect:
+        serializedVersion: 2
+        x: 328
+        y: 498
+        width: 35
+        height: 13
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: r_active
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 484
+        width: 35
+        height: 13
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: l_active
+      rect:
+        serializedVersion: 2
+        x: 328
+        y: 484
+        width: 35
+        height: 13
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: spot
+      rect:
+        serializedVersion: 2
+        x: 364
+        y: 504
+        width: 36
+        height: 7
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: corner_2
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 439
+        width: 73
+        height: 73
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 36, y: 36, z: 36, w: 36}
+    - name: boat_thrust9000
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 480
+        width: 91
+        height: 15
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: selector
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 481
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: chat
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 480
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 8, y: 8, z: 8, w: 8}
+    - name: button
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 483
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 4, y: 4, z: 4, w: 4}
+    - name: line_brown
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 481
+        width: 1
+        height: 1
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: box_medium
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 507
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 2, y: 2, z: 2, w: 2}
+    - name: box_light
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 507
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 2, y: 2, z: 2, w: 2}
+    - name: noWeapon
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 498
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: textoutline
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 506
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 2, y: 1, z: 2, w: 2}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

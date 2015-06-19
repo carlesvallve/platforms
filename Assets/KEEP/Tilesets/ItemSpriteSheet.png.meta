@@ -1,0 +1,434 @@
+fileFormatVersion: 2
+guid: 7fd9f9d9fc5ed466e82802612223bde4
+timeCreated: 1434693712
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: item_scroll_0
+    21300002: item_scroll_1
+    21300004: item_scroll_2
+    21300006: item_coin_silver_0
+    21300008: item_coin_silver_1
+    21300010: item_coin_silver_2
+    21300012: item_coin_silver_3
+    21300014: item_coin_gold_0
+    21300016: item_coin_gold_1
+    21300018: item_coin_gold_2
+    21300020: item_coin_gold_3
+    21300022: item_daimond
+    21300024: item_emerald
+    21300026: item_silverIngot
+    21300028: item_goldIngot
+    21300030: item_ruby
+    21300032: item_rubyRing
+    21300034: item_silverBracelet
+    21300036: item_purse
+    21300038: item_goblet_large_gold
+    21300040: item_goblet_large_pewter
+    21300042: item_goblet_gold
+    21300044: item_goblet_large_silver
+    21300046: item_award_large_gold
+    21300048: item_goblet_pewter
+    21300050: item_award_large_pewter
+    21300052: item_goblet_silver
+    21300054: item_award_large_silver
+    21300056: item_candlestick
+    21300058: item_candlestick_dinner
+    21300060: item_pocketwatch
+    21300062: item_seal_red
+    21300064: item_seal_orange
+    21300066: item_key0
+    21300068: item_skullkey0
+    21300070: item_skullkey1
+    21300072: item_chest_lower0
+    21300074: item_chest_upper0
+    21300076: item_chest_lower_open0
+    21300078: item_chest_upper_open0
+    21300080: item_smallchest0
+    21300082: item_smallchest1
+    21300084: item_chest_lower_blaze0
+    21300086: item_chest_upper_blaze0
+    21300088: scoreBG
+    21300090: torchHolder
+    21300092: health_hat
+    21300094: weaponPickup_barracuda
+    21300096: weaponPickup_anchor
+    21300098: Scroll
+    21300100: Coin0
+    21300102: PaddleLong
+    21300104: Coin1
+    21300106: Coin2
+    21300108: Metal
+    21300110: Ring
+    21300112: Bag
+    21300114: Chalice
+    21300116: Goblet
+    21300118: Cup
+    21300120: CandleStick
+    21300122: CandleStickTripple
+    21300124: PocketWatch
+    21300126: Seal
+    21300128: KeyLarge
+    21300130: KeyLargeSkull
+    21300132: ChestLid
+    21300134: Bracelet
+    21300136: JewleryBox
+    21300138: WallLamp
+    21300140: ChestBase
+    21300142: ChestLidOpen
+    21300144: Powerup
+    21300146: Weapon_Barracuda
+    21300148: Weapon_Anchor
+    21300150: Coin3
+    21300152: Crystal
+    21300154: Coin4
+    21300156: Coin5
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 0
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0, y: 1}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 24
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Scroll
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 495
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Coin0
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 503
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PaddleLong
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 494
+        width: 40
+        height: 8
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Coin1
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 503
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Coin2
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 503
+        width: 4
+        height: 8
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Metal
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 503
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Ring
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 503
+        width: 4
+        height: 8
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Bag
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 496
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Chalice
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 495
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Goblet
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 495
+        width: 10
+        height: 14
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Cup
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 495
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CandleStick
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 495
+        width: 6
+        height: 16
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CandleStickTripple
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 496
+        width: 22
+        height: 15
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PocketWatch
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 498
+        width: 16
+        height: 13
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Seal
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 496
+        width: 8
+        height: 15
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: KeyLarge
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 471
+        width: 11
+        height: 23
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: KeyLargeSkull
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 470
+        width: 14
+        height: 23
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ChestLid
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 485
+        width: 25
+        height: 8
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Bracelet
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 492
+        width: 5
+        height: 10
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: JewleryBox
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 486
+        width: 16
+        height: 8
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: WallLamp
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 482
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ChestBase
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 472
+        width: 25
+        height: 12
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ChestLidOpen
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 478
+        width: 22
+        height: 13
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Powerup
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 377
+        width: 29
+        height: 19
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Weapon_Barracuda
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 373
+        width: 61
+        height: 19
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Weapon_Anchor
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 351
+        width: 49
+        height: 45
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Coin3
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 503
+        width: 2
+        height: 8
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Crystal
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 503
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Coin4
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 469
+        width: 4
+        height: 8
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Coin5
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 469
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

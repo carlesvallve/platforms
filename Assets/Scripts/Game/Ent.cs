@@ -108,6 +108,8 @@ public class Ent : MonoBehaviour {
 
 	protected TextMesh info;
 
+	protected Anim anim;
+
 
 	// ===========================================================
 	// Init
@@ -115,7 +117,7 @@ public class Ent : MonoBehaviour {
 
 	public virtual void Awake () {
 		controller = GetComponent<Controller2D>();
-
+		anim = GetComponent<Anim>();
 		sprite = transform.Find("Sprite");
 
 		hpBar = transform.Find("Bar");
@@ -229,7 +231,7 @@ public class Ent : MonoBehaviour {
 		velocity.x = targetVelocityX;
 		//velocity.x = Mathf.SmoothDamp (velocity.x, targetVelocityX, ref velocityXSmoothing, (controller.collisions.below)?accelerationTimeGrounded:accelerationTimeAirborne);
 			
-		if (velocity.x != 0) { 
+		if (velocity.x != 0) {
 			if (state != States.ATTACK && state != States.HURT && state != States.PARRY) {
 				if (this is Humanoid) {
 					sprite.localScale = new Vector2(Mathf.Sign(velocity.x) * Mathf.Abs(sprite.localScale.x), sprite.localScale.y); 
@@ -241,15 +243,19 @@ public class Ent : MonoBehaviour {
 		if (IsOnLadder()) {
 			hasAttackedInAir = false;
 			SetMoveOnLadder();
+
+			if (anim) { anim.Play(velocity.y == 0 ? "ladder90" : "ladder90"); }
 		} else {
 			ApplyGravity();
+
+			if (anim) { anim.Play(velocity.x == 0 ? "idle90" : "walk90"); }
 		}
 
 		// apply controller2d movement
 		controller.Move (velocity * Time.deltaTime, jumpingDown);
 
 		// snap to ladders
-		if (IsOnLadder()) { 
+		if (IsOnLadder()) {
 			SnapToLadder(); 
 		}
 	}

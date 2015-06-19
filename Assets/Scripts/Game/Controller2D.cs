@@ -185,6 +185,10 @@ public class Controller2D : MonoBehaviour {
 
 			if (hit) {
 
+				if (ent is Player) {
+					//print (">>> " + hit.transform.gameObject.tag + " " + hit.transform.gameObject.name);
+				}
+
 				// handle one way collisions
 				if (hit.transform.gameObject.tag == "OneWayPlatform") {
 					if (directionY == 1 || (directionY == - 1 && jumpingDown)) {
