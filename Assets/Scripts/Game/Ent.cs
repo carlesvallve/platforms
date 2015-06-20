@@ -155,7 +155,7 @@ public class Ent : MonoBehaviour {
 
 
 	public float GetHeight () {
-		return collider.size.y; //sprite.localScale.y;
+		return collider.size.y;
 	}
 
 
@@ -188,11 +188,14 @@ public class Ent : MonoBehaviour {
 			jumpingFromLadder = false;
 		}
 
-		if (velocity.y < -18f && !jumpingFromLadder) {
+		// reset jumpingDown
+		float jumpDownFactor = -10f;
+		if (velocity.y < jumpDownFactor && !jumpingFromLadder) {
 			jumpingDown = false;
 			
 		}
 
+		// reset jumpingFromLadder
 		if (velocity.y < -4f && !jumpingDown) {
 			jumpingFromLadder = false;
 		}
