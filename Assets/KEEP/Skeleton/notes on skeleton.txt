@@ -1,0 +1,22 @@
+notes on skeleton:
+
+Skeleton can carry boxes, spears, swords, shields, throwing items.
+
+Skeleton cannot carry guns or rifles or items that fire projectiles.
+
+white skeleton has low health and can't see ledges.
+
+red skeleton had higher health, can throw bones and can see ledges.
+
+skeleton can pickup shield if empty, which auto repels frontal attacks for the life of the shield (pickup shield, 
+two hand and one hand items is crouch)
+
+--- missing ---
+
+- roll / slide
+- idle180, idle0
+- run180, run0
+- walk180, walk0
+- attack180, attack0
+
+June 2nd 2015, update June 12th, update June 19th
