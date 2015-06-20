@@ -245,12 +245,16 @@ public class Ent : MonoBehaviour {
 		if (IsOnLadder()) {
 			hasAttackedInAir = false;
 			SetMoveOnLadder();
-
-			if (anim) { anim.Play(velocity.y == 0 ? "ladder90" : "ladder90"); }
 		} else {
 			ApplyGravity();
+		}
 
-			if (anim) { anim.Play(velocity.x == 0 ? "idle90" : "walk90"); }
+		if (anim) {
+			if (IsOnLadder() && previouslyOnLadder) {
+				anim.Play(velocity.y == 0 ? "ladder90" : "ladder90");
+			} else {
+				anim.Play(velocity.x == 0 ? "idle90" : "walk90");
+			}
 		}
 
 		// apply controller2d movement

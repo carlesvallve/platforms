@@ -78,7 +78,8 @@ public class Humanoid : Ent {
 
 	protected IEnumerator PickItem (Ent ent) {
 		if (pickedUpObject) { 
-			StartCoroutine(DropItem(pickedUpObject)); 
+			StartCoroutine(DropItem(pickedUpObject));
+			yield break; 
 		}
 
 		if (!ent) { yield break; }
@@ -93,8 +94,11 @@ public class Humanoid : Ent {
 	protected IEnumerator DropItem (Ent ent) {
 		if (!ent) { yield break; }
 
-		ent.affectedByGravity = true;
+		ent.transform.localPosition = new Vector3(0, GetHeight() - 0.1f, 0);
 		ent.transform.SetParent(World.itemContainer);
+		ent.affectedByGravity = true;
+		
+		print ("dropping item" + ent);
 
 		pickedUpObject = null;
 	}
