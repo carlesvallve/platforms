@@ -362,7 +362,23 @@ public class Humanoid : Ent {
 
 		switch (collider.gameObject.tag) {
 			case "Ladder":
-			ladder = collider.transform.parent.GetComponent<Ladder>();
+			if (velocity.y != 0) {
+				ladder = collider.transform.parent.GetComponent<Ladder>();
+				
+				float top = (ladder.transform.position.y + ladder.GetHeight()) - transform.position.y;
+				
+				if (top < -0.1f && input.y >= 0) { 
+					ladder = null; 
+					controller.EnableCollisions();
+					return;
+				}
+
+				if (top < 0.25 && velocity.y < 0) { 
+					controller.DisableCollisions();
+				} else {
+					controller.EnableCollisions();
+				}
+			}
 			break;
 
 			case "Item":
@@ -392,6 +408,7 @@ public class Humanoid : Ent {
 		switch (collider.gameObject.tag) {
 			case "Ladder":
 			ladder = null;
+			controller.EnableCollisions();
 			break;
 
 			case "Item":

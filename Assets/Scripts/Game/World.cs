@@ -19,3 +19,17 @@ public class World : MonoBehaviour {
 	}
 	
 }
+
+
+/* 
+- OneWayPlatforms
+	- Fix colliders
+
+- Ladders:
+	- We have to be able to pass through platforms while in a ladder, unless we are on the bottom of it
+	- if we are on the top of a ladder, we need to be able to walk normally
+
+
+
+
+*/

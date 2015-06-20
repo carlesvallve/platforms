@@ -42,11 +42,27 @@ public class Controller2D : MonoBehaviour {
 		boxCollider.enabled = value;
 	}
 
+	private bool useCollisions = true;
+
+	public void EnableCollisions () {
+		useCollisions = true;
+	}
+
+	public void DisableCollisions () {
+		useCollisions = false;
+	}
+
 
 	public void Move(Vector3 velocity, bool jumpingDown = false) {
 		UpdateRaycastOrigins ();
 		collisions.Reset ();
 		collisions.velocityOld = velocity;
+
+		if (!useCollisions) {
+			transform.Translate (velocity);
+			return;
+		}
+
 
 		if (velocity.x != 0 || velocity.y != 0) { 
 			bool jumped = AttackCollisions (ref velocity);

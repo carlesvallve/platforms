@@ -16,7 +16,7 @@ public class Ladder : MonoBehaviour {
 	void Awake () {
 		top = transform.Find("Top");
 		bottom = transform.Find("Bottom");
-		height = (int)top.transform.localPosition.y;
+		height = (int)(top.transform.localPosition.y + 0.5f);
 
 		for (int i = 1; i < height; i++) {
 			Transform tile = ((Transform)Instantiate(bottom, transform.position + Vector3.up * i, Quaternion.identity));
