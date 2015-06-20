@@ -55,6 +55,8 @@ public class Monster : Humanoid {
 			input.x = -input.x;
 			//ResetMoveCycle();
 		}
+
+		//input.x = 0;
 	}
 
 
@@ -72,10 +74,22 @@ public class Monster : Humanoid {
 			Vector2 direction = (new Vector2 (player.transform.position.x, player.transform.position.y + GetHeight() / 2) - rayOrigin).normalized;
 			float distance = ai.visionRange;
 
-			RaycastHit2D hit = Physics2D.Raycast(rayOrigin, direction, distance, controller.collisionMask);
+			RaycastHit2D[] hits = Physics2D.RaycastAll(rayOrigin, direction, distance, controller.collisionMask);
 			Debug.DrawRay(rayOrigin, direction * distance, Color.cyan);
 
-			yield return StartCoroutine(SetAware(hit && hit.transform.gameObject.tag == "Player"));
+			bool ok = false;
+			foreach (RaycastHit2D hit in hits) {
+				if (hit.transform.gameObject.tag == "Platform") {
+					break;
+				}
+				if (hit.transform.gameObject.tag == "Player") {
+					ok = true;
+					break;
+				}
+			}
+
+			yield return StartCoroutine(SetAware(ok));
+			//yield return StartCoroutine(SetAware(hit && hit.transform.gameObject.tag == "Player"));
 		}
 		
 		StartCoroutine(AiVision());
@@ -178,7 +192,7 @@ public class Monster : Humanoid {
 		Vector2 rayOrigin = pos + Vector3.up * w;
 		RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.right * input.x, w + 0.1f, controller.collisionMask);
 
-		if (hit && hit.transform.gameObject.tag != "Player") {
+		if (hit && hit.transform.gameObject.tag == "Platform") {
 			Debug.DrawRay(rayOrigin, Vector2.right * input.x * (w + 0.1f), Color.black);
 			return true;
 		}

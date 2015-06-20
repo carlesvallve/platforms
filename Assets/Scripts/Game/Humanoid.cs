@@ -119,14 +119,16 @@ public class Humanoid : Ent {
 	protected IEnumerator ThrowItem (Ent ent) {
 		if (!ent) { yield break; }
 
+		// play animation
+		state = States.THROW;
+		if (anim) { anim.Play("throw90"); }
+
+		yield return new WaitForSeconds(0.2f);
+
 		StartCoroutine(DropItem(ent));
 
 		float dir  = Mathf.Sign(sprite.localScale.x);
 		ent.SetThrow(dir);	
-
-		// play animation
-		state = States.THROW;
-		if (anim) { anim.Play("throw90"); }
 
 		yield return new WaitForSeconds(0.5f);
 
@@ -214,7 +216,10 @@ public class Humanoid : Ent {
 		Audio.play("Audio/sfx/woosh", 0.15f, Random.Range(1.0f, 1.5f));
 
 		// play animation
-		if (anim) { anim.Play("attack1h90"); }
+		if (anim) { anim.Play("attack1h90", 2); }
+
+		input.x = 0;
+		velocity.x = 0;
 		
 		// attack parameters
 		float weaponRange = 0.8f;
@@ -267,7 +272,7 @@ public class Humanoid : Ent {
 		// finish attack
 		input = Vector2.zero;
 		velocity = Vector2.zero;
-		yield return new WaitForSeconds(0.1f);
+		yield return new WaitForSeconds(0.2f); // 0.1f
 		state = States.IDLE;
 		hasAttackedInAir = !controller.collisions.below;
 	}
