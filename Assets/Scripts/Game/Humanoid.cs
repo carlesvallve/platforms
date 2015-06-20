@@ -272,9 +272,10 @@ public class Humanoid : Ent {
 		// finish attack
 		input = Vector2.zero;
 		velocity = Vector2.zero;
-		yield return new WaitForSeconds(0.2f); // 0.1f
+		yield return new WaitForSeconds(0.1f); // 0.1f
 		state = States.IDLE;
 		hasAttackedInAir = !controller.collisions.below;
+
 	}
 
 

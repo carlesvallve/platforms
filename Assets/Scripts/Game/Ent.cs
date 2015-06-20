@@ -231,10 +231,12 @@ public class Ent : MonoBehaviour {
 		//if (state == States.ATTACK || state == States.HURT) { return; };
 
 		// set velocity x
-		float targetVelocityX = input.x * speed;
-		velocity.x = targetVelocityX;
-		//velocity.x = Mathf.SmoothDamp (velocity.x, targetVelocityX, ref velocityXSmoothing, (controller.collisions.below)?accelerationTimeGrounded:accelerationTimeAirborne);
-			
+		if (state == States.IDLE) {
+			float targetVelocityX = input.x * speed;
+			velocity.x = targetVelocityX;
+			//velocity.x = Mathf.SmoothDamp (velocity.x, targetVelocityX, ref velocityXSmoothing, (controller.collisions.below)?accelerationTimeGrounded:accelerationTimeAirborne);
+		}
+					
 		if (velocity.x != 0) {
 			if (state != States.ATTACK && state != States.HURT && state != States.PARRY) {
 				if (this is Humanoid) {
@@ -261,14 +263,6 @@ public class Ent : MonoBehaviour {
 
 		// manage animations
 		if (anim && state == States.IDLE) {
-			//AnimationClip clip = anim.GetCurrentClip(); //.GetCurrentAnimatorClipInfo(0)[0].clip;
-			//print (clip.tag);
-
-			/*string n = clip.name;
-			if (n != " ladder90" && n != "jumpUp90" && n != "jumpDown90" && n != "idle90" && n != "walk90") {
-				return;
-			}*/
-
 			if (IsOnLadder() && previouslyOnLadder) {
 				anim.Play("ladder90", velocity.y == 0 ? 0 : 1); 				// ladder
 			} else {
@@ -404,7 +398,7 @@ public class Ent : MonoBehaviour {
 	private void SnapToLadder () {
 		if (!controller.grounded && !jumpingFromLadder) {
 			Vector2 pos = new Vector2(ladder.transform.position.x, transform.position.y);
-			transform.position = Vector2.Lerp(transform.position, pos, Time.deltaTime * 20f);
+			transform.position = pos; //Vector2.Lerp(transform.position, pos, Time.deltaTime * 20f);
 		}
 	}
 

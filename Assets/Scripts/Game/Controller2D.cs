@@ -10,7 +10,7 @@ public class Controller2D : MonoBehaviour {
 	public LayerMask collisionMask;
 	public LayerMask attackCollisionMask;
 
-	const float skinWidth = .015f;
+	const float skinWidth = 0.1f;//.015f;
 	public int horizontalRayCount = 4;
 	public int verticalRayCount = 4;
 
@@ -58,12 +58,6 @@ public class Controller2D : MonoBehaviour {
 		collisions.Reset ();
 		collisions.velocityOld = velocity;
 
-		if (!useCollisions) {
-			transform.Translate (velocity);
-			return;
-		}
-
-
 		if (velocity.x != 0 || velocity.y != 0) { 
 			bool jumped = AttackCollisions (ref velocity);
 			if (jumped) { return; }
@@ -77,7 +71,7 @@ public class Controller2D : MonoBehaviour {
 			HorizontalCollisions (ref velocity);
 		}
 
-		if (velocity.y != 0) {
+		if (useCollisions && velocity.y != 0) {
 			VerticalCollisions (ref velocity, jumpingDown);
 		}
 
@@ -209,9 +203,9 @@ public class Controller2D : MonoBehaviour {
 
 			if (hit) {
 
-				if (ent is Player) {
+				//if (ent is Player) {
 					//print (">>> " + hit.transform.gameObject.tag + " " + hit.transform.gameObject.name);
-				}
+				//}
 
 				// handle one way collisions
 				if (hit.transform.gameObject.tag == "OneWayPlatform") {
