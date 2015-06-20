@@ -46,14 +46,14 @@ public class Legs {
 
 public class Anim : MonoBehaviour {
 
-	Ent ent;
+	//Ent ent;
 	Animator animator;
 
 	public BodyParts body;
 
 
 	void Start () {
-		ent = GetComponent<Ent>();
+		//ent = GetComponent<Ent>();
 		animator = transform.Find("Sprite").GetComponent<Animator>();
 		GetBodyParts();
 	}

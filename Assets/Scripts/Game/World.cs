@@ -17,19 +17,38 @@ public class World : MonoBehaviour {
 		lootContainer = GameObject.Find("Loot").transform;
 		fxContainer = GameObject.Find("Fx").transform;
 	}
-	
 }
 
 
 /* 
 - OneWayPlatforms
-	- Fix colliders
+	- Fix colliders (Hawken)
 
-- Ladders:
-	- We have to be able to pass through platforms while in a ladder, unless we are on the bottom of it
-	- if we are on the top of a ladder, we need to be able to walk normally
+- Tilemap:
+	- Fix pink renders (Hawken)
 
+- Title: 
+	- Export title scene propperly (Hawken)
 
+- Ent info text:
+	- Render them with pixel pirate bitmap text
 
+- Hud:
+	- Display coins
+	- display collected weapons
+	- Change selected weapon
+
+- Pick Weapon:
+	- Add to inventory and autoselect
+
+- Select Weapon:
+	- Change stance to selected weapon type
+	- Instantiate weapon prefab on arm tag transform
+
+- Attack:
+	- use adecuate attack animation depending on current arm stance
+
+- Run
+	- Implement running mode, by pressing left/right twice
 
 */

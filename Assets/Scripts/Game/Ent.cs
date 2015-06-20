@@ -78,7 +78,7 @@ public class Ent : MonoBehaviour {
 	public float destructableJumpMass = 0;
 
 	protected Transform sprite;
-	protected BoxCollider2D collider;
+	protected BoxCollider2D boxCollider;
 	
 	protected Vector2 input;
 	protected Vector2 velocity;
@@ -122,7 +122,7 @@ public class Ent : MonoBehaviour {
 		controller = GetComponent<Controller2D>();
 		anim = GetComponent<Anim>();
 		sprite = transform.Find("Sprite");
-		collider = GetComponent<BoxCollider2D>(); // we just use this to calculate the height
+		boxCollider = GetComponent<BoxCollider2D>(); // we just use this to calculate the height
 
 		hpBar = transform.Find("Bar");
 		hpPercent = transform.Find("Bar/Percent");
@@ -155,7 +155,7 @@ public class Ent : MonoBehaviour {
 
 
 	public float GetHeight () {
-		return collider.size.y;
+		return boxCollider.size.y;
 	}
 
 
@@ -411,18 +411,14 @@ public class Ent : MonoBehaviour {
 	// ===========================================================
 
 	public virtual IEnumerator Pickup (Humanoid collector) {
-		//gameObject.GetComponent<BoxCollider2D>().enabled = false;
+		transform.SetParent(collector.transform);
 
 		input = Vector2.zero;
 		velocity = Vector2.zero;
 		affectedByGravity = false;
 
-		//Vector2 sc = transform.localScale;
-		transform.SetParent(collector.transform);
-		//transform.localScale = new Vector2(sc.x / (Mathf.Abs(collector.transform.localScale.x)), sc.y / (collector.transform.localScale.y));
-
 		float duration = 0.2f;
-		Vector3 pos = Vector3.up * (collector.GetHeight()); //collector.sprite.localScale.y;
+		Vector3 pos = Vector3.up * (collector.GetHeight());
 		
 		float startTime = Time.time;
 		while (Time.time <= startTime + duration) {

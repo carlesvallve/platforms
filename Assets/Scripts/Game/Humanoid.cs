@@ -193,6 +193,9 @@ public class Humanoid : Ent {
 		state = States.ROLL;
 		Audio.play("Audio/sfx/woosh", 0.25f, Random.Range(0.5f, 0.5f));
 
+		// play animation
+		if (anim) { anim.Play("roll90", 2); }
+
 		// push attacker forward
 		float directionX = Mathf.Sign(sprite.localScale.x);
 		Vector2 d = directionX * Vector2.right * 2.5f; // + Vector2.up * (IsOnWater() ? 1f : 3f);
