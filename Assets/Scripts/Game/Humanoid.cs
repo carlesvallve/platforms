@@ -13,7 +13,7 @@ public class Humanoid : Ent {
 		if (state == States.ATTACK || state == States.HURT) { return; };
 
 		if (pickedUpObject) {
-			ThrowItem(pickedUpObject);
+			StartCoroutine(ThrowItem(pickedUpObject));
 			return;
 		}
 
@@ -84,10 +84,20 @@ public class Humanoid : Ent {
 
 		if (!ent) { yield break; }
 		if (!ent.pickable) { yield break; }
-		
-		yield return StartCoroutine(ent.Pickup(this));
+
+		// play animation
+		state = States.PICK;
+		if (anim) { 
+			anim.ChangeArmStance(anim.body.arms.overhead);
+			anim.Play("pickup90"); 
+		}
+
+		yield return new WaitForSeconds(0.15f);
+
+		StartCoroutine(ent.Pickup(this));
 
 		pickedUpObject = ent;
+		state = States.IDLE;
 	}
 
 
@@ -98,19 +108,32 @@ public class Humanoid : Ent {
 		ent.transform.SetParent(World.itemContainer);
 		ent.affectedByGravity = true;
 		
-		print ("dropping item" + ent);
-
 		pickedUpObject = null;
+
+		if (anim) { 
+			anim.ChangeArmStance(anim.body.arms.empty);
+		}
 	}
 
 
-	protected void ThrowItem (Ent ent) {
-		if (!ent) { return; }
+	protected IEnumerator ThrowItem (Ent ent) {
+		if (!ent) { yield break; }
 
 		StartCoroutine(DropItem(ent));
 
 		float dir  = Mathf.Sign(sprite.localScale.x);
 		ent.SetThrow(dir);	
+
+		// play animation
+		state = States.THROW;
+		if (anim) { anim.Play("throw90"); }
+
+		yield return new WaitForSeconds(0.5f);
+
+		state = States.IDLE;
+		if (anim) { 
+			anim.ChangeArmStance(anim.body.arms.empty);
+		}
 	}
 
 
@@ -189,6 +212,9 @@ public class Humanoid : Ent {
 
 		state = States.ATTACK;
 		Audio.play("Audio/sfx/woosh", 0.15f, Random.Range(1.0f, 1.5f));
+
+		// play animation
+		if (anim) { anim.Play("attack1h90"); }
 		
 		// attack parameters
 		float weaponRange = 0.8f;

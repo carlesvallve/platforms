@@ -115,6 +115,10 @@ public class Controller2D : MonoBehaviour {
 
 
 	void HorizontalCollisions(ref Vector3 velocity) {
+		/*if (ent.IsOnLadder() && ent.previouslyOnLadder) {
+			return;
+		}*/
+
 		float directionX = Mathf.Sign (velocity.x);
 		float rayLength = Mathf.Abs (velocity.x) + skinWidth;
 		
@@ -172,6 +176,10 @@ public class Controller2D : MonoBehaviour {
 
 	
 	void VerticalCollisions(ref Vector3 velocity, bool jumpingDown = false, bool jumped = false) {
+		/*if (ent.IsOnLadder() && ent.previouslyOnLadder) {
+			return;
+		}*/
+
 		float directionY = Mathf.Sign (velocity.y);
 		float rayLength = Mathf.Abs (velocity.y) + skinWidth;
 

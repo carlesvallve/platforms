@@ -101,7 +101,7 @@ public class Anim : MonoBehaviour {
 	}
 	
 
-	public void ChangeStance (GameObject armStance) {
+	public void ChangeArmStance (GameObject armStance) {
 		foreach (Transform child in body.arms.go.transform) {
 			child.gameObject.SetActive(false);
 		}
@@ -111,15 +111,19 @@ public class Anim : MonoBehaviour {
 
 
 	void Update () {
-		if (Input.GetKeyDown(KeyCode.Q)) { ChangeStance(body.arms.empty); }
-		if (Input.GetKeyDown(KeyCode.W)) { ChangeStance(body.arms.onehand); }
-		if (Input.GetKeyDown(KeyCode.E)) { ChangeStance(body.arms.twohand); }
-		if (Input.GetKeyDown(KeyCode.R)) { ChangeStance(body.arms.overhead); }
-		if (Input.GetKeyDown(KeyCode.T)) { ChangeStance(body.arms.shield); }
+		if (Input.GetKeyDown(KeyCode.Q)) { ChangeArmStance(body.arms.empty); }
+		if (Input.GetKeyDown(KeyCode.W)) { ChangeArmStance(body.arms.onehand); }
+		if (Input.GetKeyDown(KeyCode.E)) { ChangeArmStance(body.arms.twohand); }
+		if (Input.GetKeyDown(KeyCode.R)) { ChangeArmStance(body.arms.overhead); }
+		if (Input.GetKeyDown(KeyCode.T)) { ChangeArmStance(body.arms.shield); }
 	}
 
+	public AnimationClip GetCurrentClip () {
+		return animator.GetCurrentAnimatorClipInfo(0)[0].clip;
+	}
 
-	public void Play(string clipName) {
+	public void Play(string clipName, float speed = 1) {
+		animator.speed = speed;
 		animator.Play(clipName);
 	}
 }

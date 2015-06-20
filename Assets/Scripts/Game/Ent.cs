@@ -8,7 +8,9 @@ public enum States {
 	ATTACK = 2,
 	PARRY = 3,
 	ROLL = 4,
-	HURT = 5
+	HURT = 5,
+	PICK = 6,
+	THROW = 7
 }
 
 
@@ -249,20 +251,33 @@ public class Ent : MonoBehaviour {
 			ApplyGravity();
 		}
 
-		if (anim) {
-			if (IsOnLadder() && previouslyOnLadder) {
-				anim.Play(velocity.y == 0 ? "ladder90" : "ladder90");
-			} else {
-				anim.Play(velocity.x == 0 ? "idle90" : "walk90");
-			}
-		}
-
 		// apply controller2d movement
 		controller.Move (velocity * Time.deltaTime, jumpingDown);
 
 		// snap to ladders
 		if (IsOnLadder()) {
 			SnapToLadder(); 
+		}
+
+		// manage animations
+		if (anim && state == States.IDLE) {
+			//AnimationClip clip = anim.GetCurrentClip(); //.GetCurrentAnimatorClipInfo(0)[0].clip;
+			//print (clip.tag);
+
+			/*string n = clip.name;
+			if (n != " ladder90" && n != "jumpUp90" && n != "jumpDown90" && n != "idle90" && n != "walk90") {
+				return;
+			}*/
+
+			if (IsOnLadder() && previouslyOnLadder) {
+				anim.Play("ladder90", velocity.y == 0 ? 0 : 1); 				// ladder
+			} else {
+				if (jumping || !controller.grounded) {
+					anim.Play(velocity.y >= 0 ? "jumpUp90" : "jumpDown90"); 	// jump
+				} else {
+					anim.Play(velocity.x == 0 ? "idle90" : "walk90"); 			// walk
+				}
+			}
 		}
 	}
 
@@ -353,7 +368,8 @@ public class Ent : MonoBehaviour {
 	// Ladders
 	// ===========================================================
 
-	private bool previouslyOnLadder;
+	[HideInInspector]
+	public bool previouslyOnLadder;
 
 	public bool IsOnLadder() {
 		bool onLadder = ladder && !jumpingFromLadder;
@@ -476,6 +492,9 @@ public class Ent : MonoBehaviour {
 		velocity = Vector2.zero;
 
 		Audio.play("Audio/sfx/punch", 0.15f, Random.Range(1f, 1.5f));
+
+		// play animation
+		if (anim) { anim.Play("hurt90"); }
 
 		// update stats
 		atr.hp -= dmg;

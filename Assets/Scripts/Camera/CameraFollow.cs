@@ -33,7 +33,7 @@ public class CameraFollow : MonoBehaviour {
 		z = transform.position.z;
 		transform.position = target.transform.position;
 
-		//bounds = CalculateBounds(tileMap);
+		bounds = CalculateBounds(tileMap);
 	}
 
 	
@@ -60,13 +60,14 @@ public class CameraFollow : MonoBehaviour {
 			//if (!below && target.transform.position.y < transform.position.y) { speed = speedY * 5; }
 			float minY = bounds.min.y + diff.y;
 			y = Mathf.Lerp(transform.position.y, Mathf.Max(target.transform.position.y, minY), Time.deltaTime * speed);
+			//y = Mathf.Lerp(transform.position.y, target.transform.position.y, Time.deltaTime * speedY);
 		}
 
 		// locate camera
 		transform.position = new Vector3(x, y, z);
 
 		// limit camera position to scene bounds
-		//ApplyBoundLimits();
+		ApplyBoundLimits();
 	}
 
 
