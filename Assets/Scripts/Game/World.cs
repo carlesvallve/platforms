@@ -25,7 +25,8 @@ public class World : MonoBehaviour {
 HAWKEN
 
 - OneWayPlatforms
-	- Fix colliders (Hawken)
+	- Fix colliders so they have no height (Hawken)
+	- There are zones (where katana is now) that they have oneway colliders instead of normal (Hawken)
 
 - Tilemap:
 	- Fix pink renders (Hawken)
@@ -65,6 +66,9 @@ CARLES
 
 - Run
 	- Implement running mode, by pressing left/right twice
+
+- Ladders
+	- Fix ladder prefabs and system to make them feel less ankward
 
 */
 

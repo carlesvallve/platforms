@@ -61,7 +61,7 @@ public class Anim : MonoBehaviour {
 		animator = transform.Find("Sprite").GetComponent<Animator>();
 		GetBodyParts();
 		InitBodyParts();
-		ChangeArmStance(body.arms.onehand);
+		ChangeArmStance(body.arms.empty);
 	}
 
 

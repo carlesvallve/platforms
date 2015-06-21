@@ -191,6 +191,9 @@ public class Humanoid : Ent {
 			item.ent = loot;
 			item.num = 1;
 			item.instantiated = true;
+
+			// always auto-equip last new picked up weapon
+			EquipLastWeapon();
 		}
 	}
 
@@ -219,10 +222,6 @@ public class Humanoid : Ent {
 
 
 	public void ChangeWeapon () {
-		if (selectedWeapon) {
-			selectedWeapon.transform.SetParent(bag);
-		}
-
 		List<Weapon> weapons = GetWeaponsInInventory();
 
 		weaponNum++;
@@ -230,19 +229,37 @@ public class Humanoid : Ent {
 			weaponNum = 0; 
 		}
 
-		Weapon weapon = weapons[weaponNum]; print (weapon + " " + anim.body.arms.weapon);
+		//Weapon weapon = weapons[weaponNum]; // print (weapon + " " + anim.body.arms.weapon);
+		EquipWeapon(weapons[weaponNum]);
+	}
+
+
+	public void EquipLastWeapon() {
+		List<Weapon> weapons = GetWeaponsInInventory();
+		weaponNum = weapons.Count - 1;
+		EquipWeapon(weapons[weaponNum]);
+	}
+
+
+	protected void EquipWeapon (Weapon weapon) {
+		// unequip current selected weapon
+		if (selectedWeapon) {
+			selectedWeapon.transform.SetParent(bag);
+		}
+
+		// record new weapon
+		selectedWeapon = weapon;
+
+		// change stance
 		ChangeStanceByWeapon(weapon);
 		if (weapon == null) { return; }
 
 		//weapon.transform.Find("Sprite").Translate(0, 0, 0.25f); // temporary
 
+		// equip new weapon
 		weapon.transform.SetParent(anim.body.arms.weapon);
 		weapon.transform.localPosition = Vector3.zero;
 		weapon.transform.localScale = new Vector3(-1, 1, 1);
-
-		selectedWeapon = weapon;
-
-
 	}
 
 
@@ -278,7 +295,20 @@ public class Humanoid : Ent {
 			anim.ChangeArmStance(anim.body.arms.onehand);
 			break;
 		}
+	}
 
+
+	protected void ToggleWeaponDisplay (bool value) {
+		if (!selectedWeapon) { return; } 
+
+		// we use this to hide/show weapons when entering/exiting ladders
+		
+		if (value) { 
+			ChangeStanceByWeapon(selectedWeapon);
+			anim.body.arms.weapon.gameObject.SetActive(true); 	
+		} else {
+			anim.ChangeArmStance(anim.body.arms.empty);
+		}
 	}
 
 
@@ -469,7 +499,9 @@ public class Humanoid : Ent {
 
 		switch (collider.gameObject.tag) {
 			case "Ladder":
-			if (velocity.y != 0) {
+			if (input.y != 0) {
+				ToggleWeaponDisplay(false);
+
 				ladder = collider.transform.parent.GetComponent<Ladder>();
 				
 				float top = (ladder.transform.position.y + ladder.GetHeight()) - transform.position.y;
@@ -485,6 +517,8 @@ public class Humanoid : Ent {
 				} else {
 					controller.EnableCollisions();
 				}
+
+				
 			}
 			break;
 
@@ -514,6 +548,8 @@ public class Humanoid : Ent {
 
 		switch (collider.gameObject.tag) {
 			case "Ladder":
+			ToggleWeaponDisplay(true);
+
 			ladder = null;
 			controller.EnableCollisions();
 			break;
