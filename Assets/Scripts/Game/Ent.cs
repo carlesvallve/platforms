@@ -39,11 +39,10 @@ public class Atr {
 
 [System.Serializable]
 public class InvItem {
-	public string path;
+	public Ent ent;
 	public int num;
-	public int value;
 	[HideInInspector]
-	public Sprite sprite;
+	public bool instantiated;
 }
 
 
@@ -78,7 +77,9 @@ public class Ent : MonoBehaviour {
 	public float destructableJumpMass = 0;
 
 	protected Transform sprite;
+	protected Transform bag;
 	protected BoxCollider2D boxCollider;
+
 	
 	protected Vector2 input;
 	protected Vector2 velocity;
@@ -124,11 +125,17 @@ public class Ent : MonoBehaviour {
 		sprite = transform.Find("Sprite");
 		boxCollider = GetComponent<BoxCollider2D>(); // we just use this to calculate the height
 
+		// we use a hidden bag on each ent to store unique loot instances
+		bag = transform.Find("Bag"); 
+		if (bag) { bag.gameObject.SetActive(false); }
+
+		// health bar in every ent
 		hpBar = transform.Find("Bar");
 		hpPercent = transform.Find("Bar/Percent");
 		hpMax = atr.hp;
 		StartCoroutine(UpdateHpBar());
 
+		// info ui label
 		Transform obj = transform.Find("Info");
 		if (obj) {
 			info = obj.GetComponent<TextMesh>();
@@ -437,18 +444,20 @@ public class Ent : MonoBehaviour {
 
 			int max = item.num;
 
-			string folder = item.path.Split('/')[0];
-			if (folder == "Treasure") {
-				max = (int)(item.num / (item.value == 0 ? 1 : item.value));
-			}
-
-			string path = "Prefabs/Loot/" + item.path;
 			for (int i = 0; i < max; i++) {
-				if (path == "Prefabs/Loot/") { continue; }
-				Loot loot = ((GameObject)Instantiate(Resources.Load(path))).GetComponent<Loot>();
-				loot.Init(World.lootContainer, this, item.path);
+				Loot loot = null;
+				if (item.instantiated && i == 0) {
+					loot = (Loot)item.ent;
+				} else {
+					loot = ((GameObject)Instantiate(item.ent.gameObject)).GetComponent<Loot>();
+				}
+
+				loot.Init(World.lootContainer, this, item);
 			}
 		}
+
+		// reset inventory to empty
+		inv.items = new List<InvItem>();
 	}
 
 

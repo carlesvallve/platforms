@@ -47,7 +47,7 @@ public class Hud : MonoBehaviour {
 		// iterate on player's inv
 		i = 0;
 		for (int n = 0; n < player.inv.items.Count; n++) {
-			InvItem item = player.inv.items[n];
+			/*InvItem item = player.inv.items[n];
 
 			// get folder / item type
 			string folder = item.path.Split('/')[0];
@@ -62,7 +62,7 @@ public class Hud : MonoBehaviour {
 				weapons[i].gameObject.SetActive(true);
 
 				i++;
-			}
+			}*/
 		}
 
 		coins.text = coinsMax.ToString();

@@ -47,5 +47,9 @@ public class Player : Humanoid {
 		if (Input.GetKeyDown(KeyCode.LeftShift)) {
 			//hud.changeWeapon();
 		}
+
+		if (Input.GetKeyDown(KeyCode.P)) { 
+			SpawnLoot();
+		}
 	}
 }

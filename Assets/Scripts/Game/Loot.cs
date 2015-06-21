@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Loot : Ent {
 
@@ -8,8 +9,8 @@ public class Loot : Ent {
 	protected bool spawning = false;
 
 
-	public void Init (Transform container, Ent source, string path) {
-		this.path = path;
+	public void Init (Transform container, Ent source, InvItem item) {
+		this.name = item.ent.gameObject.name;
 
 		transform.SetParent(container);
 		transform.position = source.transform.position + Vector3.up * source.GetHeight() * 0.5f;
@@ -19,11 +20,11 @@ public class Loot : Ent {
 		affectedByGravity = false;
 
 		Vector2 vec = new Vector3(Random.Range(-1.5f, 1.5f), Random.Range(6f, 12f));
-		StartCoroutine (Spawn(source, vec));
+		StartCoroutine (Spawn(source, vec, item));
 	}
 
 
-	private IEnumerator Spawn (Ent source, Vector2 vec) {
+	private IEnumerator Spawn (Ent source, Vector2 vec, InvItem item) {
 
 		sprite.gameObject.SetActive(false);
 		yield return new WaitForSeconds(Random.Range(0f, 0.5f));
@@ -52,6 +53,14 @@ public class Loot : Ent {
 		}
 
 		spawning = false;
+
+		// remove item from inventory
+		if (item != null) { 
+			item.num -= 1; 
+			if (item.num == 0) {
+				source.inv.items.Remove(item);
+			}
+		}
 	}
 
 
@@ -63,8 +72,7 @@ public class Loot : Ent {
 
 		Vector3 pos = transform.position + Vector3.up * collector.GetHeight() * 0.5f;
 		
-		//float startTime = Time.time;
-		while (Vector2.Distance(transform.position, pos) > 0.2f) { //(Time.time <= startTime + 0.2f) {
+		while (Vector2.Distance(transform.position, pos) > 0.2f) {
 			if (spawning || collector == null) { 
 				gameObject.GetComponent<BoxCollider2D>().enabled = true;
 				affectedByGravity = true;
@@ -73,14 +81,10 @@ public class Loot : Ent {
 
 			pos = collector.transform.position + Vector3.up * collector.GetHeight() * 0.5f;
 			transform.position = Vector3.Lerp(transform.position, pos, Time.deltaTime * 15f);
-			//transform.localScale = Vector3.Lerp(transform.localScale, Vector3.zero, Time.deltaTime * 5f);
 			yield return null;
 		}
 
 		// add loot to collector's inventory
 		collector.AddLootToInventory(this);
-
-		// destroy loot
-		Destroy(gameObject);
 	}
 }

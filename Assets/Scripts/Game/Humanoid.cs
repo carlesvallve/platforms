@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEditor;
 
 
 
@@ -167,32 +168,31 @@ public class Humanoid : Ent {
 	public void AddLootToInventory (Loot loot) {
 		bool stacked = false;
 
-		// if we already own this item type, increase item number
 		for (int n = 0; n < inv.items.Count; n++) {
 			InvItem item = inv.items[n];
 
-			if (item.path == loot.path) {
-				int num = (loot is Coin) ? loot.value : 1;
-				item.num += num;
-				item.value = loot.value;
+			bool alreadyExists = (loot.name == item.ent.name) || (loot.name == string.Format("{0}(Clone)", item.ent.name));
+			if (alreadyExists) {
+				item.num += 1;
 				stacked = true;
-			}
+				Destroy(loot.gameObject);
+			} 
 		}
 
-		// otherwise, add item to inventory
 		if (!stacked) {
-			inv.items.Add(new InvItem());
-			inv.items[inv.items.Count -1].path = loot.path; 
-			inv.items[inv.items.Count -1].num = (loot is Coin) ? loot.value : 1;
-			inv.items[inv.items.Count -1].value = loot.value;
-			inv.items[inv.items.Count -1].sprite = loot.GetSpriteImage();
-		}
+			if (!bag) {
+				Debug.LogError("This entity doesnt have a bag: Loot could not be picked.");
+				return;
+			}
 
-		// update hud
-		/*if (this is Player) {
-			Player player = (Player)this;
-			player.hud.UpdateInventory();
-		}*/
+			loot.transform.SetParent(bag);
+
+			inv.items.Add(new InvItem());
+			InvItem item = inv.items[inv.items.Count -1];
+			item.ent = loot;
+			item.num = 1;
+			item.instantiated = true;
+		}
 	}
 
 
