@@ -40,7 +40,7 @@ public class Player : Humanoid {
 			SetAction();
 		}
 
-		if (Input.GetButton("C")) { 
+		if (Input.GetButton("C")) {
 			hd_C += 1;
 			if (hd_C == 10) {
 				SetActionHold();
@@ -48,7 +48,7 @@ public class Player : Humanoid {
 		}
 
 		if (Input.GetKeyDown(KeyCode.LeftShift)) {
-			//hud.changeWeapon();
+			ChangeWeapon();
 		}
 
 		if (Input.GetKeyDown(KeyCode.P)) { 

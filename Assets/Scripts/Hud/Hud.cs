@@ -16,7 +16,7 @@ public class Hud : MonoBehaviour {
 
 		for (int i = 0; i < 4; i++) {
 			weaponSlots.Add(transform.Find("Bar/Bg/Weapons/Weapon" + i + "/Icon").GetComponent<Image>());
-			weaponSlots[i].sprite = null;	
+			//weaponSlots[i].sprite = null;	
 		}
 
 		ResetWeaponSlots();
@@ -26,7 +26,7 @@ public class Hud : MonoBehaviour {
 	public void UpdateInventory () {
 		// reset weapon slots
 		ResetWeaponSlots();
-		int weaponNum = 0;
+		int weaponNum = 1; // 0 is fist
 
 		for (int n = 0; n < player.inv.items.Count; n++) {
 			InvItem item = player.inv.items[n];
@@ -51,7 +51,7 @@ public class Hud : MonoBehaviour {
 
 
 	private void ResetWeaponSlots () {
-		for (int i = 0; i < 4; i++) {
+		for (int i = 1; i < 4; i++) {
 			weaponSlots[i].sprite = null;
 			weaponSlots[i].gameObject.SetActive(false);
 

@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEditor;
-
+using System.Collections.Generic;
 
 
 public class Humanoid : Ent {
@@ -193,6 +192,93 @@ public class Humanoid : Ent {
 			item.num = 1;
 			item.instantiated = true;
 		}
+	}
+
+
+	// ===========================================================
+	// Weapons
+	// ===========================================================
+
+	protected int weaponNum = 0;
+	protected Weapon selectedWeapon;
+
+	private List<Weapon> GetWeaponsInInventory () {
+		List<Weapon> weapons = new List<Weapon>();
+		weapons.Add(null);
+
+		for (int n = 0; n < inv.items.Count; n++) {
+			InvItem item = inv.items[n];
+
+			if (item.ent is Weapon) {
+				weapons.Add((Weapon)item.ent);
+			}
+		}
+
+		return weapons;
+	}
+
+
+	public void ChangeWeapon () {
+		if (selectedWeapon) {
+			selectedWeapon.transform.SetParent(bag);
+		}
+
+		List<Weapon> weapons = GetWeaponsInInventory();
+
+		weaponNum++;
+		if (weaponNum > weapons.Count - 1) { 
+			weaponNum = 0; 
+		}
+
+		Weapon weapon = weapons[weaponNum]; print (weapon + " " + anim.body.arms.weapon);
+		ChangeStanceByWeapon(weapon);
+		if (weapon == null) { return; }
+
+		//weapon.transform.Find("Sprite").Translate(0, 0, 0.25f); // temporary
+
+		weapon.transform.SetParent(anim.body.arms.weapon);
+		weapon.transform.localPosition = Vector3.zero;
+		weapon.transform.localScale = new Vector3(-1, 1, 1);
+
+		selectedWeapon = weapon;
+
+
+	}
+
+
+	public void ChangeStanceByWeapon (Weapon weapon) {
+		// empty
+		if (weapon == null) {
+			anim.ChangeArmStance(anim.body.arms.empty);
+			return;
+		}
+
+		switch (weapon.type) {
+		// onehand
+		case WeaponTypes.ONEHAND_MELEE:
+		case WeaponTypes.ONEHAND_RANGED:
+			anim.ChangeArmStance(anim.body.arms.onehand);
+			break;
+		// twohand
+		case WeaponTypes.TWOHAND_MELEE:
+		case WeaponTypes.TWOHAND_RANGED:
+			anim.ChangeArmStance(anim.body.arms.twohand);
+			break;
+		//drag
+		case WeaponTypes.DRAG_MELEE:
+		case WeaponTypes.DRAG_RANGED:
+			anim.ChangeArmStance(anim.body.arms.drag);
+			break;
+		//overhead
+		case WeaponTypes.THROW:
+			anim.ChangeArmStance(anim.body.arms.overhead);
+			break;
+		//shield
+		case WeaponTypes.SHIELD:
+			anim.ChangeArmStance(anim.body.arms.onehand);
+			break;
+		}
+
 	}
 
 

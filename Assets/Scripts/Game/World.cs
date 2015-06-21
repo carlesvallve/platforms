@@ -43,20 +43,13 @@ HAWKEN
 CARLES
 
 - Hud:
-	- Display coins
-	- display collected weapons
-	- Change selected weapon
-	- When rendering on inventory, get sprite and stats from player's Inv items
-
-- Pick Weapon:
-	- Add to inventory and autoselect
+	- Display coins -> OK
+	- display collected weapons -> OK
 
 - Select Weapon:
 	- Change stance to selected weapon type
 	- Instantiate weapon prefab on arm tag transform
-
-
-	
+	- Select weapon slot on hud
 
 - Attack -> OK!
 	- use adecuate attack animation depending on current arm stance -> OK!
