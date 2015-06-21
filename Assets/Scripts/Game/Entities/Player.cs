@@ -12,7 +12,10 @@ public class Player : Humanoid {
 
 	public override void Awake () {
 		inputManager = GameObject.Find("InputManager").GetComponent<InputManager>();
-		//hud = GameObject.Find("Hud").GetComponent<Hud>();
+
+		GameObject obj = GameObject.Find("Hud");
+		if (obj) { hud = obj.GetComponent<Hud>(); }
+
 		base.Awake();
 	}
 
@@ -51,5 +54,11 @@ public class Player : Humanoid {
 		if (Input.GetKeyDown(KeyCode.P)) { 
 			SpawnLoot();
 		}
+	}
+
+
+	public override void AddLootToInventory (Loot loot) {
+		base.AddLootToInventory(loot);
+		if (hud) { hud.UpdateInventory(); }
 	}
 }

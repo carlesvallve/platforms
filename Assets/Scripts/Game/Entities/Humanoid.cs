@@ -165,7 +165,7 @@ public class Humanoid : Ent {
 	// Loot
 	// ===========================================================
 
-	public void AddLootToInventory (Loot loot) {
+	public virtual void AddLootToInventory (Loot loot) {
 		bool stacked = false;
 
 		for (int n = 0; n < inv.items.Count; n++) {
@@ -193,6 +193,11 @@ public class Humanoid : Ent {
 			item.num = 1;
 			item.instantiated = true;
 		}
+
+
+		/*if (this is Player) {
+			if (hud) { hud.UpdateInventory(); }
+		}*/
 	}
 
 
