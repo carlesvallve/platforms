@@ -59,6 +59,8 @@ public class Player : Humanoid {
 
 	public override void AddLootToInventory (Loot loot) {
 		base.AddLootToInventory(loot);
-		if (hud) { hud.UpdateInventory(); }
+		if (hud) { 
+			hud.UpdateInventory();
+		}
 	}
 }

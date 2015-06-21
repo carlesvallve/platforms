@@ -193,11 +193,6 @@ public class Humanoid : Ent {
 			item.num = 1;
 			item.instantiated = true;
 		}
-
-
-		/*if (this is Player) {
-			if (hud) { hud.UpdateInventory(); }
-		}*/
 	}
 
 
