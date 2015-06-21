@@ -85,14 +85,16 @@ public class Humanoid : Ent {
 		if (!ent) { yield break; }
 		if (!ent.pickable) { yield break; }
 
+		input.x = 0;
+		velocity.x = 0;
+
 		// play animation
 		state = States.PICK;
-		if (anim) { 
-			anim.ChangeArmStance(anim.body.arms.overhead);
-			anim.Play("pickup90"); 
-		}
+		if (anim) { anim.Play("pickup90"); }
 
-		yield return new WaitForSeconds(0.15f);
+		yield return new WaitForSeconds(0.2f);
+
+		if (anim) { anim.ChangeArmStance(anim.body.arms.overhead); }
 
 		StartCoroutine(ent.Pickup(this));
 
@@ -104,20 +106,31 @@ public class Humanoid : Ent {
 	protected IEnumerator DropItem (Ent ent) {
 		if (!ent) { yield break; }
 
-		ent.transform.localPosition = new Vector3(0, GetHeight() - 0.1f, 0);
+		ent.transform.localPosition = new Vector3(Mathf.Sign(sprite.localScale.x) * 0.3f, GetHeight() - 0.1f, 0);
 		ent.transform.SetParent(World.itemContainer);
 		ent.affectedByGravity = true;
 		
-		pickedUpObject = null;
-
+		input.x = 0;
+		velocity.x = 0;
+		
+		state = States.PICK;
 		if (anim) { 
 			anim.ChangeArmStance(anim.body.arms.empty);
+			anim.Play("pickup90");
 		}
+
+		yield return new WaitForSeconds(0.2f);
+
+		pickedUpObject = null;
+		state = States.IDLE;
 	}
 
 
 	protected IEnumerator ThrowItem (Ent ent) {
 		if (!ent) { yield break; }
+
+		input.x = 0;
+		velocity.x = 0;
 
 		// play animation
 		state = States.THROW;
@@ -130,7 +143,7 @@ public class Humanoid : Ent {
 		float dir  = Mathf.Sign(sprite.localScale.x);
 		ent.SetThrow(dir);	
 
-		yield return new WaitForSeconds(0.5f);
+		yield return new WaitForSeconds(0.3f);
 
 		state = States.IDLE;
 		if (anim) { 
@@ -176,10 +189,10 @@ public class Humanoid : Ent {
 		}
 
 		// update hud
-		if (this is Player) {
+		/*if (this is Player) {
 			Player player = (Player)this;
 			player.hud.UpdateInventory();
-		}
+		}*/
 	}
 
 
@@ -219,7 +232,11 @@ public class Humanoid : Ent {
 		Audio.play("Audio/sfx/woosh", 0.15f, Random.Range(1.0f, 1.5f));
 
 		// play animation
-		if (anim) { anim.Play("attack1h90", 2); }
+		if (anim) { 
+			//string clipName = anim.GetAttackAnimation();
+			//print (clipName);
+			anim.Play(anim.GetAttackAnimation(), 2); 
+		}
 
 		input.x = 0;
 		velocity.x = 0;
@@ -275,7 +292,7 @@ public class Humanoid : Ent {
 		// finish attack
 		input = Vector2.zero;
 		velocity = Vector2.zero;
-		yield return new WaitForSeconds(0.1f); // 0.1f
+		yield return new WaitForSeconds(0.2f); // 0.1f
 		state = States.IDLE;
 		hasAttackedInAir = !controller.collisions.below;
 

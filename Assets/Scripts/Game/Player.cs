@@ -12,7 +12,7 @@ public class Player : Humanoid {
 
 	public override void Awake () {
 		inputManager = GameObject.Find("InputManager").GetComponent<InputManager>();
-		hud = GameObject.Find("Hud").GetComponent<Hud>();
+		//hud = GameObject.Find("Hud").GetComponent<Hud>();
 		base.Awake();
 	}
 
@@ -45,7 +45,7 @@ public class Player : Humanoid {
 		}
 
 		if (Input.GetKeyDown(KeyCode.LeftShift)) {
-			hud.changeWeapon();
+			//hud.changeWeapon();
 		}
 	}
 }
