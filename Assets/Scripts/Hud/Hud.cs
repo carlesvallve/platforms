@@ -37,7 +37,7 @@ public class Hud : MonoBehaviour {
 			}
 
 			// if item is weapon, display it on weapon slots
-			if (item.ent is Weapon) {
+			if (weaponNum < 4 && (item.ent is Weapon)) {
 				DisplayWeaponSlot(weaponNum, item.ent.GetSpriteImage());
 				weaponNum += 1;
 			}
