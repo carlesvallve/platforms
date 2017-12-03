@@ -496,7 +496,7 @@ public class Ent : MonoBehaviour {
 	}
 
 
-	protected virtual void Bleed (int maxBloodSplats, int dmg = 0) {
+	protected virtual void Bleed (int dmg = 0, int maxBloodSplats = 20) {
 		if (prefabs.bloodPrefab) {
 			for (int i = 0; i < maxBloodSplats; i++) {
 				Blood blood = ((GameObject)Instantiate(prefabs.bloodPrefab)).GetComponent<Blood>();

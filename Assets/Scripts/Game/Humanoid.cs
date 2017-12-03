@@ -276,7 +276,7 @@ public class Humanoid : Ent {
 	}
 
 
-	protected override void Bleed (int dmg, int maxBloodSplats) {
+	protected override void Bleed (int dmg, int maxBloodSplats = 20) {
 		base.Bleed(dmg, maxBloodSplats);
 	}
 
