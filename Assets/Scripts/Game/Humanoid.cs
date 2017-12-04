@@ -148,10 +148,10 @@ public class Humanoid : Ent {
 		}
 
 		// update hud
-		if (this is Player) {
-			Player player = (Player)this;
-			player.hud.UpdateInventory();
-		}
+		// if (this is Player) {
+		// 	Player player = (Player)this;
+		// 	player.hud.UpdateInventory();
+		// }
 	}
 
 
@@ -163,7 +163,7 @@ public class Humanoid : Ent {
 		if (state == States.ROLL || state == States.ATTACK || state == States.HURT) { yield break; }
 
 		state = States.ROLL;
-		Audio.play("Audio/sfx/woosh", 0.25f, Random.Range(0.5f, 0.5f));
+		AudioManager.Play("Audio/sfx/woosh", 0.25f, Random.Range(0.5f, 0.5f));
 
 		// push attacker forward
 		float directionX = Mathf.Sign(sprite.localScale.x);
@@ -185,7 +185,7 @@ public class Humanoid : Ent {
 		if (hasAttackedInAir) { yield break; }
 
 		state = States.ATTACK;
-		Audio.play("Audio/sfx/woosh", 0.15f, Random.Range(1.0f, 1.5f));
+		AudioManager.Play("Audio/sfx/woosh", 0.15f, Random.Range(1.0f, 1.5f));
 		
 		// attack parameters
 		float weaponRange = 0.8f;
@@ -246,7 +246,7 @@ public class Humanoid : Ent {
 
 	public override IEnumerator Parry (Humanoid enemy, Vector2 vec) {
 		state = States.PARRY;
-		Audio.play("Audio/sfx/Sword", 1f, Random.Range(1f, 2f));
+		AudioManager.Play("Audio/sfx/Sword", 1f, Random.Range(1f, 2f));
 
 		input = Vector2.zero;
 		velocity = Vector2.zero;
@@ -267,7 +267,7 @@ public class Humanoid : Ent {
 
 
 	public override IEnumerator Die () {
-		Audio.play("Audio/sfx/bite", 0.5f, Random.Range(3f, 3f));
+		AudioManager.Play("Audio/sfx/bite", 0.5f, Random.Range(3f, 3f));
 		Bleed(Random.Range(8, 16));
 		SpawnLoot();
 

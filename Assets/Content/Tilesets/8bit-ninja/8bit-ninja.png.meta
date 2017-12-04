@@ -1,0 +1,957 @@
+fileFormatVersion: 2
+guid: 757ad5501016b4ca284144ccdc84d91e
+timeCreated: 1437281650
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: 8bit-ninja_0
+    21300002: 8bit-ninja_1
+    21300004: 8bit-ninja_2
+    21300006: 8bit-ninja_3
+    21300008: 8bit-ninja_4
+    21300010: 8bit-ninja_5
+    21300012: 8bit-ninja_6
+    21300014: 8bit-ninja_7
+    21300016: 8bit-ninja_8
+    21300018: 8bit-ninja_9
+    21300020: 8bit-ninja_10
+    21300022: 8bit-ninja_11
+    21300024: 8bit-ninja_12
+    21300026: 8bit-ninja_13
+    21300028: 8bit-ninja_14
+    21300030: 8bit-ninja_15
+    21300032: 8bit-ninja_16
+    21300034: 8bit-ninja_17
+    21300036: 8bit-ninja_18
+    21300038: 8bit-ninja_19
+    21300040: 8bit-ninja_20
+    21300042: 8bit-ninja_21
+    21300044: 8bit-ninja_22
+    21300046: 8bit-ninja_23
+    21300048: 8bit-ninja_24
+    21300050: 8bit-ninja_25
+    21300052: 8bit-ninja_26
+    21300054: 8bit-ninja_27
+    21300056: 8bit-ninja_28
+    21300058: 8bit-ninja_29
+    21300060: 8bit-ninja_30
+    21300062: 8bit-ninja_31
+    21300064: 8bit-ninja_32
+    21300066: 8bit-ninja_33
+    21300068: 8bit-ninja_34
+    21300070: 8bit-ninja_35
+    21300072: 8bit-ninja_36
+    21300074: 8bit-ninja_37
+    21300076: 8bit-ninja_38
+    21300078: 8bit-ninja_39
+    21300080: 8bit-ninja_40
+    21300082: 8bit-ninja_41
+    21300084: 8bit-ninja_42
+    21300086: 8bit-ninja_43
+    21300088: 8bit-ninja_44
+    21300090: 8bit-ninja_45
+    21300092: 8bit-ninja_46
+    21300094: 8bit-ninja_47
+    21300096: 8bit-ninja_48
+    21300098: 8bit-ninja_49
+    21300100: 8bit-ninja_50
+    21300102: 8bit-ninja_51
+    21300104: 8bit-ninja_52
+    21300106: 8bit-ninja_53
+    21300108: 8bit-ninja_54
+    21300110: 8bit-ninja_55
+    21300112: 8bit-ninja_56
+    21300114: 8bit-ninja_57
+    21300116: 8bit-ninja_58
+    21300118: 8bit-ninja_59
+    21300120: 8bit-ninja_60
+    21300122: 8bit-ninja_61
+    21300124: 8bit-ninja_62
+    21300126: 8bit-ninja_63
+    21300128: 8bit-ninja_64
+    21300130: 8bit-ninja_65
+    21300132: 8bit-ninja_66
+    21300134: 8bit-ninja_67
+    21300136: 8bit-ninja_68
+    21300138: 8bit-ninja_69
+    21300140: 8bit-ninja_70
+    21300142: 8bit-ninja_71
+    21300144: 8bit-ninja_72
+    21300146: 8bit-ninja_73
+    21300148: 8bit-ninja_74
+    21300150: 8bit-ninja_75
+    21300152: 8bit-ninja_76
+    21300154: 8bit-ninja_77
+    21300156: 8bit-ninja_78
+    21300158: 8bit-ninja_79
+    21300160: 8bit-ninja_80
+    21300162: 8bit-ninja_81
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 0
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 8
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: 8bit-ninja_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 65
+        width: 8
+        height: 8
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 8bit-ninja_1
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 65
+        width: 8
+        height: 8
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 8bit-ninja_2
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 65
+        width: 8
+        height: 8
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 8bit-ninja_3
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 65
+        width: 8
+        height: 8
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 8bit-ninja_4
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 65
+        width: 8
+        height: 8
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 8bit-ninja_5
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 65
+        width: 8
+        height: 8
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 8bit-ninja_6
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 65
+        width: 9
+        height: 9
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 8bit-ninja_7
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 64
+        width: 18
+        height: 6
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 8bit-ninja_8
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 65
+        width: 5
+        height: 4
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 8bit-ninja_9
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 59
+        width: 9
+        height: 11
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 8bit-ninja_10
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 59
+        width: 9
+        height: 12
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 8bit-ninja_11
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 56
+        width: 8
+        height: 7
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 8bit-ninja_12
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 56
+        width: 8
+        height: 6
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 8bit-ninja_13
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 56
+        width: 8
+        height: 8
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 8bit-ninja_14
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 56
+        width: 8
+        height: 8
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 8bit-ninja_15
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 56
+        width: 8
+        height: 8
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 8bit-ninja_16
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 56
+        width: 8
+        height: 8
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 8bit-ninja_17
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 56
+        width: 8
+        height: 8
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 8bit-ninja_18
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 59
+        width: 27
+        height: 4
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 8bit-ninja_19
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 48
+        width: 8
+        height: 7
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 8bit-ninja_20
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 48
+        width: 8
+        height: 6
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 8bit-ninja_21
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 47
+        width: 8
+        height: 8
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 8bit-ninja_22
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 47
+        width: 8
+        height: 8
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 8bit-ninja_23
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 47
+        width: 8
+        height: 8
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 8bit-ninja_24
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 47
+        width: 7
+        height: 5
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 8bit-ninja_25
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 47
+        width: 7
+        height: 6
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 8bit-ninja_26
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 47
+        width: 7
+        height: 7
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 8bit-ninja_27
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 47
+        width: 7
+        height: 7
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 8bit-ninja_28
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 46
+        width: 9
+        height: 11
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 8bit-ninja_29
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 46
+        width: 9
+        height: 12
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 8bit-ninja_30
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 46
+        width: 9
+        height: 12
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 8bit-ninja_31
+      rect:
+        serializedVersion: 2
+        x: 125
+        y: 46
+        width: 9
+        height: 11
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 8bit-ninja_32
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 38
+        width: 8
+        height: 7
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 8bit-ninja_33
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 38
+        width: 8
+        height: 6
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 8bit-ninja_34
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 38
+        width: 8
+        height: 8
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 8bit-ninja_35
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 38
+        width: 8
+        height: 8
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 8bit-ninja_36
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 38
+        width: 8
+        height: 8
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 8bit-ninja_37
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 39
+        width: 7
+        height: 5
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 8bit-ninja_38
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 39
+        width: 7
+        height: 6
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 8bit-ninja_39
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 39
+        width: 7
+        height: 7
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 8bit-ninja_40
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 39
+        width: 7
+        height: 7
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 8bit-ninja_41
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 33
+        width: 9
+        height: 12
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 8bit-ninja_42
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 33
+        width: 11
+        height: 11
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 8bit-ninja_43
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 33
+        width: 14
+        height: 11
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 8bit-ninja_44
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 33
+        width: 15
+        height: 11
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 8bit-ninja_45
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 29
+        width: 8
+        height: 7
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 8bit-ninja_46
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 29
+        width: 8
+        height: 6
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 8bit-ninja_47
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 29
+        width: 8
+        height: 8
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 8bit-ninja_48
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 29
+        width: 8
+        height: 8
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 8bit-ninja_49
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 29
+        width: 8
+        height: 8
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 8bit-ninja_50
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 31
+        width: 8
+        height: 6
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 8bit-ninja_51
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 32
+        width: 10
+        height: 6
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 8bit-ninja_52
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 29
+        width: 8
+        height: 7
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 8bit-ninja_53
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 29
+        width: 10
+        height: 6
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 8bit-ninja_54
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 12
+        width: 27
+        height: 16
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 8bit-ninja_55
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 20
+        width: 8
+        height: 8
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 8bit-ninja_56
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 12
+        width: 8
+        height: 16
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 8bit-ninja_57
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 20
+        width: 6
+        height: 8
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 8bit-ninja_58
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 21
+        width: 8
+        height: 6
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 8bit-ninja_59
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 22
+        width: 10
+        height: 6
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 8bit-ninja_60
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 19
+        width: 8
+        height: 7
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 8bit-ninja_61
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 19
+        width: 10
+        height: 6
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 8bit-ninja_62
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 21
+        width: 7
+        height: 11
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 8bit-ninja_63
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 22
+        width: 7
+        height: 9
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 8bit-ninja_64
+      rect:
+        serializedVersion: 2
+        x: 115
+        y: 23
+        width: 9
+        height: 7
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 8bit-ninja_65
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 23
+        width: 7
+        height: 7
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 8bit-ninja_66
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 23
+        width: 8
+        height: 7
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 8bit-ninja_67
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 0
+        width: 27
+        height: 18
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 8bit-ninja_68
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 6
+        width: 8
+        height: 11
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 8bit-ninja_69
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 13
+        width: 11
+        height: 5
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 8bit-ninja_70
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 13
+        width: 20
+        height: 4
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 8bit-ninja_71
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 6
+        width: 5
+        height: 11
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 8bit-ninja_72
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 13
+        width: 4
+        height: 4
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 8bit-ninja_73
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 6
+        width: 4
+        height: 5
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 8bit-ninja_74
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 32
+        height: 11
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 8bit-ninja_75
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 6
+        width: 4
+        height: 5
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 8bit-ninja_76
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 6
+        width: 4
+        height: 5
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 8bit-ninja_77
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 6
+        width: 8
+        height: 5
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 8bit-ninja_78
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 6
+        width: 8
+        height: 5
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 8bit-ninja_79
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 6
+        width: 8
+        height: 5
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 8bit-ninja_80
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 6
+        width: 4
+        height: 5
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 8bit-ninja_81
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 6
+        width: 8
+        height: 5
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

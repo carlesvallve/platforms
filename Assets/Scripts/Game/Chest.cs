@@ -46,13 +46,13 @@ public class Chest : Ent {
 
 	protected void Open (Ent collector) {
 		opened = true;
-		Audio.play("Audio/sfx/chest-open", 0.4f, Random.Range(0.9f, 1.1f));
+		AudioManager.Play("Audio/sfx/chest-open", 0.4f, Random.Range(0.9f, 1.1f));
 		SpawnLoot();
 	}
 
 
 	public override IEnumerator Die () {
-		Audio.play("Audio/sfx/bite", 0.5f, Random.Range(3f, 3f));
+		AudioManager.Play("Audio/sfx/bite", 0.5f, Random.Range(3f, 3f));
 		Bleed(Random.Range(8, 16));
 		SpawnLoot();
 

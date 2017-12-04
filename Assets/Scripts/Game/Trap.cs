@@ -46,7 +46,7 @@ public class Trap : MonoBehaviour {
 	public IEnumerator PlayTrap () {
 		if (active) { yield break; }
 
-		Audio.play("Audio/sfx/Tick", 0.4f, Random.Range(1.5f, 1.5f));
+		AudioManager.Play("Audio/sfx/Tick", 0.4f, Random.Range(1.5f, 1.5f));
 		StartCoroutine(UpdateInfo("CLICK!"));
 		active = true;
 

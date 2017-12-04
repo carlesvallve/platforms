@@ -146,8 +146,8 @@ public class Ent : MonoBehaviour {
 		SetMove();
 		OutOfBounds();
 	}
-
-
+	
+	
 	public float GetHeight () {
 		return sprite.localScale.y;
 	}
@@ -175,8 +175,14 @@ public class Ent : MonoBehaviour {
 
 	protected void Reset () {
 		if (controller.collisions.above || controller.collisions.below) {
-			if (jumping) { velocity.x = 0; }
-			velocity.y = 0;
+			if (jumping) { 
+				velocity.x = 0; 
+			} else { 
+				velocity.y = 0; 
+			}
+			
+			// velocity.y = 0;
+			
 			jumping = false;
 			jumpingDown = false;
 			jumpingFromLadder = false;
@@ -222,8 +228,6 @@ public class Ent : MonoBehaviour {
 
 
 	protected void SetMove () {
-		//if (state == States.ATTACK || state == States.HURT) { return; };
-
 		// set velocity x
 		float targetVelocityX = input.x * speed;
 		velocity.x = targetVelocityX;
@@ -305,7 +309,7 @@ public class Ent : MonoBehaviour {
 		if (isWater || velocity.y >= 0) { yield break; }
 
 		if (sprite.localScale.x > 0.25f && gameObject.tag != "Fx") {
-			Audio.play("Audio/sfx/splash", 0.05f, Random.Range(0.8f, 1f));
+			AudioManager.Play("Audio/sfx/splash", 0.05f, Random.Range(0.8f, 1f));
 		}
 		
 		isWater = true;
@@ -320,7 +324,7 @@ public class Ent : MonoBehaviour {
 		if (!isWater || velocity.y < 0) { yield break; }
 
 		if (sprite.localScale.x > 0.25f && gameObject.tag != "Fx") {
-			Audio.play("Audio/sfx/splash", 0.05f, Random.Range(1f, 1.2f));
+			AudioManager.Play("Audio/sfx/splash", 0.05f, Random.Range(1f, 1.2f));
 		}
 
 		isWater = false;
@@ -463,7 +467,7 @@ public class Ent : MonoBehaviour {
 		input = Vector2.zero;
 		velocity = Vector2.zero;
 
-		Audio.play("Audio/sfx/punch", 0.15f, Random.Range(1f, 1.5f));
+		AudioManager.Play("Audio/sfx/punch", 0.15f, Random.Range(1f, 1.5f));
 
 		// update stats
 		atr.hp -= dmg;
@@ -534,7 +538,7 @@ public class Ent : MonoBehaviour {
 
 
 	protected void PlayAudioStep () {
-		Audio.play("Audio/sfx/step", 1f, Random.Range(2.0f, 3.0f));
+		AudioManager.Play("Audio/sfx/step", 1f, Random.Range(2.0f, 3.0f));
 	}
 
 

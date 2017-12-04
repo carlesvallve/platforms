@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Kuchen;
 
 
 public class World : MonoBehaviour {
@@ -16,6 +17,12 @@ public class World : MonoBehaviour {
 		monsterContainer = GameObject.Find("Monsters").transform;
 		lootContainer = GameObject.Find("Loot").transform;
 		fxContainer = GameObject.Find("Fx").transform;
+		
+		// Game Over Event Listener
+    this.Subscribe("GameOver", () => {
+      Debug.Log("GAME OVER");
+      Navigator.instance.Open("Title", true);
+    });
 	}
 	
 }

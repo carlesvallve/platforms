@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: f031dbed2bf494992931a5407b29452c
+timeCreated: 1512283665
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Chrono Trigger
+  fontNames:
+  - Chrono Trigger
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
