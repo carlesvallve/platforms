@@ -90,7 +90,7 @@ public class Monster : Humanoid {
 
 		if (value) {
 			float dir = Mathf.Sign(player.transform.position.x - transform.position.x);
-			sprite.localScale = new Vector2(dir * Mathf.Abs(sprite.localScale.x), sprite.localScale.y);
+      SetSpriteDirection(dir);
 		} 
 
 		aware = value;
@@ -144,7 +144,7 @@ public class Monster : Humanoid {
 			if (playerDist <= 1.5f) {
 				// turn versus player and attack
 				float dir = Mathf.Sign(player.transform.position.x - transform.position.x);
-				sprite.localScale = new Vector2(dir * Mathf.Abs(sprite.localScale.x), sprite.localScale.y); 
+        SetSpriteDirection(dir);
 				
 				yield return StartCoroutine(Attack());
 			}

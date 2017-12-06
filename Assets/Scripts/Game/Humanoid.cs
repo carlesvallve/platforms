@@ -106,7 +106,7 @@ public class Humanoid : Ent {
 
 		StartCoroutine(DropItem(ent));
 
-		float dir  = Mathf.Sign(sprite.localScale.x);
+		float dir  = GetSpriteDirection();
 		ent.SetThrow(dir);	
 	}
 
@@ -166,7 +166,7 @@ public class Humanoid : Ent {
 		AudioManager.Play("Audio/sfx/woosh", 0.25f, Random.Range(0.5f, 0.5f));
 
 		// push attacker forward
-		float directionX = Mathf.Sign(sprite.localScale.x);
+		float directionX = GetSpriteDirection(); //Mathf.Sign(sprite.localScale.x);
 		Vector2 d = directionX * Vector2.right * 2.5f; // + Vector2.up * (IsOnWater() ? 1f : 3f);
 		yield return StartCoroutine(PushBackwards(d, 0.4f));
 
@@ -190,7 +190,7 @@ public class Humanoid : Ent {
 		// attack parameters
 		float weaponRange = 0.8f;
 		float knockback = 1.5f;
-		float directionX = Mathf.Sign(sprite.localScale.x);
+		float directionX = GetSpriteDirection();
 
 		// push attacker forward
 		Vector2 d = directionX * Vector2.right * 0.5f + Vector2.up * (IsOnWater() ? 1f : 3f);
@@ -217,8 +217,8 @@ public class Humanoid : Ent {
 
 		// if we have a destructable target
 		if (target && target.destructable) {
-			sprite.localScale = new Vector2(Mathf.Sign(target.transform.position.x - transform.position.x) * Mathf.Abs(sprite.localScale.x), sprite.localScale.y);
-
+	     SetSpriteDirection(Mathf.Sign(target.transform.position.x - transform.position.x));
+      
 			// if target is attacking lets both parry
 			if (target.state == States.ATTACK) {
 				Humanoid enemy = (Humanoid)target;
@@ -254,7 +254,7 @@ public class Humanoid : Ent {
 		if (prefabs.parryPrefab) {
 			Vector3 pos = transform.position + ((enemy.transform.position - transform.position) / 2) + Vector3.up * GetHeight() / 2;
 			Star star = ((GameObject)Instantiate(prefabs.parryPrefab)).GetComponent<Star>();
-			star.Init(pos, sprite.localScale.x);
+			star.Init(pos, GetSpriteDirection()); //sprite.localScale.x);
 		}
 		
 		yield return StartCoroutine(PushBackwards(vec , 0.2f));
@@ -296,7 +296,7 @@ public class Humanoid : Ent {
 
 		// decide if alive being is gonna hit
 		if (velocity.y > -1.5f) { return false; }
-		if (transform.position.y < target.transform.position.y + transform.localScale.y * 0.75f) { 
+		if (transform.position.y < target.transform.position.y + GetSpriteDirection() * 0.75f) { //transform.localScale.y * 0.75f) { 
 			return false;
 		}
 		

@@ -49,7 +49,7 @@ public class CameraFollow : MonoBehaviour {
 
 		// follow horizontally
 		if (CanFollowHorizontal()) {
-			float targetX = target.transform.position.x + (displaceX * target.transform.localScale.x);
+			float targetX = target.transform.position.x + (displaceX * target.GetDirection());
 			x = Mathf.Lerp(transform.position.x, targetX, Time.deltaTime * speedX); //  / 5
 		}
 		

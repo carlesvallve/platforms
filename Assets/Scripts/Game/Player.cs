@@ -10,9 +10,9 @@ public class Player : Humanoid {
 	}
 
 
-	protected override void SetInput () {
-
-	}
+	// protected override void SetInput () {
+  // 
+	// }
 	
 	
 	public override IEnumerator Die() {

@@ -76,6 +76,8 @@ public class Ent : MonoBehaviour {
 	public float destructableJumpMass = 0;
 
 	protected Transform sprite;
+  protected SpriteRenderer spriteRenderer;
+  protected float spriteDirection = 1f;
 	
 	protected Vector2 input;
 	protected Vector2 velocity;
@@ -107,6 +109,11 @@ public class Ent : MonoBehaviour {
 	protected int hpMax;
 
 	protected TextMesh info;
+  
+  
+  protected float currentSpeed = 0;
+	protected float accelerationTime = 0.5f;
+	protected float deaccelerationTime = 0.2f;
 
 
 	// ===========================================================
@@ -117,6 +124,7 @@ public class Ent : MonoBehaviour {
 		controller = GetComponent<Controller2D>();
 
 		sprite = transform.Find("Sprite");
+    spriteRenderer = sprite.GetComponent<SpriteRenderer>();
 
 		hpBar = transform.Find("Bar");
 		hpPercent = transform.Find("Bar/Percent");
@@ -154,7 +162,26 @@ public class Ent : MonoBehaviour {
 
 
 	public Sprite GetSpriteImage () {
-		return sprite.GetComponent<SpriteRenderer>().sprite;
+		return spriteRenderer.sprite;
+	}
+  
+  
+  // ===========================================================
+	// Rpg
+	// ===========================================================
+  
+  protected IEnumerator Regenerate () {
+		if (atr.regeneration == 0) { yield break; }
+
+		yield return new WaitForSeconds(atr.regeneration);
+
+		if (state != States.HURT) {
+			atr.hp += 1;
+			if (atr.hp > hpMax) { atr.hp = hpMax; }
+			StartCoroutine(UpdateHpBar());
+		}
+		
+		StartCoroutine(Regenerate());
 	}
 
 
@@ -199,21 +226,6 @@ public class Ent : MonoBehaviour {
 	}
 
 
-	protected IEnumerator Regenerate () {
-		if (atr.regeneration == 0) { yield break; }
-
-		yield return new WaitForSeconds(atr.regeneration);
-
-		if (state != States.HURT) {
-			atr.hp += 1;
-			if (atr.hp > hpMax) { atr.hp = hpMax; }
-			StartCoroutine(UpdateHpBar());
-		}
-		
-		StartCoroutine(Regenerate());
-	}
-
-
 	protected virtual void SetInput () {
 		// apply friction
 		input.x *= 0.99f;
@@ -228,18 +240,18 @@ public class Ent : MonoBehaviour {
 
 
 	protected void SetMove () {
-		// set velocity x
-		float targetVelocityX = input.x * speed;
-		velocity.x = targetVelocityX;
-		//velocity.x = Mathf.SmoothDamp (velocity.x, targetVelocityX, ref velocityXSmoothing, (controller.collisions.below)?accelerationTimeGrounded:accelerationTimeAirborne);
-			
-		if (velocity.x != 0) { 
-			if (state != States.ATTACK && state != States.HURT && state != States.PARRY) {
-				if (this is Humanoid) {
-					sprite.localScale = new Vector2(Mathf.Sign(velocity.x) * Mathf.Abs(sprite.localScale.x), sprite.localScale.y); 
-				}
-			}
-		}
+		// No Smooth Damp, simple velocity method
+		//float targetVelocityX = input.x * speed; // * 0.5f;
+		//velocity.x = targetVelocityX;
+		  
+    // Smooth damped velocity with friction
+    float targetVelocityX = input.x * speed * 10f;
+		float acceleration = Mathf.Abs(targetVelocityX) >= Mathf.Abs(velocity.x) ? accelerationTime : deaccelerationTime;
+		velocity.x = Mathf.SmoothDamp (velocity.x, targetVelocityX, ref currentSpeed, acceleration);
+    velocity.x *= 0.85f; // apply friction
+
+    // set sprite direction
+    SetSpriteDirection();
 
 		// set velocity y
 		if (IsOnLadder()) {
@@ -248,7 +260,7 @@ public class Ent : MonoBehaviour {
 		} else {
 			ApplyGravity();
 		}
-
+    
 		// apply controller2d movement
 		controller.Move (velocity * Time.deltaTime, jumpingDown);
 
@@ -257,8 +269,58 @@ public class Ent : MonoBehaviour {
 			SnapToLadder(); 
 		}
 	}
+  
+  
+  // ===========================================================
+	// Direction
+	// ===========================================================
+  
+  protected virtual bool CanChangeDirection() {
+    if (this is Humanoid && state != States.ATTACK && state != States.HURT && state != States.PARRY) {
+        return true;
+    }
+    
+    return false;
+  }
 
+  protected virtual float SetSpriteDirection(float dir = 0) {
+    if (!CanChangeDirection()) {
+      return spriteDirection;
+    }
+    
+    // force direction to given one
+    if (dir != 0) {
+      spriteDirection = dir;
+      spriteRenderer.flipX = spriteDirection == 1f ? false : true;
+      return spriteDirection;
+    }
+    
+    // get movement vector and escape if we are not moving
+    float targetVelocityX = input.x * speed;
+    if (targetVelocityX == 0) { 
+      return spriteDirection;
+    }
+    
+    // set direction to movement vector
+    int newDir = (int)Mathf.Sign(targetVelocityX); //velocity.x);
+    if (newDir != spriteDirection) {
+      spriteDirection = newDir;
+      spriteRenderer.flipX = spriteDirection == 1f ? false : true;
+      //return true;
+    }
+    
+    return spriteDirection;
+  }
+  
+  protected virtual float GetSpriteDirection() {
+    return spriteDirection;
+  }
+  
 
+  // ===========================================================
+	// Jump
+	// ===========================================================
+  
 	protected bool CanJump () {
 		if (IsOnWater()) { return true; }
 		return controller.grounded || previouslyOnLadder;
@@ -281,8 +343,12 @@ public class Ent : MonoBehaviour {
 			velocity.y *= 0.5f;
 		}
 	}
+  
 
-
+  // ===========================================================
+	// Push and Throw
+	// ===========================================================
+  
 	public void SetThrow (float dir) {
 		input = new Vector2(dir * 1.5f, 0);
 		velocity.y = 20f;
@@ -298,7 +364,6 @@ public class Ent : MonoBehaviour {
 	// ===========================================================
 	// Water
 	// ===========================================================
-
 
 	public bool IsOnWater () {
 		return isWater;
@@ -396,10 +461,8 @@ public class Ent : MonoBehaviour {
 		velocity = Vector2.zero;
 		affectedByGravity = false;
 
-		//Vector2 sc = transform.localScale;
 		transform.SetParent(collector.transform);
-		//transform.localScale = new Vector2(sc.x / (Mathf.Abs(collector.transform.localScale.x)), sc.y / (collector.transform.localScale.y));
-
+		
 		float duration = 0.2f;
 		Vector3 pos = Vector3.up * collector.sprite.localScale.y;
 		
