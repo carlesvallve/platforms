@@ -185,6 +185,7 @@ public class Humanoid : Ent {
 		if (hasAttackedInAir) { yield break; }
 
 		state = States.ATTACK;
+    PlayAnimation("attack", 4f);
 		AudioManager.Play("Audio/sfx/woosh", 0.15f, Random.Range(1.0f, 1.5f));
 		
 		// attack parameters
@@ -193,7 +194,7 @@ public class Humanoid : Ent {
 		float directionX = GetSpriteDirection();
 
 		// push attacker forward
-		Vector2 d = directionX * Vector2.right * 0.5f + Vector2.up * (IsOnWater() ? 1f : 3f);
+		Vector2 d = directionX * Vector2.right * 0.75f + Vector2.up * (IsOnWater() ? 1f : 3f);
 		StartCoroutine(PushBackwards(d, 0.1f));
 		yield return new WaitForSeconds(0.05f);
 
@@ -246,6 +247,7 @@ public class Humanoid : Ent {
 
 	public override IEnumerator Parry (Humanoid enemy, Vector2 vec) {
 		state = States.PARRY;
+    PlayAnimation("attack", 4f);
 		AudioManager.Play("Audio/sfx/Sword", 1f, Random.Range(1f, 2f));
 
 		input = Vector2.zero;

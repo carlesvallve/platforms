@@ -8,7 +8,10 @@ public enum States {
 	ATTACK = 2,
 	PARRY = 3,
 	ROLL = 4,
-	HURT = 5
+	HURT = 5,
+  
+  JUMP = 6,
+  DOUBLEJUMP = 7,
 }
 
 
@@ -62,7 +65,8 @@ public class Prefabs {
 public class Ent : MonoBehaviour {
 
 	public Controller2D controller;
-
+  protected Animator animator;
+  
 	public States state;
 	public Stats stats;
 	public Atr atr;
@@ -85,7 +89,7 @@ public class Ent : MonoBehaviour {
 	protected float gravity;
 	protected float jumpVelocity;
 	protected float jumpHeight = 2.5f;
-	protected float timeToJumpApex = 0.3125f;
+	protected float timeToJumpApex = 0.225f; // 0.3125f;
 	//public float accelerationTimeAirborne = 0;
 	//public float accelerationTimeGrounded = 0;
 	//protected float velocityXSmoothing;
@@ -95,6 +99,8 @@ public class Ent : MonoBehaviour {
 	protected bool jumping = false;
 	protected bool jumpingDown = false;
 	protected bool jumpingFromLadder = false;
+  
+  protected int jumpCount = 0;
 
 	protected Ladder ladder;
 	protected Ent interactiveObject;
@@ -125,6 +131,7 @@ public class Ent : MonoBehaviour {
 
 		sprite = transform.Find("Sprite");
     spriteRenderer = sprite.GetComponent<SpriteRenderer>();
+    animator = sprite.GetComponent<Animator>();
 
 		hpBar = transform.Find("Bar");
 		hpPercent = transform.Find("Bar/Percent");
@@ -152,6 +159,7 @@ public class Ent : MonoBehaviour {
 		SetInput();
 		SetSpeed();
 		SetMove();
+    SetAnimationStates();
 		OutOfBounds();
 	}
 	
@@ -312,7 +320,7 @@ public class Ent : MonoBehaviour {
     return spriteDirection;
   }
   
-  protected virtual float GetSpriteDirection() {
+  public virtual float GetSpriteDirection() {
     return spriteDirection;
   }
   
@@ -328,20 +336,41 @@ public class Ent : MonoBehaviour {
 
 
 	protected void SetJump (bool isJumpingDown, float intensity = 1, bool escapeCheck = false) {
+    
+    
+    if (!IsOnLadder() && !controller.grounded && jumpCount == 0) { //} && velocity.y < 0) {
+			SetDoubleJump(intensity);
+			//yield break;
+      return;
+		}
+    
 		if (!CanJump() && !escapeCheck) { return; }
-
-		if (IsOnWater()) { intensity *= 0.2f; }
+    
+    if (IsOnWater()) { intensity *= 0.2f; }
 
 		velocity.y = jumpVelocity * intensity;
 
 		hasAttackedInAir = false;
 		jumping = true;
 		jumpingFromLadder = IsOnLadder();
+    
+    state = States.JUMP;
 
 		if (isJumpingDown) {
 			jumpingDown = true;
 			velocity.y *= 0.5f;
 		}
+	}
+  
+  protected virtual void SetDoubleJump(float intensity = 1.25f) {
+		jumpCount = 1;
+
+		//AudioClipManager.Play(AudioClipManager.sfx["jump"], 0.8f, Random.Range(1f, 2f));
+
+		velocity.y = jumpVelocity * intensity;
+		//input.x *= 1.5f;
+
+		//yield break;
 	}
   
 
@@ -639,8 +668,10 @@ public class Ent : MonoBehaviour {
 	// ===========================================================
 
 	public virtual void TriggerLanding () {
+    // Debug.Log("TriggerLanding");
 		PlayAudioStep();
 		hasAttackedInAir = false;
+    jumpCount = 0;
 	}
 
 
@@ -708,5 +739,58 @@ public class Ent : MonoBehaviour {
 			break;
 		}
 	}
-			
+	
+  // ========================================================
+	// Animation
+	// ========================================================
+
+	protected void SetAnimationStates () {
+		if (state == States.IDLE || state == States.JUMP) {
+      
+      //Debug.Log(IsOnLadder() + " " + Mathf.Abs(velocity.x) + " " + Mathf.Abs(velocity.y));
+      
+      // ladder animations
+      if (IsOnLadder()) {
+        if (Mathf.Abs(velocity.y) <= 1f) {
+				  PlayAnimation("idle");
+				} else {
+					PlayAnimation("walk", 1f);
+				}
+        return;
+      }
+      
+      // grounded animations
+			if (controller.grounded) {
+				if (Mathf.Abs(velocity.x) <= 1f) {
+				  PlayAnimation("idle");
+				} else {
+					PlayAnimation("walk", 1f);
+				}
+			} else {
+				PlayAnimation(jumpCount == 1 ? "roll" : "jump");
+			}
+		}
+	}
+
+
+	protected void PlayAnimation (string name, float speed = 1f) {
+    if (!animator) {
+      return;
+    }
+    
+    //Debug.Log("PlayAnimation" + name);
+
+		// dont play state if does not exist
+		if (!animator.HasState( 0, Animator.StringToHash(name))) {
+			return;
+		}
+
+		// dont play state if is already playing
+		if (animator.GetCurrentAnimatorStateInfo(0).IsName(name)) {
+			return;
+		}
+
+		animator.Play(name);
+		animator.speed = speed;
+	}		
 }

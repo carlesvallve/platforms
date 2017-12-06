@@ -41,7 +41,7 @@ public class CameraFollow : MonoBehaviour {
 	// Camera Update
 	// ===========================================================
 
-	void Update () {
+	void LateUpdate () {
 		if (!target) { return; }
 
 		float x = transform.position.x;
@@ -49,7 +49,7 @@ public class CameraFollow : MonoBehaviour {
 
 		// follow horizontally
 		if (CanFollowHorizontal()) {
-			float targetX = target.transform.position.x + (displaceX * target.GetDirection());
+			float targetX = target.transform.position.x + (displaceX * target.GetSpriteDirection());
 			x = Mathf.Lerp(transform.position.x, targetX, Time.deltaTime * speedX); //  / 5
 		}
 		
