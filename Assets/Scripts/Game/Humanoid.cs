@@ -159,7 +159,7 @@ public class Humanoid : Ent {
 	// Combat
 	// ===========================================================
 
-	protected IEnumerator Roll () {
+	protected IEnumerator Roll() {
 		if (state == States.ROLL || state == States.ATTACK || state == States.HURT) { yield break; }
 
 		state = States.ROLL;
@@ -174,13 +174,13 @@ public class Humanoid : Ent {
 	}
 
 
-	protected override IEnumerator JumpAttack (Ent target) {
+	protected override IEnumerator JumpAttack(Ent target) {
 		StartCoroutine(base.JumpAttack(target));
 		yield break;
 	}
 
 
-	protected IEnumerator Attack () {
+	protected IEnumerator Attack() {
 		if (state == States.ATTACK || state == States.PARRY ||state == States.HURT) { yield break; }
 		if (hasAttackedInAir) { yield break; }
 
@@ -195,15 +195,16 @@ public class Humanoid : Ent {
 
 		// push attacker forward
 		Vector2 d = directionX * Vector2.right * 0.75f + Vector2.up * (IsOnWater() ? 1f : 3f);
-		StartCoroutine(PushBackwards(d, 0.1f));
-		yield return new WaitForSeconds(0.05f);
+		//yield return StartCoroutine(PushBackwards(d, 0.1f));
+    
+		//yield return new WaitForSeconds(0.05f);
 
 		// get possible attack target
 		Ent target = null;
 
 		if (interactiveObject && interactiveObject.destructable) {
 			// by distance (in case we are overlapping the target)
-			if (Vector2.Distance(transform.position, interactiveObject.transform.position) < 0.3f) {
+			if (Vector2.Distance(transform.position, interactiveObject.transform.position) < 0.5f) { //}< 0.3f) {
 				target = interactiveObject;
 			}
 		} else {
@@ -232,9 +233,18 @@ public class Humanoid : Ent {
 				StartCoroutine(target.Hurt(dmg, dd));
 
 				// push attacker backwards
-				yield return StartCoroutine(PushBackwards(-d / 2 , 0.05f));
+				//yield return StartCoroutine(PushBackwards(-d / 2 , 0.05f));
 			}
-		}
+		} else {
+      // push attacker backwards
+      //yield return StartCoroutine(PushBackwards(-d , 0.1f));
+    }
+    
+    
+    
+    // d = directionX * Vector2.right * 0.75f + Vector2.up * (IsOnWater() ? 1f : 3f);
+    // yield return StartCoroutine(PushBackwards(-d, 0.05f));
+    //yield return new WaitForSeconds(0.05f);
 
 		// finish attack
 		input = Vector2.zero;
@@ -245,9 +255,10 @@ public class Humanoid : Ent {
 	}
 
 
-	public override IEnumerator Parry (Humanoid enemy, Vector2 vec) {
+	public override IEnumerator Parry(Humanoid enemy, Vector2 vec) {
+    if (state != States.ATTACK) { PlayAnimation("attack", 4f); }
 		state = States.PARRY;
-    PlayAnimation("attack", 4f);
+    
 		AudioManager.Play("Audio/sfx/Sword", 1f, Random.Range(1f, 2f));
 
 		input = Vector2.zero;
@@ -263,12 +274,12 @@ public class Humanoid : Ent {
 	}
 
 
-	public override IEnumerator Hurt (int dmg, Vector2 vec) {
+	public override IEnumerator Hurt(int dmg, Vector2 vec) {
 		yield return StartCoroutine(base.Hurt(dmg, vec));
 	}
 
 
-	public override IEnumerator Die () {
+	public override IEnumerator Die() {
 		AudioManager.Play("Audio/sfx/bite", 0.5f, Random.Range(3f, 3f));
 		Bleed(Random.Range(8, 16));
 		SpawnLoot();
@@ -278,7 +289,7 @@ public class Humanoid : Ent {
 	}
 
 
-	protected override void Bleed (int dmg, int maxBloodSplats = 20) {
+	protected override void Bleed(int dmg, int maxBloodSplats = 20) {
 		base.Bleed(dmg, maxBloodSplats);
 	}
 
@@ -292,7 +303,7 @@ public class Humanoid : Ent {
 	// Triggers
 	// ===========================================================
 
-	public override bool TriggerCollisionAttack (GameObject obj) {
+	public override bool TriggerCollisionAttack(GameObject obj) {
 		Ent target = obj.GetComponent<Ent>();
 		if (!target || target.destructableJumpMass == 0 || target.destructableJumpMass > atr.mass) { return false; }
 
@@ -308,12 +319,12 @@ public class Humanoid : Ent {
 	}
 
 
-	public override void TriggerPushable (GameObject obj) {
+	public override void TriggerPushable(GameObject obj) {
 		PushItem(obj);
 	}
 
 
-	protected override void OutOfBounds () {
+	protected override void OutOfBounds() {
 		// Kill if is out of bounds
 		if (transform.position.y < -1) {
 			StartCoroutine(Die());
@@ -321,7 +332,7 @@ public class Humanoid : Ent {
 	}
 
 
-	protected override void OnTriggerStay2D (Collider2D collider) {
+	protected override void OnTriggerStay2D(Collider2D collider) {
 		//if (state == States.ATTACK) { return; }
 		
 		base.OnTriggerStay2D(collider);
@@ -354,7 +365,7 @@ public class Humanoid : Ent {
 	}
 
 
-	protected override void OnTriggerExit2D (Collider2D collider) {
+	protected override void OnTriggerExit2D(Collider2D collider) {
 		base.OnTriggerExit2D(collider);
 
 		switch (collider.gameObject.tag) {

@@ -12,6 +12,8 @@ public enum States {
   
   JUMP = 6,
   DOUBLEJUMP = 7,
+  
+  DEAD = 8,
 }
 
 
@@ -88,7 +90,7 @@ public class Ent : MonoBehaviour {
 	protected float speed = 1.0f;
 	protected float gravity;
 	protected float jumpVelocity;
-	protected float jumpHeight = 2.5f;
+	protected float jumpHeight = 2.75f;
 	protected float timeToJumpApex = 0.225f; // 0.3125f;
 	//public float accelerationTimeAirborne = 0;
 	//public float accelerationTimeGrounded = 0;
@@ -145,6 +147,7 @@ public class Ent : MonoBehaviour {
 		}
 
 		gravity = -((2 * jumpHeight) / Mathf.Pow (timeToJumpApex, 2)) * atr.mass; // -80
+    //Debug.Log(gravity);
 		jumpVelocity = Mathf.Abs(gravity) * timeToJumpApex; // 20
 
 		state = States.IDLE;
@@ -154,10 +157,9 @@ public class Ent : MonoBehaviour {
 	}
 
 
-	public virtual void Update () {
-		Reset();
+	public virtual void FixedUpdate () {
+    SetSpeed();
 		SetInput();
-		SetSpeed();
 		SetMove();
     SetAnimationStates();
 		OutOfBounds();
@@ -197,54 +199,19 @@ public class Ent : MonoBehaviour {
 	// Movement
 	// ===========================================================
 
-	protected void ApplyGravity () {
-		if (affectedByGravity) {
-			if (IsOnWater()) {
-				velocity.y += gravity * 0.1f * Time.deltaTime;
-			} else {
-				velocity.y += gravity * Time.deltaTime;
-			}
-		}
-	}
-
-
-	protected void Reset () {
-		if (controller.collisions.above || controller.collisions.below) {
-			if (jumping) { 
-				velocity.x = 0; 
-			} else { 
-				velocity.y = 0; 
-			}
-			
-			// velocity.y = 0;
-			
-			jumping = false;
-			jumpingDown = false;
-			jumpingFromLadder = false;
-		}
-
-		if (velocity.y < -18f && !jumpingFromLadder) {
-			jumpingDown = false;
-			
-		}
-
-		if (velocity.y < -4f && !jumpingDown) {
-			jumpingFromLadder = false;
-		}
-	}
-
-
-	protected virtual void SetInput () {
-		// apply friction
-		input.x *= 0.99f;
-		if (controller.collisions.left || controller.collisions.right) { input.x = 0; }
-		if (controller.collisions.above || controller.collisions.below) { input.x *= 0.9f; }
-	}
-
-
 	protected virtual void SetSpeed () {
 		speed = running ? atr.speed * 3 : atr.speed;
 	}
+  
+  
+  protected virtual void SetInput () {
+    // each ai might chose a different way to set their movement input
+    
+    // 	// apply friction (this is outdated)
+  	// 	input.x *= 0.99f;
+  	// 	if (controller.collisions.left || controller.collisions.right) { input.x = 0; }
+  	// 	if (controller.collisions.above || controller.collisions.below) { input.x *= 0.9f; }
+  }
 
 
 	protected void SetMove () {
@@ -262,19 +229,38 @@ public class Ent : MonoBehaviour {
     SetSpriteDirection();
 
 		// set velocity y
-		if (IsOnLadder()) {
-			hasAttackedInAir = false;
-			SetMoveOnLadder();
-		} else {
-			ApplyGravity();
-		}
+		SetVelocityY();
     
 		// apply controller2d movement
 		controller.Move (velocity * Time.deltaTime, jumpingDown);
-
-		// snap to ladders
-		if (IsOnLadder()) { 
-			SnapToLadder(); 
+	}
+  
+  
+  private void SetVelocityY() {
+    if (controller.collisions.left || controller.collisions.right) { velocity.x = 0; }
+    
+    if (controller.collisions.below && velocity.y < 0) { velocity.y = 0; }
+    if (controller.collisions.above && velocity.y > 0) { velocity.y = 0; }
+    if (velocity.y < -18f && !jumpingFromLadder) { jumpingDown = false; }
+		if (velocity.y < -4f && !jumpingDown) { jumpingFromLadder = false; }
+    
+    if (IsOnLadder()) {
+			hasAttackedInAir = false;
+			SetMoveOnLadder();
+      SnapToLadder(); 
+		} else {
+			ApplyGravity();
+		}
+  }
+  
+  
+  protected void ApplyGravity () {
+		if (affectedByGravity) {
+			if (IsOnWater()) {
+				velocity.y += gravity * 0.1f * Time.deltaTime;
+			} else {
+				velocity.y += gravity * 1f * Time.deltaTime;
+			}
 		}
 	}
   
@@ -290,6 +276,7 @@ public class Ent : MonoBehaviour {
     
     return false;
   }
+  
 
   protected virtual float SetSpriteDirection(float dir = 0) {
     if (!CanChangeDirection()) {
@@ -337,10 +324,10 @@ public class Ent : MonoBehaviour {
 
 	protected void SetJump (bool isJumpingDown, float intensity = 1, bool escapeCheck = false) {
     
+    //Debug.Log("JUMP:" + isJumpingDown); // + " " + intensity + " " + escapeCheck);
     
     if (!IsOnLadder() && !controller.grounded && jumpCount == 0) { //} && velocity.y < 0) {
 			SetDoubleJump(intensity);
-			//yield break;
       return;
 		}
     
@@ -355,6 +342,7 @@ public class Ent : MonoBehaviour {
 		jumpingFromLadder = IsOnLadder();
     
     state = States.JUMP;
+    AudioManager.Play("Audio/sfx/jump", 0.8f, Random.Range(1f, 2f));
 
 		if (isJumpingDown) {
 			jumpingDown = true;
@@ -362,15 +350,14 @@ public class Ent : MonoBehaviour {
 		}
 	}
   
+  
   protected virtual void SetDoubleJump(float intensity = 1.25f) {
 		jumpCount = 1;
-
-		//AudioClipManager.Play(AudioClipManager.sfx["jump"], 0.8f, Random.Range(1f, 2f));
 
 		velocity.y = jumpVelocity * intensity;
 		//input.x *= 1.5f;
 
-		//yield break;
+    AudioManager.Play("Audio/sfx/jump", 0.8f, Random.Range(1f, 2f));
 	}
   
 
@@ -629,8 +616,9 @@ public class Ent : MonoBehaviour {
 	}
 
 
-	protected void PlayAudioStep () {
-		AudioManager.Play("Audio/sfx/step", 1f, Random.Range(2.0f, 3.0f));
+	protected virtual void PlayAudioStep (float volume = 1f, float pitchMin = 2f, float pitchMax = 3f) {
+    // 0.2f, Random.Range(1.5f, 2f));
+		AudioManager.Play("Audio/sfx/step", 1f, Random.Range(pitchMin, pitchMax));
 	}
 
 
@@ -670,8 +658,14 @@ public class Ent : MonoBehaviour {
 	public virtual void TriggerLanding () {
     // Debug.Log("TriggerLanding");
 		PlayAudioStep();
+    
 		hasAttackedInAir = false;
+    jumping = false;
+    jumpingDown = false;
+    jumpingFromLadder = false;
     jumpCount = 0;
+    
+    velocity.y = 0; 
 	}
 
 

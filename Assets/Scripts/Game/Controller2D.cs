@@ -184,7 +184,6 @@ public class Controller2D : MonoBehaviour {
 			Debug.DrawRay(rayOrigin, Vector2.up * directionY * rayLength, Color.red);
 
 			if (hit) {
-
 				// handle one way collisions
 				if (hit.transform.gameObject.tag == "OneWayPlatform") {
 					if (directionY == 1 || (directionY == - 1 && jumpingDown)) {

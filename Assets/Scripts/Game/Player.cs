@@ -5,14 +5,27 @@ using Kuchen;
 public class Player : Humanoid {
 
 	public override void Awake () {
+    base.Awake();
 		InitJoystickManager();
-		base.Awake();
+    StartCoroutine(PlayAudioStepSequence());
 	}
 
 
 	// protected override void SetInput () {
   // 
 	// }
+  
+  protected IEnumerator PlayAudioStepSequence () {
+		if (animator.GetCurrentAnimatorStateInfo(0).IsName("walk")) {
+			//AudioClipManager.Play(AudioClipManager.sfx["step"], 0.2f, Random.Range(1.5f, 2f));
+      PlayAudioStep(0.25f);
+		}
+		yield return new WaitForSeconds(0.15f);
+
+    if (state == States.DEAD) { yield break; }
+
+		StartCoroutine(PlayAudioStepSequence());
+	}
 	
 	
 	public override IEnumerator Die() {
@@ -51,7 +64,9 @@ public class Player : Humanoid {
   void SetButtonADown(JoystickAction joystickAction) {
     //Debug.Log("A");
     // JUMP
-		SetJump(joystickAction.direction.y > 0, joystickAction.direction.y < 0 ? 1.25f : 1f);
+    float impulse = joystickAction.direction.y > 0.5f ? 1.25f : 1f; // pressing up key jumps higher
+    bool jumpingDown = joystickAction.direction.y < 0;
+		SetJump(jumpingDown, impulse);
   }
 
   void SetButtonBDown(JoystickAction joystickAction) {

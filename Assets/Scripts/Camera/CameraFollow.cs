@@ -41,7 +41,7 @@ public class CameraFollow : MonoBehaviour {
 	// Camera Update
 	// ===========================================================
 
-	void LateUpdate () {
+	void FixedUpdate () {
 		if (!target) { return; }
 
 		float x = transform.position.x;
