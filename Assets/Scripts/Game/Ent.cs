@@ -88,7 +88,7 @@ public class Ent : MonoBehaviour {
   // protected float jumpHeight = 2.5f;
   // protected float timeToJumpApex = 0.3125f;
   protected float jumpHeight = 2f;
-  protected float timeToJumpApex = 0.3125f * 0.75f;
+  protected float timeToJumpApex = 0.3125f * 0.85f;
 
 
   //public float accelerationTimeAirborne = 0;
@@ -275,11 +275,7 @@ public class Ent : MonoBehaviour {
 
     if (IsOnWater()) { intensity *= 0.2f; }
 
-
-
     velocity.y = jumpVelocity * intensity;
-
-    Debug.Log("SetJump - " + isJumpingDown + " " + intensity + " " + escapeCheck + " " + jumpVelocity + " " + velocity.y);
 
     hasAttackedInAir = false;
     jumping = true;
