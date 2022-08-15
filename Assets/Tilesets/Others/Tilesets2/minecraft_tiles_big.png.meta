@@ -1,280 +1,761 @@
 fileFormatVersion: 2
 guid: 0e188c3e2d564487b95451e9b753780e
-timeCreated: 1432534073
-licenseType: Free
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: minecraft_tiles_big_0
-    21300002: minecraft_tiles_big_1
-    21300004: minecraft_tiles_big_2
-    21300006: minecraft_tiles_big_3
-    21300008: minecraft_tiles_big_4
-    21300010: minecraft_tiles_big_5
-    21300012: minecraft_tiles_big_6
-    21300014: minecraft_tiles_big_7
-    21300016: minecraft_tiles_big_8
-    21300018: minecraft_tiles_big_9
-    21300020: minecraft_tiles_big_10
-    21300022: minecraft_tiles_big_11
-    21300024: minecraft_tiles_big_12
-    21300026: minecraft_tiles_big_13
-    21300028: minecraft_tiles_big_14
-    21300030: minecraft_tiles_big_15
-    21300032: minecraft_tiles_big_16
-    21300034: minecraft_tiles_big_17
-    21300036: minecraft_tiles_big_18
-    21300038: minecraft_tiles_big_19
-    21300040: minecraft_tiles_big_20
-    21300042: minecraft_tiles_big_21
-    21300044: minecraft_tiles_big_22
-    21300046: minecraft_tiles_big_23
-    21300048: minecraft_tiles_big_24
-    21300050: minecraft_tiles_big_25
-    21300052: minecraft_tiles_big_26
-    21300054: minecraft_tiles_big_27
-    21300056: minecraft_tiles_big_28
-    21300058: minecraft_tiles_big_29
-    21300060: minecraft_tiles_big_30
-    21300062: minecraft_tiles_big_31
-    21300064: minecraft_tiles_big_32
-    21300066: minecraft_tiles_big_33
-    21300068: minecraft_tiles_big_34
-    21300070: minecraft_tiles_big_35
-    21300072: minecraft_tiles_big_36
-    21300074: minecraft_tiles_big_37
-    21300076: minecraft_tiles_big_38
-    21300078: minecraft_tiles_big_39
-    21300080: minecraft_tiles_big_40
-    21300082: minecraft_tiles_big_41
-    21300084: minecraft_tiles_big_42
-    21300086: minecraft_tiles_big_43
-    21300088: minecraft_tiles_big_44
-    21300090: minecraft_tiles_big_45
-    21300092: minecraft_tiles_big_46
-    21300094: minecraft_tiles_big_47
-    21300096: minecraft_tiles_big_48
-    21300098: minecraft_tiles_big_49
-    21300100: minecraft_tiles_big_50
-    21300102: minecraft_tiles_big_51
-    21300104: minecraft_tiles_big_52
-    21300106: minecraft_tiles_big_53
-    21300108: minecraft_tiles_big_54
-    21300110: minecraft_tiles_big_55
-    21300112: minecraft_tiles_big_56
-    21300114: minecraft_tiles_big_57
-    21300116: minecraft_tiles_big_58
-    21300118: minecraft_tiles_big_59
-    21300120: minecraft_tiles_big_60
-    21300122: minecraft_tiles_big_61
-    21300124: minecraft_tiles_big_62
-    21300126: minecraft_tiles_big_63
-    21300128: minecraft_tiles_big_64
-    21300130: minecraft_tiles_big_65
-    21300132: minecraft_tiles_big_66
-    21300134: minecraft_tiles_big_67
-    21300136: minecraft_tiles_big_68
-    21300138: minecraft_tiles_big_69
-    21300140: minecraft_tiles_big_70
-    21300142: minecraft_tiles_big_71
-    21300144: minecraft_tiles_big_72
-    21300146: minecraft_tiles_big_73
-    21300148: minecraft_tiles_big_74
-    21300150: minecraft_tiles_big_75
-    21300152: minecraft_tiles_big_76
-    21300154: minecraft_tiles_big_77
-    21300156: minecraft_tiles_big_78
-    21300158: minecraft_tiles_big_79
-    21300160: minecraft_tiles_big_80
-    21300162: minecraft_tiles_big_81
-    21300164: minecraft_tiles_big_82
-    21300166: minecraft_tiles_big_83
-    21300168: minecraft_tiles_big_84
-    21300170: minecraft_tiles_big_85
-    21300172: minecraft_tiles_big_86
-    21300174: minecraft_tiles_big_87
-    21300176: minecraft_tiles_big_88
-    21300178: minecraft_tiles_big_89
-    21300180: minecraft_tiles_big_90
-    21300182: minecraft_tiles_big_91
-    21300184: minecraft_tiles_big_92
-    21300186: minecraft_tiles_big_93
-    21300188: minecraft_tiles_big_94
-    21300190: minecraft_tiles_big_95
-    21300192: minecraft_tiles_big_96
-    21300194: minecraft_tiles_big_97
-    21300196: minecraft_tiles_big_98
-    21300198: minecraft_tiles_big_99
-    21300200: minecraft_tiles_big_100
-    21300202: minecraft_tiles_big_101
-    21300204: minecraft_tiles_big_102
-    21300206: minecraft_tiles_big_103
-    21300208: minecraft_tiles_big_104
-    21300210: minecraft_tiles_big_105
-    21300212: minecraft_tiles_big_106
-    21300214: minecraft_tiles_big_107
-    21300216: minecraft_tiles_big_108
-    21300218: minecraft_tiles_big_109
-    21300220: minecraft_tiles_big_110
-    21300222: minecraft_tiles_big_111
-    21300224: minecraft_tiles_big_112
-    21300226: minecraft_tiles_big_113
-    21300228: minecraft_tiles_big_114
-    21300230: minecraft_tiles_big_115
-    21300232: minecraft_tiles_big_116
-    21300234: minecraft_tiles_big_117
-    21300236: minecraft_tiles_big_118
-    21300238: minecraft_tiles_big_119
-    21300240: minecraft_tiles_big_120
-    21300242: minecraft_tiles_big_121
-    21300244: minecraft_tiles_big_122
-    21300246: minecraft_tiles_big_123
-    21300248: minecraft_tiles_big_124
-    21300250: minecraft_tiles_big_125
-    21300252: minecraft_tiles_big_126
-    21300254: minecraft_tiles_big_127
-    21300256: minecraft_tiles_big_128
-    21300258: minecraft_tiles_big_129
-    21300260: minecraft_tiles_big_130
-    21300262: minecraft_tiles_big_131
-    21300264: minecraft_tiles_big_132
-    21300266: minecraft_tiles_big_133
-    21300268: minecraft_tiles_big_134
-    21300270: minecraft_tiles_big_135
-    21300272: minecraft_tiles_big_136
-    21300274: minecraft_tiles_big_137
-    21300276: minecraft_tiles_big_138
-    21300278: minecraft_tiles_big_139
-    21300280: minecraft_tiles_big_140
-    21300282: minecraft_tiles_big_141
-    21300284: minecraft_tiles_big_142
-    21300286: minecraft_tiles_big_143
-    21300288: minecraft_tiles_big_144
-    21300290: minecraft_tiles_big_145
-    21300292: minecraft_tiles_big_146
-    21300294: minecraft_tiles_big_147
-    21300296: minecraft_tiles_big_148
-    21300298: minecraft_tiles_big_149
-    21300300: minecraft_tiles_big_150
-    21300302: minecraft_tiles_big_151
-    21300304: minecraft_tiles_big_152
-    21300306: minecraft_tiles_big_153
-    21300308: minecraft_tiles_big_154
-    21300310: minecraft_tiles_big_155
-    21300312: minecraft_tiles_big_156
-    21300314: minecraft_tiles_big_157
-    21300316: minecraft_tiles_big_158
-    21300318: minecraft_tiles_big_159
-    21300320: minecraft_tiles_big_160
-    21300322: minecraft_tiles_big_161
-    21300324: minecraft_tiles_big_162
-    21300326: minecraft_tiles_big_163
-    21300328: minecraft_tiles_big_164
-    21300330: minecraft_tiles_big_165
-    21300332: minecraft_tiles_big_166
-    21300334: minecraft_tiles_big_167
-    21300336: minecraft_tiles_big_168
-    21300338: minecraft_tiles_big_169
-    21300340: minecraft_tiles_big_170
-    21300342: minecraft_tiles_big_171
-    21300344: minecraft_tiles_big_172
-    21300346: minecraft_tiles_big_173
-    21300348: minecraft_tiles_big_174
-    21300350: minecraft_tiles_big_175
-    21300352: minecraft_tiles_big_176
-    21300354: minecraft_tiles_big_177
-    21300356: minecraft_tiles_big_178
-    21300358: minecraft_tiles_big_179
-    21300360: minecraft_tiles_big_180
-    21300362: minecraft_tiles_big_181
-    21300364: minecraft_tiles_big_182
-    21300366: minecraft_tiles_big_183
-    21300368: minecraft_tiles_big_184
-    21300370: minecraft_tiles_big_185
-    21300372: minecraft_tiles_big_186
-    21300374: minecraft_tiles_big_187
-    21300376: minecraft_tiles_big_188
-    21300378: minecraft_tiles_big_189
-    21300380: minecraft_tiles_big_190
-    21300382: minecraft_tiles_big_191
-    21300384: minecraft_tiles_big_192
-    21300386: minecraft_tiles_big_193
-    21300388: minecraft_tiles_big_194
-    21300390: minecraft_tiles_big_195
-    21300392: minecraft_tiles_big_196
-    21300394: minecraft_tiles_big_197
-    21300396: minecraft_tiles_big_198
-    21300398: minecraft_tiles_big_199
-    21300400: minecraft_tiles_big_200
-    21300402: minecraft_tiles_big_201
-    21300404: minecraft_tiles_big_202
-    21300406: minecraft_tiles_big_203
-    21300408: minecraft_tiles_big_204
-    21300410: minecraft_tiles_big_205
-    21300412: minecraft_tiles_big_206
-    21300414: minecraft_tiles_big_207
-    21300416: minecraft_tiles_big_208
-    21300418: minecraft_tiles_big_209
-    21300420: minecraft_tiles_big_210
-    21300422: minecraft_tiles_big_211
-    21300424: minecraft_tiles_big_212
-    21300426: minecraft_tiles_big_213
-    21300428: minecraft_tiles_big_214
-    21300430: minecraft_tiles_big_215
-    21300432: minecraft_tiles_big_216
-    21300434: minecraft_tiles_big_217
-    21300436: minecraft_tiles_big_218
-    21300438: minecraft_tiles_big_219
-    21300440: minecraft_tiles_big_220
-    21300442: minecraft_tiles_big_221
-    21300444: minecraft_tiles_big_222
-    21300446: minecraft_tiles_big_223
-    21300448: minecraft_tiles_big_224
-  serializedVersion: 2
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: minecraft_tiles_big_0
+  - first:
+      213: 21300002
+    second: minecraft_tiles_big_1
+  - first:
+      213: 21300004
+    second: minecraft_tiles_big_2
+  - first:
+      213: 21300006
+    second: minecraft_tiles_big_3
+  - first:
+      213: 21300008
+    second: minecraft_tiles_big_4
+  - first:
+      213: 21300010
+    second: minecraft_tiles_big_5
+  - first:
+      213: 21300012
+    second: minecraft_tiles_big_6
+  - first:
+      213: 21300014
+    second: minecraft_tiles_big_7
+  - first:
+      213: 21300016
+    second: minecraft_tiles_big_8
+  - first:
+      213: 21300018
+    second: minecraft_tiles_big_9
+  - first:
+      213: 21300020
+    second: minecraft_tiles_big_10
+  - first:
+      213: 21300022
+    second: minecraft_tiles_big_11
+  - first:
+      213: 21300024
+    second: minecraft_tiles_big_12
+  - first:
+      213: 21300026
+    second: minecraft_tiles_big_13
+  - first:
+      213: 21300028
+    second: minecraft_tiles_big_14
+  - first:
+      213: 21300030
+    second: minecraft_tiles_big_15
+  - first:
+      213: 21300032
+    second: minecraft_tiles_big_16
+  - first:
+      213: 21300034
+    second: minecraft_tiles_big_17
+  - first:
+      213: 21300036
+    second: minecraft_tiles_big_18
+  - first:
+      213: 21300038
+    second: minecraft_tiles_big_19
+  - first:
+      213: 21300040
+    second: minecraft_tiles_big_20
+  - first:
+      213: 21300042
+    second: minecraft_tiles_big_21
+  - first:
+      213: 21300044
+    second: minecraft_tiles_big_22
+  - first:
+      213: 21300046
+    second: minecraft_tiles_big_23
+  - first:
+      213: 21300048
+    second: minecraft_tiles_big_24
+  - first:
+      213: 21300050
+    second: minecraft_tiles_big_25
+  - first:
+      213: 21300052
+    second: minecraft_tiles_big_26
+  - first:
+      213: 21300054
+    second: minecraft_tiles_big_27
+  - first:
+      213: 21300056
+    second: minecraft_tiles_big_28
+  - first:
+      213: 21300058
+    second: minecraft_tiles_big_29
+  - first:
+      213: 21300060
+    second: minecraft_tiles_big_30
+  - first:
+      213: 21300062
+    second: minecraft_tiles_big_31
+  - first:
+      213: 21300064
+    second: minecraft_tiles_big_32
+  - first:
+      213: 21300066
+    second: minecraft_tiles_big_33
+  - first:
+      213: 21300068
+    second: minecraft_tiles_big_34
+  - first:
+      213: 21300070
+    second: minecraft_tiles_big_35
+  - first:
+      213: 21300072
+    second: minecraft_tiles_big_36
+  - first:
+      213: 21300074
+    second: minecraft_tiles_big_37
+  - first:
+      213: 21300076
+    second: minecraft_tiles_big_38
+  - first:
+      213: 21300078
+    second: minecraft_tiles_big_39
+  - first:
+      213: 21300080
+    second: minecraft_tiles_big_40
+  - first:
+      213: 21300082
+    second: minecraft_tiles_big_41
+  - first:
+      213: 21300084
+    second: minecraft_tiles_big_42
+  - first:
+      213: 21300086
+    second: minecraft_tiles_big_43
+  - first:
+      213: 21300088
+    second: minecraft_tiles_big_44
+  - first:
+      213: 21300090
+    second: minecraft_tiles_big_45
+  - first:
+      213: 21300092
+    second: minecraft_tiles_big_46
+  - first:
+      213: 21300094
+    second: minecraft_tiles_big_47
+  - first:
+      213: 21300096
+    second: minecraft_tiles_big_48
+  - first:
+      213: 21300098
+    second: minecraft_tiles_big_49
+  - first:
+      213: 21300100
+    second: minecraft_tiles_big_50
+  - first:
+      213: 21300102
+    second: minecraft_tiles_big_51
+  - first:
+      213: 21300104
+    second: minecraft_tiles_big_52
+  - first:
+      213: 21300106
+    second: minecraft_tiles_big_53
+  - first:
+      213: 21300108
+    second: minecraft_tiles_big_54
+  - first:
+      213: 21300110
+    second: minecraft_tiles_big_55
+  - first:
+      213: 21300112
+    second: minecraft_tiles_big_56
+  - first:
+      213: 21300114
+    second: minecraft_tiles_big_57
+  - first:
+      213: 21300116
+    second: minecraft_tiles_big_58
+  - first:
+      213: 21300118
+    second: minecraft_tiles_big_59
+  - first:
+      213: 21300120
+    second: minecraft_tiles_big_60
+  - first:
+      213: 21300122
+    second: minecraft_tiles_big_61
+  - first:
+      213: 21300124
+    second: minecraft_tiles_big_62
+  - first:
+      213: 21300126
+    second: minecraft_tiles_big_63
+  - first:
+      213: 21300128
+    second: minecraft_tiles_big_64
+  - first:
+      213: 21300130
+    second: minecraft_tiles_big_65
+  - first:
+      213: 21300132
+    second: minecraft_tiles_big_66
+  - first:
+      213: 21300134
+    second: minecraft_tiles_big_67
+  - first:
+      213: 21300136
+    second: minecraft_tiles_big_68
+  - first:
+      213: 21300138
+    second: minecraft_tiles_big_69
+  - first:
+      213: 21300140
+    second: minecraft_tiles_big_70
+  - first:
+      213: 21300142
+    second: minecraft_tiles_big_71
+  - first:
+      213: 21300144
+    second: minecraft_tiles_big_72
+  - first:
+      213: 21300146
+    second: minecraft_tiles_big_73
+  - first:
+      213: 21300148
+    second: minecraft_tiles_big_74
+  - first:
+      213: 21300150
+    second: minecraft_tiles_big_75
+  - first:
+      213: 21300152
+    second: minecraft_tiles_big_76
+  - first:
+      213: 21300154
+    second: minecraft_tiles_big_77
+  - first:
+      213: 21300156
+    second: minecraft_tiles_big_78
+  - first:
+      213: 21300158
+    second: minecraft_tiles_big_79
+  - first:
+      213: 21300160
+    second: minecraft_tiles_big_80
+  - first:
+      213: 21300162
+    second: minecraft_tiles_big_81
+  - first:
+      213: 21300164
+    second: minecraft_tiles_big_82
+  - first:
+      213: 21300166
+    second: minecraft_tiles_big_83
+  - first:
+      213: 21300168
+    second: minecraft_tiles_big_84
+  - first:
+      213: 21300170
+    second: minecraft_tiles_big_85
+  - first:
+      213: 21300172
+    second: minecraft_tiles_big_86
+  - first:
+      213: 21300174
+    second: minecraft_tiles_big_87
+  - first:
+      213: 21300176
+    second: minecraft_tiles_big_88
+  - first:
+      213: 21300178
+    second: minecraft_tiles_big_89
+  - first:
+      213: 21300180
+    second: minecraft_tiles_big_90
+  - first:
+      213: 21300182
+    second: minecraft_tiles_big_91
+  - first:
+      213: 21300184
+    second: minecraft_tiles_big_92
+  - first:
+      213: 21300186
+    second: minecraft_tiles_big_93
+  - first:
+      213: 21300188
+    second: minecraft_tiles_big_94
+  - first:
+      213: 21300190
+    second: minecraft_tiles_big_95
+  - first:
+      213: 21300192
+    second: minecraft_tiles_big_96
+  - first:
+      213: 21300194
+    second: minecraft_tiles_big_97
+  - first:
+      213: 21300196
+    second: minecraft_tiles_big_98
+  - first:
+      213: 21300198
+    second: minecraft_tiles_big_99
+  - first:
+      213: 21300200
+    second: minecraft_tiles_big_100
+  - first:
+      213: 21300202
+    second: minecraft_tiles_big_101
+  - first:
+      213: 21300204
+    second: minecraft_tiles_big_102
+  - first:
+      213: 21300206
+    second: minecraft_tiles_big_103
+  - first:
+      213: 21300208
+    second: minecraft_tiles_big_104
+  - first:
+      213: 21300210
+    second: minecraft_tiles_big_105
+  - first:
+      213: 21300212
+    second: minecraft_tiles_big_106
+  - first:
+      213: 21300214
+    second: minecraft_tiles_big_107
+  - first:
+      213: 21300216
+    second: minecraft_tiles_big_108
+  - first:
+      213: 21300218
+    second: minecraft_tiles_big_109
+  - first:
+      213: 21300220
+    second: minecraft_tiles_big_110
+  - first:
+      213: 21300222
+    second: minecraft_tiles_big_111
+  - first:
+      213: 21300224
+    second: minecraft_tiles_big_112
+  - first:
+      213: 21300226
+    second: minecraft_tiles_big_113
+  - first:
+      213: 21300228
+    second: minecraft_tiles_big_114
+  - first:
+      213: 21300230
+    second: minecraft_tiles_big_115
+  - first:
+      213: 21300232
+    second: minecraft_tiles_big_116
+  - first:
+      213: 21300234
+    second: minecraft_tiles_big_117
+  - first:
+      213: 21300236
+    second: minecraft_tiles_big_118
+  - first:
+      213: 21300238
+    second: minecraft_tiles_big_119
+  - first:
+      213: 21300240
+    second: minecraft_tiles_big_120
+  - first:
+      213: 21300242
+    second: minecraft_tiles_big_121
+  - first:
+      213: 21300244
+    second: minecraft_tiles_big_122
+  - first:
+      213: 21300246
+    second: minecraft_tiles_big_123
+  - first:
+      213: 21300248
+    second: minecraft_tiles_big_124
+  - first:
+      213: 21300250
+    second: minecraft_tiles_big_125
+  - first:
+      213: 21300252
+    second: minecraft_tiles_big_126
+  - first:
+      213: 21300254
+    second: minecraft_tiles_big_127
+  - first:
+      213: 21300256
+    second: minecraft_tiles_big_128
+  - first:
+      213: 21300258
+    second: minecraft_tiles_big_129
+  - first:
+      213: 21300260
+    second: minecraft_tiles_big_130
+  - first:
+      213: 21300262
+    second: minecraft_tiles_big_131
+  - first:
+      213: 21300264
+    second: minecraft_tiles_big_132
+  - first:
+      213: 21300266
+    second: minecraft_tiles_big_133
+  - first:
+      213: 21300268
+    second: minecraft_tiles_big_134
+  - first:
+      213: 21300270
+    second: minecraft_tiles_big_135
+  - first:
+      213: 21300272
+    second: minecraft_tiles_big_136
+  - first:
+      213: 21300274
+    second: minecraft_tiles_big_137
+  - first:
+      213: 21300276
+    second: minecraft_tiles_big_138
+  - first:
+      213: 21300278
+    second: minecraft_tiles_big_139
+  - first:
+      213: 21300280
+    second: minecraft_tiles_big_140
+  - first:
+      213: 21300282
+    second: minecraft_tiles_big_141
+  - first:
+      213: 21300284
+    second: minecraft_tiles_big_142
+  - first:
+      213: 21300286
+    second: minecraft_tiles_big_143
+  - first:
+      213: 21300288
+    second: minecraft_tiles_big_144
+  - first:
+      213: 21300290
+    second: minecraft_tiles_big_145
+  - first:
+      213: 21300292
+    second: minecraft_tiles_big_146
+  - first:
+      213: 21300294
+    second: minecraft_tiles_big_147
+  - first:
+      213: 21300296
+    second: minecraft_tiles_big_148
+  - first:
+      213: 21300298
+    second: minecraft_tiles_big_149
+  - first:
+      213: 21300300
+    second: minecraft_tiles_big_150
+  - first:
+      213: 21300302
+    second: minecraft_tiles_big_151
+  - first:
+      213: 21300304
+    second: minecraft_tiles_big_152
+  - first:
+      213: 21300306
+    second: minecraft_tiles_big_153
+  - first:
+      213: 21300308
+    second: minecraft_tiles_big_154
+  - first:
+      213: 21300310
+    second: minecraft_tiles_big_155
+  - first:
+      213: 21300312
+    second: minecraft_tiles_big_156
+  - first:
+      213: 21300314
+    second: minecraft_tiles_big_157
+  - first:
+      213: 21300316
+    second: minecraft_tiles_big_158
+  - first:
+      213: 21300318
+    second: minecraft_tiles_big_159
+  - first:
+      213: 21300320
+    second: minecraft_tiles_big_160
+  - first:
+      213: 21300322
+    second: minecraft_tiles_big_161
+  - first:
+      213: 21300324
+    second: minecraft_tiles_big_162
+  - first:
+      213: 21300326
+    second: minecraft_tiles_big_163
+  - first:
+      213: 21300328
+    second: minecraft_tiles_big_164
+  - first:
+      213: 21300330
+    second: minecraft_tiles_big_165
+  - first:
+      213: 21300332
+    second: minecraft_tiles_big_166
+  - first:
+      213: 21300334
+    second: minecraft_tiles_big_167
+  - first:
+      213: 21300336
+    second: minecraft_tiles_big_168
+  - first:
+      213: 21300338
+    second: minecraft_tiles_big_169
+  - first:
+      213: 21300340
+    second: minecraft_tiles_big_170
+  - first:
+      213: 21300342
+    second: minecraft_tiles_big_171
+  - first:
+      213: 21300344
+    second: minecraft_tiles_big_172
+  - first:
+      213: 21300346
+    second: minecraft_tiles_big_173
+  - first:
+      213: 21300348
+    second: minecraft_tiles_big_174
+  - first:
+      213: 21300350
+    second: minecraft_tiles_big_175
+  - first:
+      213: 21300352
+    second: minecraft_tiles_big_176
+  - first:
+      213: 21300354
+    second: minecraft_tiles_big_177
+  - first:
+      213: 21300356
+    second: minecraft_tiles_big_178
+  - first:
+      213: 21300358
+    second: minecraft_tiles_big_179
+  - first:
+      213: 21300360
+    second: minecraft_tiles_big_180
+  - first:
+      213: 21300362
+    second: minecraft_tiles_big_181
+  - first:
+      213: 21300364
+    second: minecraft_tiles_big_182
+  - first:
+      213: 21300366
+    second: minecraft_tiles_big_183
+  - first:
+      213: 21300368
+    second: minecraft_tiles_big_184
+  - first:
+      213: 21300370
+    second: minecraft_tiles_big_185
+  - first:
+      213: 21300372
+    second: minecraft_tiles_big_186
+  - first:
+      213: 21300374
+    second: minecraft_tiles_big_187
+  - first:
+      213: 21300376
+    second: minecraft_tiles_big_188
+  - first:
+      213: 21300378
+    second: minecraft_tiles_big_189
+  - first:
+      213: 21300380
+    second: minecraft_tiles_big_190
+  - first:
+      213: 21300382
+    second: minecraft_tiles_big_191
+  - first:
+      213: 21300384
+    second: minecraft_tiles_big_192
+  - first:
+      213: 21300386
+    second: minecraft_tiles_big_193
+  - first:
+      213: 21300388
+    second: minecraft_tiles_big_194
+  - first:
+      213: 21300390
+    second: minecraft_tiles_big_195
+  - first:
+      213: 21300392
+    second: minecraft_tiles_big_196
+  - first:
+      213: 21300394
+    second: minecraft_tiles_big_197
+  - first:
+      213: 21300396
+    second: minecraft_tiles_big_198
+  - first:
+      213: 21300398
+    second: minecraft_tiles_big_199
+  - first:
+      213: 21300400
+    second: minecraft_tiles_big_200
+  - first:
+      213: 21300402
+    second: minecraft_tiles_big_201
+  - first:
+      213: 21300404
+    second: minecraft_tiles_big_202
+  - first:
+      213: 21300406
+    second: minecraft_tiles_big_203
+  - first:
+      213: 21300408
+    second: minecraft_tiles_big_204
+  - first:
+      213: 21300410
+    second: minecraft_tiles_big_205
+  - first:
+      213: 21300412
+    second: minecraft_tiles_big_206
+  - first:
+      213: 21300414
+    second: minecraft_tiles_big_207
+  - first:
+      213: 21300416
+    second: minecraft_tiles_big_208
+  - first:
+      213: 21300418
+    second: minecraft_tiles_big_209
+  - first:
+      213: 21300420
+    second: minecraft_tiles_big_210
+  - first:
+      213: 21300422
+    second: minecraft_tiles_big_211
+  - first:
+      213: 21300424
+    second: minecraft_tiles_big_212
+  - first:
+      213: 21300426
+    second: minecraft_tiles_big_213
+  - first:
+      213: 21300428
+    second: minecraft_tiles_big_214
+  - first:
+      213: 21300430
+    second: minecraft_tiles_big_215
+  - first:
+      213: 21300432
+    second: minecraft_tiles_big_216
+  - first:
+      213: 21300434
+    second: minecraft_tiles_big_217
+  - first:
+      213: 21300436
+    second: minecraft_tiles_big_218
+  - first:
+      213: 21300438
+    second: minecraft_tiles_big_219
+  - first:
+      213: 21300440
+    second: minecraft_tiles_big_220
+  - first:
+      213: 21300442
+    second: minecraft_tiles_big_221
+  - first:
+      213: 21300444
+    second: minecraft_tiles_big_222
+  - first:
+      213: 21300446
+    second: minecraft_tiles_big_223
+  - first:
+      213: 21300448
+    second: minecraft_tiles_big_224
+  externalObjects: {}
+  serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
+    sRGBTexture: 1
     linearTexture: 0
-    correctGamma: 0
     fadeOut: 0
     borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
     mipMapFadeDistanceStart: 1
     mipMapFadeDistanceEnd: 3
   bumpmap:
     convertToNormalMap: 0
     externalNormalMap: 0
-    heightScale: .25
+    heightScale: 0.25
     normalMapFilter: 0
   isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
-  generateCubemap: 0
+  generateCubemap: 6
   cubemapConvolution: 0
-  cubemapConvolutionSteps: 8
-  cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: -3
   maxTextureSize: 2048
   textureSettings:
-    filterMode: -1
-    aniso: -1
-    mipBias: -1
-    wrapMode: 1
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
   nPOTScale: 0
   lightmap: 0
-  rGBM: 0
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
-  spritePivot: {x: .5, y: .5}
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 24
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
   alphaIsTransparency: 1
+  spriteTessellationDetail: -1
   textureType: 8
-  buildTargetSettings: []
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
+    serializedVersion: 2
     sprites:
-    - name: minecraft_tiles_big_0
+    - serializedVersion: 2
+      name: minecraft_tiles_big_0
       rect:
         serializedVersion: 2
         x: 0
@@ -284,7 +765,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_1
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02305410000000000800000000000000
+      internalID: 21300000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_1
       rect:
         serializedVersion: 2
         x: 32
@@ -294,7 +786,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_2
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22305410000000000800000000000000
+      internalID: 21300002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_2
       rect:
         serializedVersion: 2
         x: 64
@@ -304,7 +807,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_3
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42305410000000000800000000000000
+      internalID: 21300004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_3
       rect:
         serializedVersion: 2
         x: 96
@@ -314,7 +828,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_4
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62305410000000000800000000000000
+      internalID: 21300006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_4
       rect:
         serializedVersion: 2
         x: 128
@@ -324,7 +849,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_5
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82305410000000000800000000000000
+      internalID: 21300008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_5
       rect:
         serializedVersion: 2
         x: 160
@@ -334,7 +870,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_6
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2305410000000000800000000000000
+      internalID: 21300010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_6
       rect:
         serializedVersion: 2
         x: 192
@@ -344,7 +891,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_7
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2305410000000000800000000000000
+      internalID: 21300012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_7
       rect:
         serializedVersion: 2
         x: 224
@@ -354,7 +912,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_8
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2305410000000000800000000000000
+      internalID: 21300014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_8
       rect:
         serializedVersion: 2
         x: 256
@@ -364,7 +933,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_9
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03305410000000000800000000000000
+      internalID: 21300016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_9
       rect:
         serializedVersion: 2
         x: 288
@@ -374,7 +954,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_10
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23305410000000000800000000000000
+      internalID: 21300018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_10
       rect:
         serializedVersion: 2
         x: 320
@@ -384,7 +975,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_11
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 43305410000000000800000000000000
+      internalID: 21300020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_11
       rect:
         serializedVersion: 2
         x: 352
@@ -394,7 +996,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_12
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63305410000000000800000000000000
+      internalID: 21300022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_12
       rect:
         serializedVersion: 2
         x: 384
@@ -404,7 +1017,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_13
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83305410000000000800000000000000
+      internalID: 21300024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_13
       rect:
         serializedVersion: 2
         x: 416
@@ -414,7 +1038,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_14
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3305410000000000800000000000000
+      internalID: 21300026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_14
       rect:
         serializedVersion: 2
         x: 480
@@ -424,7 +1059,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_15
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3305410000000000800000000000000
+      internalID: 21300028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_15
       rect:
         serializedVersion: 2
         x: 0
@@ -434,7 +1080,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_16
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3305410000000000800000000000000
+      internalID: 21300030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_16
       rect:
         serializedVersion: 2
         x: 32
@@ -444,7 +1101,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_17
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04305410000000000800000000000000
+      internalID: 21300032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_17
       rect:
         serializedVersion: 2
         x: 64
@@ -454,7 +1122,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_18
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 24305410000000000800000000000000
+      internalID: 21300034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_18
       rect:
         serializedVersion: 2
         x: 96
@@ -464,7 +1143,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_19
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44305410000000000800000000000000
+      internalID: 21300036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_19
       rect:
         serializedVersion: 2
         x: 128
@@ -474,7 +1164,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_20
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64305410000000000800000000000000
+      internalID: 21300038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_20
       rect:
         serializedVersion: 2
         x: 160
@@ -484,7 +1185,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_21
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84305410000000000800000000000000
+      internalID: 21300040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_21
       rect:
         serializedVersion: 2
         x: 192
@@ -494,7 +1206,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_22
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a4305410000000000800000000000000
+      internalID: 21300042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_22
       rect:
         serializedVersion: 2
         x: 224
@@ -504,7 +1227,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_23
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4305410000000000800000000000000
+      internalID: 21300044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_23
       rect:
         serializedVersion: 2
         x: 256
@@ -514,7 +1248,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_24
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4305410000000000800000000000000
+      internalID: 21300046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_24
       rect:
         serializedVersion: 2
         x: 288
@@ -524,7 +1269,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_25
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05305410000000000800000000000000
+      internalID: 21300048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_25
       rect:
         serializedVersion: 2
         x: 320
@@ -534,7 +1290,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_26
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25305410000000000800000000000000
+      internalID: 21300050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_26
       rect:
         serializedVersion: 2
         x: 352
@@ -544,7 +1311,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_27
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45305410000000000800000000000000
+      internalID: 21300052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_27
       rect:
         serializedVersion: 2
         x: 384
@@ -554,7 +1332,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_28
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65305410000000000800000000000000
+      internalID: 21300054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_28
       rect:
         serializedVersion: 2
         x: 416
@@ -564,7 +1353,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_29
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 85305410000000000800000000000000
+      internalID: 21300056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_29
       rect:
         serializedVersion: 2
         x: 480
@@ -574,7 +1374,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_30
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5305410000000000800000000000000
+      internalID: 21300058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_30
       rect:
         serializedVersion: 2
         x: 0
@@ -584,7 +1395,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_31
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5305410000000000800000000000000
+      internalID: 21300060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_31
       rect:
         serializedVersion: 2
         x: 32
@@ -594,7 +1416,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_32
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5305410000000000800000000000000
+      internalID: 21300062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_32
       rect:
         serializedVersion: 2
         x: 64
@@ -604,7 +1437,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_33
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 06305410000000000800000000000000
+      internalID: 21300064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_33
       rect:
         serializedVersion: 2
         x: 96
@@ -614,7 +1458,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_34
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26305410000000000800000000000000
+      internalID: 21300066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_34
       rect:
         serializedVersion: 2
         x: 128
@@ -624,7 +1479,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_35
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 46305410000000000800000000000000
+      internalID: 21300068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_35
       rect:
         serializedVersion: 2
         x: 160
@@ -634,7 +1500,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_36
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66305410000000000800000000000000
+      internalID: 21300070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_36
       rect:
         serializedVersion: 2
         x: 192
@@ -644,7 +1521,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_37
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 86305410000000000800000000000000
+      internalID: 21300072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_37
       rect:
         serializedVersion: 2
         x: 224
@@ -654,7 +1542,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_38
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a6305410000000000800000000000000
+      internalID: 21300074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_38
       rect:
         serializedVersion: 2
         x: 256
@@ -664,7 +1563,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_39
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6305410000000000800000000000000
+      internalID: 21300076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_39
       rect:
         serializedVersion: 2
         x: 288
@@ -674,7 +1584,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_40
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e6305410000000000800000000000000
+      internalID: 21300078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_40
       rect:
         serializedVersion: 2
         x: 320
@@ -684,7 +1605,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_41
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 07305410000000000800000000000000
+      internalID: 21300080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_41
       rect:
         serializedVersion: 2
         x: 352
@@ -694,7 +1626,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_42
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27305410000000000800000000000000
+      internalID: 21300082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_42
       rect:
         serializedVersion: 2
         x: 384
@@ -704,7 +1647,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_43
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 47305410000000000800000000000000
+      internalID: 21300084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_43
       rect:
         serializedVersion: 2
         x: 416
@@ -714,7 +1668,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_44
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 67305410000000000800000000000000
+      internalID: 21300086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_44
       rect:
         serializedVersion: 2
         x: 448
@@ -724,7 +1689,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_45
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87305410000000000800000000000000
+      internalID: 21300088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_45
       rect:
         serializedVersion: 2
         x: 0
@@ -734,7 +1710,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_46
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a7305410000000000800000000000000
+      internalID: 21300090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_46
       rect:
         serializedVersion: 2
         x: 32
@@ -744,7 +1731,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_47
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c7305410000000000800000000000000
+      internalID: 21300092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_47
       rect:
         serializedVersion: 2
         x: 64
@@ -754,7 +1752,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_48
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7305410000000000800000000000000
+      internalID: 21300094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_48
       rect:
         serializedVersion: 2
         x: 96
@@ -764,7 +1773,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_49
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 08305410000000000800000000000000
+      internalID: 21300096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_49
       rect:
         serializedVersion: 2
         x: 128
@@ -774,7 +1794,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_50
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 28305410000000000800000000000000
+      internalID: 21300098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_50
       rect:
         serializedVersion: 2
         x: 160
@@ -784,7 +1815,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_51
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 48305410000000000800000000000000
+      internalID: 21300100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_51
       rect:
         serializedVersion: 2
         x: 192
@@ -794,7 +1836,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_52
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 68305410000000000800000000000000
+      internalID: 21300102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_52
       rect:
         serializedVersion: 2
         x: 224
@@ -804,7 +1857,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_53
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 88305410000000000800000000000000
+      internalID: 21300104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_53
       rect:
         serializedVersion: 2
         x: 256
@@ -814,7 +1878,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_54
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8305410000000000800000000000000
+      internalID: 21300106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_54
       rect:
         serializedVersion: 2
         x: 288
@@ -824,7 +1899,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_55
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c8305410000000000800000000000000
+      internalID: 21300108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_55
       rect:
         serializedVersion: 2
         x: 320
@@ -834,7 +1920,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_56
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8305410000000000800000000000000
+      internalID: 21300110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_56
       rect:
         serializedVersion: 2
         x: 352
@@ -844,7 +1941,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_57
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09305410000000000800000000000000
+      internalID: 21300112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_57
       rect:
         serializedVersion: 2
         x: 384
@@ -854,7 +1962,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_58
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29305410000000000800000000000000
+      internalID: 21300114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_58
       rect:
         serializedVersion: 2
         x: 416
@@ -864,7 +1983,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_59
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49305410000000000800000000000000
+      internalID: 21300116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_59
       rect:
         serializedVersion: 2
         x: 448
@@ -874,7 +2004,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_60
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69305410000000000800000000000000
+      internalID: 21300118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_60
       rect:
         serializedVersion: 2
         x: 480
@@ -884,7 +2025,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_61
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 89305410000000000800000000000000
+      internalID: 21300120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_61
       rect:
         serializedVersion: 2
         x: 0
@@ -894,7 +2046,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_62
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a9305410000000000800000000000000
+      internalID: 21300122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_62
       rect:
         serializedVersion: 2
         x: 32
@@ -904,7 +2067,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_63
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c9305410000000000800000000000000
+      internalID: 21300124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_63
       rect:
         serializedVersion: 2
         x: 64
@@ -914,7 +2088,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_64
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e9305410000000000800000000000000
+      internalID: 21300126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_64
       rect:
         serializedVersion: 2
         x: 96
@@ -924,7 +2109,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_65
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a305410000000000800000000000000
+      internalID: 21300128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_65
       rect:
         serializedVersion: 2
         x: 128
@@ -934,7 +2130,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_66
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a305410000000000800000000000000
+      internalID: 21300130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_66
       rect:
         serializedVersion: 2
         x: 160
@@ -944,7 +2151,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_67
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a305410000000000800000000000000
+      internalID: 21300132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_67
       rect:
         serializedVersion: 2
         x: 192
@@ -954,7 +2172,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_68
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a305410000000000800000000000000
+      internalID: 21300134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_68
       rect:
         serializedVersion: 2
         x: 224
@@ -964,7 +2193,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_69
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a305410000000000800000000000000
+      internalID: 21300136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_69
       rect:
         serializedVersion: 2
         x: 256
@@ -974,7 +2214,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_70
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa305410000000000800000000000000
+      internalID: 21300138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_70
       rect:
         serializedVersion: 2
         x: 288
@@ -984,7 +2235,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_71
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca305410000000000800000000000000
+      internalID: 21300140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_71
       rect:
         serializedVersion: 2
         x: 320
@@ -994,7 +2256,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_72
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea305410000000000800000000000000
+      internalID: 21300142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_72
       rect:
         serializedVersion: 2
         x: 352
@@ -1004,7 +2277,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_73
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b305410000000000800000000000000
+      internalID: 21300144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_73
       rect:
         serializedVersion: 2
         x: 384
@@ -1014,7 +2298,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_74
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b305410000000000800000000000000
+      internalID: 21300146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_74
       rect:
         serializedVersion: 2
         x: 416
@@ -1024,7 +2319,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_75
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b305410000000000800000000000000
+      internalID: 21300148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_75
       rect:
         serializedVersion: 2
         x: 448
@@ -1034,7 +2340,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_76
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b305410000000000800000000000000
+      internalID: 21300150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_76
       rect:
         serializedVersion: 2
         x: 480
@@ -1044,7 +2361,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_77
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b305410000000000800000000000000
+      internalID: 21300152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_77
       rect:
         serializedVersion: 2
         x: 0
@@ -1054,7 +2382,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_78
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab305410000000000800000000000000
+      internalID: 21300154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_78
       rect:
         serializedVersion: 2
         x: 32
@@ -1064,7 +2403,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_79
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb305410000000000800000000000000
+      internalID: 21300156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_79
       rect:
         serializedVersion: 2
         x: 64
@@ -1074,7 +2424,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_80
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb305410000000000800000000000000
+      internalID: 21300158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_80
       rect:
         serializedVersion: 2
         x: 96
@@ -1084,7 +2445,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_81
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c305410000000000800000000000000
+      internalID: 21300160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_81
       rect:
         serializedVersion: 2
         x: 128
@@ -1094,7 +2466,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_82
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2c305410000000000800000000000000
+      internalID: 21300162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_82
       rect:
         serializedVersion: 2
         x: 160
@@ -1104,7 +2487,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_83
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c305410000000000800000000000000
+      internalID: 21300164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_83
       rect:
         serializedVersion: 2
         x: 192
@@ -1114,7 +2508,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_84
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c305410000000000800000000000000
+      internalID: 21300166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_84
       rect:
         serializedVersion: 2
         x: 224
@@ -1124,7 +2529,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_85
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c305410000000000800000000000000
+      internalID: 21300168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_85
       rect:
         serializedVersion: 2
         x: 256
@@ -1134,7 +2550,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_86
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac305410000000000800000000000000
+      internalID: 21300170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_86
       rect:
         serializedVersion: 2
         x: 288
@@ -1144,7 +2571,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_87
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc305410000000000800000000000000
+      internalID: 21300172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_87
       rect:
         serializedVersion: 2
         x: 320
@@ -1154,7 +2592,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_88
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec305410000000000800000000000000
+      internalID: 21300174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_88
       rect:
         serializedVersion: 2
         x: 352
@@ -1164,7 +2613,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_89
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d305410000000000800000000000000
+      internalID: 21300176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_89
       rect:
         serializedVersion: 2
         x: 384
@@ -1174,7 +2634,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_90
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d305410000000000800000000000000
+      internalID: 21300178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_90
       rect:
         serializedVersion: 2
         x: 416
@@ -1184,7 +2655,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_91
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d305410000000000800000000000000
+      internalID: 21300180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_91
       rect:
         serializedVersion: 2
         x: 448
@@ -1194,7 +2676,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_92
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d305410000000000800000000000000
+      internalID: 21300182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_92
       rect:
         serializedVersion: 2
         x: 480
@@ -1204,7 +2697,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_93
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d305410000000000800000000000000
+      internalID: 21300184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_93
       rect:
         serializedVersion: 2
         x: 0
@@ -1214,7 +2718,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_94
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad305410000000000800000000000000
+      internalID: 21300186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_94
       rect:
         serializedVersion: 2
         x: 32
@@ -1224,7 +2739,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_95
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd305410000000000800000000000000
+      internalID: 21300188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_95
       rect:
         serializedVersion: 2
         x: 64
@@ -1234,7 +2760,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_96
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed305410000000000800000000000000
+      internalID: 21300190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_96
       rect:
         serializedVersion: 2
         x: 96
@@ -1244,7 +2781,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_97
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e305410000000000800000000000000
+      internalID: 21300192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_97
       rect:
         serializedVersion: 2
         x: 128
@@ -1254,7 +2802,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_98
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e305410000000000800000000000000
+      internalID: 21300194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_98
       rect:
         serializedVersion: 2
         x: 160
@@ -1264,7 +2823,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_99
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e305410000000000800000000000000
+      internalID: 21300196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_99
       rect:
         serializedVersion: 2
         x: 192
@@ -1274,7 +2844,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_100
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e305410000000000800000000000000
+      internalID: 21300198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_100
       rect:
         serializedVersion: 2
         x: 224
@@ -1284,7 +2865,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_101
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e305410000000000800000000000000
+      internalID: 21300200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_101
       rect:
         serializedVersion: 2
         x: 256
@@ -1294,7 +2886,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_102
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae305410000000000800000000000000
+      internalID: 21300202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_102
       rect:
         serializedVersion: 2
         x: 288
@@ -1304,7 +2907,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_103
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce305410000000000800000000000000
+      internalID: 21300204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_103
       rect:
         serializedVersion: 2
         x: 320
@@ -1314,7 +2928,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_104
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee305410000000000800000000000000
+      internalID: 21300206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_104
       rect:
         serializedVersion: 2
         x: 352
@@ -1324,7 +2949,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_105
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f305410000000000800000000000000
+      internalID: 21300208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_105
       rect:
         serializedVersion: 2
         x: 384
@@ -1334,7 +2970,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_106
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f305410000000000800000000000000
+      internalID: 21300210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_106
       rect:
         serializedVersion: 2
         x: 416
@@ -1344,7 +2991,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_107
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f305410000000000800000000000000
+      internalID: 21300212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_107
       rect:
         serializedVersion: 2
         x: 448
@@ -1354,7 +3012,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_108
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f305410000000000800000000000000
+      internalID: 21300214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_108
       rect:
         serializedVersion: 2
         x: 480
@@ -1364,7 +3033,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_109
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f305410000000000800000000000000
+      internalID: 21300216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_109
       rect:
         serializedVersion: 2
         x: 0
@@ -1374,7 +3054,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_110
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af305410000000000800000000000000
+      internalID: 21300218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_110
       rect:
         serializedVersion: 2
         x: 32
@@ -1384,7 +3075,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_111
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cf305410000000000800000000000000
+      internalID: 21300220
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_111
       rect:
         serializedVersion: 2
         x: 64
@@ -1394,7 +3096,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_112
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef305410000000000800000000000000
+      internalID: 21300222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_112
       rect:
         serializedVersion: 2
         x: 96
@@ -1404,7 +3117,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_113
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 00405410000000000800000000000000
+      internalID: 21300224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_113
       rect:
         serializedVersion: 2
         x: 128
@@ -1414,7 +3138,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_114
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20405410000000000800000000000000
+      internalID: 21300226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_114
       rect:
         serializedVersion: 2
         x: 160
@@ -1424,7 +3159,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_115
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40405410000000000800000000000000
+      internalID: 21300228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_115
       rect:
         serializedVersion: 2
         x: 192
@@ -1434,7 +3180,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_116
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 60405410000000000800000000000000
+      internalID: 21300230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_116
       rect:
         serializedVersion: 2
         x: 224
@@ -1444,7 +3201,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_117
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 80405410000000000800000000000000
+      internalID: 21300232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_117
       rect:
         serializedVersion: 2
         x: 256
@@ -1454,7 +3222,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_118
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0405410000000000800000000000000
+      internalID: 21300234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_118
       rect:
         serializedVersion: 2
         x: 288
@@ -1464,7 +3243,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_119
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c0405410000000000800000000000000
+      internalID: 21300236
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_119
       rect:
         serializedVersion: 2
         x: 320
@@ -1474,7 +3264,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_120
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e0405410000000000800000000000000
+      internalID: 21300238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_120
       rect:
         serializedVersion: 2
         x: 352
@@ -1484,7 +3285,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_121
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01405410000000000800000000000000
+      internalID: 21300240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_121
       rect:
         serializedVersion: 2
         x: 384
@@ -1494,7 +3306,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_122
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21405410000000000800000000000000
+      internalID: 21300242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_122
       rect:
         serializedVersion: 2
         x: 416
@@ -1504,7 +3327,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_123
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 41405410000000000800000000000000
+      internalID: 21300244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_123
       rect:
         serializedVersion: 2
         x: 448
@@ -1514,7 +3348,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_124
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 61405410000000000800000000000000
+      internalID: 21300246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_124
       rect:
         serializedVersion: 2
         x: 480
@@ -1524,7 +3369,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_125
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81405410000000000800000000000000
+      internalID: 21300248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_125
       rect:
         serializedVersion: 2
         x: 0
@@ -1534,7 +3390,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_126
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a1405410000000000800000000000000
+      internalID: 21300250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_126
       rect:
         serializedVersion: 2
         x: 32
@@ -1544,7 +3411,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_127
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c1405410000000000800000000000000
+      internalID: 21300252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_127
       rect:
         serializedVersion: 2
         x: 64
@@ -1554,7 +3432,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_128
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e1405410000000000800000000000000
+      internalID: 21300254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_128
       rect:
         serializedVersion: 2
         x: 96
@@ -1564,7 +3453,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_129
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02405410000000000800000000000000
+      internalID: 21300256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_129
       rect:
         serializedVersion: 2
         x: 128
@@ -1574,7 +3474,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_130
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22405410000000000800000000000000
+      internalID: 21300258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_130
       rect:
         serializedVersion: 2
         x: 160
@@ -1584,7 +3495,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_131
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42405410000000000800000000000000
+      internalID: 21300260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_131
       rect:
         serializedVersion: 2
         x: 192
@@ -1594,7 +3516,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_132
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62405410000000000800000000000000
+      internalID: 21300262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_132
       rect:
         serializedVersion: 2
         x: 224
@@ -1604,7 +3537,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_133
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82405410000000000800000000000000
+      internalID: 21300264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_133
       rect:
         serializedVersion: 2
         x: 256
@@ -1614,7 +3558,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_134
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2405410000000000800000000000000
+      internalID: 21300266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_134
       rect:
         serializedVersion: 2
         x: 288
@@ -1624,7 +3579,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_135
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2405410000000000800000000000000
+      internalID: 21300268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_135
       rect:
         serializedVersion: 2
         x: 320
@@ -1634,7 +3600,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_136
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2405410000000000800000000000000
+      internalID: 21300270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_136
       rect:
         serializedVersion: 2
         x: 352
@@ -1644,7 +3621,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_137
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03405410000000000800000000000000
+      internalID: 21300272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_137
       rect:
         serializedVersion: 2
         x: 384
@@ -1654,7 +3642,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_138
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23405410000000000800000000000000
+      internalID: 21300274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_138
       rect:
         serializedVersion: 2
         x: 416
@@ -1664,7 +3663,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_139
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 43405410000000000800000000000000
+      internalID: 21300276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_139
       rect:
         serializedVersion: 2
         x: 448
@@ -1674,7 +3684,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_140
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63405410000000000800000000000000
+      internalID: 21300278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_140
       rect:
         serializedVersion: 2
         x: 480
@@ -1684,7 +3705,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_141
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83405410000000000800000000000000
+      internalID: 21300280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_141
       rect:
         serializedVersion: 2
         x: 0
@@ -1694,7 +3726,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_142
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3405410000000000800000000000000
+      internalID: 21300282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_142
       rect:
         serializedVersion: 2
         x: 32
@@ -1704,7 +3747,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_143
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3405410000000000800000000000000
+      internalID: 21300284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_143
       rect:
         serializedVersion: 2
         x: 64
@@ -1714,7 +3768,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_144
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3405410000000000800000000000000
+      internalID: 21300286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_144
       rect:
         serializedVersion: 2
         x: 96
@@ -1724,7 +3789,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_145
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04405410000000000800000000000000
+      internalID: 21300288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_145
       rect:
         serializedVersion: 2
         x: 128
@@ -1734,7 +3810,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_146
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 24405410000000000800000000000000
+      internalID: 21300290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_146
       rect:
         serializedVersion: 2
         x: 160
@@ -1744,7 +3831,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_147
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44405410000000000800000000000000
+      internalID: 21300292
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_147
       rect:
         serializedVersion: 2
         x: 192
@@ -1754,7 +3852,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_148
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64405410000000000800000000000000
+      internalID: 21300294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_148
       rect:
         serializedVersion: 2
         x: 224
@@ -1764,7 +3873,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_149
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84405410000000000800000000000000
+      internalID: 21300296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_149
       rect:
         serializedVersion: 2
         x: 256
@@ -1774,7 +3894,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_150
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a4405410000000000800000000000000
+      internalID: 21300298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_150
       rect:
         serializedVersion: 2
         x: 288
@@ -1784,7 +3915,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_151
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4405410000000000800000000000000
+      internalID: 21300300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_151
       rect:
         serializedVersion: 2
         x: 320
@@ -1794,7 +3936,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_152
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4405410000000000800000000000000
+      internalID: 21300302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_152
       rect:
         serializedVersion: 2
         x: 352
@@ -1804,7 +3957,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_153
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05405410000000000800000000000000
+      internalID: 21300304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_153
       rect:
         serializedVersion: 2
         x: 384
@@ -1814,7 +3978,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_154
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25405410000000000800000000000000
+      internalID: 21300306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_154
       rect:
         serializedVersion: 2
         x: 416
@@ -1824,7 +3999,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_155
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45405410000000000800000000000000
+      internalID: 21300308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_155
       rect:
         serializedVersion: 2
         x: 448
@@ -1834,7 +4020,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_156
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65405410000000000800000000000000
+      internalID: 21300310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_156
       rect:
         serializedVersion: 2
         x: 480
@@ -1844,7 +4041,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_157
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 85405410000000000800000000000000
+      internalID: 21300312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_157
       rect:
         serializedVersion: 2
         x: 0
@@ -1854,7 +4062,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_158
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5405410000000000800000000000000
+      internalID: 21300314
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_158
       rect:
         serializedVersion: 2
         x: 32
@@ -1864,7 +4083,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_159
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5405410000000000800000000000000
+      internalID: 21300316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_159
       rect:
         serializedVersion: 2
         x: 64
@@ -1874,7 +4104,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_160
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5405410000000000800000000000000
+      internalID: 21300318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_160
       rect:
         serializedVersion: 2
         x: 96
@@ -1884,7 +4125,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_161
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 06405410000000000800000000000000
+      internalID: 21300320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_161
       rect:
         serializedVersion: 2
         x: 128
@@ -1894,7 +4146,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_162
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26405410000000000800000000000000
+      internalID: 21300322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_162
       rect:
         serializedVersion: 2
         x: 160
@@ -1904,7 +4167,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_163
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 46405410000000000800000000000000
+      internalID: 21300324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_163
       rect:
         serializedVersion: 2
         x: 192
@@ -1914,7 +4188,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_164
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66405410000000000800000000000000
+      internalID: 21300326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_164
       rect:
         serializedVersion: 2
         x: 224
@@ -1924,7 +4209,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_165
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 86405410000000000800000000000000
+      internalID: 21300328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_165
       rect:
         serializedVersion: 2
         x: 256
@@ -1934,7 +4230,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_166
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a6405410000000000800000000000000
+      internalID: 21300330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_166
       rect:
         serializedVersion: 2
         x: 288
@@ -1944,7 +4251,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_167
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6405410000000000800000000000000
+      internalID: 21300332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_167
       rect:
         serializedVersion: 2
         x: 320
@@ -1954,7 +4272,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_168
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e6405410000000000800000000000000
+      internalID: 21300334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_168
       rect:
         serializedVersion: 2
         x: 352
@@ -1964,7 +4293,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_169
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 07405410000000000800000000000000
+      internalID: 21300336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_169
       rect:
         serializedVersion: 2
         x: 384
@@ -1974,7 +4314,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_170
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27405410000000000800000000000000
+      internalID: 21300338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_170
       rect:
         serializedVersion: 2
         x: 416
@@ -1984,7 +4335,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_171
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 47405410000000000800000000000000
+      internalID: 21300340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_171
       rect:
         serializedVersion: 2
         x: 448
@@ -1994,7 +4356,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_172
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 67405410000000000800000000000000
+      internalID: 21300342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_172
       rect:
         serializedVersion: 2
         x: 480
@@ -2004,7 +4377,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_173
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87405410000000000800000000000000
+      internalID: 21300344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_173
       rect:
         serializedVersion: 2
         x: 0
@@ -2014,7 +4398,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_174
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a7405410000000000800000000000000
+      internalID: 21300346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_174
       rect:
         serializedVersion: 2
         x: 32
@@ -2024,7 +4419,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_175
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c7405410000000000800000000000000
+      internalID: 21300348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_175
       rect:
         serializedVersion: 2
         x: 64
@@ -2034,7 +4440,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_176
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7405410000000000800000000000000
+      internalID: 21300350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_176
       rect:
         serializedVersion: 2
         x: 96
@@ -2044,7 +4461,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_177
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 08405410000000000800000000000000
+      internalID: 21300352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_177
       rect:
         serializedVersion: 2
         x: 128
@@ -2054,7 +4482,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_178
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 28405410000000000800000000000000
+      internalID: 21300354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_178
       rect:
         serializedVersion: 2
         x: 160
@@ -2064,7 +4503,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_179
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 48405410000000000800000000000000
+      internalID: 21300356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_179
       rect:
         serializedVersion: 2
         x: 192
@@ -2074,7 +4524,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_180
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 68405410000000000800000000000000
+      internalID: 21300358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_180
       rect:
         serializedVersion: 2
         x: 224
@@ -2084,7 +4545,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_181
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 88405410000000000800000000000000
+      internalID: 21300360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_181
       rect:
         serializedVersion: 2
         x: 448
@@ -2094,7 +4566,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_182
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8405410000000000800000000000000
+      internalID: 21300362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_182
       rect:
         serializedVersion: 2
         x: 480
@@ -2104,7 +4587,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_183
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c8405410000000000800000000000000
+      internalID: 21300364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_183
       rect:
         serializedVersion: 2
         x: 0
@@ -2114,7 +4608,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_184
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8405410000000000800000000000000
+      internalID: 21300366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_184
       rect:
         serializedVersion: 2
         x: 32
@@ -2124,7 +4629,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_185
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09405410000000000800000000000000
+      internalID: 21300368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_185
       rect:
         serializedVersion: 2
         x: 64
@@ -2134,7 +4650,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_186
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29405410000000000800000000000000
+      internalID: 21300370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_186
       rect:
         serializedVersion: 2
         x: 96
@@ -2144,7 +4671,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_187
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49405410000000000800000000000000
+      internalID: 21300372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_187
       rect:
         serializedVersion: 2
         x: 160
@@ -2154,7 +4692,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_188
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69405410000000000800000000000000
+      internalID: 21300374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_188
       rect:
         serializedVersion: 2
         x: 192
@@ -2164,7 +4713,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_189
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 89405410000000000800000000000000
+      internalID: 21300376
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_189
       rect:
         serializedVersion: 2
         x: 224
@@ -2174,7 +4734,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_190
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a9405410000000000800000000000000
+      internalID: 21300378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_190
       rect:
         serializedVersion: 2
         x: 384
@@ -2184,7 +4755,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_191
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c9405410000000000800000000000000
+      internalID: 21300380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_191
       rect:
         serializedVersion: 2
         x: 416
@@ -2194,7 +4776,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_192
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e9405410000000000800000000000000
+      internalID: 21300382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_192
       rect:
         serializedVersion: 2
         x: 448
@@ -2204,7 +4797,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_193
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a405410000000000800000000000000
+      internalID: 21300384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_193
       rect:
         serializedVersion: 2
         x: 480
@@ -2214,7 +4818,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_194
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a405410000000000800000000000000
+      internalID: 21300386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_194
       rect:
         serializedVersion: 2
         x: 0
@@ -2224,7 +4839,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_195
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a405410000000000800000000000000
+      internalID: 21300388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_195
       rect:
         serializedVersion: 2
         x: 32
@@ -2234,7 +4860,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_196
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a405410000000000800000000000000
+      internalID: 21300390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_196
       rect:
         serializedVersion: 2
         x: 64
@@ -2244,7 +4881,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_197
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a405410000000000800000000000000
+      internalID: 21300392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_197
       rect:
         serializedVersion: 2
         x: 96
@@ -2254,7 +4902,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_198
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa405410000000000800000000000000
+      internalID: 21300394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_198
       rect:
         serializedVersion: 2
         x: 384
@@ -2264,7 +4923,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_199
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca405410000000000800000000000000
+      internalID: 21300396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_199
       rect:
         serializedVersion: 2
         x: 416
@@ -2274,7 +4944,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_200
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea405410000000000800000000000000
+      internalID: 21300398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_200
       rect:
         serializedVersion: 2
         x: 448
@@ -2284,7 +4965,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_201
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b405410000000000800000000000000
+      internalID: 21300400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_201
       rect:
         serializedVersion: 2
         x: 480
@@ -2294,7 +4986,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_202
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b405410000000000800000000000000
+      internalID: 21300402
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_202
       rect:
         serializedVersion: 2
         x: 0
@@ -2304,7 +5007,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_203
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b405410000000000800000000000000
+      internalID: 21300404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_203
       rect:
         serializedVersion: 2
         x: 32
@@ -2314,7 +5028,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_204
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b405410000000000800000000000000
+      internalID: 21300406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_204
       rect:
         serializedVersion: 2
         x: 64
@@ -2324,7 +5049,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_205
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b405410000000000800000000000000
+      internalID: 21300408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_205
       rect:
         serializedVersion: 2
         x: 96
@@ -2334,7 +5070,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_206
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab405410000000000800000000000000
+      internalID: 21300410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_206
       rect:
         serializedVersion: 2
         x: 128
@@ -2344,7 +5091,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_207
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb405410000000000800000000000000
+      internalID: 21300412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_207
       rect:
         serializedVersion: 2
         x: 384
@@ -2354,7 +5112,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_208
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb405410000000000800000000000000
+      internalID: 21300414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_208
       rect:
         serializedVersion: 2
         x: 416
@@ -2364,7 +5133,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_209
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c405410000000000800000000000000
+      internalID: 21300416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_209
       rect:
         serializedVersion: 2
         x: 448
@@ -2374,7 +5154,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_210
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2c405410000000000800000000000000
+      internalID: 21300418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_210
       rect:
         serializedVersion: 2
         x: 480
@@ -2384,7 +5175,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_211
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c405410000000000800000000000000
+      internalID: 21300420
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_211
       rect:
         serializedVersion: 2
         x: 0
@@ -2394,7 +5196,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_212
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c405410000000000800000000000000
+      internalID: 21300422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_212
       rect:
         serializedVersion: 2
         x: 32
@@ -2404,7 +5217,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_213
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c405410000000000800000000000000
+      internalID: 21300424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_213
       rect:
         serializedVersion: 2
         x: 64
@@ -2414,7 +5238,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_214
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac405410000000000800000000000000
+      internalID: 21300426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_214
       rect:
         serializedVersion: 2
         x: 96
@@ -2424,7 +5259,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_215
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc405410000000000800000000000000
+      internalID: 21300428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_215
       rect:
         serializedVersion: 2
         x: 128
@@ -2434,7 +5280,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_216
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec405410000000000800000000000000
+      internalID: 21300430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_216
       rect:
         serializedVersion: 2
         x: 160
@@ -2444,7 +5301,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_217
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d405410000000000800000000000000
+      internalID: 21300432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_217
       rect:
         serializedVersion: 2
         x: 192
@@ -2454,7 +5322,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_218
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d405410000000000800000000000000
+      internalID: 21300434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_218
       rect:
         serializedVersion: 2
         x: 224
@@ -2464,7 +5343,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_219
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d405410000000000800000000000000
+      internalID: 21300436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_219
       rect:
         serializedVersion: 2
         x: 256
@@ -2474,7 +5364,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_220
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d405410000000000800000000000000
+      internalID: 21300438
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_220
       rect:
         serializedVersion: 2
         x: 288
@@ -2484,7 +5385,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_221
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d405410000000000800000000000000
+      internalID: 21300440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_221
       rect:
         serializedVersion: 2
         x: 384
@@ -2494,7 +5406,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_222
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad405410000000000800000000000000
+      internalID: 21300442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_222
       rect:
         serializedVersion: 2
         x: 416
@@ -2504,7 +5427,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_223
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd405410000000000800000000000000
+      internalID: 21300444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_223
       rect:
         serializedVersion: 2
         x: 448
@@ -2514,7 +5448,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: minecraft_tiles_big_224
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed405410000000000800000000000000
+      internalID: 21300446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minecraft_tiles_big_224
       rect:
         serializedVersion: 2
         x: 480
@@ -2524,7 +5469,255 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e405410000000000800000000000000
+      internalID: 21300448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      minecraft_tiles_big_55: 21300110
+      minecraft_tiles_big_40: 21300080
+      minecraft_tiles_big_182: 21300364
+      minecraft_tiles_big_138: 21300276
+      minecraft_tiles_big_101: 21300202
+      minecraft_tiles_big_170: 21300340
+      minecraft_tiles_big_27: 21300054
+      minecraft_tiles_big_64: 21300128
+      minecraft_tiles_big_35: 21300070
+      minecraft_tiles_big_67: 21300134
+      minecraft_tiles_big_81: 21300162
+      minecraft_tiles_big_149: 21300298
+      minecraft_tiles_big_5: 21300010
+      minecraft_tiles_big_179: 21300358
+      minecraft_tiles_big_10: 21300020
+      minecraft_tiles_big_87: 21300174
+      minecraft_tiles_big_218: 21300436
+      minecraft_tiles_big_209: 21300418
+      minecraft_tiles_big_11: 21300022
+      minecraft_tiles_big_214: 21300428
+      minecraft_tiles_big_204: 21300408
+      minecraft_tiles_big_139: 21300278
+      minecraft_tiles_big_130: 21300260
+      minecraft_tiles_big_174: 21300348
+      minecraft_tiles_big_213: 21300426
+      minecraft_tiles_big_38: 21300076
+      minecraft_tiles_big_156: 21300312
+      minecraft_tiles_big_158: 21300316
+      minecraft_tiles_big_180: 21300360
+      minecraft_tiles_big_186: 21300372
+      minecraft_tiles_big_195: 21300390
+      minecraft_tiles_big_31: 21300062
+      minecraft_tiles_big_202: 21300404
+      minecraft_tiles_big_58: 21300116
+      minecraft_tiles_big_37: 21300074
+      minecraft_tiles_big_183: 21300366
+      minecraft_tiles_big_122: 21300244
+      minecraft_tiles_big_83: 21300166
+      minecraft_tiles_big_91: 21300182
+      minecraft_tiles_big_107: 21300214
+      minecraft_tiles_big_143: 21300286
+      minecraft_tiles_big_97: 21300194
+      minecraft_tiles_big_29: 21300058
+      minecraft_tiles_big_47: 21300094
+      minecraft_tiles_big_19: 21300038
+      minecraft_tiles_big_109: 21300218
+      minecraft_tiles_big_193: 21300386
+      minecraft_tiles_big_200: 21300400
+      minecraft_tiles_big_76: 21300152
+      minecraft_tiles_big_150: 21300300
+      minecraft_tiles_big_163: 21300326
+      minecraft_tiles_big_45: 21300090
+      minecraft_tiles_big_79: 21300158
+      minecraft_tiles_big_1: 21300002
+      minecraft_tiles_big_49: 21300098
+      minecraft_tiles_big_73: 21300146
+      minecraft_tiles_big_223: 21300446
+      minecraft_tiles_big_116: 21300232
+      minecraft_tiles_big_71: 21300142
+      minecraft_tiles_big_99: 21300198
+      minecraft_tiles_big_159: 21300318
+      minecraft_tiles_big_217: 21300434
+      minecraft_tiles_big_108: 21300216
+      minecraft_tiles_big_30: 21300060
+      minecraft_tiles_big_141: 21300282
+      minecraft_tiles_big_117: 21300234
+      minecraft_tiles_big_178: 21300356
+      minecraft_tiles_big_132: 21300264
+      minecraft_tiles_big_114: 21300228
+      minecraft_tiles_big_191: 21300382
+      minecraft_tiles_big_147: 21300294
+      minecraft_tiles_big_13: 21300026
+      minecraft_tiles_big_124: 21300248
+      minecraft_tiles_big_185: 21300370
+      minecraft_tiles_big_21: 21300042
+      minecraft_tiles_big_17: 21300034
+      minecraft_tiles_big_161: 21300322
+      minecraft_tiles_big_205: 21300410
+      minecraft_tiles_big_61: 21300122
+      minecraft_tiles_big_85: 21300170
+      minecraft_tiles_big_66: 21300132
+      minecraft_tiles_big_153: 21300306
+      minecraft_tiles_big_36: 21300072
+      minecraft_tiles_big_207: 21300414
+      minecraft_tiles_big_70: 21300140
+      minecraft_tiles_big_7: 21300014
+      minecraft_tiles_big_53: 21300106
+      minecraft_tiles_big_62: 21300124
+      minecraft_tiles_big_20: 21300040
+      minecraft_tiles_big_65: 21300130
+      minecraft_tiles_big_106: 21300212
+      minecraft_tiles_big_60: 21300120
+      minecraft_tiles_big_96: 21300192
+      minecraft_tiles_big_171: 21300342
+      minecraft_tiles_big_42: 21300084
+      minecraft_tiles_big_221: 21300442
+      minecraft_tiles_big_102: 21300204
+      minecraft_tiles_big_9: 21300018
+      minecraft_tiles_big_78: 21300156
+      minecraft_tiles_big_177: 21300354
+      minecraft_tiles_big_167: 21300334
+      minecraft_tiles_big_128: 21300256
+      minecraft_tiles_big_72: 21300144
+      minecraft_tiles_big_187: 21300374
+      minecraft_tiles_big_12: 21300024
+      minecraft_tiles_big_136: 21300272
+      minecraft_tiles_big_105: 21300210
+      minecraft_tiles_big_160: 21300320
+      minecraft_tiles_big_154: 21300308
+      minecraft_tiles_big_133: 21300266
+      minecraft_tiles_big_18: 21300036
+      minecraft_tiles_big_54: 21300108
+      minecraft_tiles_big_126: 21300252
+      minecraft_tiles_big_26: 21300052
+      minecraft_tiles_big_43: 21300086
+      minecraft_tiles_big_194: 21300388
+      minecraft_tiles_big_2: 21300004
+      minecraft_tiles_big_111: 21300222
+      minecraft_tiles_big_95: 21300190
+      minecraft_tiles_big_92: 21300184
+      minecraft_tiles_big_166: 21300332
+      minecraft_tiles_big_212: 21300424
+      minecraft_tiles_big_84: 21300168
+      minecraft_tiles_big_41: 21300082
+      minecraft_tiles_big_118: 21300236
+      minecraft_tiles_big_203: 21300406
+      minecraft_tiles_big_162: 21300324
+      minecraft_tiles_big_135: 21300270
+      minecraft_tiles_big_44: 21300088
+      minecraft_tiles_big_140: 21300280
+      minecraft_tiles_big_74: 21300148
+      minecraft_tiles_big_222: 21300444
+      minecraft_tiles_big_119: 21300238
+      minecraft_tiles_big_46: 21300092
+      minecraft_tiles_big_115: 21300230
+      minecraft_tiles_big_51: 21300102
+      minecraft_tiles_big_175: 21300350
+      minecraft_tiles_big_69: 21300138
+      minecraft_tiles_big_196: 21300392
+      minecraft_tiles_big_129: 21300258
+      minecraft_tiles_big_142: 21300284
+      minecraft_tiles_big_23: 21300046
+      minecraft_tiles_big_77: 21300154
+      minecraft_tiles_big_110: 21300220
+      minecraft_tiles_big_201: 21300402
+      minecraft_tiles_big_206: 21300412
+      minecraft_tiles_big_86: 21300172
+      minecraft_tiles_big_3: 21300006
+      minecraft_tiles_big_94: 21300188
+      minecraft_tiles_big_127: 21300254
+      minecraft_tiles_big_210: 21300420
+      minecraft_tiles_big_146: 21300292
+      minecraft_tiles_big_15: 21300030
+      minecraft_tiles_big_93: 21300186
+      minecraft_tiles_big_112: 21300224
+      minecraft_tiles_big_184: 21300368
+      minecraft_tiles_big_189: 21300378
+      minecraft_tiles_big_169: 21300338
+      minecraft_tiles_big_148: 21300296
+      minecraft_tiles_big_33: 21300066
+      minecraft_tiles_big_190: 21300380
+      minecraft_tiles_big_199: 21300398
+      minecraft_tiles_big_131: 21300262
+      minecraft_tiles_big_216: 21300432
+      minecraft_tiles_big_50: 21300100
+      minecraft_tiles_big_104: 21300208
+      minecraft_tiles_big_176: 21300352
+      minecraft_tiles_big_25: 21300050
+      minecraft_tiles_big_98: 21300196
+      minecraft_tiles_big_220: 21300440
+      minecraft_tiles_big_145: 21300290
+      minecraft_tiles_big_82: 21300164
+      minecraft_tiles_big_48: 21300096
+      minecraft_tiles_big_6: 21300012
+      minecraft_tiles_big_22: 21300044
+      minecraft_tiles_big_164: 21300328
+      minecraft_tiles_big_121: 21300242
+      minecraft_tiles_big_0: 21300000
+      minecraft_tiles_big_197: 21300394
+      minecraft_tiles_big_123: 21300246
+      minecraft_tiles_big_34: 21300068
+      minecraft_tiles_big_57: 21300114
+      minecraft_tiles_big_100: 21300200
+      minecraft_tiles_big_103: 21300206
+      minecraft_tiles_big_28: 21300056
+      minecraft_tiles_big_24: 21300048
+      minecraft_tiles_big_188: 21300376
+      minecraft_tiles_big_113: 21300226
+      minecraft_tiles_big_211: 21300422
+      minecraft_tiles_big_224: 21300448
+      minecraft_tiles_big_8: 21300016
+      minecraft_tiles_big_75: 21300150
+      minecraft_tiles_big_144: 21300288
+      minecraft_tiles_big_215: 21300430
+      minecraft_tiles_big_39: 21300078
+      minecraft_tiles_big_68: 21300136
+      minecraft_tiles_big_90: 21300180
+      minecraft_tiles_big_137: 21300274
+      minecraft_tiles_big_155: 21300310
+      minecraft_tiles_big_4: 21300008
+      minecraft_tiles_big_16: 21300032
+      minecraft_tiles_big_63: 21300126
+      minecraft_tiles_big_219: 21300438
+      minecraft_tiles_big_125: 21300250
+      minecraft_tiles_big_152: 21300304
+      minecraft_tiles_big_52: 21300104
+      minecraft_tiles_big_14: 21300028
+      minecraft_tiles_big_181: 21300362
+      minecraft_tiles_big_88: 21300176
+      minecraft_tiles_big_32: 21300064
+      minecraft_tiles_big_120: 21300240
+      minecraft_tiles_big_59: 21300118
+      minecraft_tiles_big_80: 21300160
+      minecraft_tiles_big_56: 21300112
+      minecraft_tiles_big_151: 21300302
+      minecraft_tiles_big_172: 21300344
+      minecraft_tiles_big_165: 21300330
+      minecraft_tiles_big_192: 21300384
+      minecraft_tiles_big_89: 21300178
+      minecraft_tiles_big_173: 21300346
+      minecraft_tiles_big_168: 21300336
+      minecraft_tiles_big_198: 21300396
+      minecraft_tiles_big_134: 21300268
+      minecraft_tiles_big_208: 21300416
+      minecraft_tiles_big_157: 21300314
   spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

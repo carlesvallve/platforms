@@ -205,7 +205,7 @@ public class Humanoid : Ent {
 			if (Vector2.Distance(transform.position, interactiveObject.transform.position) < 0.3f) {
 				target = interactiveObject;
 			}
-		} 
+		}
 
 		// by projecting a ray forward
 		Vector2 rayOrigin = new Vector2 (transform.position.x, transform.position.y + sprite.localScale.y / 2);
@@ -216,7 +216,9 @@ public class Humanoid : Ent {
 		} 
 	
 		// if we have a destructable target
-		if (target && target.destructable) { 
+		if (target && target.destructable) {
+			sprite.localScale = new Vector2(Mathf.Sign(target.transform.position.x - transform.position.x) * Mathf.Abs(sprite.localScale.x), sprite.localScale.y);
+
 			// if target is attacking lets both parry
 			if (target.state == States.ATTACK) {
 				Humanoid enemy = (Humanoid)target;
@@ -249,9 +251,11 @@ public class Humanoid : Ent {
 		input = Vector2.zero;
 		velocity = Vector2.zero;
 
-		Vector3 pos = transform.position + ((enemy.transform.position - transform.position) / 2) + Vector3.up * GetHeight() / 2;
-		Star star = ((GameObject)Instantiate(Resources.Load("Prefabs/Fx/Star"))).GetComponent<Star>();
-		star.Init(pos, sprite.localScale.x);
+		if (prefabs.parryPrefab) {
+			Vector3 pos = transform.position + ((enemy.transform.position - transform.position) / 2) + Vector3.up * GetHeight() / 2;
+			Star star = ((GameObject)Instantiate(prefabs.parryPrefab)).GetComponent<Star>();
+			star.Init(pos, sprite.localScale.x);
+		}
 		
 		yield return StartCoroutine(PushBackwards(vec , 0.2f));
 	}
@@ -264,7 +268,7 @@ public class Humanoid : Ent {
 
 	public override IEnumerator Die () {
 		Audio.play("Audio/sfx/bite", 0.5f, Random.Range(3f, 3f));
-		Bleed(Random.Range(8, 16));
+		Bleed(10, Random.Range(8, 16));
 		SpawnLoot();
 
 		yield return null;

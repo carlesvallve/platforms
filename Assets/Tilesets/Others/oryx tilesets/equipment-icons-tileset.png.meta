@@ -1,311 +1,854 @@
 fileFormatVersion: 2
 guid: aa8f7bc1c8e654377b0d4f5a4932e2d3
-timeCreated: 1433167736
-licenseType: Free
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: equipment-icons-tileset_0
-    21300002: equipment-icons-tileset_1
-    21300004: equipment-icons-tileset_2
-    21300006: equipment-icons-tileset_3
-    21300008: equipment-icons-tileset_4
-    21300010: equipment-icons-tileset_5
-    21300012: equipment-icons-tileset_6
-    21300014: equipment-icons-tileset_7
-    21300016: equipment-icons-tileset_8
-    21300018: equipment-icons-tileset_9
-    21300020: equipment-icons-tileset_10
-    21300022: equipment-icons-tileset_11
-    21300024: equipment-icons-tileset_12
-    21300026: equipment-icons-tileset_13
-    21300028: equipment-icons-tileset_14
-    21300030: equipment-icons-tileset_15
-    21300032: equipment-icons-tileset_16
-    21300034: equipment-icons-tileset_17
-    21300036: equipment-icons-tileset_18
-    21300038: equipment-icons-tileset_19
-    21300040: equipment-icons-tileset_20
-    21300042: equipment-icons-tileset_21
-    21300044: equipment-icons-tileset_22
-    21300046: equipment-icons-tileset_23
-    21300048: equipment-icons-tileset_24
-    21300050: equipment-icons-tileset_25
-    21300052: equipment-icons-tileset_26
-    21300054: equipment-icons-tileset_27
-    21300056: equipment-icons-tileset_28
-    21300058: equipment-icons-tileset_29
-    21300060: equipment-icons-tileset_30
-    21300062: equipment-icons-tileset_31
-    21300064: equipment-icons-tileset_32
-    21300066: equipment-icons-tileset_33
-    21300068: equipment-icons-tileset_34
-    21300070: equipment-icons-tileset_35
-    21300072: equipment-icons-tileset_36
-    21300074: equipment-icons-tileset_37
-    21300076: equipment-icons-tileset_38
-    21300078: equipment-icons-tileset_39
-    21300080: equipment-icons-tileset_40
-    21300082: equipment-icons-tileset_41
-    21300084: equipment-icons-tileset_42
-    21300086: equipment-icons-tileset_43
-    21300088: equipment-icons-tileset_44
-    21300090: equipment-icons-tileset_45
-    21300092: equipment-icons-tileset_46
-    21300094: equipment-icons-tileset_47
-    21300096: equipment-icons-tileset_48
-    21300098: equipment-icons-tileset_49
-    21300100: equipment-icons-tileset_50
-    21300102: equipment-icons-tileset_51
-    21300104: equipment-icons-tileset_52
-    21300106: equipment-icons-tileset_53
-    21300108: equipment-icons-tileset_54
-    21300110: equipment-icons-tileset_55
-    21300112: equipment-icons-tileset_56
-    21300114: equipment-icons-tileset_57
-    21300116: equipment-icons-tileset_58
-    21300118: equipment-icons-tileset_59
-    21300120: equipment-icons-tileset_60
-    21300122: equipment-icons-tileset_61
-    21300124: equipment-icons-tileset_62
-    21300126: equipment-icons-tileset_63
-    21300128: equipment-icons-tileset_64
-    21300130: equipment-icons-tileset_65
-    21300132: equipment-icons-tileset_66
-    21300134: equipment-icons-tileset_67
-    21300136: equipment-icons-tileset_68
-    21300138: equipment-icons-tileset_69
-    21300140: equipment-icons-tileset_70
-    21300142: equipment-icons-tileset_71
-    21300144: equipment-icons-tileset_72
-    21300146: equipment-icons-tileset_73
-    21300148: equipment-icons-tileset_74
-    21300150: equipment-icons-tileset_75
-    21300152: equipment-icons-tileset_76
-    21300154: equipment-icons-tileset_77
-    21300156: equipment-icons-tileset_78
-    21300158: equipment-icons-tileset_79
-    21300160: equipment-icons-tileset_80
-    21300162: equipment-icons-tileset_81
-    21300164: equipment-icons-tileset_82
-    21300166: equipment-icons-tileset_83
-    21300168: equipment-icons-tileset_84
-    21300170: equipment-icons-tileset_85
-    21300172: equipment-icons-tileset_86
-    21300174: equipment-icons-tileset_87
-    21300176: equipment-icons-tileset_88
-    21300178: equipment-icons-tileset_89
-    21300180: equipment-icons-tileset_90
-    21300182: equipment-icons-tileset_91
-    21300184: equipment-icons-tileset_92
-    21300186: equipment-icons-tileset_93
-    21300188: equipment-icons-tileset_94
-    21300190: equipment-icons-tileset_95
-    21300192: equipment-icons-tileset_96
-    21300194: equipment-icons-tileset_97
-    21300196: equipment-icons-tileset_98
-    21300198: equipment-icons-tileset_99
-    21300200: equipment-icons-tileset_100
-    21300202: equipment-icons-tileset_101
-    21300204: equipment-icons-tileset_102
-    21300206: equipment-icons-tileset_103
-    21300208: equipment-icons-tileset_104
-    21300210: equipment-icons-tileset_105
-    21300212: equipment-icons-tileset_106
-    21300214: equipment-icons-tileset_107
-    21300216: equipment-icons-tileset_108
-    21300218: equipment-icons-tileset_109
-    21300220: equipment-icons-tileset_110
-    21300222: equipment-icons-tileset_111
-    21300224: equipment-icons-tileset_112
-    21300226: equipment-icons-tileset_113
-    21300228: equipment-icons-tileset_114
-    21300230: equipment-icons-tileset_115
-    21300232: equipment-icons-tileset_116
-    21300234: equipment-icons-tileset_117
-    21300236: equipment-icons-tileset_118
-    21300238: equipment-icons-tileset_119
-    21300240: equipment-icons-tileset_120
-    21300242: equipment-icons-tileset_121
-    21300244: equipment-icons-tileset_122
-    21300246: equipment-icons-tileset_123
-    21300248: equipment-icons-tileset_124
-    21300250: equipment-icons-tileset_125
-    21300252: equipment-icons-tileset_126
-    21300254: equipment-icons-tileset_127
-    21300256: equipment-icons-tileset_128
-    21300258: equipment-icons-tileset_129
-    21300260: equipment-icons-tileset_130
-    21300262: equipment-icons-tileset_131
-    21300264: equipment-icons-tileset_132
-    21300266: equipment-icons-tileset_133
-    21300268: equipment-icons-tileset_134
-    21300270: equipment-icons-tileset_135
-    21300272: equipment-icons-tileset_136
-    21300274: equipment-icons-tileset_137
-    21300276: equipment-icons-tileset_138
-    21300278: equipment-icons-tileset_139
-    21300280: equipment-icons-tileset_140
-    21300282: equipment-icons-tileset_141
-    21300284: equipment-icons-tileset_142
-    21300286: equipment-icons-tileset_143
-    21300288: equipment-icons-tileset_144
-    21300290: equipment-icons-tileset_145
-    21300292: equipment-icons-tileset_146
-    21300294: equipment-icons-tileset_147
-    21300296: equipment-icons-tileset_148
-    21300298: equipment-icons-tileset_149
-    21300300: equipment-icons-tileset_150
-    21300302: equipment-icons-tileset_151
-    21300304: equipment-icons-tileset_152
-    21300306: equipment-icons-tileset_153
-    21300308: equipment-icons-tileset_154
-    21300310: equipment-icons-tileset_155
-    21300312: equipment-icons-tileset_156
-    21300314: equipment-icons-tileset_157
-    21300316: equipment-icons-tileset_158
-    21300318: equipment-icons-tileset_159
-    21300320: equipment-icons-tileset_160
-    21300322: equipment-icons-tileset_161
-    21300324: equipment-icons-tileset_162
-    21300326: equipment-icons-tileset_163
-    21300328: equipment-icons-tileset_164
-    21300330: equipment-icons-tileset_165
-    21300332: equipment-icons-tileset_166
-    21300334: equipment-icons-tileset_167
-    21300336: equipment-icons-tileset_168
-    21300338: equipment-icons-tileset_169
-    21300340: equipment-icons-tileset_170
-    21300342: equipment-icons-tileset_171
-    21300344: equipment-icons-tileset_172
-    21300346: equipment-icons-tileset_173
-    21300348: equipment-icons-tileset_174
-    21300350: equipment-icons-tileset_175
-    21300352: equipment-icons-tileset_176
-    21300354: equipment-icons-tileset_177
-    21300356: equipment-icons-tileset_178
-    21300358: equipment-icons-tileset_179
-    21300360: equipment-icons-tileset_180
-    21300362: equipment-icons-tileset_181
-    21300364: equipment-icons-tileset_182
-    21300366: equipment-icons-tileset_183
-    21300368: equipment-icons-tileset_184
-    21300370: equipment-icons-tileset_185
-    21300372: equipment-icons-tileset_186
-    21300374: equipment-icons-tileset_187
-    21300376: equipment-icons-tileset_188
-    21300378: equipment-icons-tileset_189
-    21300380: equipment-icons-tileset_190
-    21300382: equipment-icons-tileset_191
-    21300384: equipment-icons-tileset_192
-    21300386: equipment-icons-tileset_193
-    21300388: equipment-icons-tileset_194
-    21300390: equipment-icons-tileset_195
-    21300392: equipment-icons-tileset_196
-    21300394: equipment-icons-tileset_197
-    21300396: equipment-icons-tileset_198
-    21300398: equipment-icons-tileset_199
-    21300400: equipment-icons-tileset_200
-    21300402: equipment-icons-tileset_201
-    21300404: equipment-icons-tileset_202
-    21300406: equipment-icons-tileset_203
-    21300408: equipment-icons-tileset_204
-    21300410: equipment-icons-tileset_205
-    21300412: equipment-icons-tileset_206
-    21300414: equipment-icons-tileset_207
-    21300416: equipment-icons-tileset_208
-    21300418: equipment-icons-tileset_209
-    21300420: equipment-icons-tileset_210
-    21300422: equipment-icons-tileset_211
-    21300424: equipment-icons-tileset_212
-    21300426: equipment-icons-tileset_213
-    21300428: equipment-icons-tileset_214
-    21300430: equipment-icons-tileset_215
-    21300432: equipment-icons-tileset_216
-    21300434: equipment-icons-tileset_217
-    21300436: equipment-icons-tileset_218
-    21300438: equipment-icons-tileset_219
-    21300440: equipment-icons-tileset_220
-    21300442: equipment-icons-tileset_221
-    21300444: equipment-icons-tileset_222
-    21300446: equipment-icons-tileset_223
-    21300448: equipment-icons-tileset_224
-    21300450: equipment-icons-tileset_225
-    21300452: equipment-icons-tileset_226
-    21300454: equipment-icons-tileset_227
-    21300456: equipment-icons-tileset_228
-    21300458: equipment-icons-tileset_229
-    21300460: equipment-icons-tileset_230
-    21300462: equipment-icons-tileset_231
-    21300464: equipment-icons-tileset_232
-    21300466: equipment-icons-tileset_233
-    21300468: equipment-icons-tileset_234
-    21300470: equipment-icons-tileset_235
-    21300472: equipment-icons-tileset_236
-    21300474: equipment-icons-tileset_237
-    21300476: equipment-icons-tileset_238
-    21300478: equipment-icons-tileset_239
-    21300480: equipment-icons-tileset_240
-    21300482: equipment-icons-tileset_241
-    21300484: equipment-icons-tileset_242
-    21300486: equipment-icons-tileset_243
-    21300488: equipment-icons-tileset_244
-    21300490: equipment-icons-tileset_245
-    21300492: equipment-icons-tileset_246
-    21300494: equipment-icons-tileset_247
-    21300496: equipment-icons-tileset_248
-    21300498: equipment-icons-tileset_249
-    21300500: equipment-icons-tileset_250
-    21300502: equipment-icons-tileset_251
-    21300504: equipment-icons-tileset_252
-    21300506: equipment-icons-tileset_253
-    21300508: equipment-icons-tileset_254
-    21300510: equipment-icons-tileset_255
-  serializedVersion: 2
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: equipment-icons-tileset_0
+  - first:
+      213: 21300002
+    second: equipment-icons-tileset_1
+  - first:
+      213: 21300004
+    second: equipment-icons-tileset_2
+  - first:
+      213: 21300006
+    second: equipment-icons-tileset_3
+  - first:
+      213: 21300008
+    second: equipment-icons-tileset_4
+  - first:
+      213: 21300010
+    second: equipment-icons-tileset_5
+  - first:
+      213: 21300012
+    second: equipment-icons-tileset_6
+  - first:
+      213: 21300014
+    second: equipment-icons-tileset_7
+  - first:
+      213: 21300016
+    second: equipment-icons-tileset_8
+  - first:
+      213: 21300018
+    second: equipment-icons-tileset_9
+  - first:
+      213: 21300020
+    second: equipment-icons-tileset_10
+  - first:
+      213: 21300022
+    second: equipment-icons-tileset_11
+  - first:
+      213: 21300024
+    second: equipment-icons-tileset_12
+  - first:
+      213: 21300026
+    second: equipment-icons-tileset_13
+  - first:
+      213: 21300028
+    second: equipment-icons-tileset_14
+  - first:
+      213: 21300030
+    second: equipment-icons-tileset_15
+  - first:
+      213: 21300032
+    second: equipment-icons-tileset_16
+  - first:
+      213: 21300034
+    second: equipment-icons-tileset_17
+  - first:
+      213: 21300036
+    second: equipment-icons-tileset_18
+  - first:
+      213: 21300038
+    second: equipment-icons-tileset_19
+  - first:
+      213: 21300040
+    second: equipment-icons-tileset_20
+  - first:
+      213: 21300042
+    second: equipment-icons-tileset_21
+  - first:
+      213: 21300044
+    second: equipment-icons-tileset_22
+  - first:
+      213: 21300046
+    second: equipment-icons-tileset_23
+  - first:
+      213: 21300048
+    second: equipment-icons-tileset_24
+  - first:
+      213: 21300050
+    second: equipment-icons-tileset_25
+  - first:
+      213: 21300052
+    second: equipment-icons-tileset_26
+  - first:
+      213: 21300054
+    second: equipment-icons-tileset_27
+  - first:
+      213: 21300056
+    second: equipment-icons-tileset_28
+  - first:
+      213: 21300058
+    second: equipment-icons-tileset_29
+  - first:
+      213: 21300060
+    second: equipment-icons-tileset_30
+  - first:
+      213: 21300062
+    second: equipment-icons-tileset_31
+  - first:
+      213: 21300064
+    second: equipment-icons-tileset_32
+  - first:
+      213: 21300066
+    second: equipment-icons-tileset_33
+  - first:
+      213: 21300068
+    second: equipment-icons-tileset_34
+  - first:
+      213: 21300070
+    second: equipment-icons-tileset_35
+  - first:
+      213: 21300072
+    second: equipment-icons-tileset_36
+  - first:
+      213: 21300074
+    second: equipment-icons-tileset_37
+  - first:
+      213: 21300076
+    second: equipment-icons-tileset_38
+  - first:
+      213: 21300078
+    second: equipment-icons-tileset_39
+  - first:
+      213: 21300080
+    second: equipment-icons-tileset_40
+  - first:
+      213: 21300082
+    second: equipment-icons-tileset_41
+  - first:
+      213: 21300084
+    second: equipment-icons-tileset_42
+  - first:
+      213: 21300086
+    second: equipment-icons-tileset_43
+  - first:
+      213: 21300088
+    second: equipment-icons-tileset_44
+  - first:
+      213: 21300090
+    second: equipment-icons-tileset_45
+  - first:
+      213: 21300092
+    second: equipment-icons-tileset_46
+  - first:
+      213: 21300094
+    second: equipment-icons-tileset_47
+  - first:
+      213: 21300096
+    second: equipment-icons-tileset_48
+  - first:
+      213: 21300098
+    second: equipment-icons-tileset_49
+  - first:
+      213: 21300100
+    second: equipment-icons-tileset_50
+  - first:
+      213: 21300102
+    second: equipment-icons-tileset_51
+  - first:
+      213: 21300104
+    second: equipment-icons-tileset_52
+  - first:
+      213: 21300106
+    second: equipment-icons-tileset_53
+  - first:
+      213: 21300108
+    second: equipment-icons-tileset_54
+  - first:
+      213: 21300110
+    second: equipment-icons-tileset_55
+  - first:
+      213: 21300112
+    second: equipment-icons-tileset_56
+  - first:
+      213: 21300114
+    second: equipment-icons-tileset_57
+  - first:
+      213: 21300116
+    second: equipment-icons-tileset_58
+  - first:
+      213: 21300118
+    second: equipment-icons-tileset_59
+  - first:
+      213: 21300120
+    second: equipment-icons-tileset_60
+  - first:
+      213: 21300122
+    second: equipment-icons-tileset_61
+  - first:
+      213: 21300124
+    second: equipment-icons-tileset_62
+  - first:
+      213: 21300126
+    second: equipment-icons-tileset_63
+  - first:
+      213: 21300128
+    second: equipment-icons-tileset_64
+  - first:
+      213: 21300130
+    second: equipment-icons-tileset_65
+  - first:
+      213: 21300132
+    second: equipment-icons-tileset_66
+  - first:
+      213: 21300134
+    second: equipment-icons-tileset_67
+  - first:
+      213: 21300136
+    second: equipment-icons-tileset_68
+  - first:
+      213: 21300138
+    second: equipment-icons-tileset_69
+  - first:
+      213: 21300140
+    second: equipment-icons-tileset_70
+  - first:
+      213: 21300142
+    second: equipment-icons-tileset_71
+  - first:
+      213: 21300144
+    second: equipment-icons-tileset_72
+  - first:
+      213: 21300146
+    second: equipment-icons-tileset_73
+  - first:
+      213: 21300148
+    second: equipment-icons-tileset_74
+  - first:
+      213: 21300150
+    second: equipment-icons-tileset_75
+  - first:
+      213: 21300152
+    second: equipment-icons-tileset_76
+  - first:
+      213: 21300154
+    second: equipment-icons-tileset_77
+  - first:
+      213: 21300156
+    second: equipment-icons-tileset_78
+  - first:
+      213: 21300158
+    second: equipment-icons-tileset_79
+  - first:
+      213: 21300160
+    second: equipment-icons-tileset_80
+  - first:
+      213: 21300162
+    second: equipment-icons-tileset_81
+  - first:
+      213: 21300164
+    second: equipment-icons-tileset_82
+  - first:
+      213: 21300166
+    second: equipment-icons-tileset_83
+  - first:
+      213: 21300168
+    second: equipment-icons-tileset_84
+  - first:
+      213: 21300170
+    second: equipment-icons-tileset_85
+  - first:
+      213: 21300172
+    second: equipment-icons-tileset_86
+  - first:
+      213: 21300174
+    second: equipment-icons-tileset_87
+  - first:
+      213: 21300176
+    second: equipment-icons-tileset_88
+  - first:
+      213: 21300178
+    second: equipment-icons-tileset_89
+  - first:
+      213: 21300180
+    second: equipment-icons-tileset_90
+  - first:
+      213: 21300182
+    second: equipment-icons-tileset_91
+  - first:
+      213: 21300184
+    second: equipment-icons-tileset_92
+  - first:
+      213: 21300186
+    second: equipment-icons-tileset_93
+  - first:
+      213: 21300188
+    second: equipment-icons-tileset_94
+  - first:
+      213: 21300190
+    second: equipment-icons-tileset_95
+  - first:
+      213: 21300192
+    second: equipment-icons-tileset_96
+  - first:
+      213: 21300194
+    second: equipment-icons-tileset_97
+  - first:
+      213: 21300196
+    second: equipment-icons-tileset_98
+  - first:
+      213: 21300198
+    second: equipment-icons-tileset_99
+  - first:
+      213: 21300200
+    second: equipment-icons-tileset_100
+  - first:
+      213: 21300202
+    second: equipment-icons-tileset_101
+  - first:
+      213: 21300204
+    second: equipment-icons-tileset_102
+  - first:
+      213: 21300206
+    second: equipment-icons-tileset_103
+  - first:
+      213: 21300208
+    second: equipment-icons-tileset_104
+  - first:
+      213: 21300210
+    second: equipment-icons-tileset_105
+  - first:
+      213: 21300212
+    second: equipment-icons-tileset_106
+  - first:
+      213: 21300214
+    second: equipment-icons-tileset_107
+  - first:
+      213: 21300216
+    second: equipment-icons-tileset_108
+  - first:
+      213: 21300218
+    second: equipment-icons-tileset_109
+  - first:
+      213: 21300220
+    second: equipment-icons-tileset_110
+  - first:
+      213: 21300222
+    second: equipment-icons-tileset_111
+  - first:
+      213: 21300224
+    second: equipment-icons-tileset_112
+  - first:
+      213: 21300226
+    second: equipment-icons-tileset_113
+  - first:
+      213: 21300228
+    second: equipment-icons-tileset_114
+  - first:
+      213: 21300230
+    second: equipment-icons-tileset_115
+  - first:
+      213: 21300232
+    second: equipment-icons-tileset_116
+  - first:
+      213: 21300234
+    second: equipment-icons-tileset_117
+  - first:
+      213: 21300236
+    second: equipment-icons-tileset_118
+  - first:
+      213: 21300238
+    second: equipment-icons-tileset_119
+  - first:
+      213: 21300240
+    second: equipment-icons-tileset_120
+  - first:
+      213: 21300242
+    second: equipment-icons-tileset_121
+  - first:
+      213: 21300244
+    second: equipment-icons-tileset_122
+  - first:
+      213: 21300246
+    second: equipment-icons-tileset_123
+  - first:
+      213: 21300248
+    second: equipment-icons-tileset_124
+  - first:
+      213: 21300250
+    second: equipment-icons-tileset_125
+  - first:
+      213: 21300252
+    second: equipment-icons-tileset_126
+  - first:
+      213: 21300254
+    second: equipment-icons-tileset_127
+  - first:
+      213: 21300256
+    second: equipment-icons-tileset_128
+  - first:
+      213: 21300258
+    second: equipment-icons-tileset_129
+  - first:
+      213: 21300260
+    second: equipment-icons-tileset_130
+  - first:
+      213: 21300262
+    second: equipment-icons-tileset_131
+  - first:
+      213: 21300264
+    second: equipment-icons-tileset_132
+  - first:
+      213: 21300266
+    second: equipment-icons-tileset_133
+  - first:
+      213: 21300268
+    second: equipment-icons-tileset_134
+  - first:
+      213: 21300270
+    second: equipment-icons-tileset_135
+  - first:
+      213: 21300272
+    second: equipment-icons-tileset_136
+  - first:
+      213: 21300274
+    second: equipment-icons-tileset_137
+  - first:
+      213: 21300276
+    second: equipment-icons-tileset_138
+  - first:
+      213: 21300278
+    second: equipment-icons-tileset_139
+  - first:
+      213: 21300280
+    second: equipment-icons-tileset_140
+  - first:
+      213: 21300282
+    second: equipment-icons-tileset_141
+  - first:
+      213: 21300284
+    second: equipment-icons-tileset_142
+  - first:
+      213: 21300286
+    second: equipment-icons-tileset_143
+  - first:
+      213: 21300288
+    second: equipment-icons-tileset_144
+  - first:
+      213: 21300290
+    second: equipment-icons-tileset_145
+  - first:
+      213: 21300292
+    second: equipment-icons-tileset_146
+  - first:
+      213: 21300294
+    second: equipment-icons-tileset_147
+  - first:
+      213: 21300296
+    second: equipment-icons-tileset_148
+  - first:
+      213: 21300298
+    second: equipment-icons-tileset_149
+  - first:
+      213: 21300300
+    second: equipment-icons-tileset_150
+  - first:
+      213: 21300302
+    second: equipment-icons-tileset_151
+  - first:
+      213: 21300304
+    second: equipment-icons-tileset_152
+  - first:
+      213: 21300306
+    second: equipment-icons-tileset_153
+  - first:
+      213: 21300308
+    second: equipment-icons-tileset_154
+  - first:
+      213: 21300310
+    second: equipment-icons-tileset_155
+  - first:
+      213: 21300312
+    second: equipment-icons-tileset_156
+  - first:
+      213: 21300314
+    second: equipment-icons-tileset_157
+  - first:
+      213: 21300316
+    second: equipment-icons-tileset_158
+  - first:
+      213: 21300318
+    second: equipment-icons-tileset_159
+  - first:
+      213: 21300320
+    second: equipment-icons-tileset_160
+  - first:
+      213: 21300322
+    second: equipment-icons-tileset_161
+  - first:
+      213: 21300324
+    second: equipment-icons-tileset_162
+  - first:
+      213: 21300326
+    second: equipment-icons-tileset_163
+  - first:
+      213: 21300328
+    second: equipment-icons-tileset_164
+  - first:
+      213: 21300330
+    second: equipment-icons-tileset_165
+  - first:
+      213: 21300332
+    second: equipment-icons-tileset_166
+  - first:
+      213: 21300334
+    second: equipment-icons-tileset_167
+  - first:
+      213: 21300336
+    second: equipment-icons-tileset_168
+  - first:
+      213: 21300338
+    second: equipment-icons-tileset_169
+  - first:
+      213: 21300340
+    second: equipment-icons-tileset_170
+  - first:
+      213: 21300342
+    second: equipment-icons-tileset_171
+  - first:
+      213: 21300344
+    second: equipment-icons-tileset_172
+  - first:
+      213: 21300346
+    second: equipment-icons-tileset_173
+  - first:
+      213: 21300348
+    second: equipment-icons-tileset_174
+  - first:
+      213: 21300350
+    second: equipment-icons-tileset_175
+  - first:
+      213: 21300352
+    second: equipment-icons-tileset_176
+  - first:
+      213: 21300354
+    second: equipment-icons-tileset_177
+  - first:
+      213: 21300356
+    second: equipment-icons-tileset_178
+  - first:
+      213: 21300358
+    second: equipment-icons-tileset_179
+  - first:
+      213: 21300360
+    second: equipment-icons-tileset_180
+  - first:
+      213: 21300362
+    second: equipment-icons-tileset_181
+  - first:
+      213: 21300364
+    second: equipment-icons-tileset_182
+  - first:
+      213: 21300366
+    second: equipment-icons-tileset_183
+  - first:
+      213: 21300368
+    second: equipment-icons-tileset_184
+  - first:
+      213: 21300370
+    second: equipment-icons-tileset_185
+  - first:
+      213: 21300372
+    second: equipment-icons-tileset_186
+  - first:
+      213: 21300374
+    second: equipment-icons-tileset_187
+  - first:
+      213: 21300376
+    second: equipment-icons-tileset_188
+  - first:
+      213: 21300378
+    second: equipment-icons-tileset_189
+  - first:
+      213: 21300380
+    second: equipment-icons-tileset_190
+  - first:
+      213: 21300382
+    second: equipment-icons-tileset_191
+  - first:
+      213: 21300384
+    second: equipment-icons-tileset_192
+  - first:
+      213: 21300386
+    second: equipment-icons-tileset_193
+  - first:
+      213: 21300388
+    second: equipment-icons-tileset_194
+  - first:
+      213: 21300390
+    second: equipment-icons-tileset_195
+  - first:
+      213: 21300392
+    second: equipment-icons-tileset_196
+  - first:
+      213: 21300394
+    second: equipment-icons-tileset_197
+  - first:
+      213: 21300396
+    second: equipment-icons-tileset_198
+  - first:
+      213: 21300398
+    second: equipment-icons-tileset_199
+  - first:
+      213: 21300400
+    second: equipment-icons-tileset_200
+  - first:
+      213: 21300402
+    second: equipment-icons-tileset_201
+  - first:
+      213: 21300404
+    second: equipment-icons-tileset_202
+  - first:
+      213: 21300406
+    second: equipment-icons-tileset_203
+  - first:
+      213: 21300408
+    second: equipment-icons-tileset_204
+  - first:
+      213: 21300410
+    second: equipment-icons-tileset_205
+  - first:
+      213: 21300412
+    second: equipment-icons-tileset_206
+  - first:
+      213: 21300414
+    second: equipment-icons-tileset_207
+  - first:
+      213: 21300416
+    second: equipment-icons-tileset_208
+  - first:
+      213: 21300418
+    second: equipment-icons-tileset_209
+  - first:
+      213: 21300420
+    second: equipment-icons-tileset_210
+  - first:
+      213: 21300422
+    second: equipment-icons-tileset_211
+  - first:
+      213: 21300424
+    second: equipment-icons-tileset_212
+  - first:
+      213: 21300426
+    second: equipment-icons-tileset_213
+  - first:
+      213: 21300428
+    second: equipment-icons-tileset_214
+  - first:
+      213: 21300430
+    second: equipment-icons-tileset_215
+  - first:
+      213: 21300432
+    second: equipment-icons-tileset_216
+  - first:
+      213: 21300434
+    second: equipment-icons-tileset_217
+  - first:
+      213: 21300436
+    second: equipment-icons-tileset_218
+  - first:
+      213: 21300438
+    second: equipment-icons-tileset_219
+  - first:
+      213: 21300440
+    second: equipment-icons-tileset_220
+  - first:
+      213: 21300442
+    second: equipment-icons-tileset_221
+  - first:
+      213: 21300444
+    second: equipment-icons-tileset_222
+  - first:
+      213: 21300446
+    second: equipment-icons-tileset_223
+  - first:
+      213: 21300448
+    second: equipment-icons-tileset_224
+  - first:
+      213: 21300450
+    second: equipment-icons-tileset_225
+  - first:
+      213: 21300452
+    second: equipment-icons-tileset_226
+  - first:
+      213: 21300454
+    second: equipment-icons-tileset_227
+  - first:
+      213: 21300456
+    second: equipment-icons-tileset_228
+  - first:
+      213: 21300458
+    second: equipment-icons-tileset_229
+  - first:
+      213: 21300460
+    second: equipment-icons-tileset_230
+  - first:
+      213: 21300462
+    second: equipment-icons-tileset_231
+  - first:
+      213: 21300464
+    second: equipment-icons-tileset_232
+  - first:
+      213: 21300466
+    second: equipment-icons-tileset_233
+  - first:
+      213: 21300468
+    second: equipment-icons-tileset_234
+  - first:
+      213: 21300470
+    second: equipment-icons-tileset_235
+  - first:
+      213: 21300472
+    second: equipment-icons-tileset_236
+  - first:
+      213: 21300474
+    second: equipment-icons-tileset_237
+  - first:
+      213: 21300476
+    second: equipment-icons-tileset_238
+  - first:
+      213: 21300478
+    second: equipment-icons-tileset_239
+  - first:
+      213: 21300480
+    second: equipment-icons-tileset_240
+  - first:
+      213: 21300482
+    second: equipment-icons-tileset_241
+  - first:
+      213: 21300484
+    second: equipment-icons-tileset_242
+  - first:
+      213: 21300486
+    second: equipment-icons-tileset_243
+  - first:
+      213: 21300488
+    second: equipment-icons-tileset_244
+  - first:
+      213: 21300490
+    second: equipment-icons-tileset_245
+  - first:
+      213: 21300492
+    second: equipment-icons-tileset_246
+  - first:
+      213: 21300494
+    second: equipment-icons-tileset_247
+  - first:
+      213: 21300496
+    second: equipment-icons-tileset_248
+  - first:
+      213: 21300498
+    second: equipment-icons-tileset_249
+  - first:
+      213: 21300500
+    second: equipment-icons-tileset_250
+  - first:
+      213: 21300502
+    second: equipment-icons-tileset_251
+  - first:
+      213: 21300504
+    second: equipment-icons-tileset_252
+  - first:
+      213: 21300506
+    second: equipment-icons-tileset_253
+  - first:
+      213: 21300508
+    second: equipment-icons-tileset_254
+  - first:
+      213: 21300510
+    second: equipment-icons-tileset_255
+  externalObjects: {}
+  serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 1
+    sRGBTexture: 1
     linearTexture: 0
-    correctGamma: 0
     fadeOut: 0
     borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
     mipMapFadeDistanceStart: 1
     mipMapFadeDistanceEnd: 3
   bumpmap:
     convertToNormalMap: 0
     externalNormalMap: 0
-    heightScale: .25
+    heightScale: 0.25
     normalMapFilter: 0
   isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
-  generateCubemap: 0
+  generateCubemap: 6
   cubemapConvolution: 0
-  cubemapConvolutionSteps: 8
-  cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: -1
   maxTextureSize: 2048
   textureSettings:
-    filterMode: -1
+    serializedVersion: 2
+    filterMode: 1
     aniso: 16
-    mipBias: -1
-    wrapMode: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
   nPOTScale: 0
   lightmap: 0
-  rGBM: 0
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
-  spritePivot: {x: .5, y: .5}
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
   alphaIsTransparency: 1
+  spriteTessellationDetail: -1
   textureType: 8
-  buildTargetSettings: []
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
+    serializedVersion: 2
     sprites:
-    - name: equipment-icons-tileset_0
+    - serializedVersion: 2
+      name: equipment-icons-tileset_0
       rect:
         serializedVersion: 2
         x: 0
@@ -315,7 +858,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_1
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02305410000000000800000000000000
+      internalID: 21300000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_1
       rect:
         serializedVersion: 2
         x: 32
@@ -325,7 +879,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_2
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22305410000000000800000000000000
+      internalID: 21300002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_2
       rect:
         serializedVersion: 2
         x: 64
@@ -335,7 +900,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_3
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42305410000000000800000000000000
+      internalID: 21300004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_3
       rect:
         serializedVersion: 2
         x: 96
@@ -345,7 +921,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_4
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62305410000000000800000000000000
+      internalID: 21300006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_4
       rect:
         serializedVersion: 2
         x: 128
@@ -355,7 +942,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_5
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82305410000000000800000000000000
+      internalID: 21300008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_5
       rect:
         serializedVersion: 2
         x: 160
@@ -365,7 +963,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_6
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2305410000000000800000000000000
+      internalID: 21300010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_6
       rect:
         serializedVersion: 2
         x: 192
@@ -375,7 +984,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_7
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2305410000000000800000000000000
+      internalID: 21300012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_7
       rect:
         serializedVersion: 2
         x: 224
@@ -385,7 +1005,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_8
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2305410000000000800000000000000
+      internalID: 21300014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_8
       rect:
         serializedVersion: 2
         x: 256
@@ -395,7 +1026,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_9
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03305410000000000800000000000000
+      internalID: 21300016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_9
       rect:
         serializedVersion: 2
         x: 288
@@ -405,7 +1047,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_10
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23305410000000000800000000000000
+      internalID: 21300018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_10
       rect:
         serializedVersion: 2
         x: 320
@@ -415,7 +1068,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_11
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 43305410000000000800000000000000
+      internalID: 21300020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_11
       rect:
         serializedVersion: 2
         x: 352
@@ -425,7 +1089,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_12
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63305410000000000800000000000000
+      internalID: 21300022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_12
       rect:
         serializedVersion: 2
         x: 384
@@ -435,7 +1110,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_13
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83305410000000000800000000000000
+      internalID: 21300024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_13
       rect:
         serializedVersion: 2
         x: 416
@@ -445,7 +1131,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_14
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3305410000000000800000000000000
+      internalID: 21300026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_14
       rect:
         serializedVersion: 2
         x: 448
@@ -455,7 +1152,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_15
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3305410000000000800000000000000
+      internalID: 21300028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_15
       rect:
         serializedVersion: 2
         x: 480
@@ -465,7 +1173,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_16
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3305410000000000800000000000000
+      internalID: 21300030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_16
       rect:
         serializedVersion: 2
         x: 0
@@ -475,7 +1194,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_17
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04305410000000000800000000000000
+      internalID: 21300032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_17
       rect:
         serializedVersion: 2
         x: 32
@@ -485,7 +1215,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_18
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 24305410000000000800000000000000
+      internalID: 21300034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_18
       rect:
         serializedVersion: 2
         x: 64
@@ -495,7 +1236,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_19
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44305410000000000800000000000000
+      internalID: 21300036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_19
       rect:
         serializedVersion: 2
         x: 96
@@ -505,7 +1257,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_20
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64305410000000000800000000000000
+      internalID: 21300038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_20
       rect:
         serializedVersion: 2
         x: 128
@@ -515,7 +1278,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_21
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84305410000000000800000000000000
+      internalID: 21300040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_21
       rect:
         serializedVersion: 2
         x: 160
@@ -525,7 +1299,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_22
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a4305410000000000800000000000000
+      internalID: 21300042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_22
       rect:
         serializedVersion: 2
         x: 192
@@ -535,7 +1320,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_23
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4305410000000000800000000000000
+      internalID: 21300044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_23
       rect:
         serializedVersion: 2
         x: 224
@@ -545,7 +1341,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_24
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4305410000000000800000000000000
+      internalID: 21300046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_24
       rect:
         serializedVersion: 2
         x: 256
@@ -555,7 +1362,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_25
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05305410000000000800000000000000
+      internalID: 21300048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_25
       rect:
         serializedVersion: 2
         x: 288
@@ -565,7 +1383,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_26
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25305410000000000800000000000000
+      internalID: 21300050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_26
       rect:
         serializedVersion: 2
         x: 320
@@ -575,7 +1404,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_27
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45305410000000000800000000000000
+      internalID: 21300052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_27
       rect:
         serializedVersion: 2
         x: 352
@@ -585,7 +1425,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_28
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65305410000000000800000000000000
+      internalID: 21300054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_28
       rect:
         serializedVersion: 2
         x: 384
@@ -595,7 +1446,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_29
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 85305410000000000800000000000000
+      internalID: 21300056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_29
       rect:
         serializedVersion: 2
         x: 416
@@ -605,7 +1467,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_30
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5305410000000000800000000000000
+      internalID: 21300058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_30
       rect:
         serializedVersion: 2
         x: 448
@@ -615,7 +1488,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_31
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5305410000000000800000000000000
+      internalID: 21300060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_31
       rect:
         serializedVersion: 2
         x: 480
@@ -625,7 +1509,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_32
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5305410000000000800000000000000
+      internalID: 21300062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_32
       rect:
         serializedVersion: 2
         x: 0
@@ -635,7 +1530,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_33
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 06305410000000000800000000000000
+      internalID: 21300064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_33
       rect:
         serializedVersion: 2
         x: 32
@@ -645,7 +1551,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_34
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26305410000000000800000000000000
+      internalID: 21300066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_34
       rect:
         serializedVersion: 2
         x: 64
@@ -655,7 +1572,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_35
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 46305410000000000800000000000000
+      internalID: 21300068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_35
       rect:
         serializedVersion: 2
         x: 96
@@ -665,7 +1593,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_36
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66305410000000000800000000000000
+      internalID: 21300070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_36
       rect:
         serializedVersion: 2
         x: 128
@@ -675,7 +1614,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_37
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 86305410000000000800000000000000
+      internalID: 21300072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_37
       rect:
         serializedVersion: 2
         x: 160
@@ -685,7 +1635,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_38
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a6305410000000000800000000000000
+      internalID: 21300074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_38
       rect:
         serializedVersion: 2
         x: 192
@@ -695,7 +1656,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_39
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6305410000000000800000000000000
+      internalID: 21300076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_39
       rect:
         serializedVersion: 2
         x: 224
@@ -705,7 +1677,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_40
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e6305410000000000800000000000000
+      internalID: 21300078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_40
       rect:
         serializedVersion: 2
         x: 256
@@ -715,7 +1698,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_41
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 07305410000000000800000000000000
+      internalID: 21300080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_41
       rect:
         serializedVersion: 2
         x: 288
@@ -725,7 +1719,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_42
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27305410000000000800000000000000
+      internalID: 21300082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_42
       rect:
         serializedVersion: 2
         x: 320
@@ -735,7 +1740,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_43
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 47305410000000000800000000000000
+      internalID: 21300084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_43
       rect:
         serializedVersion: 2
         x: 352
@@ -745,7 +1761,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_44
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 67305410000000000800000000000000
+      internalID: 21300086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_44
       rect:
         serializedVersion: 2
         x: 384
@@ -755,7 +1782,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_45
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87305410000000000800000000000000
+      internalID: 21300088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_45
       rect:
         serializedVersion: 2
         x: 416
@@ -765,7 +1803,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_46
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a7305410000000000800000000000000
+      internalID: 21300090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_46
       rect:
         serializedVersion: 2
         x: 448
@@ -775,7 +1824,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_47
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c7305410000000000800000000000000
+      internalID: 21300092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_47
       rect:
         serializedVersion: 2
         x: 480
@@ -785,7 +1845,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_48
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7305410000000000800000000000000
+      internalID: 21300094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_48
       rect:
         serializedVersion: 2
         x: 0
@@ -795,7 +1866,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_49
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 08305410000000000800000000000000
+      internalID: 21300096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_49
       rect:
         serializedVersion: 2
         x: 32
@@ -805,7 +1887,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_50
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 28305410000000000800000000000000
+      internalID: 21300098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_50
       rect:
         serializedVersion: 2
         x: 64
@@ -815,7 +1908,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_51
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 48305410000000000800000000000000
+      internalID: 21300100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_51
       rect:
         serializedVersion: 2
         x: 96
@@ -825,7 +1929,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_52
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 68305410000000000800000000000000
+      internalID: 21300102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_52
       rect:
         serializedVersion: 2
         x: 128
@@ -835,7 +1950,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_53
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 88305410000000000800000000000000
+      internalID: 21300104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_53
       rect:
         serializedVersion: 2
         x: 160
@@ -845,7 +1971,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_54
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8305410000000000800000000000000
+      internalID: 21300106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_54
       rect:
         serializedVersion: 2
         x: 192
@@ -855,7 +1992,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_55
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c8305410000000000800000000000000
+      internalID: 21300108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_55
       rect:
         serializedVersion: 2
         x: 224
@@ -865,7 +2013,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_56
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8305410000000000800000000000000
+      internalID: 21300110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_56
       rect:
         serializedVersion: 2
         x: 256
@@ -875,7 +2034,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_57
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09305410000000000800000000000000
+      internalID: 21300112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_57
       rect:
         serializedVersion: 2
         x: 288
@@ -885,7 +2055,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_58
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29305410000000000800000000000000
+      internalID: 21300114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_58
       rect:
         serializedVersion: 2
         x: 320
@@ -895,7 +2076,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_59
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49305410000000000800000000000000
+      internalID: 21300116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_59
       rect:
         serializedVersion: 2
         x: 352
@@ -905,7 +2097,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_60
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69305410000000000800000000000000
+      internalID: 21300118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_60
       rect:
         serializedVersion: 2
         x: 384
@@ -915,7 +2118,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_61
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 89305410000000000800000000000000
+      internalID: 21300120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_61
       rect:
         serializedVersion: 2
         x: 416
@@ -925,7 +2139,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_62
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a9305410000000000800000000000000
+      internalID: 21300122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_62
       rect:
         serializedVersion: 2
         x: 448
@@ -935,7 +2160,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_63
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c9305410000000000800000000000000
+      internalID: 21300124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_63
       rect:
         serializedVersion: 2
         x: 480
@@ -945,7 +2181,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_64
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e9305410000000000800000000000000
+      internalID: 21300126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_64
       rect:
         serializedVersion: 2
         x: 0
@@ -955,7 +2202,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_65
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a305410000000000800000000000000
+      internalID: 21300128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_65
       rect:
         serializedVersion: 2
         x: 32
@@ -965,7 +2223,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_66
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a305410000000000800000000000000
+      internalID: 21300130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_66
       rect:
         serializedVersion: 2
         x: 64
@@ -975,7 +2244,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_67
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a305410000000000800000000000000
+      internalID: 21300132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_67
       rect:
         serializedVersion: 2
         x: 96
@@ -985,7 +2265,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_68
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a305410000000000800000000000000
+      internalID: 21300134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_68
       rect:
         serializedVersion: 2
         x: 128
@@ -995,7 +2286,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_69
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a305410000000000800000000000000
+      internalID: 21300136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_69
       rect:
         serializedVersion: 2
         x: 160
@@ -1005,7 +2307,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_70
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa305410000000000800000000000000
+      internalID: 21300138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_70
       rect:
         serializedVersion: 2
         x: 192
@@ -1015,7 +2328,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_71
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca305410000000000800000000000000
+      internalID: 21300140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_71
       rect:
         serializedVersion: 2
         x: 224
@@ -1025,7 +2349,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_72
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea305410000000000800000000000000
+      internalID: 21300142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_72
       rect:
         serializedVersion: 2
         x: 256
@@ -1035,7 +2370,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_73
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b305410000000000800000000000000
+      internalID: 21300144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_73
       rect:
         serializedVersion: 2
         x: 288
@@ -1045,7 +2391,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_74
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b305410000000000800000000000000
+      internalID: 21300146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_74
       rect:
         serializedVersion: 2
         x: 320
@@ -1055,7 +2412,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_75
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b305410000000000800000000000000
+      internalID: 21300148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_75
       rect:
         serializedVersion: 2
         x: 352
@@ -1065,7 +2433,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_76
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b305410000000000800000000000000
+      internalID: 21300150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_76
       rect:
         serializedVersion: 2
         x: 384
@@ -1075,7 +2454,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_77
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b305410000000000800000000000000
+      internalID: 21300152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_77
       rect:
         serializedVersion: 2
         x: 416
@@ -1085,7 +2475,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_78
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab305410000000000800000000000000
+      internalID: 21300154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_78
       rect:
         serializedVersion: 2
         x: 448
@@ -1095,7 +2496,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_79
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb305410000000000800000000000000
+      internalID: 21300156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_79
       rect:
         serializedVersion: 2
         x: 480
@@ -1105,7 +2517,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_80
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb305410000000000800000000000000
+      internalID: 21300158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_80
       rect:
         serializedVersion: 2
         x: 0
@@ -1115,7 +2538,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_81
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c305410000000000800000000000000
+      internalID: 21300160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_81
       rect:
         serializedVersion: 2
         x: 32
@@ -1125,7 +2559,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_82
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2c305410000000000800000000000000
+      internalID: 21300162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_82
       rect:
         serializedVersion: 2
         x: 64
@@ -1135,7 +2580,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_83
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c305410000000000800000000000000
+      internalID: 21300164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_83
       rect:
         serializedVersion: 2
         x: 96
@@ -1145,7 +2601,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_84
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c305410000000000800000000000000
+      internalID: 21300166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_84
       rect:
         serializedVersion: 2
         x: 128
@@ -1155,7 +2622,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_85
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c305410000000000800000000000000
+      internalID: 21300168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_85
       rect:
         serializedVersion: 2
         x: 160
@@ -1165,7 +2643,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_86
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac305410000000000800000000000000
+      internalID: 21300170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_86
       rect:
         serializedVersion: 2
         x: 192
@@ -1175,7 +2664,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_87
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc305410000000000800000000000000
+      internalID: 21300172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_87
       rect:
         serializedVersion: 2
         x: 224
@@ -1185,7 +2685,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_88
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec305410000000000800000000000000
+      internalID: 21300174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_88
       rect:
         serializedVersion: 2
         x: 256
@@ -1195,7 +2706,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_89
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d305410000000000800000000000000
+      internalID: 21300176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_89
       rect:
         serializedVersion: 2
         x: 288
@@ -1205,7 +2727,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_90
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d305410000000000800000000000000
+      internalID: 21300178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_90
       rect:
         serializedVersion: 2
         x: 320
@@ -1215,7 +2748,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_91
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d305410000000000800000000000000
+      internalID: 21300180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_91
       rect:
         serializedVersion: 2
         x: 352
@@ -1225,7 +2769,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_92
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d305410000000000800000000000000
+      internalID: 21300182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_92
       rect:
         serializedVersion: 2
         x: 384
@@ -1235,7 +2790,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_93
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d305410000000000800000000000000
+      internalID: 21300184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_93
       rect:
         serializedVersion: 2
         x: 416
@@ -1245,7 +2811,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_94
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad305410000000000800000000000000
+      internalID: 21300186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_94
       rect:
         serializedVersion: 2
         x: 448
@@ -1255,7 +2832,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_95
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd305410000000000800000000000000
+      internalID: 21300188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_95
       rect:
         serializedVersion: 2
         x: 480
@@ -1265,7 +2853,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_96
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed305410000000000800000000000000
+      internalID: 21300190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_96
       rect:
         serializedVersion: 2
         x: 0
@@ -1275,7 +2874,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_97
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e305410000000000800000000000000
+      internalID: 21300192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_97
       rect:
         serializedVersion: 2
         x: 32
@@ -1285,7 +2895,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_98
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e305410000000000800000000000000
+      internalID: 21300194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_98
       rect:
         serializedVersion: 2
         x: 64
@@ -1295,7 +2916,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_99
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e305410000000000800000000000000
+      internalID: 21300196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_99
       rect:
         serializedVersion: 2
         x: 96
@@ -1305,7 +2937,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_100
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e305410000000000800000000000000
+      internalID: 21300198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_100
       rect:
         serializedVersion: 2
         x: 128
@@ -1315,7 +2958,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_101
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e305410000000000800000000000000
+      internalID: 21300200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_101
       rect:
         serializedVersion: 2
         x: 160
@@ -1325,7 +2979,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_102
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae305410000000000800000000000000
+      internalID: 21300202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_102
       rect:
         serializedVersion: 2
         x: 192
@@ -1335,7 +3000,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_103
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce305410000000000800000000000000
+      internalID: 21300204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_103
       rect:
         serializedVersion: 2
         x: 224
@@ -1345,7 +3021,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_104
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee305410000000000800000000000000
+      internalID: 21300206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_104
       rect:
         serializedVersion: 2
         x: 256
@@ -1355,7 +3042,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_105
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f305410000000000800000000000000
+      internalID: 21300208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_105
       rect:
         serializedVersion: 2
         x: 288
@@ -1365,7 +3063,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_106
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f305410000000000800000000000000
+      internalID: 21300210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_106
       rect:
         serializedVersion: 2
         x: 320
@@ -1375,7 +3084,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_107
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f305410000000000800000000000000
+      internalID: 21300212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_107
       rect:
         serializedVersion: 2
         x: 352
@@ -1385,7 +3105,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_108
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f305410000000000800000000000000
+      internalID: 21300214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_108
       rect:
         serializedVersion: 2
         x: 384
@@ -1395,7 +3126,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_109
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f305410000000000800000000000000
+      internalID: 21300216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_109
       rect:
         serializedVersion: 2
         x: 416
@@ -1405,7 +3147,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_110
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af305410000000000800000000000000
+      internalID: 21300218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_110
       rect:
         serializedVersion: 2
         x: 448
@@ -1415,7 +3168,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_111
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cf305410000000000800000000000000
+      internalID: 21300220
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_111
       rect:
         serializedVersion: 2
         x: 480
@@ -1425,7 +3189,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_112
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef305410000000000800000000000000
+      internalID: 21300222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_112
       rect:
         serializedVersion: 2
         x: 0
@@ -1435,7 +3210,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_113
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 00405410000000000800000000000000
+      internalID: 21300224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_113
       rect:
         serializedVersion: 2
         x: 32
@@ -1445,7 +3231,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_114
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20405410000000000800000000000000
+      internalID: 21300226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_114
       rect:
         serializedVersion: 2
         x: 64
@@ -1455,7 +3252,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_115
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40405410000000000800000000000000
+      internalID: 21300228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_115
       rect:
         serializedVersion: 2
         x: 96
@@ -1465,7 +3273,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_116
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 60405410000000000800000000000000
+      internalID: 21300230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_116
       rect:
         serializedVersion: 2
         x: 128
@@ -1475,7 +3294,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_117
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 80405410000000000800000000000000
+      internalID: 21300232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_117
       rect:
         serializedVersion: 2
         x: 160
@@ -1485,7 +3315,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_118
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0405410000000000800000000000000
+      internalID: 21300234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_118
       rect:
         serializedVersion: 2
         x: 192
@@ -1495,7 +3336,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_119
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c0405410000000000800000000000000
+      internalID: 21300236
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_119
       rect:
         serializedVersion: 2
         x: 224
@@ -1505,7 +3357,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_120
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e0405410000000000800000000000000
+      internalID: 21300238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_120
       rect:
         serializedVersion: 2
         x: 256
@@ -1515,7 +3378,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_121
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01405410000000000800000000000000
+      internalID: 21300240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_121
       rect:
         serializedVersion: 2
         x: 288
@@ -1525,7 +3399,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_122
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21405410000000000800000000000000
+      internalID: 21300242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_122
       rect:
         serializedVersion: 2
         x: 320
@@ -1535,7 +3420,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_123
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 41405410000000000800000000000000
+      internalID: 21300244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_123
       rect:
         serializedVersion: 2
         x: 352
@@ -1545,7 +3441,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_124
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 61405410000000000800000000000000
+      internalID: 21300246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_124
       rect:
         serializedVersion: 2
         x: 384
@@ -1555,7 +3462,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_125
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81405410000000000800000000000000
+      internalID: 21300248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_125
       rect:
         serializedVersion: 2
         x: 416
@@ -1565,7 +3483,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_126
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a1405410000000000800000000000000
+      internalID: 21300250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_126
       rect:
         serializedVersion: 2
         x: 448
@@ -1575,7 +3504,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_127
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c1405410000000000800000000000000
+      internalID: 21300252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_127
       rect:
         serializedVersion: 2
         x: 480
@@ -1585,7 +3525,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_128
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e1405410000000000800000000000000
+      internalID: 21300254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_128
       rect:
         serializedVersion: 2
         x: 0
@@ -1595,7 +3546,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_129
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02405410000000000800000000000000
+      internalID: 21300256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_129
       rect:
         serializedVersion: 2
         x: 32
@@ -1605,7 +3567,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_130
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22405410000000000800000000000000
+      internalID: 21300258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_130
       rect:
         serializedVersion: 2
         x: 64
@@ -1615,7 +3588,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_131
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42405410000000000800000000000000
+      internalID: 21300260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_131
       rect:
         serializedVersion: 2
         x: 96
@@ -1625,7 +3609,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_132
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62405410000000000800000000000000
+      internalID: 21300262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_132
       rect:
         serializedVersion: 2
         x: 128
@@ -1635,7 +3630,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_133
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82405410000000000800000000000000
+      internalID: 21300264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_133
       rect:
         serializedVersion: 2
         x: 160
@@ -1645,7 +3651,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_134
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2405410000000000800000000000000
+      internalID: 21300266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_134
       rect:
         serializedVersion: 2
         x: 192
@@ -1655,7 +3672,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_135
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2405410000000000800000000000000
+      internalID: 21300268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_135
       rect:
         serializedVersion: 2
         x: 224
@@ -1665,7 +3693,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_136
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2405410000000000800000000000000
+      internalID: 21300270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_136
       rect:
         serializedVersion: 2
         x: 256
@@ -1675,7 +3714,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_137
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03405410000000000800000000000000
+      internalID: 21300272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_137
       rect:
         serializedVersion: 2
         x: 288
@@ -1685,7 +3735,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_138
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23405410000000000800000000000000
+      internalID: 21300274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_138
       rect:
         serializedVersion: 2
         x: 320
@@ -1695,7 +3756,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_139
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 43405410000000000800000000000000
+      internalID: 21300276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_139
       rect:
         serializedVersion: 2
         x: 352
@@ -1705,7 +3777,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_140
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63405410000000000800000000000000
+      internalID: 21300278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_140
       rect:
         serializedVersion: 2
         x: 384
@@ -1715,7 +3798,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_141
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83405410000000000800000000000000
+      internalID: 21300280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_141
       rect:
         serializedVersion: 2
         x: 416
@@ -1725,7 +3819,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_142
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3405410000000000800000000000000
+      internalID: 21300282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_142
       rect:
         serializedVersion: 2
         x: 448
@@ -1735,7 +3840,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_143
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3405410000000000800000000000000
+      internalID: 21300284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_143
       rect:
         serializedVersion: 2
         x: 480
@@ -1745,7 +3861,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_144
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3405410000000000800000000000000
+      internalID: 21300286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_144
       rect:
         serializedVersion: 2
         x: 0
@@ -1755,7 +3882,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_145
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04405410000000000800000000000000
+      internalID: 21300288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_145
       rect:
         serializedVersion: 2
         x: 32
@@ -1765,7 +3903,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_146
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 24405410000000000800000000000000
+      internalID: 21300290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_146
       rect:
         serializedVersion: 2
         x: 64
@@ -1775,7 +3924,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_147
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44405410000000000800000000000000
+      internalID: 21300292
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_147
       rect:
         serializedVersion: 2
         x: 96
@@ -1785,7 +3945,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_148
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64405410000000000800000000000000
+      internalID: 21300294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_148
       rect:
         serializedVersion: 2
         x: 128
@@ -1795,7 +3966,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_149
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84405410000000000800000000000000
+      internalID: 21300296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_149
       rect:
         serializedVersion: 2
         x: 160
@@ -1805,7 +3987,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_150
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a4405410000000000800000000000000
+      internalID: 21300298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_150
       rect:
         serializedVersion: 2
         x: 192
@@ -1815,7 +4008,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_151
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4405410000000000800000000000000
+      internalID: 21300300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_151
       rect:
         serializedVersion: 2
         x: 224
@@ -1825,7 +4029,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_152
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4405410000000000800000000000000
+      internalID: 21300302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_152
       rect:
         serializedVersion: 2
         x: 256
@@ -1835,7 +4050,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_153
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05405410000000000800000000000000
+      internalID: 21300304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_153
       rect:
         serializedVersion: 2
         x: 288
@@ -1845,7 +4071,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_154
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25405410000000000800000000000000
+      internalID: 21300306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_154
       rect:
         serializedVersion: 2
         x: 320
@@ -1855,7 +4092,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_155
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45405410000000000800000000000000
+      internalID: 21300308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_155
       rect:
         serializedVersion: 2
         x: 352
@@ -1865,7 +4113,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_156
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65405410000000000800000000000000
+      internalID: 21300310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_156
       rect:
         serializedVersion: 2
         x: 384
@@ -1875,7 +4134,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_157
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 85405410000000000800000000000000
+      internalID: 21300312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_157
       rect:
         serializedVersion: 2
         x: 416
@@ -1885,7 +4155,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_158
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5405410000000000800000000000000
+      internalID: 21300314
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_158
       rect:
         serializedVersion: 2
         x: 448
@@ -1895,7 +4176,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_159
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5405410000000000800000000000000
+      internalID: 21300316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_159
       rect:
         serializedVersion: 2
         x: 480
@@ -1905,7 +4197,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_160
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5405410000000000800000000000000
+      internalID: 21300318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_160
       rect:
         serializedVersion: 2
         x: 0
@@ -1915,7 +4218,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_161
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 06405410000000000800000000000000
+      internalID: 21300320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_161
       rect:
         serializedVersion: 2
         x: 32
@@ -1925,7 +4239,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_162
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26405410000000000800000000000000
+      internalID: 21300322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_162
       rect:
         serializedVersion: 2
         x: 64
@@ -1935,7 +4260,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_163
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 46405410000000000800000000000000
+      internalID: 21300324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_163
       rect:
         serializedVersion: 2
         x: 96
@@ -1945,7 +4281,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_164
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66405410000000000800000000000000
+      internalID: 21300326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_164
       rect:
         serializedVersion: 2
         x: 128
@@ -1955,7 +4302,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_165
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 86405410000000000800000000000000
+      internalID: 21300328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_165
       rect:
         serializedVersion: 2
         x: 160
@@ -1965,7 +4323,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_166
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a6405410000000000800000000000000
+      internalID: 21300330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_166
       rect:
         serializedVersion: 2
         x: 192
@@ -1975,7 +4344,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_167
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6405410000000000800000000000000
+      internalID: 21300332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_167
       rect:
         serializedVersion: 2
         x: 224
@@ -1985,7 +4365,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_168
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e6405410000000000800000000000000
+      internalID: 21300334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_168
       rect:
         serializedVersion: 2
         x: 256
@@ -1995,7 +4386,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_169
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 07405410000000000800000000000000
+      internalID: 21300336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_169
       rect:
         serializedVersion: 2
         x: 288
@@ -2005,7 +4407,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_170
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27405410000000000800000000000000
+      internalID: 21300338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_170
       rect:
         serializedVersion: 2
         x: 320
@@ -2015,7 +4428,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_171
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 47405410000000000800000000000000
+      internalID: 21300340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_171
       rect:
         serializedVersion: 2
         x: 352
@@ -2025,7 +4449,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_172
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 67405410000000000800000000000000
+      internalID: 21300342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_172
       rect:
         serializedVersion: 2
         x: 384
@@ -2035,7 +4470,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_173
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87405410000000000800000000000000
+      internalID: 21300344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_173
       rect:
         serializedVersion: 2
         x: 416
@@ -2045,7 +4491,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_174
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a7405410000000000800000000000000
+      internalID: 21300346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_174
       rect:
         serializedVersion: 2
         x: 448
@@ -2055,7 +4512,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_175
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c7405410000000000800000000000000
+      internalID: 21300348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_175
       rect:
         serializedVersion: 2
         x: 480
@@ -2065,7 +4533,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_176
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7405410000000000800000000000000
+      internalID: 21300350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_176
       rect:
         serializedVersion: 2
         x: 0
@@ -2075,7 +4554,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_177
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 08405410000000000800000000000000
+      internalID: 21300352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_177
       rect:
         serializedVersion: 2
         x: 32
@@ -2085,7 +4575,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_178
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 28405410000000000800000000000000
+      internalID: 21300354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_178
       rect:
         serializedVersion: 2
         x: 64
@@ -2095,7 +4596,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_179
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 48405410000000000800000000000000
+      internalID: 21300356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_179
       rect:
         serializedVersion: 2
         x: 96
@@ -2105,7 +4617,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_180
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 68405410000000000800000000000000
+      internalID: 21300358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_180
       rect:
         serializedVersion: 2
         x: 128
@@ -2115,7 +4638,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_181
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 88405410000000000800000000000000
+      internalID: 21300360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_181
       rect:
         serializedVersion: 2
         x: 160
@@ -2125,7 +4659,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_182
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8405410000000000800000000000000
+      internalID: 21300362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_182
       rect:
         serializedVersion: 2
         x: 192
@@ -2135,7 +4680,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_183
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c8405410000000000800000000000000
+      internalID: 21300364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_183
       rect:
         serializedVersion: 2
         x: 224
@@ -2145,7 +4701,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_184
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8405410000000000800000000000000
+      internalID: 21300366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_184
       rect:
         serializedVersion: 2
         x: 256
@@ -2155,7 +4722,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_185
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09405410000000000800000000000000
+      internalID: 21300368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_185
       rect:
         serializedVersion: 2
         x: 288
@@ -2165,7 +4743,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_186
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29405410000000000800000000000000
+      internalID: 21300370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_186
       rect:
         serializedVersion: 2
         x: 320
@@ -2175,7 +4764,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_187
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49405410000000000800000000000000
+      internalID: 21300372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_187
       rect:
         serializedVersion: 2
         x: 352
@@ -2185,7 +4785,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_188
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69405410000000000800000000000000
+      internalID: 21300374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_188
       rect:
         serializedVersion: 2
         x: 384
@@ -2195,7 +4806,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_189
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 89405410000000000800000000000000
+      internalID: 21300376
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_189
       rect:
         serializedVersion: 2
         x: 416
@@ -2205,7 +4827,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_190
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a9405410000000000800000000000000
+      internalID: 21300378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_190
       rect:
         serializedVersion: 2
         x: 448
@@ -2215,7 +4848,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_191
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c9405410000000000800000000000000
+      internalID: 21300380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_191
       rect:
         serializedVersion: 2
         x: 480
@@ -2225,7 +4869,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_192
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e9405410000000000800000000000000
+      internalID: 21300382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_192
       rect:
         serializedVersion: 2
         x: 0
@@ -2235,7 +4890,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_193
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a405410000000000800000000000000
+      internalID: 21300384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_193
       rect:
         serializedVersion: 2
         x: 32
@@ -2245,7 +4911,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_194
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a405410000000000800000000000000
+      internalID: 21300386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_194
       rect:
         serializedVersion: 2
         x: 64
@@ -2255,7 +4932,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_195
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a405410000000000800000000000000
+      internalID: 21300388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_195
       rect:
         serializedVersion: 2
         x: 96
@@ -2265,7 +4953,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_196
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a405410000000000800000000000000
+      internalID: 21300390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_196
       rect:
         serializedVersion: 2
         x: 128
@@ -2275,7 +4974,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_197
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a405410000000000800000000000000
+      internalID: 21300392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_197
       rect:
         serializedVersion: 2
         x: 160
@@ -2285,7 +4995,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_198
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa405410000000000800000000000000
+      internalID: 21300394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_198
       rect:
         serializedVersion: 2
         x: 192
@@ -2295,7 +5016,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_199
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca405410000000000800000000000000
+      internalID: 21300396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_199
       rect:
         serializedVersion: 2
         x: 224
@@ -2305,7 +5037,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_200
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea405410000000000800000000000000
+      internalID: 21300398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_200
       rect:
         serializedVersion: 2
         x: 256
@@ -2315,7 +5058,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_201
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b405410000000000800000000000000
+      internalID: 21300400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_201
       rect:
         serializedVersion: 2
         x: 288
@@ -2325,7 +5079,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_202
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b405410000000000800000000000000
+      internalID: 21300402
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_202
       rect:
         serializedVersion: 2
         x: 320
@@ -2335,7 +5100,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_203
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b405410000000000800000000000000
+      internalID: 21300404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_203
       rect:
         serializedVersion: 2
         x: 352
@@ -2345,7 +5121,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_204
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b405410000000000800000000000000
+      internalID: 21300406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_204
       rect:
         serializedVersion: 2
         x: 384
@@ -2355,7 +5142,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_205
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b405410000000000800000000000000
+      internalID: 21300408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_205
       rect:
         serializedVersion: 2
         x: 416
@@ -2365,7 +5163,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_206
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab405410000000000800000000000000
+      internalID: 21300410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_206
       rect:
         serializedVersion: 2
         x: 448
@@ -2375,7 +5184,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_207
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb405410000000000800000000000000
+      internalID: 21300412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_207
       rect:
         serializedVersion: 2
         x: 480
@@ -2385,7 +5205,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_208
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb405410000000000800000000000000
+      internalID: 21300414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_208
       rect:
         serializedVersion: 2
         x: 0
@@ -2395,7 +5226,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_209
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c405410000000000800000000000000
+      internalID: 21300416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_209
       rect:
         serializedVersion: 2
         x: 32
@@ -2405,7 +5247,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_210
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2c405410000000000800000000000000
+      internalID: 21300418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_210
       rect:
         serializedVersion: 2
         x: 64
@@ -2415,7 +5268,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_211
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c405410000000000800000000000000
+      internalID: 21300420
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_211
       rect:
         serializedVersion: 2
         x: 96
@@ -2425,7 +5289,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_212
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c405410000000000800000000000000
+      internalID: 21300422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_212
       rect:
         serializedVersion: 2
         x: 128
@@ -2435,7 +5310,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_213
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c405410000000000800000000000000
+      internalID: 21300424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_213
       rect:
         serializedVersion: 2
         x: 160
@@ -2445,7 +5331,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_214
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac405410000000000800000000000000
+      internalID: 21300426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_214
       rect:
         serializedVersion: 2
         x: 192
@@ -2455,7 +5352,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_215
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc405410000000000800000000000000
+      internalID: 21300428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_215
       rect:
         serializedVersion: 2
         x: 224
@@ -2465,7 +5373,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_216
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec405410000000000800000000000000
+      internalID: 21300430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_216
       rect:
         serializedVersion: 2
         x: 256
@@ -2475,7 +5394,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_217
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d405410000000000800000000000000
+      internalID: 21300432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_217
       rect:
         serializedVersion: 2
         x: 288
@@ -2485,7 +5415,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_218
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d405410000000000800000000000000
+      internalID: 21300434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_218
       rect:
         serializedVersion: 2
         x: 320
@@ -2495,7 +5436,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_219
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d405410000000000800000000000000
+      internalID: 21300436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_219
       rect:
         serializedVersion: 2
         x: 352
@@ -2505,7 +5457,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_220
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d405410000000000800000000000000
+      internalID: 21300438
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_220
       rect:
         serializedVersion: 2
         x: 384
@@ -2515,7 +5478,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_221
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d405410000000000800000000000000
+      internalID: 21300440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_221
       rect:
         serializedVersion: 2
         x: 416
@@ -2525,7 +5499,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_222
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad405410000000000800000000000000
+      internalID: 21300442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_222
       rect:
         serializedVersion: 2
         x: 448
@@ -2535,7 +5520,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_223
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd405410000000000800000000000000
+      internalID: 21300444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_223
       rect:
         serializedVersion: 2
         x: 480
@@ -2545,7 +5541,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_224
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed405410000000000800000000000000
+      internalID: 21300446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_224
       rect:
         serializedVersion: 2
         x: 0
@@ -2555,7 +5562,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_225
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e405410000000000800000000000000
+      internalID: 21300448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_225
       rect:
         serializedVersion: 2
         x: 32
@@ -2565,7 +5583,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_226
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e405410000000000800000000000000
+      internalID: 21300450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_226
       rect:
         serializedVersion: 2
         x: 64
@@ -2575,7 +5604,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_227
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e405410000000000800000000000000
+      internalID: 21300452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_227
       rect:
         serializedVersion: 2
         x: 96
@@ -2585,7 +5625,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_228
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e405410000000000800000000000000
+      internalID: 21300454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_228
       rect:
         serializedVersion: 2
         x: 128
@@ -2595,7 +5646,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_229
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e405410000000000800000000000000
+      internalID: 21300456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_229
       rect:
         serializedVersion: 2
         x: 160
@@ -2605,7 +5667,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_230
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae405410000000000800000000000000
+      internalID: 21300458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_230
       rect:
         serializedVersion: 2
         x: 192
@@ -2615,7 +5688,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_231
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce405410000000000800000000000000
+      internalID: 21300460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_231
       rect:
         serializedVersion: 2
         x: 224
@@ -2625,7 +5709,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_232
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee405410000000000800000000000000
+      internalID: 21300462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_232
       rect:
         serializedVersion: 2
         x: 256
@@ -2635,7 +5730,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_233
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f405410000000000800000000000000
+      internalID: 21300464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_233
       rect:
         serializedVersion: 2
         x: 288
@@ -2645,7 +5751,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_234
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f405410000000000800000000000000
+      internalID: 21300466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_234
       rect:
         serializedVersion: 2
         x: 320
@@ -2655,7 +5772,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_235
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f405410000000000800000000000000
+      internalID: 21300468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_235
       rect:
         serializedVersion: 2
         x: 352
@@ -2665,7 +5793,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_236
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f405410000000000800000000000000
+      internalID: 21300470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_236
       rect:
         serializedVersion: 2
         x: 384
@@ -2675,7 +5814,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_237
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f405410000000000800000000000000
+      internalID: 21300472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_237
       rect:
         serializedVersion: 2
         x: 416
@@ -2685,7 +5835,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_238
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af405410000000000800000000000000
+      internalID: 21300474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_238
       rect:
         serializedVersion: 2
         x: 448
@@ -2695,7 +5856,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_239
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cf405410000000000800000000000000
+      internalID: 21300476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_239
       rect:
         serializedVersion: 2
         x: 480
@@ -2705,7 +5877,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_240
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef405410000000000800000000000000
+      internalID: 21300478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_240
       rect:
         serializedVersion: 2
         x: 0
@@ -2715,7 +5898,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_241
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 00505410000000000800000000000000
+      internalID: 21300480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_241
       rect:
         serializedVersion: 2
         x: 32
@@ -2725,7 +5919,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_242
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20505410000000000800000000000000
+      internalID: 21300482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_242
       rect:
         serializedVersion: 2
         x: 64
@@ -2735,7 +5940,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_243
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40505410000000000800000000000000
+      internalID: 21300484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_243
       rect:
         serializedVersion: 2
         x: 96
@@ -2745,7 +5961,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_244
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 60505410000000000800000000000000
+      internalID: 21300486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_244
       rect:
         serializedVersion: 2
         x: 128
@@ -2755,7 +5982,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_245
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 80505410000000000800000000000000
+      internalID: 21300488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_245
       rect:
         serializedVersion: 2
         x: 160
@@ -2765,7 +6003,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_246
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0505410000000000800000000000000
+      internalID: 21300490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_246
       rect:
         serializedVersion: 2
         x: 192
@@ -2775,7 +6024,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_247
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c0505410000000000800000000000000
+      internalID: 21300492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_247
       rect:
         serializedVersion: 2
         x: 224
@@ -2785,7 +6045,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_248
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e0505410000000000800000000000000
+      internalID: 21300494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_248
       rect:
         serializedVersion: 2
         x: 256
@@ -2795,7 +6066,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_249
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01505410000000000800000000000000
+      internalID: 21300496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_249
       rect:
         serializedVersion: 2
         x: 288
@@ -2805,7 +6087,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_250
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21505410000000000800000000000000
+      internalID: 21300498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_250
       rect:
         serializedVersion: 2
         x: 320
@@ -2815,7 +6108,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_251
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 41505410000000000800000000000000
+      internalID: 21300500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_251
       rect:
         serializedVersion: 2
         x: 352
@@ -2825,7 +6129,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_252
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 61505410000000000800000000000000
+      internalID: 21300502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_252
       rect:
         serializedVersion: 2
         x: 384
@@ -2835,7 +6150,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_253
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81505410000000000800000000000000
+      internalID: 21300504
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_253
       rect:
         serializedVersion: 2
         x: 416
@@ -2845,7 +6171,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_254
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a1505410000000000800000000000000
+      internalID: 21300506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_254
       rect:
         serializedVersion: 2
         x: 448
@@ -2855,7 +6192,18 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: equipment-icons-tileset_255
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c1505410000000000800000000000000
+      internalID: 21300508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipment-icons-tileset_255
       rect:
         serializedVersion: 2
         x: 480
@@ -2865,7 +6213,286 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e1505410000000000800000000000000
+      internalID: 21300510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      equipment-icons-tileset_217: 21300434
+      equipment-icons-tileset_102: 21300204
+      equipment-icons-tileset_155: 21300310
+      equipment-icons-tileset_114: 21300228
+      equipment-icons-tileset_23: 21300046
+      equipment-icons-tileset_166: 21300332
+      equipment-icons-tileset_157: 21300314
+      equipment-icons-tileset_149: 21300298
+      equipment-icons-tileset_136: 21300272
+      equipment-icons-tileset_253: 21300506
+      equipment-icons-tileset_83: 21300166
+      equipment-icons-tileset_133: 21300266
+      equipment-icons-tileset_206: 21300412
+      equipment-icons-tileset_223: 21300446
+      equipment-icons-tileset_86: 21300172
+      equipment-icons-tileset_161: 21300322
+      equipment-icons-tileset_126: 21300252
+      equipment-icons-tileset_199: 21300398
+      equipment-icons-tileset_219: 21300438
+      equipment-icons-tileset_187: 21300374
+      equipment-icons-tileset_240: 21300480
+      equipment-icons-tileset_205: 21300410
+      equipment-icons-tileset_121: 21300242
+      equipment-icons-tileset_209: 21300418
+      equipment-icons-tileset_22: 21300044
+      equipment-icons-tileset_6: 21300012
+      equipment-icons-tileset_56: 21300112
+      equipment-icons-tileset_238: 21300476
+      equipment-icons-tileset_120: 21300240
+      equipment-icons-tileset_234: 21300468
+      equipment-icons-tileset_134: 21300268
+      equipment-icons-tileset_140: 21300280
+      equipment-icons-tileset_143: 21300286
+      equipment-icons-tileset_91: 21300182
+      equipment-icons-tileset_172: 21300344
+      equipment-icons-tileset_35: 21300070
+      equipment-icons-tileset_247: 21300494
+      equipment-icons-tileset_25: 21300050
+      equipment-icons-tileset_207: 21300414
+      equipment-icons-tileset_191: 21300382
+      equipment-icons-tileset_122: 21300244
+      equipment-icons-tileset_101: 21300202
+      equipment-icons-tileset_3: 21300006
+      equipment-icons-tileset_26: 21300052
+      equipment-icons-tileset_186: 21300372
+      equipment-icons-tileset_200: 21300400
+      equipment-icons-tileset_40: 21300080
+      equipment-icons-tileset_178: 21300356
+      equipment-icons-tileset_185: 21300370
+      equipment-icons-tileset_74: 21300148
+      equipment-icons-tileset_111: 21300222
+      equipment-icons-tileset_156: 21300312
+      equipment-icons-tileset_94: 21300188
+      equipment-icons-tileset_158: 21300316
+      equipment-icons-tileset_65: 21300130
+      equipment-icons-tileset_49: 21300098
+      equipment-icons-tileset_164: 21300328
+      equipment-icons-tileset_44: 21300088
+      equipment-icons-tileset_11: 21300022
+      equipment-icons-tileset_52: 21300104
+      equipment-icons-tileset_104: 21300208
+      equipment-icons-tileset_130: 21300260
+      equipment-icons-tileset_81: 21300162
+      equipment-icons-tileset_0: 21300000
+      equipment-icons-tileset_198: 21300396
+      equipment-icons-tileset_119: 21300238
+      equipment-icons-tileset_125: 21300250
+      equipment-icons-tileset_10: 21300020
+      equipment-icons-tileset_5: 21300010
+      equipment-icons-tileset_29: 21300058
+      equipment-icons-tileset_107: 21300214
+      equipment-icons-tileset_162: 21300324
+      equipment-icons-tileset_196: 21300392
+      equipment-icons-tileset_60: 21300120
+      equipment-icons-tileset_7: 21300014
+      equipment-icons-tileset_54: 21300108
+      equipment-icons-tileset_31: 21300062
+      equipment-icons-tileset_146: 21300292
+      equipment-icons-tileset_151: 21300302
+      equipment-icons-tileset_236: 21300472
+      equipment-icons-tileset_202: 21300404
+      equipment-icons-tileset_255: 21300510
+      equipment-icons-tileset_242: 21300484
+      equipment-icons-tileset_33: 21300066
+      equipment-icons-tileset_13: 21300026
+      equipment-icons-tileset_137: 21300274
+      equipment-icons-tileset_15: 21300030
+      equipment-icons-tileset_189: 21300378
+      equipment-icons-tileset_77: 21300154
+      equipment-icons-tileset_17: 21300034
+      equipment-icons-tileset_89: 21300178
+      equipment-icons-tileset_246: 21300492
+      equipment-icons-tileset_213: 21300426
+      equipment-icons-tileset_79: 21300158
+      equipment-icons-tileset_142: 21300284
+      equipment-icons-tileset_76: 21300152
+      equipment-icons-tileset_30: 21300060
+      equipment-icons-tileset_2: 21300004
+      equipment-icons-tileset_188: 21300376
+      equipment-icons-tileset_1: 21300002
+      equipment-icons-tileset_203: 21300406
+      equipment-icons-tileset_118: 21300236
+      equipment-icons-tileset_180: 21300360
+      equipment-icons-tileset_105: 21300210
+      equipment-icons-tileset_228: 21300456
+      equipment-icons-tileset_249: 21300498
+      equipment-icons-tileset_57: 21300114
+      equipment-icons-tileset_177: 21300354
+      equipment-icons-tileset_64: 21300128
+      equipment-icons-tileset_244: 21300488
+      equipment-icons-tileset_250: 21300500
+      equipment-icons-tileset_8: 21300016
+      equipment-icons-tileset_153: 21300306
+      equipment-icons-tileset_248: 21300496
+      equipment-icons-tileset_226: 21300452
+      equipment-icons-tileset_183: 21300366
+      equipment-icons-tileset_227: 21300454
+      equipment-icons-tileset_144: 21300288
+      equipment-icons-tileset_36: 21300072
+      equipment-icons-tileset_184: 21300368
+      equipment-icons-tileset_58: 21300116
+      equipment-icons-tileset_245: 21300490
+      equipment-icons-tileset_108: 21300216
+      equipment-icons-tileset_39: 21300078
+      equipment-icons-tileset_45: 21300090
+      equipment-icons-tileset_229: 21300458
+      equipment-icons-tileset_115: 21300230
+      equipment-icons-tileset_82: 21300164
+      equipment-icons-tileset_96: 21300192
+      equipment-icons-tileset_129: 21300258
+      equipment-icons-tileset_113: 21300226
+      equipment-icons-tileset_123: 21300246
+      equipment-icons-tileset_232: 21300464
+      equipment-icons-tileset_12: 21300024
+      equipment-icons-tileset_61: 21300122
+      equipment-icons-tileset_208: 21300416
+      equipment-icons-tileset_235: 21300470
+      equipment-icons-tileset_100: 21300200
+      equipment-icons-tileset_139: 21300278
+      equipment-icons-tileset_190: 21300380
+      equipment-icons-tileset_131: 21300262
+      equipment-icons-tileset_109: 21300218
+      equipment-icons-tileset_239: 21300478
+      equipment-icons-tileset_47: 21300094
+      equipment-icons-tileset_135: 21300270
+      equipment-icons-tileset_138: 21300276
+      equipment-icons-tileset_173: 21300346
+      equipment-icons-tileset_169: 21300338
+      equipment-icons-tileset_59: 21300118
+      equipment-icons-tileset_103: 21300206
+      equipment-icons-tileset_220: 21300440
+      equipment-icons-tileset_222: 21300444
+      equipment-icons-tileset_37: 21300074
+      equipment-icons-tileset_132: 21300264
+      equipment-icons-tileset_69: 21300138
+      equipment-icons-tileset_195: 21300390
+      equipment-icons-tileset_204: 21300408
+      equipment-icons-tileset_73: 21300146
+      equipment-icons-tileset_211: 21300422
+      equipment-icons-tileset_72: 21300144
+      equipment-icons-tileset_252: 21300504
+      equipment-icons-tileset_51: 21300102
+      equipment-icons-tileset_95: 21300190
+      equipment-icons-tileset_28: 21300056
+      equipment-icons-tileset_38: 21300076
+      equipment-icons-tileset_112: 21300224
+      equipment-icons-tileset_19: 21300038
+      equipment-icons-tileset_147: 21300294
+      equipment-icons-tileset_88: 21300176
+      equipment-icons-tileset_141: 21300282
+      equipment-icons-tileset_97: 21300194
+      equipment-icons-tileset_214: 21300428
+      equipment-icons-tileset_71: 21300142
+      equipment-icons-tileset_254: 21300508
+      equipment-icons-tileset_87: 21300174
+      equipment-icons-tileset_70: 21300140
+      equipment-icons-tileset_67: 21300134
+      equipment-icons-tileset_27: 21300054
+      equipment-icons-tileset_167: 21300334
+      equipment-icons-tileset_53: 21300106
+      equipment-icons-tileset_85: 21300170
+      equipment-icons-tileset_171: 21300342
+      equipment-icons-tileset_210: 21300420
+      equipment-icons-tileset_179: 21300358
+      equipment-icons-tileset_241: 21300482
+      equipment-icons-tileset_212: 21300424
+      equipment-icons-tileset_90: 21300180
+      equipment-icons-tileset_150: 21300300
+      equipment-icons-tileset_34: 21300068
+      equipment-icons-tileset_110: 21300220
+      equipment-icons-tileset_99: 21300198
+      equipment-icons-tileset_62: 21300124
+      equipment-icons-tileset_221: 21300442
+      equipment-icons-tileset_170: 21300340
+      equipment-icons-tileset_42: 21300084
+      equipment-icons-tileset_46: 21300092
+      equipment-icons-tileset_243: 21300486
+      equipment-icons-tileset_84: 21300168
+      equipment-icons-tileset_66: 21300132
+      equipment-icons-tileset_55: 21300110
+      equipment-icons-tileset_237: 21300474
+      equipment-icons-tileset_63: 21300126
+      equipment-icons-tileset_80: 21300160
+      equipment-icons-tileset_41: 21300082
+      equipment-icons-tileset_16: 21300032
+      equipment-icons-tileset_124: 21300248
+      equipment-icons-tileset_148: 21300296
+      equipment-icons-tileset_216: 21300432
+      equipment-icons-tileset_218: 21300436
+      equipment-icons-tileset_98: 21300196
+      equipment-icons-tileset_224: 21300448
+      equipment-icons-tileset_78: 21300156
+      equipment-icons-tileset_160: 21300320
+      equipment-icons-tileset_48: 21300096
+      equipment-icons-tileset_75: 21300150
+      equipment-icons-tileset_176: 21300352
+      equipment-icons-tileset_251: 21300502
+      equipment-icons-tileset_24: 21300048
+      equipment-icons-tileset_128: 21300256
+      equipment-icons-tileset_68: 21300136
+      equipment-icons-tileset_194: 21300388
+      equipment-icons-tileset_215: 21300430
+      equipment-icons-tileset_231: 21300462
+      equipment-icons-tileset_9: 21300018
+      equipment-icons-tileset_181: 21300362
+      equipment-icons-tileset_225: 21300450
+      equipment-icons-tileset_192: 21300384
+      equipment-icons-tileset_159: 21300318
+      equipment-icons-tileset_117: 21300234
+      equipment-icons-tileset_21: 21300042
+      equipment-icons-tileset_50: 21300100
+      equipment-icons-tileset_193: 21300386
+      equipment-icons-tileset_182: 21300364
+      equipment-icons-tileset_233: 21300466
+      equipment-icons-tileset_165: 21300330
+      equipment-icons-tileset_93: 21300186
+      equipment-icons-tileset_106: 21300212
+      equipment-icons-tileset_127: 21300254
+      equipment-icons-tileset_152: 21300304
+      equipment-icons-tileset_20: 21300040
+      equipment-icons-tileset_174: 21300348
+      equipment-icons-tileset_92: 21300184
+      equipment-icons-tileset_154: 21300308
+      equipment-icons-tileset_116: 21300232
+      equipment-icons-tileset_14: 21300028
+      equipment-icons-tileset_32: 21300064
+      equipment-icons-tileset_168: 21300336
+      equipment-icons-tileset_4: 21300008
+      equipment-icons-tileset_201: 21300402
+      equipment-icons-tileset_230: 21300460
+      equipment-icons-tileset_145: 21300290
+      equipment-icons-tileset_163: 21300326
+      equipment-icons-tileset_197: 21300394
+      equipment-icons-tileset_18: 21300036
+      equipment-icons-tileset_43: 21300086
+      equipment-icons-tileset_175: 21300350
   spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
