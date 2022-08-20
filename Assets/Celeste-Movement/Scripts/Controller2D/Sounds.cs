@@ -5,7 +5,7 @@ using CarlesModules;
 
 namespace Carles.Engine2D {
 
-  public class PlayerAudio : MonoBehaviour {
+  public class Sounds : MonoBehaviour {
 
     [Space]
     [Header("Audio")]

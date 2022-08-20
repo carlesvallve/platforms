@@ -6,12 +6,11 @@ using UnityEngine.InputSystem;
 
 namespace Carles.Engine2D {
 
-
   public class Movement : MonoBehaviour {
     private Collision coll;
     private Rigidbody2D rb;
     private AnimationScript anim;
-    private PlayerAudio playerAudio;
+    private Sounds sounds;
 
     [Space]
     [Header("Stats")]
@@ -46,18 +45,18 @@ namespace Carles.Engine2D {
     public ParticleSystem slideParticle;
 
     //  movement
-
-    private int jumpsAvailable;
     private Vector2 curMoveInput;
     private float xRaw;
     private float yRaw;
 
-    // input flags
+    // jump
+    private bool isBetterJumpEnabled = true;
+    private int jumpsAvailable;
 
+    // input flags
     private bool isJumpBeingPressed;
     private bool isDashBeingPressed;
     private bool isGrabBeingPressed;
-    private bool isBetterJumpEnabled = true;
 
     // ------------------------------------------------------------------------------
     // Input
@@ -80,8 +79,8 @@ namespace Carles.Engine2D {
         jumpsAvailable -= 1;
 
         anim.SetTrigger("jump");
-        // playerAudio.PlayFootstep();
-        playerAudio.PlayJump();
+        // sounds.PlayFootstep();
+        sounds.PlayJump();
 
         Jump(Vector2.up, false); // coll.onGround check is implicit on jumpsAvailable
         if (coll.onWall && !coll.onGround) WallJump();
@@ -111,7 +110,7 @@ namespace Carles.Engine2D {
       coll = GetComponent<Collision>();
       rb = GetComponent<Rigidbody2D>();
       anim = GetComponentInChildren<AnimationScript>();
-      playerAudio = GetComponentInChildren<PlayerAudio>();
+      sounds = GetComponentInChildren<Sounds>();
     }
 
     // Update is called once per frame
@@ -120,12 +119,63 @@ namespace Carles.Engine2D {
       // get movement increments
       float x = curMoveInput.x;
       float y = curMoveInput.y;
+
+      UpdateWalk(x, y);
+      UpdateJump();
+      UpdateWalls(x, y);
+      UpdateCharSide(x);
+    }
+
+    // ------------------------------------------------------------------------------
+    // Walk
+
+    void UpdateWalk(float x, float y) {
       xRaw = x;
       yRaw = y;
       Vector2 dir = new Vector2(x, y);
 
       Walk(dir);
       anim.SetHorizontalMovement(x, y, rb.velocity.y);
+    }
+
+    private void Walk(Vector2 dir) {
+      if (!canMove)
+        return;
+
+      if (wallGrab)
+        return;
+
+      if (!wallJumped) {
+        rb.velocity = new Vector2(dir.x * speed, rb.velocity.y);
+      } else {
+        rb.velocity = Vector2.Lerp(rb.velocity, (new Vector2(dir.x * speed, rb.velocity.y)), wallJumpLerp * Time.deltaTime);
+      }
+    }
+
+    IEnumerator DisableMovement(float time) {
+      canMove = false;
+      yield return new WaitForSeconds(time);
+      canMove = true;
+    }
+
+    // ------------------------------------------------------------------------------
+    // Jump
+
+    void UpdateJump() {
+      if (coll.onGround && !groundTouch) {
+        GroundTouch();
+        groundTouch = true;
+      }
+
+      if (!coll.onGround && groundTouch) {
+        groundTouch = false;
+      }
+
+      // if on ground we can jump
+      if (coll.onGround && !isDashing) {
+        wallJumped = false;
+        isBetterJumpEnabled = true;
+      }
 
       // Better Jump
       if (isBetterJumpEnabled) {
@@ -135,8 +185,32 @@ namespace Carles.Engine2D {
           rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
         }
       }
+    }
 
-      // flags for wall grab/slide
+    private void Jump(Vector2 dir, bool wall) {
+      slideParticle.transform.parent.localScale = new Vector3(ParticleSide(), 1, 1);
+      ParticleSystem particle = wall ? wallJumpParticle : jumpParticle;
+
+      rb.velocity = new Vector2(rb.velocity.x, 0);
+      rb.velocity += dir * jumpForce;
+
+      particle.Play();
+    }
+
+    void GroundTouch() {
+      hasDashed = false;
+      isDashing = false;
+      side = anim.sr.flipX ? -1 : 1;
+      jumpParticle.Play();
+      sounds.PlayFootstep();
+    }
+
+    // ------------------------------------------------------------------------------
+    // Walls
+
+    void UpdateWalls(float x, float y) {
+      // wall flags
+
       if (coll.onWall && isGrabBeingPressed && canMove) {
         if (side != coll.wallSide) anim.Flip(side * -1);
         wallGrab = true;
@@ -147,11 +221,8 @@ namespace Carles.Engine2D {
         wallSlide = false;
       }
 
-      // if on ground we can jump
-      if (coll.onGround && !isDashing) {
-        wallJumped = false;
-        isBetterJumpEnabled = true;
-      }
+
+      // wall grab
 
       if (wallGrab && !isDashing) {
         rb.gravityScale = 0;
@@ -165,6 +236,8 @@ namespace Carles.Engine2D {
         rb.gravityScale = 3;
       }
 
+      // wall slide
+
       if (coll.onWall && !coll.onGround) {
         if (x != 0 && !wallGrab && rb.velocity.y < 0) {
           wallSlide = true;
@@ -176,103 +249,8 @@ namespace Carles.Engine2D {
         wallSlide = false;
       }
 
-      if (coll.onGround && !groundTouch) {
-        GroundTouch();
-        groundTouch = true;
-      }
-
-      if (!coll.onGround && groundTouch) {
-        groundTouch = false;
-      }
-
       WallParticle(y);
-
-      if (wallGrab || wallSlide || !canMove)
-        return;
-
-      if (x > 0) {
-        side = 1;
-        anim.Flip(side);
-      }
-      if (x < 0) {
-        side = -1;
-        anim.Flip(side);
-      }
     }
-
-    void GroundTouch() {
-      hasDashed = false;
-      isDashing = false;
-
-      side = anim.sr.flipX ? -1 : 1;
-
-      jumpParticle.Play();
-
-      // _source.PlayOneShot(_footsteps[Random.Range(0, _footsteps.Length)]);
-      playerAudio.PlayFootstep();
-    }
-
-    // ------------------------------------------------------------------------------
-    // Dash
-
-    private void Dash(float x, float y) {
-      FindObjectOfType<RippleEffect>().Emit(Camera.main.WorldToViewportPoint(transform.position));
-
-      hasDashed = true;
-
-      anim.SetTrigger("dash");
-
-      rb.velocity = Vector2.zero;
-      Vector2 dir = new Vector2(x, y);
-
-      rb.velocity += dir.normalized * dashSpeed;
-      StartCoroutine(DashWait());
-    }
-
-    IEnumerator DashWait() {
-      // FindObjectOfType<GhostTrail>().ShowGhost();
-      StartCoroutine(GroundDash());
-
-      // progressively dump rigidbody drag
-      StartCoroutine(LerpRigidbodyDrag(14, 0, 0.8f));
-
-      dashParticle.Play();
-      rb.gravityScale = 0;
-      isBetterJumpEnabled = false;
-      wallJumped = true;
-      isDashing = true;
-
-      // playerAudio.PlayFootstep();
-      playerAudio.PlayJump();
-      playerAudio.PlayDash();
-
-      yield return new WaitForSeconds(.3f);
-
-      dashParticle.Stop();
-      rb.gravityScale = 3;
-      isBetterJumpEnabled = true;
-      wallJumped = false;
-      isDashing = false;
-    }
-
-    IEnumerator GroundDash() {
-      yield return new WaitForSeconds(.15f);
-      if (coll.onGround)
-        hasDashed = false;
-    }
-
-    IEnumerator LerpRigidbodyDrag(float startValue, float endValue, float duration) {
-      float time = 0;
-      // float startValue = startValue;
-      while (time < duration) {
-        rb.drag = Mathf.Lerp(startValue, endValue, time / duration);
-        time += Time.deltaTime;
-        yield return null;
-      }
-      rb.drag = endValue;
-    }
-
-    // ------------------------------------------------------------------------------
 
     private void WallJump() {
       if ((side == 1 && coll.onRightWall) || side == -1 && !coll.onRightWall) {
@@ -305,37 +283,7 @@ namespace Carles.Engine2D {
 
       rb.velocity = new Vector2(push, -slideSpeed);
 
-      playerAudio.PlaySlide();
-    }
-
-    private void Walk(Vector2 dir) {
-      if (!canMove)
-        return;
-
-      if (wallGrab)
-        return;
-
-      if (!wallJumped) {
-        rb.velocity = new Vector2(dir.x * speed, rb.velocity.y);
-      } else {
-        rb.velocity = Vector2.Lerp(rb.velocity, (new Vector2(dir.x * speed, rb.velocity.y)), wallJumpLerp * Time.deltaTime);
-      }
-    }
-
-    private void Jump(Vector2 dir, bool wall) {
-      slideParticle.transform.parent.localScale = new Vector3(ParticleSide(), 1, 1);
-      ParticleSystem particle = wall ? wallJumpParticle : jumpParticle;
-
-      rb.velocity = new Vector2(rb.velocity.x, 0);
-      rb.velocity += dir * jumpForce;
-
-      particle.Play();
-    }
-
-    IEnumerator DisableMovement(float time) {
-      canMove = false;
-      yield return new WaitForSeconds(time);
-      canMove = true;
+      sounds.PlaySlide();
     }
 
     void WallParticle(float vertical) {
@@ -353,6 +301,89 @@ namespace Carles.Engine2D {
       int particleSide = coll.onRightWall ? 1 : -1;
       return particleSide;
     }
+
+
+    // ------------------------------------------------------------------------------
+    // Char Side
+
+    void UpdateCharSide(float x) {
+      // character side flip
+
+      if (wallGrab || wallSlide || !canMove)
+        return;
+
+      if (x > 0) {
+        side = 1;
+        anim.Flip(side);
+      }
+      if (x < 0) {
+        side = -1;
+        anim.Flip(side);
+      }
+    }
+
+    // ------------------------------------------------------------------------------
+    // Dash
+
+    private void Dash(float x, float y) {
+      FindObjectOfType<RippleEffect>().Emit(Camera.main.WorldToViewportPoint(transform.position));
+
+      hasDashed = true;
+
+      anim.SetTrigger("dash");
+
+      rb.velocity = Vector2.zero;
+      Vector2 dir = new Vector2(x, y);
+
+      rb.velocity += dir.normalized * dashSpeed;
+      StartCoroutine(DashWait());
+    }
+
+    IEnumerator DashWait() {
+      // FindObjectOfType<GhostTrail>().ShowGhost();
+      StartCoroutine(GroundDash());
+
+      // progressively dump rigidbody drag
+      StartCoroutine(LerpRigidbodyDrag(14, 0, 0.8f));
+
+      dashParticle.Play();
+      rb.gravityScale = 0;
+      isBetterJumpEnabled = false;
+      wallJumped = true;
+      isDashing = true;
+
+      // sounds.PlayFootstep();
+      sounds.PlayJump();
+      sounds.PlayDash();
+
+      yield return new WaitForSeconds(.3f);
+
+      dashParticle.Stop();
+      rb.gravityScale = 3;
+      isBetterJumpEnabled = true;
+      wallJumped = false;
+      isDashing = false;
+    }
+
+    IEnumerator GroundDash() {
+      yield return new WaitForSeconds(.15f);
+      if (coll.onGround)
+        hasDashed = false;
+    }
+
+    IEnumerator LerpRigidbodyDrag(float startValue, float endValue, float duration) {
+      float time = 0;
+      // float startValue = startValue;
+      while (time < duration) {
+        rb.drag = Mathf.Lerp(startValue, endValue, time / duration);
+        time += Time.deltaTime;
+        yield return null;
+      }
+      rb.drag = endValue;
+    }
+
+    // ------------------------------------------------------------------------------
+
   }
 
 }
