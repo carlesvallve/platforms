@@ -12,7 +12,9 @@ public class Player : Humanoid {
 
   public override void Awake() {
     playerInput = transform.GetComponent<PlayerInput>();
-    hud = GameObject.Find("Hud").GetComponent<Hud>();
+
+    GameObject go = GameObject.Find("Hud");
+    hud = go ? go.GetComponent<Hud>() : null;
     base.Awake();
   }
 

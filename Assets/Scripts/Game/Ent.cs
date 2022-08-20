@@ -87,7 +87,7 @@ public class Ent : MonoBehaviour {
   // todo: This should probably be public and variable per-entity
   // protected float jumpHeight = 2.5f;
   // protected float timeToJumpApex = 0.3125f;
-  protected float jumpHeight = 2f;
+  protected float jumpHeight = 0.5f; // 2f;
   protected float timeToJumpApex = 0.3125f * 0.85f;
 
 
@@ -123,12 +123,14 @@ public class Ent : MonoBehaviour {
   public virtual void Awake() {
     controller = GetComponent<Controller2D>();
 
-    sprite = transform.Find("Sprite");
+    // sprite = transform.Find("Sprite");
+    sprite = transform.GetComponentInChildren<SpriteRenderer>().transform;
+    Debug.Log(sprite);
 
-    hpBar = transform.Find("Bar");
-    hpPercent = transform.Find("Bar/Percent");
-    hpMax = atr.hp;
-    StartCoroutine(UpdateHpBar());
+    // hpBar = transform.Find("Bar");
+    // hpPercent = transform.Find("Bar/Percent");
+    // hpMax = atr.hp;
+    // StartCoroutine(UpdateHpBar());
 
     Transform obj = transform.Find("Info");
     if (obj) {
@@ -151,7 +153,7 @@ public class Ent : MonoBehaviour {
     SetInput();
     SetSpeed();
     SetMove();
-    OutOfBounds();
+    // OutOfBounds();
   }
 
 
