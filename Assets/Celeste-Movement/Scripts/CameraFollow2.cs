@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CameraFollow : MonoBehaviour {
+public class CameraFollow2 : MonoBehaviour {
 
-  public Ent target;
+  public Transform target;
 
   public float speedX = 100f;
   public float speedY = 5f;
@@ -58,7 +58,7 @@ public class CameraFollow : MonoBehaviour {
     if (CanFollowVertical()) {
       float speed = speedY;
       //if (!below && target.transform.position.y < transform.position.y) { speed = speedY * 5; }
-      float minY = bounds.min.y + diff.y;
+      float minY = -1000; // bounds.min.y + diff.y;
       y = Mathf.Lerp(transform.position.y, Mathf.Max(target.transform.position.y, minY), Time.deltaTime * speed);
     }
 
@@ -77,13 +77,15 @@ public class CameraFollow : MonoBehaviour {
 
 
   private bool CanFollowVertical() {
-    bool below = target.controller.collisions.below;
-    if (below) { return true; }
-    if (!below && target.transform.position.y < transform.position.y) { return true; }
-    if (target.IsOnLadder()) { return true; }
-    if (target.IsOnWater()) { return true; }
+    return true;
 
-    return false;
+    // bool below = target.controller.collisions.below;
+    // if (below) { return true; }
+    // if (!below && target.transform.position.y < transform.position.y) { return true; }
+    // if (target.IsOnLadder()) { return true; }
+    // if (target.IsOnWater()) { return true; }
+
+    // return false;
   }
 
 

@@ -109,7 +109,7 @@ public class Movement : MonoBehaviour {
   }
 
   // Update is called once per frame
-  void Update() {
+  void FixedUpdate() {
     Debug.Log(isGrabBeingPressed);
 
     float x = curMoveInput.x;
@@ -205,8 +205,8 @@ public class Movement : MonoBehaviour {
   }
 
   private void Dash(float x, float y) {
-    Camera.main.transform.DOComplete();
-    Camera.main.transform.DOShakePosition(.2f, .5f, 14, 90, false, true);
+    // Camera.main.transform.DOComplete();
+    // Camera.main.transform.DOShakePosition(.2f, .5f, 14, 90, false, true);
     FindObjectOfType<RippleEffect>().Emit(Camera.main.WorldToViewportPoint(transform.position));
 
     hasDashed = true;
@@ -223,7 +223,7 @@ public class Movement : MonoBehaviour {
   IEnumerator DashWait() {
     // FindObjectOfType<GhostTrail>().ShowGhost();
     StartCoroutine(GroundDash());
-    DOVirtual.Float(14, 0, .8f, RigidbodyDrag);
+    DOVirtual.Float(14, 0, .8f, (x) => rb.drag = x);
 
     dashParticle.Play();
     rb.gravityScale = 0;
