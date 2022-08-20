@@ -1,16 +1,14 @@
-﻿using System;
+﻿
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using Random = UnityEngine.Random;
-
 
 public class Movement : MonoBehaviour {
   private Collision coll;
-  [HideInInspector]
-  public Rigidbody2D rb;
+  private Rigidbody2D rb;
   private AnimationScript anim;
+  private PlayerAudio playerAudio;
 
   [Space]
   [Header("Stats")]
@@ -35,8 +33,7 @@ public class Movement : MonoBehaviour {
 
   private bool groundTouch;
   private bool hasDashed;
-
-  public int side = 1;
+  private int side = 1;
 
   [Space]
   [Header("Polish")]
@@ -45,22 +42,19 @@ public class Movement : MonoBehaviour {
   public ParticleSystem wallJumpParticle;
   public ParticleSystem slideParticle;
 
-  // 
+  //  movement
 
   private int jumpsAvailable;
   private Vector2 curMoveInput;
   private float xRaw;
   private float yRaw;
 
-  //
+  // input flags
 
   private bool isJumpBeingPressed;
   private bool isDashBeingPressed;
   private bool isGrabBeingPressed;
   private bool isBetterJumpEnabled = true;
-
-  [SerializeField] private AudioSource _source;
-  [SerializeField] private AudioClip[] _footsteps;
 
   // ------------------------------------------------------------------------------
   // Input
@@ -70,7 +64,7 @@ public class Movement : MonoBehaviour {
   }
 
   public void OnInputJump(InputAction.CallbackContext context) {
-    Debug.Log("OnInputJump " + context.phase);
+    // Debug.Log("OnInputJump " + context.phase);
 
     isJumpBeingPressed = context.phase != InputActionPhase.Canceled;
 
@@ -83,8 +77,10 @@ public class Movement : MonoBehaviour {
       jumpsAvailable -= 1;
 
       anim.SetTrigger("jump");
+      // playerAudio.PlayFootstep();
+      playerAudio.PlayJump();
 
-      if (!coll.onWall) Jump(Vector2.up, false); // coll.onGround check is implicit
+      Jump(Vector2.up, false); // coll.onGround check is implicit on jumpsAvailable
       if (coll.onWall && !coll.onGround) WallJump();
     }
   }
@@ -112,6 +108,8 @@ public class Movement : MonoBehaviour {
     coll = GetComponent<Collision>();
     rb = GetComponent<Rigidbody2D>();
     anim = GetComponentInChildren<AnimationScript>();
+
+    playerAudio = GetComponent<PlayerAudio>();
   }
 
   // Update is called once per frame
@@ -166,7 +164,7 @@ public class Movement : MonoBehaviour {
     }
 
     if (coll.onWall && !coll.onGround) {
-      if (x != 0 && !wallGrab) {
+      if (x != 0 && !wallGrab && rb.velocity.y < 0) {
         wallSlide = true;
         WallSlide();
       }
@@ -208,7 +206,8 @@ public class Movement : MonoBehaviour {
 
     jumpParticle.Play();
 
-    _source.PlayOneShot(_footsteps[Random.Range(0, _footsteps.Length)]);
+    // _source.PlayOneShot(_footsteps[Random.Range(0, _footsteps.Length)]);
+    playerAudio.PlayFootstep();
   }
 
   // ------------------------------------------------------------------------------
@@ -240,6 +239,10 @@ public class Movement : MonoBehaviour {
     isBetterJumpEnabled = false;
     wallJumped = true;
     isDashing = true;
+
+    // playerAudio.PlayFootstep();
+    playerAudio.PlayJump();
+    playerAudio.PlayDash();
 
     yield return new WaitForSeconds(.3f);
 
@@ -299,6 +302,8 @@ public class Movement : MonoBehaviour {
     float push = pushingWall ? 0 : rb.velocity.x;
 
     rb.velocity = new Vector2(push, -slideSpeed);
+
+    playerAudio.PlaySlide();
   }
 
   private void Walk(Vector2 dir) {
