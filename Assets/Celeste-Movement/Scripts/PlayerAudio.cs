@@ -3,39 +3,43 @@ using System.Collections.Generic;
 using UnityEngine;
 using CarlesModules;
 
-public class PlayerAudio : MonoBehaviour {
+namespace Carles.Engine2D {
 
-  [Space]
-  [Header("Audio")]
-  public AudioProps footstep;
-  public AudioProps slide;
-  public AudioProps jump;
-  public AudioProps dash;
+  public class PlayerAudio : MonoBehaviour {
 
-  public void PlayFootstep() {
-    PlaySound(footstep);
-  }
+    [Space]
+    [Header("Audio")]
+    public AudioProps footstep;
+    public AudioProps slide;
+    public AudioProps jump;
+    public AudioProps dash;
 
-  public void PlaySlide() {
-    PlaySound(slide);
-  }
+    public void PlayFootstep() {
+      PlaySound(footstep);
+    }
 
-  public void PlayJump() {
-    PlaySound(jump);
-  }
+    public void PlaySlide() {
+      PlaySound(slide);
+    }
 
-  public void PlayDash() {
-    PlaySound(dash);
-  }
+    public void PlayJump() {
+      PlaySound(jump);
+    }
 
-  private void PlaySound(AudioProps audioProps) {
-    if (audioProps.clip) {
-      cAudio.PlayClipAtPoint(
-        transform, transform.position, audioProps.clip,
-        audioProps.volume + Random.Range(-audioProps.volumeRandomDown, audioProps.volumeRandomUp),
-        audioProps.pitch + Random.Range(-audioProps.pitchRandomDown, audioProps.pitchRandomUp),
-        audioProps.loop
-      );
+    public void PlayDash() {
+      PlaySound(dash);
+    }
+
+    private void PlaySound(AudioProps audioProps) {
+      if (audioProps.clip) {
+        cAudio.PlayClipAtPoint(
+          transform, transform.position, audioProps.clip,
+          audioProps.volume + Random.Range(-audioProps.volumeRandomDown, audioProps.volumeRandomUp),
+          audioProps.pitch + Random.Range(-audioProps.pitchRandomDown, audioProps.pitchRandomUp),
+          audioProps.loop
+        );
+      }
     }
   }
+
 }
