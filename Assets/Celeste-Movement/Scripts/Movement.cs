@@ -2,8 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using DG.Tweening;
 using UnityEngine.InputSystem;
+using DG.Tweening;
 
 public class Movement : MonoBehaviour {
   private Collision coll;
@@ -221,7 +221,7 @@ public class Movement : MonoBehaviour {
   }
 
   IEnumerator DashWait() {
-    FindObjectOfType<GhostTrail>().ShowGhost();
+    // FindObjectOfType<GhostTrail>().ShowGhost();
     StartCoroutine(GroundDash());
     DOVirtual.Float(14, 0, .8f, RigidbodyDrag);
 
