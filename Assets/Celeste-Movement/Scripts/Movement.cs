@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Random = UnityEngine.Random;
 
 
 public class Movement : MonoBehaviour {
@@ -57,6 +58,9 @@ public class Movement : MonoBehaviour {
   private bool isDashBeingPressed;
   private bool isGrabBeingPressed;
   private bool isBetterJumpEnabled = true;
+
+  [SerializeField] private AudioSource _source;
+  [SerializeField] private AudioClip[] _footsteps;
 
   // ------------------------------------------------------------------------------
   // Input
@@ -203,6 +207,8 @@ public class Movement : MonoBehaviour {
     side = anim.sr.flipX ? -1 : 1;
 
     jumpParticle.Play();
+
+    _source.PlayOneShot(_footsteps[Random.Range(0, _footsteps.Length)]);
   }
 
   // ------------------------------------------------------------------------------
