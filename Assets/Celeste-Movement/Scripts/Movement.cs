@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using DG.Tweening;
+
 
 public class Movement : MonoBehaviour {
   private Collision coll;
@@ -58,7 +58,8 @@ public class Movement : MonoBehaviour {
   private bool isGrabBeingPressed;
   private bool isBetterJumpEnabled = true;
 
-  //
+  // ------------------------------------------------------------------------------
+  // Input
 
   public void OnInputMove(InputAction.CallbackContext context) {
     curMoveInput = context.ReadValue<Vector2>();
@@ -99,7 +100,8 @@ public class Movement : MonoBehaviour {
     isGrabBeingPressed = context.phase != InputActionPhase.Canceled;
   }
 
-  //
+  // ------------------------------------------------------------------------------
+  // Start and Update
 
   // Start is called before the first frame update
   void Start() {
@@ -110,13 +112,12 @@ public class Movement : MonoBehaviour {
 
   // Update is called once per frame
   void FixedUpdate() {
-    Debug.Log(isGrabBeingPressed);
 
+    // get movement increments
     float x = curMoveInput.x;
     float y = curMoveInput.y;
     xRaw = x;
     yRaw = y;
-
     Vector2 dir = new Vector2(x, y);
 
     Walk(dir);
@@ -204,9 +205,10 @@ public class Movement : MonoBehaviour {
     jumpParticle.Play();
   }
 
+  // ------------------------------------------------------------------------------
+  // Dash
+
   private void Dash(float x, float y) {
-    // Camera.main.transform.DOComplete();
-    // Camera.main.transform.DOShakePosition(.2f, .5f, 14, 90, false, true);
     FindObjectOfType<RippleEffect>().Emit(Camera.main.WorldToViewportPoint(transform.position));
 
     hasDashed = true;
@@ -223,7 +225,9 @@ public class Movement : MonoBehaviour {
   IEnumerator DashWait() {
     // FindObjectOfType<GhostTrail>().ShowGhost();
     StartCoroutine(GroundDash());
-    DOVirtual.Float(14, 0, .8f, (x) => rb.drag = x);
+
+    // progressively dump rigidbody drag
+    StartCoroutine(LerpRigidbodyDrag(14, 0, 0.8f));
 
     dashParticle.Play();
     rb.gravityScale = 0;
@@ -245,6 +249,19 @@ public class Movement : MonoBehaviour {
     if (coll.onGround)
       hasDashed = false;
   }
+
+  IEnumerator LerpRigidbodyDrag(float startValue, float endValue, float duration) {
+    float time = 0;
+    // float startValue = startValue;
+    while (time < duration) {
+      rb.drag = Mathf.Lerp(startValue, endValue, time / duration);
+      time += Time.deltaTime;
+      yield return null;
+    }
+    rb.drag = endValue;
+  }
+
+  // ------------------------------------------------------------------------------
 
   private void WallJump() {
     if ((side == 1 && coll.onRightWall) || side == -1 && !coll.onRightWall) {
@@ -306,10 +323,6 @@ public class Movement : MonoBehaviour {
     canMove = false;
     yield return new WaitForSeconds(time);
     canMove = true;
-  }
-
-  void RigidbodyDrag(float x) {
-    rb.drag = x;
   }
 
   void WallParticle(float vertical) {
