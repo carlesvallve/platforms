@@ -219,8 +219,6 @@ namespace Carles.Engine2D {
     }
 
     private void Jump(Vector2 dir, bool wall) {
-      Debug.Log("canJump" + canJump);
-
       if (!canJump) return;
 
       // multi-jump
