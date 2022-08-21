@@ -4,6 +4,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+// todo
+
+// ladders
+// ropes
+// grappling hook
+// slopes
+// melee
+// shooting
+// damage
+// detah
+// inventory
+// souls
+
+// procedural levels
+
 namespace Carles.Engine2D {
 
   public class Movement : MonoBehaviour {
@@ -18,24 +33,17 @@ namespace Carles.Engine2D {
     public float jumpForce = 50;
     public int maxJumps = 2;
     public float fallMultiplier = 2.5f;
-    public float lowJumpMultiplier = 2f;
+    public float lowJumpMultiplier = 6f;
     public float slideSpeed = 5;
     public float wallJumpLerp = 10;
     public float dashSpeed = 20;
 
     [Space]
-    [Header("Booleans")]
-    public bool canMove;
-    public bool wallGrab;
-    public bool wallJumped;
-    public bool wallSlide;
-    public bool isDashing;
-
-    [Space]
-
-    private bool groundTouch;
-    private bool hasDashed;
-    private int side = 1;
+    [Header("Skills")]
+    public bool canJump = true;
+    public bool canDash = true;
+    public bool canWallSlide = true;
+    public bool canWallGrab = true;
 
     [Space]
     [Header("Polish")]
@@ -45,19 +53,35 @@ namespace Carles.Engine2D {
     public ParticleSystem slideParticle;
     public GameObject trail;
 
-    //  movement
-    private Vector2 curMoveInput;
-    private float xRaw;
-    private float yRaw;
-
-    // jump
-    private bool isBetterJumpEnabled = true;
-    private int jumpsAvailable;
+    // Flags
 
     // input flags
     private bool isJumpBeingPressed;
     private bool isDashBeingPressed;
     private bool isGrabBeingPressed;
+
+    //  movement flags
+    [HideInInspector] public bool canMove;
+    private Vector2 curMoveInput;
+    private float xRaw;
+    private float yRaw;
+
+    // side flags
+    private int side = 1;
+
+    // ground flags
+    private bool groundTouch;
+
+    // jump flags
+    private bool isBetterJumpEnabled = true;
+    private int jumpsAvailable;
+
+    // wall flags
+    [HideInInspector] public bool wallGrab;
+    [HideInInspector] public bool wallJumped;
+    [HideInInspector] public bool wallSlide;
+    [HideInInspector] public bool isDashing;
+    private bool hasDashed;
 
     // ------------------------------------------------------------------------------
     // Start and Update
@@ -96,14 +120,6 @@ namespace Carles.Engine2D {
 
       // first frame that button is pressed down
       if (context.phase == InputActionPhase.Performed) {
-
-        // multi-jump
-        if (coll.onGround || coll.onWall) jumpsAvailable = maxJumps;
-        if (jumpsAvailable == 0) return;
-        jumpsAvailable -= 1;
-
-        anim.SetTrigger("jump");
-        sounds.PlayJump();
 
         if (coll.onWall && !coll.onGround) {
           WallJump();
@@ -203,6 +219,18 @@ namespace Carles.Engine2D {
     }
 
     private void Jump(Vector2 dir, bool wall) {
+      Debug.Log("canJump" + canJump);
+
+      if (!canJump) return;
+
+      // multi-jump
+      if (coll.onGround || coll.onWall) jumpsAvailable = maxJumps;
+      if (jumpsAvailable == 0) return;
+      jumpsAvailable -= 1;
+
+      anim.SetTrigger("jump");
+      sounds.PlayJump();
+
       slideParticle.transform.parent.localScale = new Vector3(ParticleSide(), 1, 1);
       ParticleSystem particle = wall ? wallJumpParticle : jumpParticle;
 
@@ -213,6 +241,8 @@ namespace Carles.Engine2D {
     }
 
     private void WallJump() {
+      if (!canJump) return;
+
       if ((side == 1 && coll.onRightWall) || side == -1 && !coll.onRightWall) {
         side *= -1;
         anim.Flip(side);
@@ -231,14 +261,15 @@ namespace Carles.Engine2D {
     // Walls
 
     void UpdateWalls(float x, float y) {
-      // wall flags
+      // wall grab flags
 
-      if (coll.onWall && isGrabBeingPressed && canMove) {
+      if (coll.onWall && isGrabBeingPressed && canMove && canWallGrab) {
         if (side != coll.wallSide) anim.Flip(side * -1);
         wallGrab = true;
         wallSlide = false;
       }
-      if (!isGrabBeingPressed || !coll.onWall || !canMove) {
+
+      if (!isGrabBeingPressed || !coll.onWall || !canMove || !canWallGrab) {
         wallGrab = false;
         wallSlide = false;
       }
@@ -259,14 +290,14 @@ namespace Carles.Engine2D {
 
       // wall slide
 
-      if (coll.onWall && !coll.onGround) {
+      if (coll.onWall && !coll.onGround && canWallSlide) {
         if (x != 0 && !wallGrab && rb.velocity.y < 0) {
           wallSlide = true;
           WallSlide();
         }
       }
 
-      if (!coll.onWall || coll.onGround) {
+      if (!coll.onWall || coll.onGround || !canWallSlide) {
         wallSlide = false;
       }
 
@@ -274,11 +305,10 @@ namespace Carles.Engine2D {
     }
 
     private void WallSlide() {
-      if (coll.wallSide != side)
-        anim.Flip(side * -1);
+      if (!canMove) return;
+      if (!canWallSlide) return;
 
-      if (!canMove)
-        return;
+      if (coll.wallSide != side) anim.Flip(side * -1);
 
       bool pushingWall = false;
       if ((rb.velocity.x > 0 && coll.onRightWall) || (rb.velocity.x < 0 && coll.onLeftWall)) {
@@ -332,6 +362,8 @@ namespace Carles.Engine2D {
     // Dash
 
     private void Dash(float x, float y) {
+      if (!canDash) return;
+
       // trigger ripple effect
       FindObjectOfType<RippleEffect>().Emit(Camera.main.WorldToViewportPoint(transform.position));
 
