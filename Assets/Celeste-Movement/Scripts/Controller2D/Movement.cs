@@ -121,6 +121,7 @@ namespace Carles.Engine2D {
       float y = curMoveInput.y;
 
       UpdateWalk(x, y);
+      UpdateGroundTouch();
       UpdateJump();
       UpdateWalls(x, y);
       UpdateCharSide(x);
@@ -159,15 +160,18 @@ namespace Carles.Engine2D {
     }
 
     // ------------------------------------------------------------------------------
-    // Jump
+    // Ground checks
 
-    void UpdateJump() {
-      if (coll.onGround && !groundTouch) {
+    void UpdateGroundTouch() {
+      // did we just landed on ground?
+      bool isGrounded = coll.onGround || coll.onWall;
+
+      if (isGrounded && !groundTouch) {
         GroundTouch();
         groundTouch = true;
       }
 
-      if (!coll.onGround && groundTouch) {
+      if (!isGrounded && groundTouch) {
         groundTouch = false;
       }
 
@@ -177,6 +181,20 @@ namespace Carles.Engine2D {
         isBetterJumpEnabled = true;
       }
 
+      void GroundTouch() {
+        hasDashed = false;
+        isDashing = false;
+        side = anim.sr.flipX ? -1 : 1;
+        jumpParticle.Play();
+        sounds.PlayFootstep();
+      }
+    }
+
+
+    // ------------------------------------------------------------------------------
+    // Jump
+
+    void UpdateJump() {
       // Better Jump
       if (isBetterJumpEnabled) {
         if (rb.velocity.y < 0) {
@@ -195,14 +213,6 @@ namespace Carles.Engine2D {
       rb.velocity += dir * jumpForce;
 
       particle.Play();
-    }
-
-    void GroundTouch() {
-      hasDashed = false;
-      isDashing = false;
-      side = anim.sr.flipX ? -1 : 1;
-      jumpParticle.Play();
-      sounds.PlayFootstep();
     }
 
     // ------------------------------------------------------------------------------
@@ -302,7 +312,6 @@ namespace Carles.Engine2D {
       return particleSide;
     }
 
-
     // ------------------------------------------------------------------------------
     // Char Side
 
@@ -385,5 +394,4 @@ namespace Carles.Engine2D {
     // ------------------------------------------------------------------------------
 
   }
-
 }
