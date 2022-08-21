@@ -13,7 +13,7 @@ namespace Carles.Engine2D {
     public SpriteRenderer sr;
 
     void Start() {
-      anim = GetComponent<Animator>();
+      anim = GetComponentInParent<Animator>();
       coll = GetComponentInParent<Collision>();
       move = GetComponentInParent<Movement>();
       sr = GetComponent<SpriteRenderer>();
