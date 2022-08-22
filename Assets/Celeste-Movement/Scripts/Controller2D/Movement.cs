@@ -34,7 +34,7 @@ namespace Carles.Engine2D {
     public int maxJumps = 2;
     public float fallMultiplier = 2.5f;
     public float lowJumpMultiplier = 6f;
-    public float slideSpeed = 5;
+    public float slideSpeed = 2.5f;
     public float wallJumpLerp = 10;
     public float dashSpeed = 20;
 
