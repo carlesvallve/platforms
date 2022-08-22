@@ -11,31 +11,24 @@ namespace Carles.Engine2D {
     public float speedY = 5f;
     private float displaceX = 0; //0.3f;
 
-    public Transform tileMap;
-    public Rect limits = new Rect(-3, -2, 1.6f, 1.3f);
-
-    private float z;
-
-    //private Flashback94_PostProcess flash94;
-    // private Bounds bounds;
-    // public Rect diff = new Rect(2.6f, 1.66f, 2.2f, 0.96f);
+    // public Transform tileMap;
+    // public Rect limits = new Rect(-3, -2, 1.6f, 1.3f);
 
     // ===========================================================
     // Camera Init
     // ===========================================================
 
     void Awake() {
-      //flash94 = transform.Find("TileLayer").GetComponent<Flashback94_PostProcess>();
+      // auto-get player as camera target
+      PlayerInput pi = FindObjectOfType<PlayerInput>();
+      if (pi) target = pi.transform;
 
       if (!target) {
-        Debug.LogWarning("Camera in this scene has no target!");
+        Debug.LogWarning("Camera - has no target!");
         return;
       }
 
-      z = transform.position.z;
       transform.position = target.transform.position;
-
-      //bounds = CalculateBounds(tileMap);
     }
 
 
@@ -65,13 +58,10 @@ namespace Carles.Engine2D {
       }
 
       // locate camera
-      transform.position = new Vector3(x, y, z);
+      transform.position = new Vector3(x, y, -1);
 
       // apply camera limits
       // ApplyLimits();
-
-      // limit camera position to scene bounds
-      //ApplyBoundLimits();
     }
 
 
@@ -98,75 +88,23 @@ namespace Carles.Engine2D {
     // Camera Bounds
     // ===========================================================
 
-    private void ApplyLimits() {
-      if (transform.position.y < limits.y) {
-        transform.position = new Vector3(transform.position.x, limits.y, transform.position.z);
-      }
-
-      if (transform.position.y > limits.height) {
-        transform.position = new Vector3(transform.position.x, limits.height, transform.position.z);
-      }
-
-      if (transform.position.x < limits.x) {
-        transform.position = new Vector3(limits.x, transform.position.y, transform.position.z);
-      }
-
-      if (transform.position.x > limits.width) {
-        transform.position = new Vector3(limits.width, transform.position.y, transform.position.z);
-      }
-    }
-
-    // private Bounds CalculateBounds(Transform tr) {
-    //   if (tr == null) {
-    //     Debug.LogWarning("Camera requires a transform to calculate scene bounds!");
-    //     return new Bounds();
+    // private void ApplyLimits() {
+    //   if (transform.position.y < limits.y) {
+    //     transform.position = new Vector3(transform.position.x, limits.y, transform.position.z);
     //   }
 
-    //   Bounds bounds = new Bounds(tr.position, Vector3.one);
-    //   Renderer[] renderers = tr.GetComponentsInChildren<Renderer>();
-    //   foreach (Renderer renderer in renderers) {
-    //     bounds.Encapsulate(renderer.bounds);
+    //   if (transform.position.y > limits.height) {
+    //     transform.position = new Vector3(transform.position.x, limits.height, transform.position.z);
     //   }
 
-    //   print("Scene bounds: " + bounds);
-    //   return bounds;
-    // }
-
-
-    // private void ApplyBoundLimits() {
-    //   // apply bound limits
-    //   if (!tileMap) { return; }
-
-    //   if (transform.position.x < bounds.min.x + diff.x) {
-    //     transform.position = new Vector3(bounds.min.x + diff.x, transform.position.y, z);
+    //   if (transform.position.x < limits.x) {
+    //     transform.position = new Vector3(limits.x, transform.position.y, transform.position.z);
     //   }
 
-    //   if (transform.position.x > bounds.max.x - diff.width) {
-    //     transform.position = new Vector3(bounds.max.x - diff.width, transform.position.y, z);
-    //   }
-
-    //   if (transform.position.y < bounds.min.y + diff.y) {
-    //     transform.position = new Vector3(transform.position.x, bounds.min.y + diff.y, z);
-    //   }
-
-    //   if (transform.position.y > bounds.max.y - diff.height) {
-    //     transform.position = new Vector3(transform.position.x, bounds.max.y - diff.height, z);
+    //   if (transform.position.x > limits.width) {
+    //     transform.position = new Vector3(limits.width, transform.position.y, transform.position.z);
     //   }
     // }
-
-
-    /*public IEnumerator Pixelate (float time) {
-      flash94.downsampling = Flashback94_PostProcess.DownsampleType.RELATIVE;
-      flash94.downsampleRelativeAmount = 2;
-
-      float startTime = Time.time;
-      while(Time.time < startTime + time) {
-        flash94.downsampleRelativeAmount += 1;
-        yield return null;
-      }
-
-      flash94.downsampling = Flashback94_PostProcess.DownsampleType.NONE;
-    }*/
   }
 
 }

@@ -22,16 +22,17 @@ public class TilemapVisualizer : MonoBehaviour {
   public void PaintEnterExitTiles(Vector2Int enterPos, Vector2Int exitPos) {
     // todo: this actually should be single tiles with special trigger colliders
 
-    // paint exnter and exit tiles
+    // paint enter and exit tiles
     PaintSingleTile(floorTilemap, enterTile, enterPos);
     PaintSingleTile(floorTilemap, exitTile, exitPos);
 
     // locate player at entrance
     PlayerInput pi = FindObjectOfType<PlayerInput>();
-    if (pi) {
-      pi.transform.position = new Vector3(enterPos.x, enterPos.y, 0);
-    }
+    if (pi) pi.transform.position = new Vector3(enterPos.x, enterPos.y, 0);
+    // Debug.Log(pi + " at pos " + enterPos);
   }
+
+
 
   private void PaintTiles(IEnumerable<Vector2Int> positions, Tilemap tilemap, TileBase tile) {
     foreach (var position in positions) {

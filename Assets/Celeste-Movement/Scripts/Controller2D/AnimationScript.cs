@@ -10,6 +10,7 @@ namespace Carles.Engine2D {
     public Sounds sounds;
     public int spriteLibIndex;
     public SpriteLibraryAsset[] spriteLibs;
+    public bool randomizeOnStart = true;
 
 
     private Movement move;
@@ -23,7 +24,7 @@ namespace Carles.Engine2D {
       anim = GetComponent<Animator>();
       sr = GetComponent<SpriteRenderer>();
 
-      SetSpriteLibraryRandom();
+      if (randomizeOnStart) SetSpriteLibraryRandom();
     }
 
     void Update() {

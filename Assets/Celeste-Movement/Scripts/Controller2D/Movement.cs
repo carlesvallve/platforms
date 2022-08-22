@@ -22,6 +22,10 @@ using UnityEngine.InputSystem;
 // - add variable corridor width -> OK
 // - add enter and exit nodes -> OK
 // - add platforms
+// - add one way platforms
+// - add movable platforms
+// - add destroyable platforms
+// - add traps
 // - add ladders
 // - add elevators
 // - add doors
@@ -396,7 +400,7 @@ namespace Carles.Engine2D {
       wallJumped = true;
       isDashing = true;
 
-      sounds.PlayJump();
+      // sounds.PlayJump();
       sounds.PlayDash();
 
       yield return new WaitForSeconds(.3f);
