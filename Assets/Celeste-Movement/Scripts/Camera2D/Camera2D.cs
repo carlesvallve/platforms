@@ -68,7 +68,7 @@ namespace Carles.Engine2D {
       transform.position = new Vector3(x, y, z);
 
       // apply camera limits
-      ApplyLimits();
+      // ApplyLimits();
 
       // limit camera position to scene bounds
       //ApplyBoundLimits();
