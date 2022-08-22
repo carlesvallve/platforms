@@ -47,11 +47,12 @@ namespace Carles.Engine2D {
 
     [Space]
     [Header("Polish")]
+    public ParticleSystem trailParticle;
     public ParticleSystem dashParticle;
     public ParticleSystem jumpParticle;
     public ParticleSystem wallJumpParticle;
     public ParticleSystem slideParticle;
-    public GameObject trail;
+
 
     // Flags
 
@@ -104,7 +105,7 @@ namespace Carles.Engine2D {
       UpdateWalls(x, y);
       UpdateCharSide(x);
 
-      trail.SetActive(!wallGrab);
+      // trail.SetActive(!wallGrab);
     }
 
     // ------------------------------------------------------------------------------
