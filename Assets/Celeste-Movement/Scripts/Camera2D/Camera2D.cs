@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.InputSystem;
 
 namespace Carles.Engine2D {
 
   public class Camera2D : MonoBehaviour {
 
     public Transform target;
-
     public float speedX = 100f;
     public float speedY = 5f;
     private float displaceX = 0; //0.3f;
@@ -18,7 +18,7 @@ namespace Carles.Engine2D {
     // Camera Init
     // ===========================================================
 
-    void Awake() {
+    void Start() {
       // auto-get player as camera target
       PlayerInput pi = FindObjectOfType<PlayerInput>();
       if (pi) target = pi.transform;

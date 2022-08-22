@@ -62,6 +62,8 @@ namespace Carles.Engine2D {
     }
 
     public void SetSpriteLibrary(int index) {
+      if (spriteLibs.Length == 0) return;
+
       spriteLibIndex = index;
       SpriteLibrary spl = GetComponent<SpriteLibrary>();
       spl.spriteLibraryAsset = spriteLibs[spriteLibIndex];

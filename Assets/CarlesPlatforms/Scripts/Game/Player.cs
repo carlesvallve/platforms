@@ -7,11 +7,11 @@ public class Player : Humanoid {
   [HideInInspector]
   public Hud hud;
 
-  private PlayerInput playerInput;
+  private PlayerControls playerControls;
   private int hd_C = 0;
 
   public override void Awake() {
-    playerInput = transform.GetComponent<PlayerInput>();
+    playerControls = transform.GetComponent<PlayerControls>();
 
     GameObject go = GameObject.Find("Hud");
     hud = go ? go.GetComponent<Hud>() : null;
@@ -19,29 +19,29 @@ public class Player : Humanoid {
   }
 
   protected override void SetInput() {
-    bool isDown = playerInput.Vertical.GetAxis() < -0.5;
-    bool isUp = playerInput.Vertical.GetAxis() > 0.5;
+    bool isDown = playerControls.Vertical.GetAxis() < -0.5;
+    bool isUp = playerControls.Vertical.GetAxis() > 0.5;
 
     // movement
-    input = new Vector2(playerInput.Horizontal.GetAxis(), playerInput.Vertical.GetAxis());
+    input = new Vector2(playerControls.Horizontal.GetAxis(), playerControls.Vertical.GetAxis());
 
     // jump
-    if (playerInput.Jump.GetButtonDown()) {
+    if (playerControls.Jump.GetButtonDown()) {
       SetJump(isDown, isUp ? 1.25f : 1f);
     }
 
     // attack
-    if (playerInput.Attack.GetButtonDown()) {
+    if (playerControls.Attack.GetButtonDown()) {
       SetAttack(isDown);
     }
 
     // timed action
-    if (playerInput.Action.GetButtonUp()) {
+    if (playerControls.Action.GetButtonUp()) {
       hd_C = 0;
       SetAction();
     }
 
-    if (playerInput.Action.GetButton()) {
+    if (playerControls.Action.GetButton()) {
       hd_C += 1;
       if (hd_C == 10) {
         SetActionHold();

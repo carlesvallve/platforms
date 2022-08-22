@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Carles {
 
-  public class PlayerInput : MonoBehaviour {
+  public class PlayerControls : MonoBehaviour {
 
     [Header("Player Controls")]
     [Space]
