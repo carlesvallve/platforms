@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 // todo
-
+// one way platforms
 // ladders
 // ropes
 // grappling hook
@@ -17,10 +17,12 @@ using UnityEngine.InputSystem;
 // inventory
 // souls
 
+// todo
 // procedural levels
-// - variable corridor width
+// - add variable corridor width -> OK
+// - add enter and exit nodes -> OK
 // - add platforms
-// - add stairs
+// - add ladders
 // - add elevators
 // - add doors
 // - add teleporters

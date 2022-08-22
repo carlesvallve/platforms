@@ -8,8 +8,9 @@ namespace Carles.Engine2D {
   public class AnimationScript : MonoBehaviour {
 
     public Sounds sounds;
+    public int spriteLibIndex;
     public SpriteLibraryAsset[] spriteLibs;
-    public int splIndex;
+
 
     private Movement move;
     private Collision coll;
@@ -60,9 +61,9 @@ namespace Carles.Engine2D {
     }
 
     public void SetSpriteLibrary(int index) {
-      splIndex = index;
+      spriteLibIndex = index;
       SpriteLibrary spl = GetComponent<SpriteLibrary>();
-      spl.spriteLibraryAsset = spriteLibs[splIndex];
+      spl.spriteLibraryAsset = spriteLibs[spriteLibIndex];
     }
 
     public void PlayFootstep() {

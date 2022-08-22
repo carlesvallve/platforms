@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.InputSystem;
 
 public class TilemapVisualizer : MonoBehaviour {
   [SerializeField]
@@ -11,9 +12,25 @@ public class TilemapVisualizer : MonoBehaviour {
   private TileBase floorTile, wallTop, wallSideRight, wallSiderLeft, wallBottom, wallFull,
       wallInnerCornerDownLeft, wallInnerCornerDownRight,
       wallDiagonalCornerDownRight, wallDiagonalCornerDownLeft, wallDiagonalCornerUpRight, wallDiagonalCornerUpLeft;
+  [SerializeField]
+  private TileBase enterTile, exitTile;
 
   public void PaintFloorTiles(IEnumerable<Vector2Int> floorPositions) {
     PaintTiles(floorPositions, floorTilemap, floorTile);
+  }
+
+  public void PaintEnterExitTiles(Vector2Int enterPos, Vector2Int exitPos) {
+    // todo: this actually should be single tiles with special trigger colliders
+
+    // paint exnter and exit tiles
+    PaintSingleTile(floorTilemap, enterTile, enterPos);
+    PaintSingleTile(floorTilemap, exitTile, exitPos);
+
+    // locate player at entrance
+    PlayerInput pi = FindObjectOfType<PlayerInput>();
+    if (pi) {
+      pi.transform.position = new Vector3(enterPos.x, enterPos.y, 0);
+    }
   }
 
   private void PaintTiles(IEnumerable<Vector2Int> positions, Tilemap tilemap, TileBase tile) {
