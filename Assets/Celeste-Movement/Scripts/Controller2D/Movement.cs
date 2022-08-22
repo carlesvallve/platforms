@@ -18,6 +18,12 @@ using UnityEngine.InputSystem;
 // souls
 
 // procedural levels
+// - variable corridor width
+// - add platforms
+// - add stairs
+// - add elevators
+// - add doors
+// - add teleporters
 
 namespace Carles.Engine2D {
 

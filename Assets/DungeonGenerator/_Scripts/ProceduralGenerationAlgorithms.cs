@@ -4,7 +4,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
+public enum CorridorWidthType {
+  One = 1,
+  Two = 2,
+  Three = 3,
+  Rand = 4,
+  RandAll = 5
+}
+
 public static class ProceduralGenerationAlgorithms {
+
+  public static CorridorWidthType GetRandomCorridorWidthType() {
+    // return a random corridor width preset for this corridor 
+    return (CorridorWidthType)Random.Range(0, System.Enum.GetValues(typeof(CorridorWidthType)).Length + 1);
+  }
+
+  public static int GetCorridorWidthByType(CorridorWidthType width) {
+    if (width == CorridorWidthType.One) return 1;
+    if (width == CorridorWidthType.One) return 2;
+    if (width == CorridorWidthType.One) return 3;
+    return Random.Range(1, 3 + 1);
+  }
 
   public static HashSet<Vector2Int> SimpleRandomWalk(Vector2Int startPosition, int walkLength) {
     HashSet<Vector2Int> path = new HashSet<Vector2Int>();
@@ -21,6 +41,12 @@ public static class ProceduralGenerationAlgorithms {
   }
 
   public static List<Vector2Int> RandomWalkCorridor(Vector2Int startPosition, int corridorLength) {
+    // pick a random corridor width preset for this corridor 
+    CorridorWidthType corridorWidthType = ProceduralGenerationAlgorithms.GetRandomCorridorWidthType();
+
+    // get width of the corridor depending on corridor width preset
+    int width = ProceduralGenerationAlgorithms.GetCorridorWidthByType(corridorWidthType);
+
     List<Vector2Int> corridor = new List<Vector2Int>();
     var direction = Direction2D.GetRandomCardinalDirection();
     var currentPosition = startPosition;
@@ -29,6 +55,22 @@ public static class ProceduralGenerationAlgorithms {
     for (int i = 0; i < corridorLength; i++) {
       currentPosition += direction;
       corridor.Add(currentPosition);
+
+      Debug.Log(direction + " " + (direction == Vector2Int.up) + " " + (direction == Vector2Int.right));
+
+      // sparsify corridor width (vertical corridors)
+      if (direction == Vector2Int.up) {
+        if (corridorWidthType == CorridorWidthType.RandAll) width = ProceduralGenerationAlgorithms.GetCorridorWidthByType(corridorWidthType);
+        if (width > 1) corridor.Add(currentPosition - Vector2Int.right);
+        if (width > 2) corridor.Add(currentPosition + Vector2Int.right);
+      }
+
+      if (direction == Vector2Int.right) {
+        // sparsify corridor width (horizontal corridors)
+        if (corridorWidthType == CorridorWidthType.RandAll) width = ProceduralGenerationAlgorithms.GetCorridorWidthByType(corridorWidthType);
+        if (width > 1) corridor.Add(currentPosition - Vector2Int.up);
+        if (width > 2) corridor.Add(currentPosition + Vector2Int.up);
+      }
     }
     return corridor;
   }

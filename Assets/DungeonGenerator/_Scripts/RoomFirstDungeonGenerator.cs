@@ -66,6 +66,7 @@ public class RoomFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator {
     while (roomCenters.Count > 0) {
       Vector2Int closest = FindClosestPointTo(currentRoomCenter, roomCenters);
       roomCenters.Remove(closest);
+
       HashSet<Vector2Int> newCorridor = CreateCorridor(currentRoomCenter, closest);
       currentRoomCenter = closest;
       corridors.UnionWith(newCorridor);
@@ -74,6 +75,12 @@ public class RoomFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator {
   }
 
   private HashSet<Vector2Int> CreateCorridor(Vector2Int currentRoomCenter, Vector2Int destination) {
+    // pick a random corridor width preset for this corridor 
+    CorridorWidthType corridorWidthType = ProceduralGenerationAlgorithms.GetRandomCorridorWidthType();
+
+    // get width of the corridor depending on corridor width preset
+    int width = ProceduralGenerationAlgorithms.GetCorridorWidthByType(corridorWidthType);
+
     HashSet<Vector2Int> corridor = new HashSet<Vector2Int>();
     var position = currentRoomCenter;
     corridor.Add(position);
@@ -84,6 +91,12 @@ public class RoomFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator {
         position += Vector2Int.down;
       }
       corridor.Add(position);
+
+      // sparsify corridor width
+      if (corridorWidthType == CorridorWidthType.RandAll) width = ProceduralGenerationAlgorithms.GetCorridorWidthByType(corridorWidthType);
+      if (width > 1) corridor.Add(position - Vector2Int.right);
+      if (width > 2) corridor.Add(position + Vector2Int.right);
+
     }
     while (position.x != destination.x) {
       if (destination.x > position.x) {
@@ -92,6 +105,11 @@ public class RoomFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator {
         position += Vector2Int.left;
       }
       corridor.Add(position);
+
+      // sparsify corridor width
+      if (corridorWidthType == CorridorWidthType.RandAll) width = ProceduralGenerationAlgorithms.GetCorridorWidthByType(corridorWidthType);
+      if (width > 1) corridor.Add(position - Vector2Int.up);
+      if (width > 2) corridor.Add(position + Vector2Int.up);
     }
     return corridor;
   }
