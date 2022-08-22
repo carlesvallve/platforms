@@ -363,7 +363,7 @@ namespace Carles.Engine2D {
     private void Dash(float x, float y) {
       if (!canDash) return;
 
-      // trigger ripple effect
+      // trigger ripple effect (component in main camera)
       FindObjectOfType<RippleEffect>().Emit(Camera.main.WorldToViewportPoint(transform.position));
 
       hasDashed = true;
