@@ -7,6 +7,7 @@ namespace Carles.Engine2D {
 
   public class AnimationScript : MonoBehaviour {
 
+    public Sounds sounds;
     public SpriteLibraryAsset[] spriteLibs;
     public int splIndex;
 
@@ -45,7 +46,6 @@ namespace Carles.Engine2D {
     }
 
     public void Flip(int side) {
-
       if (move.wallGrab || move.wallSlide) {
         if (side == -1 && sr.flipX) return;
         if (side == 1 && !sr.flipX) return;
@@ -56,7 +56,6 @@ namespace Carles.Engine2D {
     }
 
     public void SetSpriteLibraryRandom() {
-
       SetSpriteLibrary(Random.Range(0, spriteLibs.Length));
     }
 
@@ -64,6 +63,10 @@ namespace Carles.Engine2D {
       splIndex = index;
       SpriteLibrary spl = GetComponent<SpriteLibrary>();
       spl.spriteLibraryAsset = spriteLibs[splIndex];
+    }
+
+    public void PlayFootstep() {
+      sounds.PlayFootstep();
     }
   }
 
