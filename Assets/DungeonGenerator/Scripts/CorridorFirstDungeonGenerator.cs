@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class CorridorFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator {
   [SerializeField]
@@ -10,6 +11,9 @@ public class CorridorFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator {
   [SerializeField]
   [Range(0.1f, 1)]
   private float roomPercent = 0.8f;
+
+  private HashSet<Vector2Int> floor;
+  private List<HashSet<Vector2Int>> rooms;
 
   protected override void RunProceduralGeneration() {
     CorridorFirstGeneration();
@@ -31,6 +35,16 @@ public class CorridorFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator {
 
     tilemapVisualizer.PaintFloorTiles(floorPositions);
     WallGenerator.CreateWalls(floorPositions, tilemapVisualizer);
+
+    // enter: pick a random position in the first room
+    List<Vector2Int> enterRoom = new List<Vector2Int>(rooms[0]);
+    enterPos = enterRoom[Random.Range(0, enterRoom.Count)];
+
+    // exit: pick a random position in the last room
+    List<Vector2Int> exitRoom = new List<Vector2Int>(rooms[rooms.Count - 1]);
+    exitPos = exitRoom[Random.Range(0, exitRoom.Count)];
+
+    tilemapVisualizer.PaintEnterExitTiles(enterPos, exitPos);
 
   }
 
@@ -59,6 +73,8 @@ public class CorridorFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator {
   }
 
   private HashSet<Vector2Int> CreateRooms(HashSet<Vector2Int> potentialRoomPositions) {
+    rooms = new List<HashSet<Vector2Int>>();
+
     HashSet<Vector2Int> roomPositions = new HashSet<Vector2Int>();
     int roomToCreateCount = Mathf.RoundToInt(potentialRoomPositions.Count * roomPercent);
 
@@ -67,6 +83,8 @@ public class CorridorFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator {
     foreach (var roomPosition in roomsToCreate) {
       var roomFloor = RunRandomWalk(randomWalkParameters, roomPosition);
       roomPositions.UnionWith(roomFloor);
+
+      rooms.Add(roomFloor);
     }
     return roomPositions;
   }

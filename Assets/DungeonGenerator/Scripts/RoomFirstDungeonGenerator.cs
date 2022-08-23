@@ -15,20 +15,8 @@ public class RoomFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator {
   [SerializeField]
   private bool randomWalkRooms = false;
 
-  [SerializeField]
-  private bool randomizeOnStart = false;
-
-  [Space]
-  [SerializeField] public Vector2Int enterPos;
-  [SerializeField] public Vector2Int exitPos;
-  [Space]
-
-  HashSet<Vector2Int> floor;
-  List<HashSet<Vector2Int>> rooms;
-
-  void Start() {
-    if (randomizeOnStart) GenerateDungeon();
-  }
+  private HashSet<Vector2Int> floor;
+  private List<HashSet<Vector2Int>> rooms;
 
   protected override void RunProceduralGeneration() {
     floor = new HashSet<Vector2Int>();
@@ -38,7 +26,7 @@ public class RoomFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator {
 
   private void CreateEnterExitNodes() {
     // pick a random room
-    HashSet<Vector2Int> room = rooms[Random.Range(0, rooms.Count)];
+    // HashSet<Vector2Int> room = rooms[Random.Range(0, rooms.Count)];
 
     // enter: pick a random position in the first room
     List<Vector2Int> enterRoom = new List<Vector2Int>(rooms[0]);

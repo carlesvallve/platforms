@@ -6,16 +6,20 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class SimpleRandomWalkDungeonGenerator : AbstractDungeonGenerator {
-
   [SerializeField]
   protected SimpleRandomWalkSO randomWalkParameters;
-
 
   protected override void RunProceduralGeneration() {
     HashSet<Vector2Int> floorPositions = RunRandomWalk(randomWalkParameters, startPosition);
     tilemapVisualizer.Clear();
     tilemapVisualizer.PaintFloorTiles(floorPositions);
     WallGenerator.CreateWalls(floorPositions, tilemapVisualizer);
+
+    // pick a random position in the single room floor
+    List<Vector2Int> floor = new List<Vector2Int>(floorPositions);
+    enterPos = floor[Random.Range(0, floor.Count)];
+    exitPos = floor[Random.Range(0, floor.Count)];
+    tilemapVisualizer.PaintEnterExitTiles(enterPos, exitPos);
   }
 
   protected HashSet<Vector2Int> RunRandomWalk(SimpleRandomWalkSO parameters, Vector2Int position) {
