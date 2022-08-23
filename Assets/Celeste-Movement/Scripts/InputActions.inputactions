@@ -24,18 +24,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Grab",
+                    "name": "Dash",
                     "type": "Button",
-                    "id": "a8b60c6c-6df7-49a7-9d88-befe7531bddc",
+                    "id": "4601f09a-488a-406f-9528-49de91b977f4",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Attack",
+                    "name": "Grab",
                     "type": "Button",
-                    "id": "4601f09a-488a-406f-9528-49de91b977f4",
+                    "id": "a8b60c6c-6df7-49a7-9d88-befe7531bddc",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -204,7 +204,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Attack",
+                    "action": "Dash",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -215,7 +215,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Controller",
-                    "action": "Attack",
+                    "action": "Dash",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 // todo
 // one way platforms
@@ -65,17 +64,15 @@ namespace Carles.Engine2D {
     public ParticleSystem wallJumpParticle;
     public ParticleSystem slideParticle;
 
-
     // Flags
 
     // input flags
-    private bool isJumpBeingPressed;
-    private bool isDashBeingPressed;
-    private bool isGrabBeingPressed;
+    [HideInInspector] public bool isJumpBeingPressed; // todo: change to isLongJumpEnabled
+    [HideInInspector] public bool isGrabBeingPressed; // todo: change to isGrabEnabled
 
     //  movement flags
     [HideInInspector] public bool canMove;
-    private Vector2 curMoveInput;
+    [HideInInspector] public Vector2 curMoveInput;
     private float xRaw;
     private float yRaw;
 
@@ -116,45 +113,6 @@ namespace Carles.Engine2D {
       UpdateJump();
       UpdateWalls(x, y);
       UpdateCharSide(x);
-
-      // trail.SetActive(!wallGrab);
-    }
-
-    // ------------------------------------------------------------------------------
-    // Input (These are called through PlayerInput component events)
-    // Debug.Log("OnInput " + context.phase);
-
-    public void OnInputMove(InputAction.CallbackContext context) {
-      curMoveInput = context.ReadValue<Vector2>();
-    }
-
-    public void OnInputJump(InputAction.CallbackContext context) {
-      isJumpBeingPressed = context.phase != InputActionPhase.Canceled;
-
-      // first frame that button is pressed down
-      if (context.phase == InputActionPhase.Performed) {
-
-        if (coll.onWall && !coll.onGround) {
-          WallJump();
-        } else {
-          Jump(Vector2.up, false);
-        }
-      }
-    }
-
-    public void OnInputDash(InputAction.CallbackContext context) {
-      isDashBeingPressed = context.phase != InputActionPhase.Canceled;
-
-      if (hasDashed) return;
-
-      // first frame that button is pressed down
-      if (context.phase == InputActionPhase.Performed) {
-        if (xRaw != 0 || yRaw != 0) Dash(xRaw, yRaw);
-      }
-    }
-
-    public void OnInputGrab(InputAction.CallbackContext context) {
-      isGrabBeingPressed = context.phase != InputActionPhase.Canceled;
     }
 
     // ------------------------------------------------------------------------------
@@ -231,7 +189,7 @@ namespace Carles.Engine2D {
       }
     }
 
-    private void Jump(Vector2 dir, bool wall) {
+    public void Jump(Vector2 dir, bool wall) {
       if (!canJump) return;
 
       // multi-jump
@@ -251,7 +209,7 @@ namespace Carles.Engine2D {
       particle.Play();
     }
 
-    private void WallJump() {
+    public void WallJump() {
       if (!canJump) return;
 
       if ((side == 1 && coll.onRightWall) || side == -1 && !coll.onRightWall) {
@@ -372,8 +330,13 @@ namespace Carles.Engine2D {
     // ------------------------------------------------------------------------------
     // Dash
 
-    private void Dash(float x, float y) {
+    public void Dash() {
       if (!canDash) return;
+      if (hasDashed) return;
+      if (xRaw == 0 && yRaw == 0) return;
+
+      float x = xRaw;
+      float y = yRaw;
 
       // trigger ripple effect (component in main camera)
       FindObjectOfType<RippleEffect>().Emit(Camera.main.WorldToViewportPoint(transform.position));
