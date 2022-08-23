@@ -36,7 +36,7 @@ namespace Carles.Engine2D {
       anim.SetBool("wallSlide", move.wallSlide);
       anim.SetBool("isDashing", move.isDashing);
 
-      if (move.isAttacking) Debug.Log(move.isAttacking);
+      // if (move.isAttacking) Debug.Log(move.isAttacking);
 
       anim.SetBool("isAttacking", move.isAttacking);
       anim.SetBool("isBlocking", move.isBlocking);

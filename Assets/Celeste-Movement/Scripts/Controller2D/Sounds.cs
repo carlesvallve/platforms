@@ -16,7 +16,7 @@ namespace Carles.Engine2D {
     [Space]
     public AudioProps attack;
     public AudioProps block;
-    public AudioProps hurt;
+    public AudioProps damage;
     public AudioProps die;
 
     public void PlayFootstep() {
@@ -43,8 +43,8 @@ namespace Carles.Engine2D {
       PlaySound(block);
     }
 
-    public void PlayHurt() {
-      PlaySound(hurt);
+    public void PlayDamage() {
+      PlaySound(damage);
     }
 
     public void PlayDie() {

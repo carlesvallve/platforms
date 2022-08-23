@@ -48,7 +48,20 @@ namespace Carles.Engine2D {
     public float slideSpeed = 2.5f;
     public float wallJumpLerp = 10;
     public float dashSpeed = 20;
-    public float attackSpeed = 0.2f;
+
+
+    [Space]
+    [Header("Attack")]
+    public LayerMask attackLayer;
+    public float attackSpeed = 0.15f;
+    public float attackCooldown = 0.15f;
+    float attackRange = 0.5f;
+    Vector2 attackPos = new Vector2(0.5f, 0);
+    private int attackDamage = 1;
+
+    private int health = 10;
+
+
 
     [Space]
     [Header("Skills")]
@@ -66,6 +79,8 @@ namespace Carles.Engine2D {
     public ParticleSystem jumpParticle;
     public ParticleSystem wallJumpParticle;
     public ParticleSystem slideParticle;
+    public ParticleSystem bloodParticle;
+    public ParticleSystem impactParticle;
 
     // Flags
 
@@ -407,17 +422,41 @@ namespace Carles.Engine2D {
       if (wallGrab) return;
       if (wallSlide) return;
 
-      StartCoroutine(AttackSeq(attackSpeed));
+      StartCoroutine(AttackSeq());
     }
 
-    IEnumerator AttackSeq(float duration) {
+    IEnumerator AttackSeq() {
       Debug.Log("Attack");
+
       anim.SetTrigger("attack");
       sounds.PlayAttack();
-
       isAttacking = true;
-      yield return new WaitForSeconds(duration);
+
+      yield return new WaitForSeconds(attackSpeed);
+
+      // todo: We may want to switch to CircleCastAll, it will give you contact points in world space coordinates
+      // todo: https://docs.unity3d.com/ScriptReference/Physics2D.CircleCastAll.html
+
+      int side = anim.sr.flipX ? -1 : 1;
+      Vector2 pos = (Vector2)transform.position + attackPos * Vector2.right * side;
+      Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(pos, attackRange, attackLayer);
+
+      for (int i = 0; i < enemiesToDamage.Length; i++) {
+        if (enemiesToDamage[i].transform.root == transform) continue;
+        enemiesToDamage[i].GetComponent<Movement>().TakeDamage(attackDamage);
+      }
+
+      yield return new WaitForSeconds(attackCooldown);
+
       isAttacking = false;
+    }
+
+    void OnDrawGizmos() {
+      if (!isAttacking) return;
+      Gizmos.color = Color.red;
+      int side = anim.sr.flipX ? -1 : 1;
+      Vector2 pos = (Vector2)transform.position + attackPos * Vector2.right * side;
+      Gizmos.DrawWireSphere(pos, attackRange);
     }
 
     // ------------------------------------------------------------------------------
@@ -438,21 +477,51 @@ namespace Carles.Engine2D {
       sounds.PlayBlock();
     }
 
-    // IEnumerator BlockSeq(float duration) {
-    //   Debug.Log("Block");
-    //   anim.SetTrigger("block");
-    //   sounds.PlayBlock();
+    // ------------------------------------------------------------------------------
+    // Damage
 
-    //   isBlocking = true;
-    //   yield return new WaitForSeconds(duration);
-    //   isBlocking = false;
-    // }
+    public void TakeDamage(int damage) {
+      anim.SetTrigger("damage");
+      sounds.PlayDamage();
+
+      health -= damage;
+
+      SpawnBlood(damage);
+    }
 
     // ------------------------------------------------------------------------------
+    // Combat Particles
 
-    // IEnumerator Wait(float duration) {
-    //   yield return new WaitForSeconds(duration);
-    // }
+    public void SpawnBlood(float damage) {
+      if (!bloodParticle) {
+        Debug.Log("Blood partices not found in " + name);
+        return;
+      }
+
+      bloodParticle.transform.localPosition = Vector3.zero;
+
+      // Generate a particle burst 
+      // (Should work, as we can see burstCount updates correctly in Emmission, 
+      // but for some reason always spawns same multiple amount of particles)
+      var em = bloodParticle.emission;
+      em.enabled = true;
+      em.rateOverTime = 0;
+      em.SetBursts(new ParticleSystem.Burst[] {
+        new ParticleSystem.Burst(0f, damage),
+      });
+
+      bloodParticle.Play();
+    }
+
+    public void SpawnImpact(float damage) {
+      if (!impactParticle) {
+        Debug.Log("Impact partices not found in " + name);
+        return;
+      }
+
+      impactParticle.transform.localPosition = Vector3.zero;
+      impactParticle.Play();
+    }
 
   }
 }

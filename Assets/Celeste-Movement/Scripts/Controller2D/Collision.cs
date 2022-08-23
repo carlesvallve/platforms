@@ -43,7 +43,7 @@ namespace Carles.Engine2D {
     }
 
     void OnDrawGizmos() {
-      Gizmos.color = Color.red;
+      Gizmos.color = Color.green;
 
       var positions = new Vector2[] { bottomOffset, rightOffset, leftOffset };
 
