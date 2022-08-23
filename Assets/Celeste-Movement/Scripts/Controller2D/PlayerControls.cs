@@ -44,6 +44,20 @@ namespace Carles.Engine2D {
       }
     }
 
+    public void OnInpuAttack(InputAction.CallbackContext context) {
+      // first frame that button is pressed down
+      if (context.phase == InputActionPhase.Performed) {
+        controller.Attack();
+      }
+    }
+
+    public void OnInpuBlock(InputAction.CallbackContext context) {
+      // first frame that button is pressed down
+      if (context.phase == InputActionPhase.Performed) {
+        controller.Block();
+      }
+    }
+
     public void OnInputGrab(InputAction.CallbackContext context) {
       controller.isGrabBeingPressed = context.phase != InputActionPhase.Canceled;
     }

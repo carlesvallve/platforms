@@ -55,6 +55,8 @@ namespace Carles.Engine2D {
     public bool canDash = true;
     public bool canWallSlide = true;
     public bool canWallGrab = true;
+    public bool canAttack = true;
+    public bool canBlock = true;
 
     [Space]
     [Header("Polish")]
@@ -92,6 +94,10 @@ namespace Carles.Engine2D {
     [HideInInspector] public bool wallSlide;
     [HideInInspector] public bool isDashing;
     private bool hasDashed;
+
+    // combat flags
+    [HideInInspector] public bool isAttacking;
+    [HideInInspector] public bool isBlocking;
 
     // ------------------------------------------------------------------------------
     // Start and Update
@@ -392,6 +398,38 @@ namespace Carles.Engine2D {
     }
 
     // ------------------------------------------------------------------------------
+    // Attack
+
+    public void Attack() {
+      if (!canAttack) return;
+      if (isAttacking) return;
+
+      Debug.Log("Attack");
+
+      isAttacking = true;
+      StartCoroutine(Wait(1f));
+      isAttacking = false;
+    }
+
+    // ------------------------------------------------------------------------------
+    // Block
+
+    public void Block() {
+      if (!canBlock) return;
+      if (isBlocking) return;
+
+      Debug.Log("Block");
+
+      isBlocking = true;
+      StartCoroutine(Wait(1f));
+      isBlocking = false;
+    }
+
+    // ------------------------------------------------------------------------------
+
+    IEnumerator Wait(float duration) {
+      yield return new WaitForSeconds(duration);
+    }
 
   }
 }
