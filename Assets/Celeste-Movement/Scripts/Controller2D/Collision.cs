@@ -23,9 +23,8 @@ namespace Carles.Engine2D {
 
     public float collisionRadius = 0.25f;
     public Vector2 bottomOffset, rightOffset, leftOffset;
-    private Color debugCollisionColor = Color.red;
+    private Color debugCollisionColor = Color.green;
 
-    // Start is called before the first frame update
     void Start() {
 
     }
@@ -43,7 +42,7 @@ namespace Carles.Engine2D {
     }
 
     void OnDrawGizmos() {
-      Gizmos.color = Color.green;
+      Gizmos.color = debugCollisionColor;
 
       var positions = new Vector2[] { bottomOffset, rightOffset, leftOffset };
 

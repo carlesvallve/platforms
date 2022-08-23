@@ -40,6 +40,7 @@ namespace Carles.Engine2D {
 
     [Space]
     [Header("Stats")]
+    private int health = 3;
     public float speed = 10;
     public float jumpForce = 50;
     public int maxJumps = 2;
@@ -55,13 +56,12 @@ namespace Carles.Engine2D {
     public LayerMask attackLayer;
     public float attackSpeed = 0.15f;
     public float attackCooldown = 0.15f;
-    float attackRange = 0.5f;
-    Vector2 attackPos = new Vector2(0.5f, 0);
+    private Rect attackRect = new Rect(0.5f, 0, 1, 2);
+    // private Vector2 attackRect = new Vector2(1, 2);
+    // private Vector2 attackPos = new Vector2(0.5f, 0);
     private int attackDamage = 1;
-
-    private int health = 10;
-
-
+    private float knockbackForce = 10f;
+    private float dazedDuration = 0.15f;
 
     [Space]
     [Header("Skills")]
@@ -114,6 +114,7 @@ namespace Carles.Engine2D {
     // combat flags
     [HideInInspector] public bool isAttacking;
     [HideInInspector] public bool isBlocking;
+    [HideInInspector] public bool isDead;
 
     // ------------------------------------------------------------------------------
     // Start and Update
@@ -377,7 +378,7 @@ namespace Carles.Engine2D {
       StartCoroutine(GroundDash());
 
       // progressively dump rigidbody drag
-      StartCoroutine(LerpRigidbodyDrag(14, 0, 0.8f));
+      // StartCoroutine(LerpRigidbodyDrag(14, 0, 0.8f));
 
       dashParticle.Play();
       rb.gravityScale = 0;
@@ -385,7 +386,6 @@ namespace Carles.Engine2D {
       wallJumped = true;
       isDashing = true;
 
-      // sounds.PlayJump();
       sounds.PlayDash();
 
       yield return new WaitForSeconds(.3f);
@@ -399,19 +399,18 @@ namespace Carles.Engine2D {
 
     IEnumerator GroundDash() {
       yield return new WaitForSeconds(.15f);
-      if (coll.onGround)
-        hasDashed = false;
+      if (coll.onGround) hasDashed = false;
     }
 
-    IEnumerator LerpRigidbodyDrag(float startValue, float endValue, float duration) {
-      float time = 0;
-      while (time < duration) {
-        rb.drag = Mathf.Lerp(startValue, endValue, time / duration);
-        time += Time.deltaTime;
-        yield return null;
-      }
-      rb.drag = endValue;
-    }
+    // IEnumerator LerpRigidbodyDrag(float startValue, float endValue, float duration) {
+    //   float time = 0;
+    //   while (time < duration) {
+    //     rb.drag = Mathf.Lerp(startValue, endValue, time / duration);
+    //     time += Time.deltaTime;
+    //     yield return null;
+    //   }
+    //   rb.drag = endValue;
+    // }
 
     // ------------------------------------------------------------------------------
     // Attack
@@ -426,8 +425,6 @@ namespace Carles.Engine2D {
     }
 
     IEnumerator AttackSeq() {
-      Debug.Log("Attack");
-
       anim.SetTrigger("attack");
       sounds.PlayAttack();
       isAttacking = true;
@@ -438,12 +435,16 @@ namespace Carles.Engine2D {
       // todo: https://docs.unity3d.com/ScriptReference/Physics2D.CircleCastAll.html
 
       int side = anim.sr.flipX ? -1 : 1;
-      Vector2 pos = (Vector2)transform.position + attackPos * Vector2.right * side;
-      Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(pos, attackRange, attackLayer);
+
+      Vector2 pos = (Vector2)transform.position + new Vector2(attackRect.x, attackRect.y) * Vector2.right * side;
+      Collider2D[] enemiesToDamage = Physics2D.OverlapBoxAll(
+        pos, new Vector2(attackRect.width, attackRect.height), 0, attackLayer
+      );
 
       for (int i = 0; i < enemiesToDamage.Length; i++) {
         if (enemiesToDamage[i].transform.root == transform) continue;
-        enemiesToDamage[i].GetComponent<Movement>().TakeDamage(attackDamage);
+        Movement enemy = enemiesToDamage[i].GetComponent<Movement>();
+        if (!enemy.isDead) StartCoroutine(enemy.TakeDamage(attackDamage, this));
       }
 
       yield return new WaitForSeconds(attackCooldown);
@@ -455,8 +456,8 @@ namespace Carles.Engine2D {
       if (!isAttacking) return;
       Gizmos.color = Color.red;
       int side = anim.sr.flipX ? -1 : 1;
-      Vector2 pos = (Vector2)transform.position + attackPos * Vector2.right * side;
-      Gizmos.DrawWireSphere(pos, attackRange);
+      Vector2 pos = (Vector2)transform.position + new Vector2(attackRect.x, attackRect.y) * Vector2.right * side;
+      Gizmos.DrawWireCube(pos, new Vector2(attackRect.width, attackRect.height));
     }
 
     // ------------------------------------------------------------------------------
@@ -480,13 +481,48 @@ namespace Carles.Engine2D {
     // ------------------------------------------------------------------------------
     // Damage
 
-    public void TakeDamage(int damage) {
+    public IEnumerator TakeDamage(int damage, Movement attacker) {
       anim.SetTrigger("damage");
       sounds.PlayDamage();
+      SpawnBlood(damage);
 
       health -= damage;
+      Knockback(attacker);
 
-      SpawnBlood(damage);
+      if (health > 0) {
+        // stop movement wile taking damage (dazed)
+        canMove = false;
+        yield return new WaitForSeconds(dazedDuration);
+        canMove = true;
+      } else {
+        StartCoroutine(Die());
+      }
+    }
+
+    public void Knockback(Movement attacker) {
+      // float knockbackForce = 10f;
+      Vector2 dir = (transform.position - attacker.transform.position).normalized;
+      rb.velocity += dir * knockbackForce;
+      // rb.AddForce(dir * knockbackForce, ForceMode2D.Impulse);
+
+      // progressively dump rigidbody drag
+      // StartCoroutine(LerpRigidbodyDrag(14, 0, 0.8f));
+    }
+
+    public IEnumerator Die() {
+      canMove = false;
+      isDead = true;
+      health = 0;
+
+      anim.SetTrigger("die");
+      sounds.PlayDie();
+
+      yield return new WaitForSeconds(dazedDuration);
+
+      GetComponent<Collider2D>().enabled = false;
+      rb.constraints = RigidbodyConstraints2D.FreezeAll;
+
+
     }
 
     // ------------------------------------------------------------------------------
