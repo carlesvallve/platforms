@@ -48,6 +48,7 @@ namespace Carles.Engine2D {
     public float slideSpeed = 2.5f;
     public float wallJumpLerp = 10;
     public float dashSpeed = 20;
+    public float attackSpeed = 0.2f;
 
     [Space]
     [Header("Skills")]
@@ -403,11 +404,19 @@ namespace Carles.Engine2D {
     public void Attack() {
       if (!canAttack) return;
       if (isAttacking) return;
+      if (wallGrab) return;
+      if (wallSlide) return;
 
+      StartCoroutine(AttackSeq(attackSpeed));
+    }
+
+    IEnumerator AttackSeq(float duration) {
       Debug.Log("Attack");
+      anim.SetTrigger("attack");
+      sounds.PlayAttack();
 
       isAttacking = true;
-      StartCoroutine(Wait(1f));
+      yield return new WaitForSeconds(duration);
       isAttacking = false;
     }
 
@@ -416,20 +425,34 @@ namespace Carles.Engine2D {
 
     public void Block() {
       if (!canBlock) return;
-      if (isBlocking) return;
-
-      Debug.Log("Block");
+      if (wallGrab) return;
+      if (wallSlide) return;
 
       isBlocking = true;
-      StartCoroutine(Wait(1f));
-      isBlocking = false;
+      sounds.PlayBlock();
     }
+
+    public void Unblock() {
+      if (!canBlock) return;
+      isBlocking = false;
+      sounds.PlayBlock();
+    }
+
+    // IEnumerator BlockSeq(float duration) {
+    //   Debug.Log("Block");
+    //   anim.SetTrigger("block");
+    //   sounds.PlayBlock();
+
+    //   isBlocking = true;
+    //   yield return new WaitForSeconds(duration);
+    //   isBlocking = false;
+    // }
 
     // ------------------------------------------------------------------------------
 
-    IEnumerator Wait(float duration) {
-      yield return new WaitForSeconds(duration);
-    }
+    // IEnumerator Wait(float duration) {
+    //   yield return new WaitForSeconds(duration);
+    // }
 
   }
 }

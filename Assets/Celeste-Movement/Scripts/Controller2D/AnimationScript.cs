@@ -35,6 +35,11 @@ namespace Carles.Engine2D {
       anim.SetBool("wallGrab", move.wallGrab);
       anim.SetBool("wallSlide", move.wallSlide);
       anim.SetBool("isDashing", move.isDashing);
+
+      if (move.isAttacking) Debug.Log(move.isAttacking);
+
+      anim.SetBool("isAttacking", move.isAttacking);
+      anim.SetBool("isBlocking", move.isBlocking);
     }
 
     public void SetHorizontalMovement(float x, float y, float yVel) {
