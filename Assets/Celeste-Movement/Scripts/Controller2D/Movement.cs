@@ -63,6 +63,7 @@ namespace Carles.Engine2D {
 
     [Space]
     [Header("Skills")]
+    public bool canMove;
     public bool canJump = true;
     public bool canDash = true;
     public bool canWallSlide = true;
@@ -87,7 +88,7 @@ namespace Carles.Engine2D {
     [HideInInspector] public bool isGrabBeingPressed; // todo: change to isGrabEnabled
 
     //  movement flags
-    [HideInInspector] public bool canMove;
+    // [HideInInspector] public bool canMove;
     [HideInInspector] public Vector2 curMoveInput;
     private float xRaw;
     private float yRaw;
@@ -419,6 +420,8 @@ namespace Carles.Engine2D {
       if (wallGrab) return;
       if (wallSlide) return;
 
+
+
       StartCoroutine(AttackSeq());
     }
 
@@ -444,6 +447,10 @@ namespace Carles.Engine2D {
         Movement enemy = enemiesToDamage[i].GetComponent<Movement>();
         if (!enemy.isDead) StartCoroutine(enemy.TakeDamage(attackDamage, this));
       }
+
+      rb.velocity *= 0.5f; // Vector2.zero;
+      rb.AddForce(Vector2.up * 2f, ForceMode2D.Impulse);
+      StartCoroutine(DisableMovement(attackCooldown));
 
       yield return new WaitForSeconds(attackCooldown);
 
@@ -515,6 +522,7 @@ namespace Carles.Engine2D {
       Vector2 dir = (transform.position - attacker.transform.position).normalized;
 
       rb.AddForce(dir * knockbackForce * 1, ForceMode2D.Impulse);
+      rb.AddForce(Vector2.up * 2.5f, ForceMode2D.Impulse);
       // attacker.rb.AddForce(-dir * knockbackForce * 0.5f, ForceMode2D.Impulse);
     }
 
@@ -528,7 +536,7 @@ namespace Carles.Engine2D {
 
 
 
-      yield return new WaitForSeconds(dazedDuration);
+      yield return new WaitForSeconds(dazedDuration * 2);
 
       GetComponent<Collider2D>().enabled = false;
       GetComponentInChildren<Collider2D>().enabled = false;
