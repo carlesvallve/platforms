@@ -10,7 +10,7 @@ namespace Carles.Engine2D {
     public LayerMask groundLayer;
 
     [Space]
-
+    [Header("States")]
     public bool onGround;
     public bool onWall;
     public bool onRightWall;
@@ -18,15 +18,20 @@ namespace Carles.Engine2D {
     public int wallSide;
 
     [Space]
-
     [Header("Collision")]
-
     public float collisionRadius = 0.25f;
     public Vector2 bottomOffset, rightOffset, leftOffset;
     private Color debugCollisionColor = Color.green;
 
-    void Start() {
+    [Space]
+    [Header("Character Collision")]
+    public CapsuleCollider2D characterCollider;
+    public CapsuleCollider2D blockerCollider;
+    public bool canPushCharacters = true;
 
+    void Start() {
+      Physics2D.IgnoreCollision(characterCollider, blockerCollider, true);
+      blockerCollider.gameObject.SetActive(!canPushCharacters);
     }
 
     // Update is called once per frame

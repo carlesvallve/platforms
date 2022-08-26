@@ -57,10 +57,8 @@ namespace Carles.Engine2D {
     public float attackSpeed = 0.15f;
     public float attackCooldown = 0.15f;
     private Rect attackRect = new Rect(0.5f, 0, 1, 2);
-    // private Vector2 attackRect = new Vector2(1, 2);
-    // private Vector2 attackPos = new Vector2(0.5f, 0);
     private int attackDamage = 1;
-    private float knockbackForce = 10f;
+    private float knockbackForce = 4f;
     private float dazedDuration = 0.15f;
 
     [Space]
@@ -486,27 +484,38 @@ namespace Carles.Engine2D {
       sounds.PlayDamage();
       SpawnBlood(damage);
 
+      // attacker.rb.velocity = Vector2.zero;
+
+      canMove = false;
+
+
       health -= damage;
+      if (health <= 0) StartCoroutine(Die());
+
       Knockback(attacker);
 
-      if (health > 0) {
-        // stop movement wile taking damage (dazed)
-        canMove = false;
-        yield return new WaitForSeconds(dazedDuration);
-        canMove = true;
-      } else {
-        StartCoroutine(Die());
-      }
+      // if (health > 0) {
+      // stop movement wile taking damage (dazed)
+      yield return new WaitForSeconds(dazedDuration);
+
+
+
+
+
+      // attacker.canMove = true;
+
+      if (health > 0) canMove = true;
+      // } else {
+
+      // }
     }
 
     public void Knockback(Movement attacker) {
-      // float knockbackForce = 10f;
+      // float knockbackForce = 4f;
       Vector2 dir = (transform.position - attacker.transform.position).normalized;
-      rb.velocity += dir * knockbackForce;
-      // rb.AddForce(dir * knockbackForce, ForceMode2D.Impulse);
 
-      // progressively dump rigidbody drag
-      // StartCoroutine(LerpRigidbodyDrag(14, 0, 0.8f));
+      rb.AddForce(dir * knockbackForce * 1, ForceMode2D.Impulse);
+      // attacker.rb.AddForce(-dir * knockbackForce * 0.5f, ForceMode2D.Impulse);
     }
 
     public IEnumerator Die() {
@@ -515,14 +524,17 @@ namespace Carles.Engine2D {
       health = 0;
 
       anim.SetTrigger("die");
-      sounds.PlayDie();
+      // sounds.PlayDie();
+
+
 
       yield return new WaitForSeconds(dazedDuration);
 
       GetComponent<Collider2D>().enabled = false;
+      GetComponentInChildren<Collider2D>().enabled = false;
       rb.constraints = RigidbodyConstraints2D.FreezeAll;
 
-
+      trailParticle.Stop();
     }
 
     // ------------------------------------------------------------------------------
