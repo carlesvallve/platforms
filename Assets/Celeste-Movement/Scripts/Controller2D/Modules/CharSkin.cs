@@ -22,32 +22,21 @@ namespace Carles.Engine2D {
     WhiteWizard,
   }
 
-  public class CharConfig : MonoBehaviour {
+  public class CharSkin : MonoBehaviour {
 
-    public Sounds sounds;
-
-    [Space]
-    public CharacterType characterType;
-    public int spriteLibIndex;
     public SpriteLibraryAsset[] spriteLibs;
     public bool randomizeOnStart = true;
-
-    [Space]
-    [Header("Projectiles")]
-    public GameObject arrowPrefab;
-    public GameObject darkMagickPrefab;
-    public GameObject fireMagickPrefab;
+    public CharacterType characterType;
 
     private CharController2D c;
-    // private Collision coll;
     private Animator anim;
-    [HideInInspector] public SpriteRenderer sprite;
+    private SpriteRenderer sprite;
+    private int spriteLibIndex;
 
     void Start() {
-      // coll = GetComponentInParent<Collision>();
-      c = GetComponentInParent<CharController2D>();
-      anim = GetComponent<Animator>();
-      sprite = GetComponent<SpriteRenderer>();
+      c = GetComponent<CharController2D>();
+      anim = GetComponentInChildren<Animator>();
+      sprite = GetComponentInChildren<SpriteRenderer>();
 
       if (randomizeOnStart) SetSpriteLibraryRandom();
     }
@@ -64,10 +53,8 @@ namespace Carles.Engine2D {
       characterType = (CharacterType)index;
       spriteLibIndex = index;
 
-      SpriteLibrary spl = GetComponent<SpriteLibrary>();
+      SpriteLibrary spl = GetComponentInChildren<SpriteLibrary>();
       spl.spriteLibraryAsset = spriteLibs[spriteLibIndex];
-
-
     }
 
     public CharacterType GetCharacterType() {
@@ -75,10 +62,10 @@ namespace Carles.Engine2D {
     }
 
     public GameObject GetProjectilePrefab() {
-      if (IsArcher()) return arrowPrefab;
-      if (GetCharacterType() == CharacterType.DarkWizard) return darkMagickPrefab;
-      if (GetCharacterType() == CharacterType.FireWizard) return fireMagickPrefab;
-      if (GetCharacterType() == CharacterType.WhiteWizard) return fireMagickPrefab;
+      if (IsArcher()) return c.combat.arrowPrefab;
+      if (GetCharacterType() == CharacterType.DarkWizard) return c.combat.darkMagickPrefab;
+      if (GetCharacterType() == CharacterType.FireWizard) return c.combat.fireMagickPrefab;
+      if (GetCharacterType() == CharacterType.WhiteWizard) return c.combat.fireMagickPrefab;
       return null;
     }
 
@@ -99,10 +86,6 @@ namespace Carles.Engine2D {
     public bool hasShield() {
       CharacterType type = GetCharacterType();
       return type == CharacterType.Knight || type == CharacterType.Pirate || type == CharacterType.Spearman || type == CharacterType.Viking;
-    }
-
-    public void PlayFootstep() {
-      sounds.PlayFootstep();
     }
 
     public void Flip(int side) {

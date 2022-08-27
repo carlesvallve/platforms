@@ -8,11 +8,9 @@ namespace Carles.Engine2D {
   public class PlayerControls : MonoBehaviour {
 
     CharController2D c;
-    // private Collision coll;
 
     void Start() {
       c = GetComponent<CharController2D>();
-      // coll = GetComponent<Collision>();
     }
 
     // ------------------------------------------------------------------------------
@@ -24,7 +22,7 @@ namespace Carles.Engine2D {
     }
 
     public void OnInputJump(InputAction.CallbackContext context) {
-      c.isJumpBeingPressed = context.phase != InputActionPhase.Canceled;
+      c.jump.isJumpBeingPressed = context.phase != InputActionPhase.Canceled;
 
       // first frame that button is pressed down
       if (context.phase == InputActionPhase.Performed) {
@@ -40,28 +38,28 @@ namespace Carles.Engine2D {
     public void OnInputDash(InputAction.CallbackContext context) {
       // first frame that button is pressed down
       if (context.phase == InputActionPhase.Performed) {
-        c.Dash();
+        c.dash.SetDash();
       }
     }
 
     public void OnInputAttack(InputAction.CallbackContext context) {
       // first frame that button is pressed down
       if (context.phase == InputActionPhase.Performed) {
-        c.Attack();
+        c.combat.Attack();
       }
     }
 
     public void OnInputBlock(InputAction.CallbackContext context) {
       // first frame that button is pressed down
       if (context.phase == InputActionPhase.Performed) {
-        c.Block();
+        c.combat.Block();
       } else if (context.phase == InputActionPhase.Canceled) {
-        c.Unblock();
+        c.combat.Unblock();
       }
     }
 
     public void OnInputGrab(InputAction.CallbackContext context) {
-      c.isGrabBeingPressed = context.phase != InputActionPhase.Canceled;
+      c.move.isGrabBeingPressed = context.phase != InputActionPhase.Canceled;
     }
   }
 }

@@ -1,38 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.U2D.Animation;
 
 namespace Carles.Engine2D {
 
   public class CharAnimation : MonoBehaviour {
 
-    // public Sounds sounds;
-
-    // [Space]
-    // public CharacterType characterType;
-    // public int spriteLibIndex;
-    // public SpriteLibraryAsset[] spriteLibs;
-    // public bool randomizeOnStart = true;
-
-    // [Space]
-    // [Header("Projectiles")]
-    // public GameObject arrowPrefab;
-    // public GameObject darkMagickPrefab;
-    // public GameObject fireMagickPrefab;
-
     private CharController2D c;
-    // private Collision coll;
     private Animator anim;
-    // [HideInInspector] public SpriteRenderer sr;
 
     void Start() {
-      // coll = GetComponentInParent<Collision>();
+      // Note: This component needs to be on the same gameobject as the animator
       c = GetComponentInParent<CharController2D>();
       anim = GetComponent<Animator>();
-      // sr = GetComponent<SpriteRenderer>();
-
-      // if (randomizeOnStart) SetSpriteLibraryRandom();
     }
 
     void Update() {
@@ -40,11 +20,11 @@ namespace Carles.Engine2D {
       anim.SetBool("onGround", c.coll.onGround);
       anim.SetBool("wallGrab", c.move.wallGrab);
       anim.SetBool("wallSlide", c.move.wallSlide);
-      anim.SetBool("isDashing", c.isDashing);
-      anim.SetBool("isAttacking", c.isAttacking);
-      anim.SetBool("isBlocking", c.isBlocking);
-      anim.SetBool("isTakingDamage", c.isTakingDamage);
-      anim.SetBool("isDead", c.isDead);
+      anim.SetBool("isDashing", c.dash.isDashing);
+      anim.SetBool("isAttacking", c.combat.isAttacking);
+      anim.SetBool("isBlocking", c.combat.isBlocking);
+      anim.SetBool("isTakingDamage", c.combat.isTakingDamage);
+      anim.SetBool("isDead", c.combat.isDead);
     }
 
     public void SetHorizontalCharController2D(float x, float y, float yVel) {
@@ -57,9 +37,10 @@ namespace Carles.Engine2D {
       anim.SetTrigger(trigger);
     }
 
-
-
+    public void PlayFootstep() {
+      // this method is called by animation events
+      c.sounds.PlayFootstep();
+    }
 
   }
-
 }

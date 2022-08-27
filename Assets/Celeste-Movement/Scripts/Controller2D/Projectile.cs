@@ -45,7 +45,7 @@ namespace Carles.Engine2D {
       // Debug.Log(collision.tag + " " + collision.transform + " " + enemy);
 
       if (enemy) {
-        enemy.StartCoroutine(enemy.TakeDamage(shooter, damage, 3f));
+        enemy.StartCoroutine(enemy.combat.TakeDamage(shooter, damage, 3f));
       }
 
       Destroy(gameObject, Random.Range(1f, 3f));

@@ -9,7 +9,7 @@ namespace Carles.Engine2D {
     private CharController2D c;
 
     public bool canMove;
-    public float speed = 7;
+    public float speed = 6;
     public float slideSpeed = 2.5f;
 
     // move
@@ -18,8 +18,8 @@ namespace Carles.Engine2D {
     [HideInInspector] public float yRaw;
 
     // walls
+    [HideInInspector] public bool isGrabBeingPressed; // todo: change to isGrabEnabled
     [HideInInspector] public bool wallGrab;
-    // [HideInInspector] public bool wallJumped;
     [HideInInspector] public bool wallSlide;
 
     // side
@@ -35,7 +35,7 @@ namespace Carles.Engine2D {
       float y = curMoveInput.y;
 
       // move slower while blocking
-      if (c.isBlocking && c.coll.onGround) {
+      if (c.combat.isBlocking && c.coll.onGround) {
         x *= 0.5f;
         y *= 0.5f;
       }
@@ -80,20 +80,20 @@ namespace Carles.Engine2D {
     private void UpdateWalls(float x, float y) {
       // wall grab flags
 
-      if (c.coll.onWall && c.isGrabBeingPressed && canMove && !c.isBlocking) {
-        if (side != c.coll.wallSide) c.ch.Flip(side * -1);
+      if (c.coll.onWall && isGrabBeingPressed && canMove && !c.combat.isBlocking) {
+        if (side != c.coll.wallSide) c.skin.Flip(side * -1);
         wallGrab = true;
         wallSlide = false;
       }
 
-      if (!c.isGrabBeingPressed || !c.coll.onWall || !canMove || c.isBlocking) {
+      if (!isGrabBeingPressed || !c.coll.onWall || !canMove || c.combat.isBlocking) {
         wallGrab = false;
         wallSlide = false;
       }
 
       // wall grab
 
-      if (wallGrab && !c.isDashing) {
+      if (wallGrab && !c.dash.isDashing) {
         c.rb.gravityScale = 0;
         if (x > .2f || x < -.2f) {
           c.rb.velocity = new Vector2(c.rb.velocity.x, 0);
@@ -107,14 +107,14 @@ namespace Carles.Engine2D {
 
       // wall slide
 
-      if (c.coll.onWall && !c.coll.onGround && !c.isAttacking) {
+      if (c.coll.onWall && !c.coll.onGround && !c.combat.isAttacking) {
         if (x != 0 && !wallGrab && c.rb.velocity.y < 0) {
           wallSlide = true;
           WallSlide();
         }
       }
 
-      if (!c.coll.onWall || c.coll.onGround || c.isAttacking) {
+      if (!c.coll.onWall || c.coll.onGround || c.combat.isAttacking) {
         wallSlide = false;
       }
 
@@ -124,7 +124,7 @@ namespace Carles.Engine2D {
     private void WallSlide() {
       if (!canMove) return;
 
-      if (c.coll.wallSide != side) c.ch.Flip(side * -1);
+      if (c.coll.wallSide != side) c.skin.Flip(side * -1);
 
       bool pushingWall = false;
       if ((c.rb.velocity.x > 0 && c.coll.onRightWall) || (c.rb.velocity.x < 0 && c.coll.onLeftWall)) {
@@ -138,10 +138,10 @@ namespace Carles.Engine2D {
     }
 
     void WallParticle(float vertical) {
-      var main = c.slideParticle.main;
+      var main = c.particles.slide.main;
 
       if (wallSlide || (wallGrab && vertical < 0)) {
-        c.slideParticle.transform.parent.localScale = new Vector3(ParticleSide(), 1, 1);
+        c.particles.slide.transform.parent.localScale = new Vector3(ParticleSide(), 1, 1);
         main.startColor = Color.white;
       } else {
         main.startColor = Color.clear;
@@ -163,16 +163,15 @@ namespace Carles.Engine2D {
       // turn right
       if (x > 0) {
         side = 1;
-        c.ch.Flip(side);
+        c.skin.Flip(side);
       }
 
       // turn left
       if (x < 0) {
         side = -1;
-        c.ch.Flip(side);
+        c.skin.Flip(side);
       }
     }
-
 
   }
 }

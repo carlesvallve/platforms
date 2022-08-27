@@ -9,7 +9,7 @@ namespace Carles.Engine2D {
     public Transform target;
     public float speedX = 100f;
     public float speedY = 5f;
-    private float displaceX = 0; //0.3f;
+    private float displaceX = 0; // 0.3f;
 
     // public Transform tileMap;
     // public Rect limits = new Rect(-3, -2, 1.6f, 1.3f);
