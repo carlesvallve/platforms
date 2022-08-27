@@ -5,23 +5,23 @@ using UnityEngine;
 
 namespace Carles.Engine2D {
 
-  [CustomEditor(typeof(AnimationScript), true)]
+  [CustomEditor(typeof(CharConfig), true)]
   public class RandomCharacterEditor : Editor {
-    AnimationScript animationScript;
+    CharConfig CharConfig;
 
     private void Awake() {
-      animationScript = (AnimationScript)target;
+      CharConfig = (CharConfig)target;
     }
 
     public override void OnInspectorGUI() {
       base.OnInspectorGUI();
 
-      animationScript.SetSpriteLibrary((int)animationScript.characterType);
+      CharConfig.SetSpriteLibrary((int)CharConfig.characterType);
 
       EditorGUILayout.Space(10f);
       if (GUILayout.Button("Random Character")) {
-        int r = animationScript.SetSpriteLibraryRandom();
-        animationScript.characterType = (CharacterType)r;
+        int r = CharConfig.SetSpriteLibraryRandom();
+        CharConfig.characterType = (CharacterType)r;
       }
 
 

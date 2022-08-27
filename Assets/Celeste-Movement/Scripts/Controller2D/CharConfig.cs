@@ -1,11 +1,28 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.U2D.Animation;
 
 namespace Carles.Engine2D {
 
-  public class AnimationScript : MonoBehaviour {
+  public enum CharacterType {
+    Archer,
+    DarkWizard,
+    FireWizard,
+    Goblin,
+    GoblinArcher,
+    Knight,
+    Naked,
+    Orc,
+    Pirate,
+    Skeleton,
+    Spearman,
+    Thief,
+    Viking,
+    WhiteWizard,
+  }
+
+  public class CharConfig : MonoBehaviour {
 
     public Sounds sounds;
 
@@ -24,47 +41,15 @@ namespace Carles.Engine2D {
     private Movement move;
     private Collision coll;
     private Animator anim;
-    [HideInInspector] public SpriteRenderer sr;
+    [HideInInspector] public SpriteRenderer sprite;
 
     void Start() {
       coll = GetComponentInParent<Collision>();
       move = GetComponentInParent<Movement>();
       anim = GetComponent<Animator>();
-      sr = GetComponent<SpriteRenderer>();
+      sprite = GetComponent<SpriteRenderer>();
 
       if (randomizeOnStart) SetSpriteLibraryRandom();
-    }
-
-    void Update() {
-      anim.SetBool("canMove", move.canMove);
-      anim.SetBool("onGround", coll.onGround);
-      anim.SetBool("wallGrab", move.wallGrab);
-      anim.SetBool("wallSlide", move.wallSlide);
-      anim.SetBool("isDashing", move.isDashing);
-      anim.SetBool("isAttacking", move.isAttacking);
-      anim.SetBool("isBlocking", move.isBlocking);
-      anim.SetBool("isTakingDamage", move.isTakingDamage);
-      anim.SetBool("isDead", move.isDead);
-    }
-
-    public void SetHorizontalMovement(float x, float y, float yVel) {
-      anim.SetFloat("HorizontalAxis", x);
-      anim.SetFloat("VerticalAxis", y);
-      anim.SetFloat("VerticalVelocity", yVel);
-    }
-
-    public void SetTrigger(string trigger) {
-      anim.SetTrigger(trigger);
-    }
-
-    public void Flip(int side) {
-      if (move.wallGrab || move.wallSlide) {
-        if (side == -1 && sr.flipX) return;
-        if (side == 1 && !sr.flipX) return;
-      }
-
-      bool state = (side == 1) ? false : true;
-      sr.flipX = state;
     }
 
     public int SetSpriteLibraryRandom() {
@@ -118,6 +103,16 @@ namespace Carles.Engine2D {
 
     public void PlayFootstep() {
       sounds.PlayFootstep();
+    }
+
+    public void Flip(int side) {
+      if (move.wallGrab || move.wallSlide) {
+        if (side == -1 && sprite.flipX) return;
+        if (side == 1 && !sprite.flipX) return;
+      }
+
+      bool state = (side == 1) ? false : true;
+      sprite.flipX = state;
     }
   }
 

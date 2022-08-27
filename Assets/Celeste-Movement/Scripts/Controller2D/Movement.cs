@@ -35,7 +35,8 @@ namespace Carles.Engine2D {
   public class Movement : MonoBehaviour {
     private Collision coll;
     private Rigidbody2D rb;
-    private AnimationScript anim;
+    private CharConfig ch;
+    private CharAnimation anim;
     private Sounds sounds;
 
     [Space]
@@ -122,7 +123,8 @@ namespace Carles.Engine2D {
     void Start() {
       coll = GetComponent<Collision>();
       rb = GetComponent<Rigidbody2D>();
-      anim = GetComponentInChildren<AnimationScript>();
+      ch = GetComponentInChildren<CharConfig>();
+      anim = GetComponentInChildren<CharAnimation>();
       sounds = GetComponentInChildren<Sounds>();
     }
 
@@ -208,7 +210,7 @@ namespace Carles.Engine2D {
     }
 
     int GetSide() {
-      return anim.sr.flipX ? -1 : 1;
+      return ch.sprite.flipX ? -1 : 1;
     }
 
     // ------------------------------------------------------------------------------
@@ -250,7 +252,7 @@ namespace Carles.Engine2D {
 
       if ((side == 1 && coll.onRightWall) || side == -1 && !coll.onRightWall) {
         side *= -1;
-        anim.Flip(side);
+        ch.Flip(side);
       }
 
       StartCoroutine(DisableMovement(.1f));
@@ -269,7 +271,7 @@ namespace Carles.Engine2D {
       // wall grab flags
 
       if (coll.onWall && isGrabBeingPressed && canMove && canWallGrab && !isBlocking) {
-        if (side != coll.wallSide) anim.Flip(side * -1);
+        if (side != coll.wallSide) ch.Flip(side * -1);
         wallGrab = true;
         wallSlide = false;
       }
@@ -313,7 +315,7 @@ namespace Carles.Engine2D {
       if (!canMove) return;
       if (!canWallSlide) return;
 
-      if (coll.wallSide != side) anim.Flip(side * -1);
+      if (coll.wallSide != side) ch.Flip(side * -1);
 
       bool pushingWall = false;
       if ((rb.velocity.x > 0 && coll.onRightWall) || (rb.velocity.x < 0 && coll.onLeftWall)) {
@@ -353,13 +355,13 @@ namespace Carles.Engine2D {
       // turn right
       if (x > 0) {
         side = 1;
-        anim.Flip(side);
+        ch.Flip(side);
       }
 
       // turn left
       if (x < 0) {
         side = -1;
-        anim.Flip(side);
+        ch.Flip(side);
       }
     }
 
@@ -434,7 +436,7 @@ namespace Carles.Engine2D {
       if (wallGrab) return;
       if (wallSlide) return;
 
-      if (anim.IsMelee()) {
+      if (ch.IsMelee()) {
         StartCoroutine(AttackSeq());
       } else {
         StartCoroutine(ShootSeq());
@@ -487,7 +489,7 @@ namespace Carles.Engine2D {
     void OnDrawGizmos() {
       if (!isAttacking) return;
       Gizmos.color = Color.red;
-      int side = anim.sr.flipX ? -1 : 1;
+      int side = GetSide(); // ch.sr.flipX ? -1 : 1;
       Vector2 pos = (Vector2)transform.position + new Vector2(attackRect.x, attackRect.y) * Vector2.right * side;
       Gizmos.DrawWireCube(pos, new Vector2(attackRect.width, attackRect.height));
     }
@@ -513,7 +515,7 @@ namespace Carles.Engine2D {
       yield return new WaitForSeconds(attackSpeed);
 
       // Instantiate projectile
-      GameObject projectilePrefab = anim.GetProjectilePrefab();
+      GameObject projectilePrefab = ch.GetProjectilePrefab();
       Vector2 pos = new Vector2(transform.position.x + 0.3f, transform.position.y - 0.1f);
       GameObject go = Instantiate(projectilePrefab, pos, Quaternion.identity);
       Projectile projectile = go.GetComponent<Projectile>();

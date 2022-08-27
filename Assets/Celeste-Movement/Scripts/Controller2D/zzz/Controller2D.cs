@@ -17,7 +17,7 @@ namespace Carles.Engine2D {
     public Dash dash;
     public WallSlide slide;
 
-    public AnimationScript anim;
+    public CharAnimation anim;
     public Sounds sounds;
 
     [Space]
@@ -38,7 +38,7 @@ namespace Carles.Engine2D {
       dash = GetComponent<Dash>();
       slide = GetComponent<WallSlide>();
 
-      anim = GetComponentInChildren<AnimationScript>();
+      anim = GetComponentInChildren<CharAnimation>();
       sounds = GetComponentInChildren<Sounds>();
     }
 
