@@ -7,11 +7,11 @@ namespace Carles.Engine2D {
 
   public class PlayerControls : MonoBehaviour {
 
-    Movement controller;
+    CharController2D controller;
     private Collision coll;
 
     void Start() {
-      controller = GetComponent<Movement>();
+      controller = GetComponent<CharController2D>();
       coll = GetComponent<Collision>();
     }
 

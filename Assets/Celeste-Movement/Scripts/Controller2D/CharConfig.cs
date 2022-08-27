@@ -38,14 +38,14 @@ namespace Carles.Engine2D {
     public GameObject darkMagickPrefab;
     public GameObject fireMagickPrefab;
 
-    private Movement move;
+    private CharController2D move;
     private Collision coll;
     private Animator anim;
     [HideInInspector] public SpriteRenderer sprite;
 
     void Start() {
       coll = GetComponentInParent<Collision>();
-      move = GetComponentInParent<Movement>();
+      move = GetComponentInParent<CharController2D>();
       anim = GetComponent<Animator>();
       sprite = GetComponent<SpriteRenderer>();
 

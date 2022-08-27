@@ -4,7 +4,7 @@ namespace Carles.Engine2D {
   public class Projectile : MonoBehaviour {
 
     private Rigidbody2D rb;
-    private Movement shooter;
+    private CharController2D shooter;
     private int side;
 
     [SerializeField] private float speed = 4f;
@@ -13,7 +13,7 @@ namespace Carles.Engine2D {
     [SerializeField] private float penetration = 0.15f;
     [SerializeField] private int damage = 1;
 
-    public void Init(Movement _shooter, int _side) {
+    public void Init(CharController2D _shooter, int _side) {
       shooter = _shooter;
       side = _side;
 
@@ -41,7 +41,7 @@ namespace Carles.Engine2D {
       rb.constraints = RigidbodyConstraints2D.FreezeAll;
       rb.simulated = false;
 
-      Movement enemy = collision.GetComponent<Movement>();
+      CharController2D enemy = collision.GetComponent<CharController2D>();
       // Debug.Log(collision.tag + " " + collision.transform + " " + enemy);
 
       if (enemy) {

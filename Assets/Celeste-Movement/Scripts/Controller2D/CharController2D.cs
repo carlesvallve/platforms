@@ -32,7 +32,7 @@ using UnityEngine;
 
 namespace Carles.Engine2D {
 
-  public class Movement : MonoBehaviour {
+  public class CharController2D : MonoBehaviour {
     private Collision coll;
     private Rigidbody2D rb;
     private CharConfig ch;
@@ -88,7 +88,7 @@ namespace Carles.Engine2D {
     [HideInInspector] public bool isJumpBeingPressed; // todo: change to isLongJumpEnabled
     [HideInInspector] public bool isGrabBeingPressed; // todo: change to isGrabEnabled
 
-    //  movement flags
+    //  CharController2D flags
     // [HideInInspector] public bool canMove;
     [HideInInspector] public Vector2 curMoveInput;
     private float xRaw;
@@ -129,7 +129,7 @@ namespace Carles.Engine2D {
     }
 
     void Update() {
-      // get movement increments
+      // get CharController2D increments
       float x = curMoveInput.x;
       float y = curMoveInput.y;
 
@@ -154,7 +154,7 @@ namespace Carles.Engine2D {
       Vector2 dir = new Vector2(x, y);
 
       Walk(dir);
-      anim.SetHorizontalMovement(x, y, rb.velocity.y);
+      anim.SetHorizontalCharController2D(x, y, rb.velocity.y);
     }
 
     private void Walk(Vector2 dir) {
@@ -168,7 +168,7 @@ namespace Carles.Engine2D {
       }
     }
 
-    IEnumerator DisableMovement(float time) {
+    IEnumerator DisableCharController2D(float time) {
       canMove = false;
       yield return new WaitForSeconds(time);
       canMove = true;
@@ -255,7 +255,7 @@ namespace Carles.Engine2D {
         ch.Flip(side);
       }
 
-      StartCoroutine(DisableMovement(.1f));
+      StartCoroutine(DisableCharController2D(.1f));
 
       Vector2 wallDir = coll.onRightWall ? Vector2.left : Vector2.right;
 
@@ -458,8 +458,8 @@ namespace Carles.Engine2D {
         rb.AddForce(vec, ForceMode2D.Impulse);
       }
 
-      // disable movement while attacking
-      StartCoroutine(DisableMovement(attackCooldown));
+      // disable CharController2D while attacking
+      StartCoroutine(DisableCharController2D(attackCooldown));
 
       yield return new WaitForSeconds(attackSpeed);
 
@@ -475,7 +475,7 @@ namespace Carles.Engine2D {
       //  make each enemy take damage
       for (int i = 0; i < enemiesToDamage.Length; i++) {
         if (enemiesToDamage[i].transform.root == transform) continue;
-        Movement enemy = enemiesToDamage[i].GetComponent<Movement>();
+        CharController2D enemy = enemiesToDamage[i].GetComponent<CharController2D>();
         if (!enemy.isDead) {
           StartCoroutine(enemy.TakeDamage(this, attackDamage, 4f));
         }
@@ -509,8 +509,8 @@ namespace Carles.Engine2D {
         rb.AddForce(vec, ForceMode2D.Impulse);
       }
 
-      // disable movement while attacking
-      StartCoroutine(DisableMovement(attackCooldown));
+      // disable CharController2D while attacking
+      StartCoroutine(DisableCharController2D(attackCooldown));
 
       yield return new WaitForSeconds(attackSpeed);
 
@@ -552,7 +552,7 @@ namespace Carles.Engine2D {
     // ------------------------------------------------------------------------------
     // Take Damage
 
-    public IEnumerator TakeDamage(Movement attacker, int damage, float knockbackForce = 0) {
+    public IEnumerator TakeDamage(CharController2D attacker, int damage, float knockbackForce = 0) {
       isTakingDamage = true;
       canMove = false;
 
@@ -567,14 +567,14 @@ namespace Carles.Engine2D {
         yield break;
       }
 
-      // stop movement wile taking damage (dazed)
+      // stop CharController2D wile taking damage (dazed)
       yield return new WaitForSeconds(dazedDuration);
 
       isTakingDamage = false;
       canMove = true;
     }
 
-    public void Knockback(Movement attacker, float knockbackForce = 0) {
+    public void Knockback(CharController2D attacker, float knockbackForce = 0) {
       Vector2 dir = (transform.position - attacker.transform.position).normalized;
 
       rb.AddForce(dir * knockbackForce * 1, ForceMode2D.Impulse);

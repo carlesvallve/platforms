@@ -11,7 +11,7 @@ namespace Carles.Engine2D {
     // private InputControls controls;
 
     public Collision coll;
-    public Movement mov;
+    public CharController2D mov;
 
     public Jump jump;
     public Dash dash;
@@ -32,7 +32,7 @@ namespace Carles.Engine2D {
       rb = GetComponent<Rigidbody2D>();
 
       coll = GetComponent<Collision>();
-      mov = GetComponent<Movement>();
+      mov = GetComponent<CharController2D>();
 
       jump = GetComponent<Jump>();
       dash = GetComponent<Dash>();
