@@ -7,12 +7,12 @@ namespace Carles.Engine2D {
 
   public class PlayerControls : MonoBehaviour {
 
-    CharController2D controller;
-    private Collision coll;
+    CharController2D c;
+    // private Collision coll;
 
     void Start() {
-      controller = GetComponent<CharController2D>();
-      coll = GetComponent<Collision>();
+      c = GetComponent<CharController2D>();
+      // coll = GetComponent<Collision>();
     }
 
     // ------------------------------------------------------------------------------
@@ -20,19 +20,19 @@ namespace Carles.Engine2D {
     // Debug.Log("OnInput " + context.phase);
 
     public void OnInputMove(InputAction.CallbackContext context) {
-      controller.move.curMoveInput = context.ReadValue<Vector2>();
+      c.move.curMoveInput = context.ReadValue<Vector2>();
     }
 
     public void OnInputJump(InputAction.CallbackContext context) {
-      controller.isJumpBeingPressed = context.phase != InputActionPhase.Canceled;
+      c.isJumpBeingPressed = context.phase != InputActionPhase.Canceled;
 
       // first frame that button is pressed down
       if (context.phase == InputActionPhase.Performed) {
 
-        if (coll.onWall && !coll.onGround) {
-          controller.WallJump();
+        if (c.coll.onWall && !c.coll.onGround) {
+          c.jump.SetWallJump();
         } else {
-          controller.Jump(Vector2.up, false);
+          c.jump.SetJump(Vector2.up, false);
         }
       }
     }
@@ -40,28 +40,28 @@ namespace Carles.Engine2D {
     public void OnInputDash(InputAction.CallbackContext context) {
       // first frame that button is pressed down
       if (context.phase == InputActionPhase.Performed) {
-        controller.Dash();
+        c.Dash();
       }
     }
 
     public void OnInputAttack(InputAction.CallbackContext context) {
       // first frame that button is pressed down
       if (context.phase == InputActionPhase.Performed) {
-        controller.Attack();
+        c.Attack();
       }
     }
 
     public void OnInputBlock(InputAction.CallbackContext context) {
       // first frame that button is pressed down
       if (context.phase == InputActionPhase.Performed) {
-        controller.Block();
+        c.Block();
       } else if (context.phase == InputActionPhase.Canceled) {
-        controller.Unblock();
+        c.Unblock();
       }
     }
 
     public void OnInputGrab(InputAction.CallbackContext context) {
-      controller.isGrabBeingPressed = context.phase != InputActionPhase.Canceled;
+      c.isGrabBeingPressed = context.phase != InputActionPhase.Canceled;
     }
   }
 }

@@ -9,20 +9,20 @@ namespace Carles.Engine2D {
     private CharController2D c;
 
     public bool canMove;
-
     public float speed = 7;
     public float slideSpeed = 2.5f;
 
+    // move
     [HideInInspector] public Vector2 curMoveInput;
     [HideInInspector] public float xRaw;
     [HideInInspector] public float yRaw;
 
-    // wall flags
+    // walls
     [HideInInspector] public bool wallGrab;
-    [HideInInspector] public bool wallJumped;
+    // [HideInInspector] public bool wallJumped;
     [HideInInspector] public bool wallSlide;
 
-    // side flags
+    // side
     [HideInInspector] public int side = 1;
 
     void Start() {
@@ -43,13 +43,12 @@ namespace Carles.Engine2D {
       UpdateCharSide(x);
       UpdateWalk(x, y);
       UpdateWalls(x, y);
-
     }
 
     // ------------------------------------------------------------------------------
     // Walk
 
-    void UpdateWalk(float x, float y) {
+    private void UpdateWalk(float x, float y) {
       xRaw = x;
       yRaw = y;
       Vector2 dir = new Vector2(x, y);
@@ -60,12 +59,12 @@ namespace Carles.Engine2D {
 
     private void Walk(Vector2 dir) {
       if (!canMove) return;
-      if (c.wallGrab) return;
+      if (wallGrab) return;
 
-      if (!c.wallJumped) {
+      if (!c.jump.wallJumped) {
         c.rb.velocity = new Vector2(dir.x * speed, c.rb.velocity.y);
       } else {
-        c.rb.velocity = Vector2.Lerp(c.rb.velocity, (new Vector2(dir.x * speed, c.rb.velocity.y)), c.wallJumpLerp * Time.deltaTime);
+        c.rb.velocity = Vector2.Lerp(c.rb.velocity, (new Vector2(dir.x * speed, c.rb.velocity.y)), c.jump.wallJumpLerp * Time.deltaTime);
       }
     }
 
@@ -78,7 +77,7 @@ namespace Carles.Engine2D {
     // ------------------------------------------------------------------------------
     // Walls
 
-    void UpdateWalls(float x, float y) {
+    private void UpdateWalls(float x, float y) {
       // wall grab flags
 
       if (c.coll.onWall && c.isGrabBeingPressed && canMove && !c.isBlocking) {
@@ -155,7 +154,7 @@ namespace Carles.Engine2D {
     }
 
     // ------------------------------------------------------------------------------
-    // Char Side
+    // Side
 
     void UpdateCharSide(float x) {
       // escape if on walls or cannot move for some reason

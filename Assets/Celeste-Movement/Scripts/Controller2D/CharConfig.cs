@@ -38,14 +38,14 @@ namespace Carles.Engine2D {
     public GameObject darkMagickPrefab;
     public GameObject fireMagickPrefab;
 
-    private CharController2D move;
-    private Collision coll;
+    private CharController2D c;
+    // private Collision coll;
     private Animator anim;
     [HideInInspector] public SpriteRenderer sprite;
 
     void Start() {
-      coll = GetComponentInParent<Collision>();
-      move = GetComponentInParent<CharController2D>();
+      // coll = GetComponentInParent<Collision>();
+      c = GetComponentInParent<CharController2D>();
       anim = GetComponent<Animator>();
       sprite = GetComponent<SpriteRenderer>();
 
@@ -106,13 +106,17 @@ namespace Carles.Engine2D {
     }
 
     public void Flip(int side) {
-      if (move.wallGrab || move.wallSlide) {
+      if (c.move.wallGrab || c.move.wallSlide) {
         if (side == -1 && sprite.flipX) return;
         if (side == 1 && !sprite.flipX) return;
       }
 
       bool state = (side == 1) ? false : true;
       sprite.flipX = state;
+    }
+
+    public int GetSide() {
+      return sprite.flipX ? -1 : 1;
     }
   }
 
