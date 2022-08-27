@@ -284,12 +284,12 @@ TextureImporter:
       name: Idle_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 5
         y: 288
-        width: 40
-        height: 32
-      alignment: 9
-      pivot: {x: 0.3, y: 0}
+        width: 13
+        height: 17
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -305,12 +305,12 @@ TextureImporter:
       name: Idle_1
       rect:
         serializedVersion: 2
-        x: 40
+        x: 45
         y: 288
-        width: 40
-        height: 32
-      alignment: 9
-      pivot: {x: 0.3, y: 0}
+        width: 13
+        height: 17
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -326,12 +326,12 @@ TextureImporter:
       name: Ready_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 5
         y: 256
-        width: 40
-        height: 32
-      alignment: 9
-      pivot: {x: 0.3, y: 0}
+        width: 13
+        height: 17
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -347,12 +347,12 @@ TextureImporter:
       name: Ready_1
       rect:
         serializedVersion: 2
-        x: 40
+        x: 45
         y: 256
-        width: 40
-        height: 32
-      alignment: 9
-      pivot: {x: 0.3, y: 0}
+        width: 13
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -368,12 +368,12 @@ TextureImporter:
       name: Run_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 5
         y: 224
-        width: 40
-        height: 32
-      alignment: 9
-      pivot: {x: 0.3, y: 0}
+        width: 13
+        height: 17
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -389,12 +389,12 @@ TextureImporter:
       name: Run_1
       rect:
         serializedVersion: 2
-        x: 40
+        x: 45
         y: 224
-        width: 40
-        height: 32
-      alignment: 9
-      pivot: {x: 0.3, y: 0}
+        width: 14
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -410,12 +410,12 @@ TextureImporter:
       name: Run_2
       rect:
         serializedVersion: 2
-        x: 80
+        x: 86
         y: 224
-        width: 40
-        height: 32
-      alignment: 9
-      pivot: {x: 0.3, y: 0}
+        width: 13
+        height: 17
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -431,12 +431,12 @@ TextureImporter:
       name: Run_3
       rect:
         serializedVersion: 2
-        x: 120
+        x: 125
         y: 224
-        width: 40
-        height: 32
-      alignment: 9
-      pivot: {x: 0.3, y: 0}
+        width: 13
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -452,12 +452,12 @@ TextureImporter:
       name: Jump_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 4
         y: 192
-        width: 40
-        height: 32
-      alignment: 9
-      pivot: {x: 0.3, y: 0}
+        width: 15
+        height: 14
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -473,12 +473,12 @@ TextureImporter:
       name: Jump_1
       rect:
         serializedVersion: 2
-        x: 40
+        x: 44
         y: 192
-        width: 40
-        height: 32
-      alignment: 9
-      pivot: {x: 0.3, y: 0}
+        width: 16
+        height: 18
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -494,12 +494,12 @@ TextureImporter:
       name: Jump_2
       rect:
         serializedVersion: 2
-        x: 80
+        x: 84
         y: 192
-        width: 40
-        height: 32
-      alignment: 9
-      pivot: {x: 0.3, y: 0}
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -515,12 +515,12 @@ TextureImporter:
       name: Attack_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 5
         y: 160
-        width: 40
-        height: 32
-      alignment: 9
-      pivot: {x: 0.3, y: 0}
+        width: 13
+        height: 17
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -536,12 +536,12 @@ TextureImporter:
       name: Attack_1
       rect:
         serializedVersion: 2
-        x: 40
+        x: 45
         y: 160
-        width: 40
-        height: 32
-      alignment: 9
-      pivot: {x: 0.3, y: 0}
+        width: 13
+        height: 17
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -557,12 +557,12 @@ TextureImporter:
       name: Attack_2
       rect:
         serializedVersion: 2
-        x: 80
+        x: 85
         y: 160
-        width: 40
-        height: 32
-      alignment: 9
-      pivot: {x: 0.3, y: 0}
+        width: 20
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -578,12 +578,12 @@ TextureImporter:
       name: Attack_3
       rect:
         serializedVersion: 2
-        x: 120
+        x: 125
         y: 160
-        width: 40
-        height: 32
-      alignment: 9
-      pivot: {x: 0.3, y: 0}
+        width: 20
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -599,12 +599,12 @@ TextureImporter:
       name: Jab_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 4
         y: 128
-        width: 40
-        height: 32
-      alignment: 9
-      pivot: {x: 0.3, y: 0}
+        width: 14
+        height: 17
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -620,12 +620,12 @@ TextureImporter:
       name: Jab_1
       rect:
         serializedVersion: 2
-        x: 40
+        x: 45
         y: 128
-        width: 40
-        height: 32
-      alignment: 9
-      pivot: {x: 0.3, y: 0}
+        width: 19
+        height: 17
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -641,12 +641,12 @@ TextureImporter:
       name: Jab_2
       rect:
         serializedVersion: 2
-        x: 80
+        x: 85
         y: 128
-        width: 40
-        height: 32
-      alignment: 9
-      pivot: {x: 0.3, y: 0}
+        width: 21
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -704,12 +704,12 @@ TextureImporter:
       name: Crawl_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 6
         y: 32
-        width: 40
-        height: 32
-      alignment: 9
-      pivot: {x: 0.3, y: 0}
+        width: 13
+        height: 13
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -725,12 +725,12 @@ TextureImporter:
       name: Crawl_1
       rect:
         serializedVersion: 2
-        x: 40
+        x: 48
         y: 32
-        width: 40
-        height: 32
-      alignment: 9
-      pivot: {x: 0.3, y: 0}
+        width: 15
+        height: 11
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -746,12 +746,12 @@ TextureImporter:
       name: Crawl_2
       rect:
         serializedVersion: 2
-        x: 80
+        x: 88
         y: 32
-        width: 40
-        height: 32
-      alignment: 9
-      pivot: {x: 0.3, y: 0}
+        width: 15
+        height: 11
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -809,12 +809,12 @@ TextureImporter:
       name: Death_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 5
         y: 0
-        width: 40
-        height: 32
-      alignment: 9
-      pivot: {x: 0.3, y: 0}
+        width: 13
+        height: 17
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -830,12 +830,12 @@ TextureImporter:
       name: Death_1
       rect:
         serializedVersion: 2
-        x: 40
+        x: 46
         y: 0
-        width: 40
-        height: 32
-      alignment: 9
-      pivot: {x: 0.3, y: 0}
+        width: 13
+        height: 13
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -851,12 +851,12 @@ TextureImporter:
       name: Death_2
       rect:
         serializedVersion: 2
-        x: 80
+        x: 88
         y: 0
-        width: 40
-        height: 32
-      alignment: 9
-      pivot: {x: 0.3, y: 0}
+        width: 15
+        height: 11
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -893,12 +893,12 @@ TextureImporter:
       name: Crawl_3
       rect:
         serializedVersion: 2
-        x: 120
+        x: 128
         y: 32
-        width: 40
-        height: 32
-      alignment: 9
-      pivot: {x: 0.3, y: 0}
+        width: 15
+        height: 11
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -906,6 +906,27 @@ TextureImporter:
       bones: []
       spriteID: 752dbe46c350cc570800000000000000
       internalID: 8488165154635895383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magick_Dark_0
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 132
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4038b8e6a34c95e4ca5c08c7775f0ec6
+      internalID: -1631617499
       vertices: []
       indices: 
       edges: []
@@ -921,6 +942,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      Magick_Dark_0: -1631617499
       Crawl_2: -485111123018289494
       Ready_1: 7683567802946276634
       Jump_1: 7034338576483803127
