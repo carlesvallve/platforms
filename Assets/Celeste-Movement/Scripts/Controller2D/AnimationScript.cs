@@ -30,17 +30,11 @@ namespace Carles.Engine2D {
     void Update() {
       anim.SetBool("canMove", move.canMove);
       anim.SetBool("onGround", coll.onGround);
-      anim.SetBool("onWall", coll.onWall);
-      anim.SetBool("onRightWall", coll.onRightWall);
       anim.SetBool("wallGrab", move.wallGrab);
       anim.SetBool("wallSlide", move.wallSlide);
       anim.SetBool("isDashing", move.isDashing);
-
-      // if (move.isAttacking) Debug.Log(move.isAttacking);
-
       anim.SetBool("isAttacking", move.isAttacking);
       anim.SetBool("isBlocking", move.isBlocking);
-
       anim.SetBool("isTakingDamage", move.isTakingDamage);
       anim.SetBool("isDead", move.isDead);
     }
