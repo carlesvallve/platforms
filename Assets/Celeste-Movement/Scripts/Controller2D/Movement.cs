@@ -56,7 +56,7 @@ namespace Carles.Engine2D {
     public LayerMask attackLayer;
     public float attackSpeed = 0.15f;
     public float attackCooldown = 0.15f;
-    private Rect attackRect = new Rect(0.5f, 0, 1, 2);
+    private Rect attackRect = new Rect(0.5f, 0, 0.8f, 1.6f);
     private int attackDamage = 1;
     private float knockbackForce = 4f;
     private float dazedDuration = 0.15f;
@@ -113,6 +113,7 @@ namespace Carles.Engine2D {
     // combat flags
     [HideInInspector] public bool isAttacking;
     [HideInInspector] public bool isBlocking;
+    [HideInInspector] public bool isTakingDamage;
     [HideInInspector] public bool isDead;
 
     // ------------------------------------------------------------------------------
@@ -129,6 +130,11 @@ namespace Carles.Engine2D {
       // get movement increments
       float x = curMoveInput.x;
       float y = curMoveInput.y;
+
+      if (isBlocking && coll.onGround) {
+        x *= 0.5f;
+        y *= 0.5f;
+      }
 
       UpdateWalk(x, y);
       UpdateGroundTouch();
@@ -194,6 +200,11 @@ namespace Carles.Engine2D {
         side = anim.sr.flipX ? -1 : 1;
         jumpParticle.Play();
         sounds.PlayFootstep();
+
+        if (isDead && coll.onGround) {
+          DisableAfterDying();
+          // Die();
+        }
       }
     }
 
@@ -254,13 +265,13 @@ namespace Carles.Engine2D {
     void UpdateWalls(float x, float y) {
       // wall grab flags
 
-      if (coll.onWall && isGrabBeingPressed && canMove && canWallGrab) {
+      if (coll.onWall && isGrabBeingPressed && canMove && canWallGrab && !isBlocking) {
         if (side != coll.wallSide) anim.Flip(side * -1);
         wallGrab = true;
         wallSlide = false;
       }
 
-      if (!isGrabBeingPressed || !coll.onWall || !canMove || !canWallGrab) {
+      if (!isGrabBeingPressed || !coll.onWall || !canMove || !canWallGrab || isBlocking) {
         wallGrab = false;
         wallSlide = false;
       }
@@ -276,19 +287,19 @@ namespace Carles.Engine2D {
         float speedModifier = y > 0 ? .5f : 1;
         rb.velocity = new Vector2(rb.velocity.x, y * (speed * speedModifier));
       } else {
-        rb.gravityScale = 3;
+        rb.gravityScale = 3; // todo: expose default gravityScale prop
       }
 
       // wall slide
 
-      if (coll.onWall && !coll.onGround && canWallSlide) {
+      if (coll.onWall && !coll.onGround && canWallSlide && !isAttacking) {
         if (x != 0 && !wallGrab && rb.velocity.y < 0) {
           wallSlide = true;
           WallSlide();
         }
       }
 
-      if (!coll.onWall || coll.onGround || !canWallSlide) {
+      if (!coll.onWall || coll.onGround || !canWallSlide || isAttacking) {
         wallSlide = false;
       }
 
@@ -435,25 +446,36 @@ namespace Carles.Engine2D {
       // todo: We may want to switch to CircleCastAll, it will give you contact points in world space coordinates
       // todo: https://docs.unity3d.com/ScriptReference/Physics2D.CircleCastAll.html
 
+      // get which direction character is looking at
       int side = anim.sr.flipX ? -1 : 1;
 
+      // detect enemies to hit
       Vector2 pos = (Vector2)transform.position + new Vector2(attackRect.x, attackRect.y) * Vector2.right * side;
       Collider2D[] enemiesToDamage = Physics2D.OverlapBoxAll(
         pos, new Vector2(attackRect.width, attackRect.height), 0, attackLayer
       );
 
+      //  make each enemy take damage
       for (int i = 0; i < enemiesToDamage.Length; i++) {
         if (enemiesToDamage[i].transform.root == transform) continue;
         Movement enemy = enemiesToDamage[i].GetComponent<Movement>();
-        if (!enemy.isDead) StartCoroutine(enemy.TakeDamage(attackDamage, this));
+        if (!enemy.isDead) {
+          StartCoroutine(enemy.TakeDamage(attackDamage, this));
+        }
       }
 
-      rb.velocity *= 0.5f; // Vector2.zero;
-      rb.AddForce(Vector2.up * 2f, ForceMode2D.Impulse);
+      // reset attacker's velocity
+      rb.velocity = new Vector2(0, rb.velocity.y);
+      if (Mathf.Abs(rb.velocity.x) < 1) {
+        Vector2 vec = new Vector2(side * 2.5f, 2.5f);
+        rb.AddForce(vec, ForceMode2D.Impulse);
+      }
+
+      // disable movement while attacking
       StartCoroutine(DisableMovement(attackCooldown));
 
+      // wait for attack cooldown to recover
       yield return new WaitForSeconds(attackCooldown);
-
       isAttacking = false;
     }
 
@@ -469,56 +491,51 @@ namespace Carles.Engine2D {
     // Block
 
     public void Block() {
+      if (isBlocking) return;
       if (!canBlock) return;
       if (wallGrab) return;
       if (wallSlide) return;
+
+
 
       isBlocking = true;
       sounds.PlayBlock();
     }
 
     public void Unblock() {
+      if (!isBlocking) return;
       if (!canBlock) return;
+
       isBlocking = false;
       sounds.PlayBlock();
     }
 
     // ------------------------------------------------------------------------------
-    // Damage
+    // Take Damage
 
     public IEnumerator TakeDamage(int damage, Movement attacker) {
-      anim.SetTrigger("damage");
+      isTakingDamage = true;
+      canMove = false;
+
       sounds.PlayDamage();
       SpawnBlood(damage);
 
-      // attacker.rb.velocity = Vector2.zero;
-
-      canMove = false;
-
-
-      health -= damage;
-      if (health <= 0) StartCoroutine(Die());
-
       Knockback(attacker);
 
-      // if (health > 0) {
+      health -= damage;
+      if (health <= 0) {
+        StartCoroutine(Die());
+        yield break;
+      }
+
       // stop movement wile taking damage (dazed)
       yield return new WaitForSeconds(dazedDuration);
 
-
-
-
-
-      // attacker.canMove = true;
-
-      if (health > 0) canMove = true;
-      // } else {
-
-      // }
+      isTakingDamage = false;
+      canMove = true;
     }
 
     public void Knockback(Movement attacker) {
-      // float knockbackForce = 4f;
       Vector2 dir = (transform.position - attacker.transform.position).normalized;
 
       rb.AddForce(dir * knockbackForce * 1, ForceMode2D.Impulse);
@@ -526,22 +543,26 @@ namespace Carles.Engine2D {
       // attacker.rb.AddForce(-dir * knockbackForce * 0.5f, ForceMode2D.Impulse);
     }
 
+    // ------------------------------------------------------------------------------
+    // Die
+
     public IEnumerator Die() {
       canMove = false;
+      isTakingDamage = false;
       isDead = true;
       health = 0;
 
-      anim.SetTrigger("die");
-      // sounds.PlayDie();
-
-
+      sounds.PlayDie();
 
       yield return new WaitForSeconds(dazedDuration * 2);
 
+      if (coll.onGround) DisableAfterDying();
+    }
+
+    public void DisableAfterDying() {
       GetComponent<Collider2D>().enabled = false;
       GetComponentInChildren<Collider2D>().enabled = false;
       rb.constraints = RigidbodyConstraints2D.FreezeAll;
-
       trailParticle.Stop();
     }
 

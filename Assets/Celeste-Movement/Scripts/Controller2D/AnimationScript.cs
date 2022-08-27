@@ -40,6 +40,9 @@ namespace Carles.Engine2D {
 
       anim.SetBool("isAttacking", move.isAttacking);
       anim.SetBool("isBlocking", move.isBlocking);
+
+      anim.SetBool("isTakingDamage", move.isTakingDamage);
+      anim.SetBool("isDead", move.isDead);
     }
 
     public void SetHorizontalMovement(float x, float y, float yVel) {
