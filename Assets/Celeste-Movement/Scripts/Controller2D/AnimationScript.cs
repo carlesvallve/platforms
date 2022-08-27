@@ -12,6 +12,11 @@ namespace Carles.Engine2D {
     public SpriteLibraryAsset[] spriteLibs;
     public bool randomizeOnStart = true;
 
+    [Space]
+    [Header("Projectiles")]
+    public GameObject arrowPrefab;
+    public GameObject darkMagickPrefab;
+    public GameObject fireMagickPrefab;
 
     private Movement move;
     private Collision coll;
@@ -69,6 +74,37 @@ namespace Carles.Engine2D {
       spriteLibIndex = index;
       SpriteLibrary spl = GetComponent<SpriteLibrary>();
       spl.spriteLibraryAsset = spriteLibs[spriteLibIndex];
+    }
+
+    public CharacterType GetCharacterType() {
+      return (CharacterType)spriteLibIndex;
+    }
+
+    public GameObject GetProjectilePrefab() {
+      if (IsArcher()) return arrowPrefab;
+      if (GetCharacterType() == CharacterType.DarkWizard) return darkMagickPrefab;
+      if (GetCharacterType() == CharacterType.FireWizard) return fireMagickPrefab;
+      if (GetCharacterType() == CharacterType.WhiteWizard) return fireMagickPrefab;
+      return null;
+    }
+
+    public bool IsMelee() {
+      return !IsArcher() && !IsWizard();
+    }
+
+    public bool IsArcher() {
+      CharacterType type = GetCharacterType();
+      return type == CharacterType.Archer || type == CharacterType.GoblinArcher;
+    }
+
+    public bool IsWizard() {
+      CharacterType type = GetCharacterType();
+      return type == CharacterType.DarkWizard || type == CharacterType.FireWizard || type == CharacterType.WhiteWizard;
+    }
+
+    public bool hasShield() {
+      CharacterType type = GetCharacterType();
+      return type == CharacterType.Knight || type == CharacterType.Pirate || type == CharacterType.Spearman || type == CharacterType.Viking;
     }
 
     public void PlayFootstep() {

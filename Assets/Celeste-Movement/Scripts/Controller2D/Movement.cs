@@ -58,7 +58,7 @@ namespace Carles.Engine2D {
     public float attackCooldown = 0.15f;
     private Rect attackRect = new Rect(0.5f, 0, 0.8f, 1.6f);
     private int attackDamage = 1;
-    private float knockbackForce = 4f;
+    // private float knockbackForce = 4f;
     private float dazedDuration = 0.15f;
 
     [Space]
@@ -197,15 +197,18 @@ namespace Carles.Engine2D {
       void GroundTouch() {
         hasDashed = false;
         isDashing = false;
-        side = anim.sr.flipX ? -1 : 1;
+        side = GetSide();
         jumpParticle.Play();
         sounds.PlayFootstep();
 
         if (isDead && coll.onGround) {
           DisableAfterDying();
-          // Die();
         }
       }
+    }
+
+    int GetSide() {
+      return anim.sr.flipX ? -1 : 1;
     }
 
     // ------------------------------------------------------------------------------
@@ -431,9 +434,11 @@ namespace Carles.Engine2D {
       if (wallGrab) return;
       if (wallSlide) return;
 
-
-
-      StartCoroutine(AttackSeq());
+      if (anim.IsMelee()) {
+        StartCoroutine(AttackSeq());
+      } else {
+        StartCoroutine(ShootSeq());
+      }
     }
 
     IEnumerator AttackSeq() {
@@ -441,13 +446,23 @@ namespace Carles.Engine2D {
       sounds.PlayAttack();
       isAttacking = true;
 
+      // get which direction character is looking at
+      int side = GetSide();
+
+      // reset attacker's velocity
+      rb.velocity = new Vector2(0, rb.velocity.y);
+      if (Mathf.Abs(rb.velocity.x) < 1) {
+        Vector2 vec = new Vector2(2.5f * side, 2.5f);
+        rb.AddForce(vec, ForceMode2D.Impulse);
+      }
+
+      // disable movement while attacking
+      StartCoroutine(DisableMovement(attackCooldown));
+
       yield return new WaitForSeconds(attackSpeed);
 
       // todo: We may want to switch to CircleCastAll, it will give you contact points in world space coordinates
       // todo: https://docs.unity3d.com/ScriptReference/Physics2D.CircleCastAll.html
-
-      // get which direction character is looking at
-      int side = anim.sr.flipX ? -1 : 1;
 
       // detect enemies to hit
       Vector2 pos = (Vector2)transform.position + new Vector2(attackRect.x, attackRect.y) * Vector2.right * side;
@@ -460,19 +475,9 @@ namespace Carles.Engine2D {
         if (enemiesToDamage[i].transform.root == transform) continue;
         Movement enemy = enemiesToDamage[i].GetComponent<Movement>();
         if (!enemy.isDead) {
-          StartCoroutine(enemy.TakeDamage(attackDamage, this));
+          StartCoroutine(enemy.TakeDamage(this, attackDamage, 4f));
         }
       }
-
-      // reset attacker's velocity
-      rb.velocity = new Vector2(0, rb.velocity.y);
-      if (Mathf.Abs(rb.velocity.x) < 1) {
-        Vector2 vec = new Vector2(side * 2.5f, 2.5f);
-        rb.AddForce(vec, ForceMode2D.Impulse);
-      }
-
-      // disable movement while attacking
-      StartCoroutine(DisableMovement(attackCooldown));
 
       // wait for attack cooldown to recover
       yield return new WaitForSeconds(attackCooldown);
@@ -485,6 +490,38 @@ namespace Carles.Engine2D {
       int side = anim.sr.flipX ? -1 : 1;
       Vector2 pos = (Vector2)transform.position + new Vector2(attackRect.x, attackRect.y) * Vector2.right * side;
       Gizmos.DrawWireCube(pos, new Vector2(attackRect.width, attackRect.height));
+    }
+
+    // ------------------------------------------------------------------------------
+    // Shoot
+
+    IEnumerator ShootSeq() {
+      anim.SetTrigger("attack");
+      sounds.PlayAttack();
+      isAttacking = true;
+
+      // reset attacker's velocity
+      rb.velocity = new Vector2(0, rb.velocity.y);
+      if (Mathf.Abs(rb.velocity.x) < 1) {
+        Vector2 vec = new Vector2(0, 2.5f);
+        rb.AddForce(vec, ForceMode2D.Impulse);
+      }
+
+      // disable movement while attacking
+      StartCoroutine(DisableMovement(attackCooldown));
+
+      yield return new WaitForSeconds(attackSpeed);
+
+      // Instantiate projectile
+      GameObject projectilePrefab = anim.GetProjectilePrefab();
+      Vector2 pos = new Vector2(transform.position.x + 0.3f, transform.position.y - 0.1f);
+      GameObject go = Instantiate(projectilePrefab, pos, Quaternion.identity);
+      Projectile projectile = go.GetComponent<Projectile>();
+      projectile.Init(this, GetSide());
+
+      // wait for attack cooldown to recover
+      yield return new WaitForSeconds(attackCooldown);
+      isAttacking = false;
     }
 
     // ------------------------------------------------------------------------------
@@ -513,14 +550,14 @@ namespace Carles.Engine2D {
     // ------------------------------------------------------------------------------
     // Take Damage
 
-    public IEnumerator TakeDamage(int damage, Movement attacker) {
+    public IEnumerator TakeDamage(Movement attacker, int damage, float knockbackForce = 0) {
       isTakingDamage = true;
       canMove = false;
 
       sounds.PlayDamage();
       SpawnBlood(damage);
 
-      Knockback(attacker);
+      Knockback(attacker, knockbackForce);
 
       health -= damage;
       if (health <= 0) {
@@ -535,12 +572,11 @@ namespace Carles.Engine2D {
       canMove = true;
     }
 
-    public void Knockback(Movement attacker) {
+    public void Knockback(Movement attacker, float knockbackForce = 0) {
       Vector2 dir = (transform.position - attacker.transform.position).normalized;
 
       rb.AddForce(dir * knockbackForce * 1, ForceMode2D.Impulse);
       rb.AddForce(Vector2.up * 2.5f, ForceMode2D.Impulse);
-      // attacker.rb.AddForce(-dir * knockbackForce * 0.5f, ForceMode2D.Impulse);
     }
 
     // ------------------------------------------------------------------------------
