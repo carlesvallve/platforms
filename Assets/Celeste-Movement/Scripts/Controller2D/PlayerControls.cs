@@ -20,7 +20,7 @@ namespace Carles.Engine2D {
     // Debug.Log("OnInput " + context.phase);
 
     public void OnInputMove(InputAction.CallbackContext context) {
-      controller.curMoveInput = context.ReadValue<Vector2>();
+      controller.move.curMoveInput = context.ReadValue<Vector2>();
     }
 
     public void OnInputJump(InputAction.CallbackContext context) {

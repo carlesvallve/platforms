@@ -21,14 +21,14 @@ namespace Carles.Engine2D {
     // public GameObject darkMagickPrefab;
     // public GameObject fireMagickPrefab;
 
-    private CharController2D move;
-    private Collision coll;
+    private CharController2D c;
+    // private Collision coll;
     private Animator anim;
     // [HideInInspector] public SpriteRenderer sr;
 
     void Start() {
-      coll = GetComponentInParent<Collision>();
-      move = GetComponentInParent<CharController2D>();
+      // coll = GetComponentInParent<Collision>();
+      c = GetComponentInParent<CharController2D>();
       anim = GetComponent<Animator>();
       // sr = GetComponent<SpriteRenderer>();
 
@@ -36,15 +36,15 @@ namespace Carles.Engine2D {
     }
 
     void Update() {
-      anim.SetBool("canMove", move.canMove);
-      anim.SetBool("onGround", coll.onGround);
-      anim.SetBool("wallGrab", move.wallGrab);
-      anim.SetBool("wallSlide", move.wallSlide);
-      anim.SetBool("isDashing", move.isDashing);
-      anim.SetBool("isAttacking", move.isAttacking);
-      anim.SetBool("isBlocking", move.isBlocking);
-      anim.SetBool("isTakingDamage", move.isTakingDamage);
-      anim.SetBool("isDead", move.isDead);
+      anim.SetBool("canMove", c.move.canMove);
+      anim.SetBool("onGround", c.coll.onGround);
+      anim.SetBool("wallGrab", c.move.wallGrab);
+      anim.SetBool("wallSlide", c.move.wallSlide);
+      anim.SetBool("isDashing", c.isDashing);
+      anim.SetBool("isAttacking", c.isAttacking);
+      anim.SetBool("isBlocking", c.isBlocking);
+      anim.SetBool("isTakingDamage", c.isTakingDamage);
+      anim.SetBool("isDead", c.isDead);
     }
 
     public void SetHorizontalCharController2D(float x, float y, float yVel) {

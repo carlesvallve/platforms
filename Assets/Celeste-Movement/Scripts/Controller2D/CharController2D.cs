@@ -33,16 +33,19 @@ using UnityEngine;
 namespace Carles.Engine2D {
 
   public class CharController2D : MonoBehaviour {
-    private Collision coll;
-    private Rigidbody2D rb;
-    private CharConfig ch;
-    private CharAnimation anim;
-    private Sounds sounds;
+    [HideInInspector] public Rigidbody2D rb;
+    //
+    [HideInInspector] public Collision coll;
+    [HideInInspector] public Movement move;
+    //
+    [HideInInspector] public CharConfig ch;
+    [HideInInspector] public CharAnimation anim;
+    [HideInInspector] public Sounds sounds;
 
     [Space]
     [Header("Stats")]
     private int health = 3;
-    public float speed = 10;
+    // public float speed = 10;
     public float jumpForce = 50;
     public int maxJumps = 2;
     public float fallMultiplier = 2.5f;
@@ -64,7 +67,7 @@ namespace Carles.Engine2D {
 
     [Space]
     [Header("Skills")]
-    public bool canMove;
+    // public bool canMove;
     public bool canJump = true;
     public bool canDash = true;
     public bool canWallSlide = true;
@@ -88,14 +91,14 @@ namespace Carles.Engine2D {
     [HideInInspector] public bool isJumpBeingPressed; // todo: change to isLongJumpEnabled
     [HideInInspector] public bool isGrabBeingPressed; // todo: change to isGrabEnabled
 
-    //  CharController2D flags
-    // [HideInInspector] public bool canMove;
-    [HideInInspector] public Vector2 curMoveInput;
-    private float xRaw;
-    private float yRaw;
+    // //  CharController2D flags
+    // // [HideInInspector] public bool canMove;
+    // [HideInInspector] public Vector2 curMoveInput;
+    // private float xRaw;
+    // private float yRaw;
 
-    // side flags
-    private int side = 1;
+    // // side flags
+    // private int side = 1;
 
     // ground flags
     private bool groundTouch;
@@ -121,58 +124,61 @@ namespace Carles.Engine2D {
     // Start and Update
 
     void Start() {
-      coll = GetComponent<Collision>();
       rb = GetComponent<Rigidbody2D>();
+      //
+      coll = GetComponent<Collision>();
+      move = GetComponent<Movement>();
+      //
       ch = GetComponentInChildren<CharConfig>();
       anim = GetComponentInChildren<CharAnimation>();
       sounds = GetComponentInChildren<Sounds>();
     }
 
     void Update() {
-      // get CharController2D increments
-      float x = curMoveInput.x;
-      float y = curMoveInput.y;
+      // // get CharController2D increments
+      // float x = curMoveInput.x;
+      // float y = curMoveInput.y;
 
-      if (isBlocking && coll.onGround) {
-        x *= 0.5f;
-        y *= 0.5f;
-      }
+      // if (isBlocking && coll.onGround) {
+      //   x *= 0.5f;
+      //   y *= 0.5f;
+      // }
 
-      UpdateWalk(x, y);
+      // UpdateWalk(x, y);
       UpdateGroundTouch();
       UpdateJump();
-      UpdateWalls(x, y);
-      UpdateCharSide(x);
+      // UpdateWalls(x, y);
+      // UpdateCharSide(x);
     }
 
     // ------------------------------------------------------------------------------
     // Walk
 
-    void UpdateWalk(float x, float y) {
-      xRaw = x;
-      yRaw = y;
-      Vector2 dir = new Vector2(x, y);
+    // void UpdateWalk(float x, float y) {
+    //   xRaw = x;
+    //   yRaw = y;
+    //   Vector2 dir = new Vector2(x, y);
 
-      Walk(dir);
-      anim.SetHorizontalCharController2D(x, y, rb.velocity.y);
-    }
+    //   Walk(dir);
+    //   anim.SetHorizontalCharController2D(x, y, rb.velocity.y);
+    // }
 
-    private void Walk(Vector2 dir) {
-      if (!canMove) return;
-      if (wallGrab) return;
+    // private void Walk(Vector2 dir) {
+    //   if (!canMove) return;
+    //   if (wallGrab) return;
 
-      if (!wallJumped) {
-        rb.velocity = new Vector2(dir.x * speed, rb.velocity.y);
-      } else {
-        rb.velocity = Vector2.Lerp(rb.velocity, (new Vector2(dir.x * speed, rb.velocity.y)), wallJumpLerp * Time.deltaTime);
-      }
-    }
+    //   if (!wallJumped) {
+    //     rb.velocity = new Vector2(dir.x * speed, rb.velocity.y);
+    //   } else {
+    //     rb.velocity = Vector2.Lerp(rb.velocity, (new Vector2(dir.x * speed, rb.velocity.y)), wallJumpLerp * Time.deltaTime);
+    //   }
+    // }
 
-    IEnumerator DisableCharController2D(float time) {
-      canMove = false;
-      yield return new WaitForSeconds(time);
-      canMove = true;
-    }
+    // IEnumerator DisableCharController2D(float time) {
+    //   canMove = false;
+    //   yield return new WaitForSeconds(time);
+    //   canMove = true;
+    // }
 
     // ------------------------------------------------------------------------------
     // Ground checks
@@ -197,9 +203,12 @@ namespace Carles.Engine2D {
       }
 
       void GroundTouch() {
+        move.canMove = true;
+        move.side = GetSide();
+
         hasDashed = false;
         isDashing = false;
-        side = GetSide();
+
         jumpParticle.Play();
         sounds.PlayFootstep();
 
@@ -209,7 +218,7 @@ namespace Carles.Engine2D {
       }
     }
 
-    int GetSide() {
+    public int GetSide() {
       return ch.sprite.flipX ? -1 : 1;
     }
 
@@ -238,7 +247,7 @@ namespace Carles.Engine2D {
       anim.SetTrigger("jump");
       sounds.PlayJump();
 
-      slideParticle.transform.parent.localScale = new Vector3(ParticleSide(), 1, 1);
+      slideParticle.transform.parent.localScale = new Vector3(move.ParticleSide(), 1, 1);
       ParticleSystem particle = wall ? wallJumpParticle : jumpParticle;
 
       rb.velocity = new Vector2(rb.velocity.x, 0);
@@ -250,12 +259,12 @@ namespace Carles.Engine2D {
     public void WallJump() {
       if (!canJump) return;
 
-      if ((side == 1 && coll.onRightWall) || side == -1 && !coll.onRightWall) {
-        side *= -1;
-        ch.Flip(side);
+      if ((move.side == 1 && coll.onRightWall) || move.side == -1 && !coll.onRightWall) {
+        move.side *= -1;
+        ch.Flip(move.side);
       }
 
-      StartCoroutine(DisableCharController2D(.1f));
+      StartCoroutine(move.DisableMovement(.1f));
 
       Vector2 wallDir = coll.onRightWall ? Vector2.left : Vector2.right;
 
@@ -264,106 +273,106 @@ namespace Carles.Engine2D {
       wallJumped = true;
     }
 
-    // ------------------------------------------------------------------------------
-    // Walls
+    // // ------------------------------------------------------------------------------
+    // // Walls
 
-    void UpdateWalls(float x, float y) {
-      // wall grab flags
+    // void UpdateWalls(float x, float y) {
+    //   // wall grab flags
 
-      if (coll.onWall && isGrabBeingPressed && canMove && canWallGrab && !isBlocking) {
-        if (side != coll.wallSide) ch.Flip(side * -1);
-        wallGrab = true;
-        wallSlide = false;
-      }
+    //   if (coll.onWall && isGrabBeingPressed && canMove && canWallGrab && !isBlocking) {
+    //     if (side != coll.wallSide) ch.Flip(side * -1);
+    //     wallGrab = true;
+    //     wallSlide = false;
+    //   }
 
-      if (!isGrabBeingPressed || !coll.onWall || !canMove || !canWallGrab || isBlocking) {
-        wallGrab = false;
-        wallSlide = false;
-      }
+    //   if (!isGrabBeingPressed || !coll.onWall || !canMove || !canWallGrab || isBlocking) {
+    //     wallGrab = false;
+    //     wallSlide = false;
+    //   }
 
-      // wall grab
+    //   // wall grab
 
-      if (wallGrab && !isDashing) {
-        rb.gravityScale = 0;
-        if (x > .2f || x < -.2f) {
-          rb.velocity = new Vector2(rb.velocity.x, 0);
-        }
+    //   if (wallGrab && !isDashing) {
+    //     rb.gravityScale = 0;
+    //     if (x > .2f || x < -.2f) {
+    //       rb.velocity = new Vector2(rb.velocity.x, 0);
+    //     }
 
-        float speedModifier = y > 0 ? .5f : 1;
-        rb.velocity = new Vector2(rb.velocity.x, y * (speed * speedModifier));
-      } else {
-        rb.gravityScale = 3; // todo: expose default gravityScale prop
-      }
+    //     float speedModifier = y > 0 ? .5f : 1;
+    //     rb.velocity = new Vector2(rb.velocity.x, y * (speed * speedModifier));
+    //   } else {
+    //     rb.gravityScale = 3; // todo: expose default gravityScale prop
+    //   }
 
-      // wall slide
+    //   // wall slide
 
-      if (coll.onWall && !coll.onGround && canWallSlide && !isAttacking) {
-        if (x != 0 && !wallGrab && rb.velocity.y < 0) {
-          wallSlide = true;
-          WallSlide();
-        }
-      }
+    //   if (coll.onWall && !coll.onGround && canWallSlide && !isAttacking) {
+    //     if (x != 0 && !wallGrab && rb.velocity.y < 0) {
+    //       wallSlide = true;
+    //       WallSlide();
+    //     }
+    //   }
 
-      if (!coll.onWall || coll.onGround || !canWallSlide || isAttacking) {
-        wallSlide = false;
-      }
+    //   if (!coll.onWall || coll.onGround || !canWallSlide || isAttacking) {
+    //     wallSlide = false;
+    //   }
 
-      WallParticle(y);
-    }
+    //   WallParticle(y);
+    // }
 
-    private void WallSlide() {
-      if (!canMove) return;
-      if (!canWallSlide) return;
+    // private void WallSlide() {
+    //   if (!canMove) return;
+    //   if (!canWallSlide) return;
 
-      if (coll.wallSide != side) ch.Flip(side * -1);
+    //   if (coll.wallSide != side) ch.Flip(side * -1);
 
-      bool pushingWall = false;
-      if ((rb.velocity.x > 0 && coll.onRightWall) || (rb.velocity.x < 0 && coll.onLeftWall)) {
-        pushingWall = true;
-      }
-      float push = pushingWall ? 0 : rb.velocity.x;
+    //   bool pushingWall = false;
+    //   if ((rb.velocity.x > 0 && coll.onRightWall) || (rb.velocity.x < 0 && coll.onLeftWall)) {
+    //     pushingWall = true;
+    //   }
+    //   float push = pushingWall ? 0 : rb.velocity.x;
 
-      rb.velocity = new Vector2(push, -slideSpeed);
+    //   rb.velocity = new Vector2(push, -slideSpeed);
 
-      sounds.PlaySlide();
-    }
+    //   sounds.PlaySlide();
+    // }
 
-    void WallParticle(float vertical) {
-      var main = slideParticle.main;
+    // void WallParticle(float vertical) {
+    //   var main = slideParticle.main;
 
-      if (wallSlide || (wallGrab && vertical < 0)) {
-        slideParticle.transform.parent.localScale = new Vector3(ParticleSide(), 1, 1);
-        main.startColor = Color.white;
-      } else {
-        main.startColor = Color.clear;
-      }
-    }
+    //   if (wallSlide || (wallGrab && vertical < 0)) {
+    //     slideParticle.transform.parent.localScale = new Vector3(ParticleSide(), 1, 1);
+    //     main.startColor = Color.white;
+    //   } else {
+    //     main.startColor = Color.clear;
+    //   }
+    // }
 
-    int ParticleSide() {
-      int particleSide = coll.onRightWall ? 1 : -1;
-      return particleSide;
-    }
+    // int ParticleSide() {
+    //   int particleSide = coll.onRightWall ? 1 : -1;
+    //   return particleSide;
+    // }
 
-    // ------------------------------------------------------------------------------
-    // Char Side
+    // // ------------------------------------------------------------------------------
+    // // Char Side
 
-    void UpdateCharSide(float x) {
-      // escape if on walls or cannot move for some reason
-      if (wallGrab || wallSlide || !canMove)
-        return;
+    // void UpdateCharSide(float x) {
+    //   // escape if on walls or cannot move for some reason
+    //   if (wallGrab || wallSlide || !canMove)
+    //     return;
 
-      // turn right
-      if (x > 0) {
-        side = 1;
-        ch.Flip(side);
-      }
+    //   // turn right
+    //   if (x > 0) {
+    //     side = 1;
+    //     ch.Flip(side);
+    //   }
 
-      // turn left
-      if (x < 0) {
-        side = -1;
-        ch.Flip(side);
-      }
-    }
+    //   // turn left
+    //   if (x < 0) {
+    //     side = -1;
+    //     ch.Flip(side);
+    //   }
+    // }
 
     // ------------------------------------------------------------------------------
     // Dash
@@ -371,10 +380,10 @@ namespace Carles.Engine2D {
     public void Dash() {
       if (!canDash) return;
       if (hasDashed) return;
-      if (xRaw == 0 && yRaw == 0) return;
+      if (move.xRaw == 0 && move.yRaw == 0) return;
 
-      float x = xRaw;
-      float y = yRaw;
+      float x = move.xRaw;
+      float y = move.yRaw;
 
       // trigger ripple effect (component in main camera)
       FindObjectOfType<RippleEffect>().Emit(Camera.main.WorldToViewportPoint(transform.position));
@@ -459,7 +468,7 @@ namespace Carles.Engine2D {
       }
 
       // disable CharController2D while attacking
-      StartCoroutine(DisableCharController2D(attackCooldown));
+      StartCoroutine(move.DisableMovement(attackCooldown));
 
       yield return new WaitForSeconds(attackSpeed);
 
@@ -510,7 +519,7 @@ namespace Carles.Engine2D {
       }
 
       // disable CharController2D while attacking
-      StartCoroutine(DisableCharController2D(attackCooldown));
+      StartCoroutine(move.DisableMovement(attackCooldown));
 
       yield return new WaitForSeconds(attackSpeed);
 
@@ -554,7 +563,7 @@ namespace Carles.Engine2D {
 
     public IEnumerator TakeDamage(CharController2D attacker, int damage, float knockbackForce = 0) {
       isTakingDamage = true;
-      canMove = false;
+      move.canMove = false;
 
       sounds.PlayDamage();
       SpawnBlood(damage);
@@ -571,7 +580,7 @@ namespace Carles.Engine2D {
       yield return new WaitForSeconds(dazedDuration);
 
       isTakingDamage = false;
-      canMove = true;
+      move.canMove = true;
     }
 
     public void Knockback(CharController2D attacker, float knockbackForce = 0) {
@@ -585,7 +594,7 @@ namespace Carles.Engine2D {
     // Die
 
     public IEnumerator Die() {
-      canMove = false;
+      move.canMove = false;
       isTakingDamage = false;
       isDead = true;
       health = 0;
