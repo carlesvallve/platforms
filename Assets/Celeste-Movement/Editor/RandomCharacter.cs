@@ -15,11 +15,19 @@ namespace Carles.Engine2D {
 
     public override void OnInspectorGUI() {
       base.OnInspectorGUI();
-      EditorGUILayout.Space(5f);
+
+      animationScript.SetSpriteLibrary((int)animationScript.characterType);
+
+      EditorGUILayout.Space(10f);
       if (GUILayout.Button("Random Character")) {
-        animationScript.SetSpriteLibraryRandom();
+        int r = animationScript.SetSpriteLibraryRandom();
+        animationScript.characterType = (CharacterType)r;
       }
+
+
     }
+
+
   }
 
 }

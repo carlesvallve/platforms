@@ -8,6 +8,9 @@ namespace Carles.Engine2D {
   public class AnimationScript : MonoBehaviour {
 
     public Sounds sounds;
+
+    [Space]
+    public CharacterType characterType;
     public int spriteLibIndex;
     public SpriteLibraryAsset[] spriteLibs;
     public bool randomizeOnStart = true;
@@ -64,16 +67,22 @@ namespace Carles.Engine2D {
       sr.flipX = state;
     }
 
-    public void SetSpriteLibraryRandom() {
-      SetSpriteLibrary(Random.Range(0, spriteLibs.Length));
+    public int SetSpriteLibraryRandom() {
+      int r = Random.Range(0, spriteLibs.Length);
+      SetSpriteLibrary(r);
+      return r;
     }
 
     public void SetSpriteLibrary(int index) {
       if (spriteLibs.Length == 0) return;
 
+      characterType = (CharacterType)index;
       spriteLibIndex = index;
+
       SpriteLibrary spl = GetComponent<SpriteLibrary>();
       spl.spriteLibraryAsset = spriteLibs[spriteLibIndex];
+
+
     }
 
     public CharacterType GetCharacterType() {
