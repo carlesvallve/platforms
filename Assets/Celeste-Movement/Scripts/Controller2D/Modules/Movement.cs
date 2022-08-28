@@ -8,9 +8,14 @@ namespace Carles.Engine2D {
 
     private CharController2D c;
 
-    public bool canMove;
     public float speed = 6;
     public float slideSpeed = 2.5f;
+
+    [Space] // debug
+    public bool canMove;
+    public bool wallGrab;
+    public bool wallSlide;
+    public int side = 1;
 
     // move
     [HideInInspector] public Vector2 curMoveInput;
@@ -19,11 +24,6 @@ namespace Carles.Engine2D {
 
     // walls
     [HideInInspector] public bool isGrabBeingPressed; // todo: change to isGrabEnabled
-    [HideInInspector] public bool wallGrab;
-    [HideInInspector] public bool wallSlide;
-
-    // side
-    [HideInInspector] public int side = 1;
 
     void Start() {
       c = GetComponent<CharController2D>();

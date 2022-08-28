@@ -9,8 +9,10 @@ namespace Carles.Engine2D {
     private CharController2D c;
 
     public float dashSpeed = 30;
-    [HideInInspector] public bool isDashing;
-    [HideInInspector] public bool hasDashed;
+
+    [Space] // debug
+    public bool isDashing;
+    public bool hasDashed;
 
     void Start() {
       c = GetComponent<CharController2D>();

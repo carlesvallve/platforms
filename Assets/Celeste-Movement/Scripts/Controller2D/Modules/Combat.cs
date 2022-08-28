@@ -18,20 +18,19 @@ namespace Carles.Engine2D {
     public float attackCooldown = 0.15f;
     private Rect attackRect = new Rect(0.5f, 0, 0.8f, 1.6f);
     public int attackDamage = 1;
-    // private float knockbackForce = 4f;
     private float dazedDuration = 0.15f;
+
+    [Space] // debug
+    public bool isAttacking;
+    public bool isBlocking;
+    public bool isTakingDamage;
+    public bool isDead;
 
     [Space]
     [Header("Projectiles")]
     public GameObject arrowPrefab;
     public GameObject darkMagickPrefab;
     public GameObject fireMagickPrefab;
-
-    // combat flags
-    [HideInInspector] public bool isAttacking;
-    [HideInInspector] public bool isBlocking;
-    [HideInInspector] public bool isTakingDamage;
-    [HideInInspector] public bool isDead;
 
     void Start() {
       c = GetComponent<CharController2D>();

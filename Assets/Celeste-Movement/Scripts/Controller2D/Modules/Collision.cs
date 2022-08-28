@@ -6,6 +6,8 @@ namespace Carles.Engine2D {
 
   public class Collision : MonoBehaviour {
 
+    // Note: Exclude the layer of the character associated with this script
+    // or otherwise things won't work properly
     [Header("Layers")]
     public LayerMask groundLayer;
 

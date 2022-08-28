@@ -14,14 +14,14 @@ namespace Carles.Engine2D {
     public float lowJumpMultiplier = 6f;
     public float wallJumpLerp = 10;
 
+    [Space] // debug
+    public bool groundTouch;
+    public bool wallJumped;
+    public int jumpsAvailable;
+
     // jump flags
     [HideInInspector] public bool isJumpBeingPressed; // todo: change to isLongJumpEnabled
     [HideInInspector] public bool isBetterJumpEnabled = true;
-    [HideInInspector] public int jumpsAvailable;
-    [HideInInspector] public bool wallJumped;
-
-    // ground flags
-    private bool groundTouch;
 
     void Start() {
       c = GetComponent<CharController2D>();
@@ -36,7 +36,7 @@ namespace Carles.Engine2D {
     // Ground checks
 
     void UpdateGroundTouch() {
-      // did we just landed on ground?
+      // did we just landed on ground or touched a wall?
       bool isGrounded = c.coll.onGround || c.coll.onWall;
 
       if (isGrounded && !groundTouch) {
@@ -53,20 +53,20 @@ namespace Carles.Engine2D {
         wallJumped = false;
         isBetterJumpEnabled = true;
       }
+    }
 
-      void GroundTouch() {
-        c.move.canMove = true;
-        c.move.side = c.skin.GetSide();
+    void GroundTouch() {
+      c.move.canMove = true;
+      c.move.side = c.skin.GetSide();
 
-        c.dash.hasDashed = false;
-        c.dash.isDashing = false;
+      c.dash.hasDashed = false;
+      c.dash.isDashing = false;
 
-        c.particles.jump.Play();
-        c.sounds.PlayFootstep();
+      c.particles.jump.Play();
+      c.sounds.PlayFootstep();
 
-        if (c.combat.isDead && c.coll.onGround) {
-          c.combat.DisableAfterDying();
-        }
+      if (c.combat.isDead && c.coll.onGround) {
+        c.combat.DisableAfterDying();
       }
     }
 
