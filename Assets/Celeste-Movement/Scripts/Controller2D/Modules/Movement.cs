@@ -16,6 +16,7 @@ namespace Carles.Engine2D {
     public bool wallGrab;
     public bool wallSlide;
     public int side = 1;
+    public Vector2 incs;
 
     // move
     [HideInInspector] public Vector2 curMoveInput;
@@ -52,6 +53,9 @@ namespace Carles.Engine2D {
       xRaw = x;
       yRaw = y;
       Vector2 dir = new Vector2(x, y);
+      incs = dir;
+
+      if (c.hook.isHookActive) return;
 
       Walk(dir);
       c.anim.SetHorizontalCharController2D(x, y, c.rb.velocity.y);

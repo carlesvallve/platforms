@@ -9,8 +9,26 @@ namespace Carles.Engine2D {
 
     CharController2D c;
 
+    private InputAction leftMouseClick;
+
     void Start() {
       c = GetComponent<CharController2D>();
+    }
+
+    // ------------------------------------------------------------------------------
+    // Mouse
+
+    // public void SetMouse() {
+    //   leftMouseClick = new InputAction(binding: "<Mouse>/leftButton");
+    //   leftMouseClick.performed += ctx => LeftMouseClicked();
+    //   leftMouseClick.Enable();
+    // }
+
+    public void OnLeftMouse(InputAction.CallbackContext context) {
+      // Vector2 mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+      // print("LeftMouseClicked" + mousePos);
+
+      Debug.Log("LeftMouse " + context);
     }
 
     // ------------------------------------------------------------------------------
@@ -60,6 +78,14 @@ namespace Carles.Engine2D {
 
     public void OnInputGrab(InputAction.CallbackContext context) {
       c.move.isGrabBeingPressed = context.phase != InputActionPhase.Canceled;
+    }
+
+    public void OnInpuHook(InputAction.CallbackContext context) {
+      if (context.phase == InputActionPhase.Performed) {
+        c.hook.StartHook();
+      } else if (context.phase == InputActionPhase.Canceled) {
+        c.hook.EndHook();
+      }
     }
   }
 }

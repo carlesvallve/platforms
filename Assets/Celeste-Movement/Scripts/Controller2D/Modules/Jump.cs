@@ -62,6 +62,9 @@ namespace Carles.Engine2D {
       c.dash.hasDashed = false;
       c.dash.isDashing = false;
 
+      c.transform.rotation = Quaternion.identity;
+      c.rb.freezeRotation = true;
+
       c.particles.jump.Play();
       c.sounds.PlayFootstep();
 

@@ -60,7 +60,16 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "LeftMouseClick",
+                    "name": "Hook",
+                    "type": "Button",
+                    "id": "35ecef62-95a2-4fb0-a4af-b89ee16d403e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "LeftMouse",
                     "type": "Button",
                     "id": "07c4dfc2-8801-43e1-8c9e-0a1af9cc09c2",
                     "expectedControlType": "Button",
@@ -69,7 +78,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "RightMouseClick",
+                    "name": "RightMouse",
                     "type": "Button",
                     "id": "949293ab-6e6c-47e1-819e-36ba74ae5632",
                     "expectedControlType": "Button",
@@ -240,7 +249,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard;Controller",
-                    "action": "LeftMouseClick",
+                    "action": "LeftMouse",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -251,7 +260,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard;Controller",
-                    "action": "RightMouseClick",
+                    "action": "RightMouse",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -318,6 +327,28 @@
                     "processors": "",
                     "groups": "Controller",
                     "action": "Block",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "32e5e237-84b2-45ba-aa0b-f1e249c77e2e",
+                    "path": "<Keyboard>/h",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Hook",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "825a9b1d-775c-442f-ac1b-4f9673b6036b",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "Hook",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

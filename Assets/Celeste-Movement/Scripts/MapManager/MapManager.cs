@@ -33,18 +33,18 @@ public class MapManager : MonoBehaviour {
 
   private void LeftMouseClicked() {
     Vector2 mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-    print("LeftMouseClicked" + mousePos);
+    print("Map - LeftMouseClicked" + mousePos);
 
     Vector3Int gridPosition = map.WorldToCell(mousePos);
     TileBase clickedTile = map.GetTile(gridPosition);
-    if (clickedTile) print("At position " + gridPosition + " there is a tile " + clickedTile);
+    if (clickedTile) print("Map - At position " + gridPosition + " there is a tile " + clickedTile);
 
     if (clickedTile) {
       TileType type = dataFromTiles[clickedTile].type;
       float walkingSpeed = dataFromTiles[clickedTile].walkingSpeed;
       float poisonous = dataFromTiles[clickedTile].poisonous;
 
-      print("Type: " + type + " WalkingSpeed: " + walkingSpeed + " poisonous: " + poisonous);
+      print("Map - Type: " + type + " WalkingSpeed: " + walkingSpeed + " poisonous: " + poisonous);
     }
   }
 
