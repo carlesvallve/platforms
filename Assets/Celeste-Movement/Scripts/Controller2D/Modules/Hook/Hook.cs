@@ -8,7 +8,7 @@ namespace Carles.Engine2D {
 
     public GameObject ropePrefab;
     public LayerMask collisionLayers;
-    public float maxLength = 4f;
+    public float maxLength = 5f;
     public float swingForce = 1f;
     public float swingDrag = 3f;
 
@@ -46,9 +46,8 @@ namespace Carles.Engine2D {
 
       // get hook direction
       Vector2 origin = c.transform.position;
-      Vector2 dir = new Vector2(c.move.xRaw, c.move.yRaw + 1f).normalized;
+      Vector2 dir = new Vector2(c.move.xRaw, 1.5f).normalized; // c.move.yRaw +
 
-      // float distance = 5f;
       Vector2 destiny = origin + dir * maxLength;
 
       // cast a ray in direction, and get first hit contact point
@@ -61,7 +60,7 @@ namespace Carles.Engine2D {
       }
 
       float ropeLength = Vector2.Distance(origin, destiny);
-      if (ropeLength < 2 || ropeLength >= maxLength) {
+      if (ropeLength >= maxLength) { // ropeLength < 2 || 
         EndHook();
         return;
       }
