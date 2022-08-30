@@ -73,6 +73,8 @@ namespace Carles.Engine2D {
       }
     }
 
+
+
     // ------------------------------------------------------------------------------
     // Jump
 
@@ -87,9 +89,13 @@ namespace Carles.Engine2D {
       }
     }
 
+    public void SetJumpsAvailable(int _maxJumps) {
+      jumpsAvailable = _maxJumps;
+    }
+
     public void SetJump(Vector2 dir, bool wall) {
       // multi-jump
-      if (c.coll.onGround || c.coll.onWall) jumpsAvailable = maxJumps;
+      if (c.coll.onGround || c.coll.onWall) SetJumpsAvailable(maxJumps);
       if (jumpsAvailable == 0) return;
       jumpsAvailable -= 1;
 

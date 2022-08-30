@@ -55,7 +55,8 @@ namespace Carles.Engine2D {
       Vector2 dir = new Vector2(x, y);
       incs = dir;
 
-      if (c.hook.isHookActive) return;
+      if (c.hook.isHookActive && !c.coll.onGround) return;
+      // if (c.hook.isHookActive && !c.coll.onGround && !c.coll.onWall) return;
 
       Walk(dir);
       c.anim.SetHorizontalCharController2D(x, y, c.rb.velocity.y);

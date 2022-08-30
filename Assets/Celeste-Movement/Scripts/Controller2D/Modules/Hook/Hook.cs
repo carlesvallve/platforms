@@ -17,8 +17,8 @@ namespace Carles.Engine2D {
 
     private CharController2D c;
     private Rope rope;
-
     private float originalDrag = 0.05f;
+    private Vector2 currentDestiny;
 
     void Start() {
       c = GetComponent<CharController2D>();
@@ -26,52 +26,101 @@ namespace Carles.Engine2D {
 
     void Update() {
       if (!isHookActive) return;
+      UpdateRopePlayerState();
+      UpdateRopeSwinging();
+      UpdateRopeClimbing();
+    }
 
-      // while hooking, player moves and rotate differently
-      c.move.canMove = false;
-      c.rb.freezeRotation = false;
-      c.rb.angularDrag = swingDrag;
+    private void UpdateRopePlayerState() {
+      if (c.coll.onGround || c.coll.onWall) {
+        // while being on floor
+        c.move.canMove = true;
+        c.rb.freezeRotation = true;
+        c.rb.angularDrag = originalDrag;
+      } else {
+        // while being in the air
+        c.move.canMove = false;
+        c.rb.freezeRotation = false;
+        c.rb.angularDrag = swingDrag;
+      }
+    }
 
+    private void UpdateRopeSwinging() {
       // swing player left and right
       float x = c.move.xRaw;
-      float y = c.move.yRaw;
       c.rb.AddForce(new Vector2(x * swingForce, 0));
-
-      // move player up and down through the rope
-      // c.rb.velocity = new Vector2(c.rb.velocity.x, y * 10f);
     }
+
+    private void UpdateRopeClimbing() {
+      float y = c.move.yRaw;
+      if (Mathf.Abs(y) < 1f) return;
+
+      c.rb.freezeRotation = true;
+      c.rb.angularDrag = originalDrag;
+
+      if (y > 0) {
+        // climbing up
+        Vector2 vec = (currentDestiny - (Vector2)c.transform.position).normalized;
+        c.rb.velocity = vec * 8f;
+        c.rb.velocity = new Vector2(c.rb.velocity.x * 0.25f, c.rb.velocity.y);
+      } else {
+        // climbing down
+        c.rb.velocity = new Vector2(c.rb.velocity.x, y * 8f);
+      }
+
+      float ropeLength = Vector2.Distance(c.transform.position, currentDestiny);
+      if (ropeLength >= maxLength) {
+        return;
+      }
+
+      // update rope while climbing
+      // todo: Ideally, we should not be destroying and recreating the rope every frame...
+      EndHook();
+      StartCoroutine(CreateRope(c.transform.position, currentDestiny));
+    }
+
 
     public void StartHook() {
       // Debug.Log("StartHook");
 
       // get hook direction
       Vector2 origin = c.transform.position;
-      Vector2 dir = new Vector2(c.move.xRaw, 1.5f).normalized; // c.move.yRaw +
+      Vector2 dir = new Vector2(c.move.xRaw, 1.5f).normalized;
 
       Vector2 destiny = origin + dir * maxLength;
 
       // cast a ray in direction, and get first hit contact point
       RaycastHit2D hit = Physics2D.Raycast(transform.position, dir, maxLength, collisionLayers);
-      if (hit.collider != null) {
-        destiny = hit.point;
-      } else {
-        EndHook();
-        return;
-      }
+      if (hit.collider != null) destiny = hit.point;
 
+      StartCoroutine(CreateRope(origin, destiny));
+    }
+
+    IEnumerator CreateRope(Vector2 origin, Vector2 destiny) {
+      currentDestiny = destiny;
+
+      // if rope didnt hit a wall, destroy it and escape, before creating a new rope
       float ropeLength = Vector2.Distance(origin, destiny);
-      if (ropeLength >= maxLength) { // ropeLength < 2 || 
+      if (ropeLength >= maxLength) {
+        // yield return new WaitForSeconds(0f);
         EndHook();
-        return;
+        yield break;
       }
 
-      // create hook rope
+      // instantiate hook rope
+
       GameObject go = (GameObject)Instantiate(ropePrefab, c.transform.position, Quaternion.identity);
       rope = go.GetComponent<Rope>();
-      rope.Init(destiny);
+
+      // throw the rope
+      yield return rope.StartCoroutine(rope.ThrowRope(destiny));
 
       // record original ridigBody settings
+      // so we can restore them when leaving the rope
       originalDrag = c.rb.angularDrag;
+
+      // when we are on a rope, we can always jump just once
+      c.jump.SetJumpsAvailable(1);
 
       // activate hooking state
       isHookActive = true;
@@ -83,13 +132,14 @@ namespace Carles.Engine2D {
       // delete hook rope
       if (rope && rope.gameObject) {
         Destroy(rope.gameObject);
+
+        // restore rigidbody settings
+        c.rb.angularDrag = originalDrag;
+
+        // deactivate hooking state
+        isHookActive = false;
       }
-
-      // restore rigidbody settings
-      c.rb.angularDrag = originalDrag;
-
-      // deactivate hooking state
-      isHookActive = false;
     }
+
   }
 }
