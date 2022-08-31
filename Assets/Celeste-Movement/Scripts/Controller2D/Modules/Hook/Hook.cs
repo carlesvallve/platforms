@@ -68,21 +68,19 @@ namespace Carles.Engine2D {
         c.rb.velocity = new Vector2(c.rb.velocity.x, y * 8f);
       }
 
+      // escape if at max rope length, so we dont break it
       float ropeLength = Vector2.Distance(c.transform.position, currentDestiny);
       if (ropeLength >= maxLength) {
         return;
       }
 
-      // update rope while climbing
-      // todo: Ideally, we should not be destroying and recreating the rope every frame...
+      // re-create the rope instantly
       EndHook();
-      StartCoroutine(CreateRope(c.transform.position, currentDestiny));
+      StartCoroutine(CreateRope(c.transform.position, currentDestiny, true));
     }
 
 
     public void StartHook() {
-      // Debug.Log("StartHook");
-
       // get hook direction
       Vector2 origin = c.transform.position;
       Vector2 dir = new Vector2(c.move.xRaw, 1.5f).normalized;
@@ -93,30 +91,31 @@ namespace Carles.Engine2D {
       RaycastHit2D hit = Physics2D.Raycast(transform.position, dir, maxLength, collisionLayers);
       if (hit.collider != null) destiny = hit.point;
 
-      StartCoroutine(CreateRope(origin, destiny));
+      StartCoroutine(CreateRope(origin, destiny, false));
     }
 
-    IEnumerator CreateRope(Vector2 origin, Vector2 destiny) {
+    IEnumerator CreateRope(Vector2 origin, Vector2 destiny, bool instant) {
       currentDestiny = destiny;
 
       // if rope didnt hit a wall, destroy it and escape, before creating a new rope
       float ropeLength = Vector2.Distance(origin, destiny);
       if (ropeLength >= maxLength) {
-        // yield return new WaitForSeconds(0f);
         EndHook();
         yield break;
       }
 
-      // instantiate hook rope
-
+      // instantiate the rope
       GameObject go = (GameObject)Instantiate(ropePrefab, c.transform.position, Quaternion.identity);
       rope = go.GetComponent<Rope>();
 
       // throw the rope
-      yield return rope.StartCoroutine(rope.ThrowRope(destiny));
+      if (instant) {
+        rope.ThrowRopeInstant(destiny);
+      } else {
+        yield return rope.StartCoroutine(rope.ThrowRope(destiny));
+      }
 
-      // record original ridigBody settings
-      // so we can restore them when leaving the rope
+      // remember ridigBody settings
       originalDrag = c.rb.angularDrag;
 
       // when we are on a rope, we can always jump just once

@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 
 // todo: Create generic ropes that can be placed on maps with different lengths:
-
 // todo: player should be able to 'stick' to a rope when touching it,
 // todo: player should be able to climb up and down the rope
 // todo: player should be able to swing the rope left and right
@@ -32,41 +31,48 @@ namespace Carles.Engine2D {
       lr = GetComponent<LineRenderer>();
     }
 
-    public void Init(Vector2 destiny) {
-      StartCoroutine(ThrowRope(destiny));
-    }
-
     void Update() {
-      // render a line though all the nodes
-      RenderLine();
+      RenderLine(); // render a line though all the nodes
     }
 
-    public IEnumerator ThrowRope(Vector2 destiny, float speed = 0.1f) {
-      // Debug.Log("ThrowRope");
-
+    public void ThrowRopeInstant(Vector2 destiny, float speed = 0.1f) {
       Nodes.Add(transform.gameObject);
       lastNode = transform.gameObject;
 
-      while (true) {
-        // make the rope head move towards the destiny point
-        transform.position = Vector2.MoveTowards(transform.position, destiny, speed);
+      while (UpdateNodes(destiny, speed)) {
+        RenderLine();
+      }
+    }
 
-        if ((Vector2)transform.position != destiny) {
-          // If head has not reach the destiny point yet
-          // create a node if last node's distance to the player is too much
-          if (Vector2.Distance(player.transform.position, lastNode.transform.position) > nodeDistance) {
-            CreateNode();
-          }
+    public IEnumerator ThrowRope(Vector2 destiny, float speed = 0.1f) {
+      Nodes.Add(transform.gameObject);
+      lastNode = transform.gameObject;
 
-        } else {
-          // when rope head reaches the destiny point
-          // connect the lastNode to the player's rigidbody
-          lastNode.GetComponent<HingeJoint2D>().connectedBody = player.GetComponent<Rigidbody2D>();
-          yield break;
-        }
-
+      while (UpdateNodes(destiny, speed)) {
+        RenderLine();
         yield return null;
       }
+    }
+
+    private bool UpdateNodes(Vector2 destiny, float speed) {
+      // make the rope head move towards the destiny point
+      transform.position = Vector2.MoveTowards(transform.position, destiny, speed);
+
+      if ((Vector2)transform.position != destiny) {
+        // If head has not reach the destiny point yet
+        // create a node if last node's distance to the player is too much
+        if (Vector2.Distance(player.transform.position, lastNode.transform.position) > nodeDistance) {
+          CreateNode();
+        }
+
+      } else {
+        // when rope head reaches the destiny point
+        // connect the lastNode to the player's rigidbody
+        lastNode.GetComponent<HingeJoint2D>().connectedBody = player.GetComponent<Rigidbody2D>();
+        return false;
+      }
+
+      return true;
     }
 
     void RenderLine() {
@@ -83,7 +89,6 @@ namespace Carles.Engine2D {
 
 
     void CreateNode() {
-
       Vector2 pos2Create = player.transform.position - lastNode.transform.position;
       pos2Create.Normalize();
       pos2Create *= nodeDistance;
@@ -96,57 +101,8 @@ namespace Carles.Engine2D {
       lastNode = go;
 
       Nodes.Add(lastNode);
-
       vertexCount++;
     }
-
-    // public IEnumerator UnsetRope() {
-    //   int c = 0;
-    //   while (true) {
-
-
-    //     if (Nodes.Count == 0) {
-    //       isWorking = false;
-    //       yield break;
-    //     }
-
-    //     // make the rope head move towards the pl
-    //     transform.position = Vector2.MoveTowards(transform.position, player.transform.position, throwSpeed);
-
-    //     if ((Vector2)transform.position != (Vector2)player.transform.position) {
-    //       // If head has not reach the player point yet
-    //       // remove a node if last node's distance to the player is too much
-    //       if (Vector2.Distance(player.transform.position, lastNode.transform.position) > nodeDistance) {
-    //         DestroyNode(lastNode);
-    //         lastNode = Nodes[Nodes.Count - 1];
-    //       }
-
-    //     } else {
-    //       // when rope head reaches the player point
-    //       // unconnect the lastNode to the player's rigidbody
-    //       lastNode.GetComponent<HingeJoint2D>().connectedBody = null; // player.GetComponent<Rigidbody2D>();
-
-    //       isWorking = false;
-    //       yield break;
-    //     }
-
-    //     // just in case
-    //     c += 1;
-    //     if (c > 200) {
-    //       isWorking = false;
-    //       yield break;
-    //     }
-
-    //     yield return null;
-    //     // yield return new WaitForSeconds(0.1f);
-    //   }
-    // }
-
-    // void DestroyNode(GameObject node) {
-    //   Nodes.Remove(node);
-    //   Destroy(node);
-    //   vertexCount--;
-    // }
 
   }
 }
