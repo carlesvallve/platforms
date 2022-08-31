@@ -102,7 +102,7 @@
                 {
                     "name": "",
                     "id": "4b76eed8-db33-4237-aeeb-7afec1e97773",
-                    "path": "<Keyboard>/upArrow",
+                    "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
@@ -223,7 +223,7 @@
                 {
                     "name": "",
                     "id": "3567b6ea-a093-4585-998d-258df2ea83d1",
-                    "path": "<Keyboard>/space",
+                    "path": "<Keyboard>/g",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
@@ -311,7 +311,7 @@
                 {
                     "name": "",
                     "id": "ae428d2a-fbca-4d7c-a4f4-c4395ff2c682",
-                    "path": "<Keyboard>/e",
+                    "path": "<Keyboard>/q",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
