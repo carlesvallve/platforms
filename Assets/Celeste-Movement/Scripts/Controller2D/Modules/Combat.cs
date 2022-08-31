@@ -61,9 +61,14 @@ namespace Carles.Engine2D {
       int side = c.skin.GetSide();
 
       // reset attacker's velocity
-      c.rb.velocity = new Vector2(0, c.rb.velocity.y);
+      if (!c.hook.isHookActive) {
+        c.rb.velocity = new Vector2(0, c.rb.velocity.y);
+      }
+
+      // small cute jump when attacking
       if (Mathf.Abs(c.rb.velocity.x) < 1) {
-        Vector2 vec = new Vector2(2.5f * side, 2.5f);
+        // Vector2 vec = new Vector2(0, 2.5f);
+        Vector2 vec = new Vector2(1f * side, 2.5f);
         c.rb.AddForce(vec, ForceMode2D.Impulse);
       }
 
@@ -112,7 +117,11 @@ namespace Carles.Engine2D {
       isAttacking = true;
 
       // reset attacker's velocity
-      c.rb.velocity = new Vector2(0, c.rb.velocity.y);
+      if (!c.hook.isHookActive) {
+        c.rb.velocity = new Vector2(0, c.rb.velocity.y);
+      }
+
+      // small cute jump when shooting
       if (Mathf.Abs(c.rb.velocity.x) < 1) {
         Vector2 vec = new Vector2(0, 2.5f);
         c.rb.AddForce(vec, ForceMode2D.Impulse);
@@ -125,9 +134,7 @@ namespace Carles.Engine2D {
 
       // Instantiate projectile
       GameObject projectilePrefab = c.skin.GetProjectilePrefab();
-      Vector2 pos = new Vector2(transform.position.x + 0.3f, transform.position.y - 0.1f);
-      GameObject go = Instantiate(projectilePrefab, pos, Quaternion.identity);
-      Projectile projectile = go.GetComponent<Projectile>();
+      Projectile projectile = Instantiate(projectilePrefab).GetComponent<Projectile>();
       projectile.Init(c, c.skin.GetSide());
 
       // wait for attack cooldown to recover

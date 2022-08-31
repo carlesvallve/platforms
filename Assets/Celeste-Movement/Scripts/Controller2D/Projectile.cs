@@ -13,12 +13,26 @@ namespace Carles.Engine2D {
     [SerializeField] private float penetration = 0.15f;
     [SerializeField] private int damage = 1;
 
+    void Awake() {
+      rb = GetComponent<Rigidbody2D>();
+    }
+
     public void Init(CharController2D _shooter, int _side) {
       shooter = _shooter;
       side = _side;
 
-      rb = GetComponent<Rigidbody2D>();
-      rb.AddForce(new Vector2(side * speed, Random.Range(variationBottom, variationTop)), ForceMode2D.Impulse);
+      // get arrow direction vector
+      Vector2 dir = shooter.transform.rotation * Vector3.right * side;
+
+      // place arrow on muzzle
+      transform.position = new Vector3(
+       shooter.transform.position.x + 0.3f * dir.x,
+       shooter.transform.position.y + 0.1f * dir.y
+      );
+
+      // shoot arrow
+      float diff = Random.Range(variationBottom, variationTop);
+      rb.AddForce(new Vector2(dir.x * speed, dir.y + diff), ForceMode2D.Impulse);
     }
 
     void Update() {
@@ -33,6 +47,7 @@ namespace Carles.Engine2D {
       if (!rb) return;
       if (collision.transform == shooter.transform) return;
       if (collision.tag == "Projectile") return;
+      if (collision.tag == "Player") return;
 
       transform.Translate(rb.velocity.normalized * side * penetration);
 
