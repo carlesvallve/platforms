@@ -9,10 +9,11 @@ using System.Collections.Generic;
 
 namespace Carles.Engine2D {
 
-  public class Rope : MonoBehaviour {
+  public class HookRope : MonoBehaviour {
 
-    public float throwSpeed = 0.1f;
+    public float ropeLength = 5f;
     public float nodeDistance = 0.5f;
+    public float throwSpeed = 0.1f;
 
     [Space]
     [Header("Prefabs")]
@@ -30,6 +31,14 @@ namespace Carles.Engine2D {
       c = player.GetComponent<CharController2D>();
       lr = GetComponent<LineRenderer>();
     }
+
+    // void OnDrawGizmos() {
+    //   Gizmos.color = Color.yellow;
+    //   Gizmos.DrawWireCube(
+    //     (Vector2)transform.position + Vector2.up * ropeLength * 0.5f,
+    //     new Vector2(0.1f, ropeLength)
+    //   );
+    // }
 
     void Update() {
       RenderLine(); // render a line though all the nodes

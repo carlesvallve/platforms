@@ -16,7 +16,7 @@ namespace Carles.Engine2D {
     public bool isHookActive;
 
     private CharController2D c;
-    private Rope rope;
+    private HookRope hookRope;
     private float originalDrag = 0.05f;
     private Vector2 currentDestiny;
 
@@ -106,13 +106,13 @@ namespace Carles.Engine2D {
 
       // instantiate the rope
       GameObject go = (GameObject)Instantiate(ropePrefab, c.transform.position, Quaternion.identity);
-      rope = go.GetComponent<Rope>();
+      hookRope = go.GetComponent<HookRope>();
 
       // throw the rope
       if (instant) {
-        rope.ThrowRopeInstant(destiny);
+        hookRope.ThrowRopeInstant(destiny);
       } else {
-        yield return rope.StartCoroutine(rope.ThrowRope(destiny));
+        yield return hookRope.StartCoroutine(hookRope.ThrowRope(destiny));
       }
 
       // remember ridigBody settings
@@ -129,8 +129,8 @@ namespace Carles.Engine2D {
       // Debug.Log("EndHook");
 
       // delete hook rope
-      if (rope && rope.gameObject) {
-        Destroy(rope.gameObject);
+      if (hookRope && hookRope.gameObject) {
+        Destroy(hookRope.gameObject);
 
         // restore rigidbody settings
         c.rb.angularDrag = originalDrag;
