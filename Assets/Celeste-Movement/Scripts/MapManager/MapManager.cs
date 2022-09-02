@@ -18,9 +18,10 @@ public class MapManager : MonoBehaviour {
 
 
   private void Awake() {
-    leftMouseClick = new InputAction(binding: "<Mouse>/leftButton");
-    leftMouseClick.performed += ctx => LeftMouseClicked();
-    leftMouseClick.Enable();
+    // todo: Re-enable!
+    // leftMouseClick = new InputAction(binding: "<Mouse>/leftButton");
+    // leftMouseClick.performed += ctx => LeftMouseClicked();
+    // leftMouseClick.Enable();
 
     dataFromTiles = new Dictionary<TileBase, TileData>();
 

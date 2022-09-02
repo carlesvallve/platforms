@@ -50,6 +50,10 @@ namespace Carles.Engine2D {
         } else {
           c.jump.SetJump(Vector2.up, false);
         }
+
+        if (c.roping.attached) {
+          c.roping.Detach();
+        }
       }
     }
 
@@ -87,5 +91,21 @@ namespace Carles.Engine2D {
         c.hook.EndHook();
       }
     }
+
+    public void OnInpuSlideUp(InputAction.CallbackContext context) {
+      // first frame that button is pressed down
+      if (context.phase == InputActionPhase.Performed) {
+        c.roping.Slide(1);
+      }
+    }
+
+    public void OnInpuSlideDown(InputAction.CallbackContext context) {
+      // first frame that button is pressed down
+      if (context.phase == InputActionPhase.Performed) {
+        c.roping.Slide(-1);
+      }
+    }
+
+
   }
 }

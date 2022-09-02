@@ -43,6 +43,7 @@ namespace Carles.Engine2D {
     [HideInInspector] public Dash dash;
     [HideInInspector] public Combat combat;
     [HideInInspector] public Hook hook;
+    [HideInInspector] public Roping roping;
     //
     [HideInInspector] public CharAnimation anim;
     [HideInInspector] public Sounds sounds;
@@ -58,6 +59,7 @@ namespace Carles.Engine2D {
       dash = GetComponent<Dash>();
       combat = GetComponent<Combat>();
       hook = GetComponent<Hook>();
+      roping = GetComponent<Roping>();
       //
       anim = GetComponentInChildren<CharAnimation>();
       sounds = GetComponentInChildren<Sounds>();
