@@ -13,7 +13,6 @@ namespace Carles.Engine2D {
 
     public float ropeLength = 5f;
     public float nodeDistance = 0.5f;
-    public float throwSpeed = 0.1f;
 
     [Space]
     [Header("Prefabs")]
