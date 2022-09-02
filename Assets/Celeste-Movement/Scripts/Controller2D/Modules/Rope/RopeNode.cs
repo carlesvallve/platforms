@@ -2,17 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RopeNode : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+namespace Carles.Engine2D {
+  public class RopeNode : MonoBehaviour {
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public int index;
+
+    void OnTriggerEnter2D(Collider2D col) {
+      if (col.gameObject.tag != "Player") return;
+
+      CharController2D c = col.GetComponent<CharController2D>();
+      if (c.hook.isHookActive) return;
+      if (c.move.yRaw < -0.5f) return; // if pressing down skip colliding
+
+      Rope rope = transform.GetComponentInParent<Rope>();
+      if (rope.attachedCharacter == c) return;
+
+      // Debug.Log("Player contacted with rope trigger!");
+      rope.AttachCharacter(c, this);
     }
+  }
 }

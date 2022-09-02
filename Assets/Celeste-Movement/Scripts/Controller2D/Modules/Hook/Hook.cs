@@ -10,15 +10,18 @@ namespace Carles.Engine2D {
     public LayerMask collisionLayers;
     public float maxLength = 5f;
     public float swingForce = 1f;
-    public float swingDrag = 3f;
 
     [Space] // debug
     public bool isHookActive;
 
     private CharController2D c;
     private HookRope hookRope;
-    private float originalDrag = 0.05f;
     private Vector2 currentDestiny;
+
+    [Space]
+    [Header("Rope")]
+    public Rope currentRope;
+    public int currentNodeIndex;
 
     void Start() {
       c = GetComponent<CharController2D>();
@@ -27,8 +30,13 @@ namespace Carles.Engine2D {
     void Update() {
       if (!isHookActive) return;
       UpdateRopePlayerState();
-      UpdateRopeSwinging();
-      UpdateRopeClimbing();
+      Swing();
+      HookSlide();
+
+      // float y = c.move.yRaw;
+      // if (Mathf.Abs(y) < 1f) return;
+      // int dir = y > 0 ? 1 : -1;
+      // Slide(dir);
     }
 
     private void UpdateRopePlayerState() {
@@ -36,27 +44,47 @@ namespace Carles.Engine2D {
         // while being on floor
         c.move.canMove = true;
         c.rb.freezeRotation = true;
-        c.rb.angularDrag = originalDrag;
       } else {
         // while being in the air
         c.move.canMove = false;
         c.rb.freezeRotation = false;
-        c.rb.angularDrag = swingDrag;
       }
     }
 
-    private void UpdateRopeSwinging() {
+    private void Swing() {
       // swing player left and right
       float x = c.move.xRaw;
       c.rb.AddForce(new Vector2(x * swingForce, 0));
     }
 
-    private void UpdateRopeClimbing() {
+    public void RopeSlide(int dir) {
+      // float y = c.move.yRaw;
+      // if (Mathf.Abs(y) < 1f) return;
+      // int dir = (int)y;
+
+      if (dir == 0) return;
+
+      // get next node index in direction
+      int nextIndex = currentNodeIndex - dir;
+      if (nextIndex < 1) nextIndex = 1;
+      if (nextIndex > currentRope.Nodes.Count - 1) nextIndex = currentRope.Nodes.Count - 1;
+      // Debug.Log(currentNodeIndex + " + " + (-dir) + " = " + nextIndex);
+
+      // attach character to new node
+      RopeNode nextNode = currentRope.Nodes[nextIndex];
+      currentRope.AttachCharacter(c, nextNode);
+
+      // update current node index
+      currentNodeIndex = nextIndex;
+    }
+
+    private void HookSlide() {
+      if (currentRope) return;
+
       float y = c.move.yRaw;
       if (Mathf.Abs(y) < 1f) return;
 
       c.rb.freezeRotation = true;
-      c.rb.angularDrag = originalDrag;
 
       if (y > 0) {
         // climbing up
@@ -76,7 +104,7 @@ namespace Carles.Engine2D {
 
       // re-create the rope instantly
       EndHook();
-      StartCoroutine(CreateRope(c.transform.position, currentDestiny, true));
+      StartCoroutine(CreateHookRope(c.transform.position, currentDestiny, true));
     }
 
 
@@ -91,10 +119,10 @@ namespace Carles.Engine2D {
       RaycastHit2D hit = Physics2D.Raycast(transform.position, dir, maxLength, collisionLayers);
       if (hit.collider != null) destiny = hit.point;
 
-      StartCoroutine(CreateRope(origin, destiny, false));
+      StartCoroutine(CreateHookRope(origin, destiny, false));
     }
 
-    IEnumerator CreateRope(Vector2 origin, Vector2 destiny, bool instant) {
+    IEnumerator CreateHookRope(Vector2 origin, Vector2 destiny, bool instant) {
       currentDestiny = destiny;
 
       // if rope didnt hit a wall, destroy it and escape, before creating a new rope
@@ -115,29 +143,35 @@ namespace Carles.Engine2D {
         yield return hookRope.StartCoroutine(hookRope.ThrowRope(destiny));
       }
 
-      // remember ridigBody settings
-      originalDrag = c.rb.angularDrag;
+      // when we are on a rope, reset jumps
+      c.jump.SetJumpsAvailable(c.jump.maxJumps);
 
-      // when we are on a rope, we can always jump just once
-      c.jump.SetJumpsAvailable(1);
+      // if starting hood from a rope, end the current rope
+      if (currentRope) EndRope();
 
       // activate hooking state
       isHookActive = true;
+
+
     }
 
     public void EndHook() {
-      // Debug.Log("EndHook");
-
       // delete hook rope
       if (hookRope && hookRope.gameObject) {
         Destroy(hookRope.gameObject);
 
-        // restore rigidbody settings
-        c.rb.angularDrag = originalDrag;
-
         // deactivate hooking state
         isHookActive = false;
+
+        currentRope = null;
       }
+    }
+
+    public void EndRope() {
+      // deactivate hooking state
+      isHookActive = false;
+
+      if (currentRope) currentRope.DetachCharacter(c);
     }
 
   }

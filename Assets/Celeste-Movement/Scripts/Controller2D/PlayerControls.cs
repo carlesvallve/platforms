@@ -45,15 +45,20 @@ namespace Carles.Engine2D {
       // first frame that button is pressed down
       if (context.phase == InputActionPhase.Performed) {
 
+        if (c.hook.isHookActive) {
+          // c.rb.velocity = new Vector2(c.rb.velocity.x, 0);
+          c.hook.EndRope();
+        }
+
         if (c.coll.onWall && !c.coll.onGround) {
           c.jump.SetWallJump();
         } else {
           c.jump.SetJump(Vector2.up, false);
         }
 
-        if (c.roping.attached) {
-          c.roping.Detach();
-        }
+        // if (c.roping.attached) {
+        //   c.roping.Detach();
+        // }
       }
     }
 
@@ -95,14 +100,16 @@ namespace Carles.Engine2D {
     public void OnInpuSlideUp(InputAction.CallbackContext context) {
       // first frame that button is pressed down
       if (context.phase == InputActionPhase.Performed) {
-        c.roping.Slide(1);
+        // c.roping.Slide(1);
+        c.hook.RopeSlide(1);
       }
     }
 
     public void OnInpuSlideDown(InputAction.CallbackContext context) {
       // first frame that button is pressed down
       if (context.phase == InputActionPhase.Performed) {
-        c.roping.Slide(-1);
+        // c.roping.Slide(-1);
+        c.hook.RopeSlide(-1);
       }
     }
 
