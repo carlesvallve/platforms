@@ -13,18 +13,18 @@ public class MapManager : MonoBehaviour {
   [SerializeField]
   private List<TileData> tileDatas;
 
-  private Dictionary<TileBase, TileData> dataFromTiles;
-
-
+  [SerializeField]
+  private SerializableDictionary<TileBase, TileData> dataFromTiles;
+  // private Dictionary<TileBase, TileData> dataFromTiles;
 
   private void Awake() {
-    // todo: Re-enable!
-    // leftMouseClick = new InputAction(binding: "<Mouse>/leftButton");
-    // leftMouseClick.performed += ctx => LeftMouseClicked();
-    // leftMouseClick.Enable();
+    // enable mouse interaction
+    leftMouseClick = new InputAction(binding: "<Mouse>/leftButton");
+    leftMouseClick.performed += ctx => LeftMouseClicked();
+    leftMouseClick.Enable();
 
-    dataFromTiles = new Dictionary<TileBase, TileData>();
-
+    // generate data from tiles
+    dataFromTiles = new SerializableDictionary<TileBase, TileData>();
     foreach (var tileData in tileDatas) {
       foreach (var tile in tileData.tiles) {
         dataFromTiles.Add(tile, tileData); // key, value
@@ -34,9 +34,9 @@ public class MapManager : MonoBehaviour {
 
   private void LeftMouseClicked() {
     Vector2 mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-    print("Map - LeftMouseClicked" + mousePos);
-
     Vector3Int gridPosition = map.WorldToCell(mousePos);
+    print("Map - mousePos" + mousePos + " gridPos:" + gridPosition);
+
     TileBase clickedTile = map.GetTile(gridPosition);
     if (clickedTile) print("Map - At position " + gridPosition + " there is a tile " + clickedTile);
 
