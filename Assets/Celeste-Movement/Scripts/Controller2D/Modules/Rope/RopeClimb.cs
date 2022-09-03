@@ -30,11 +30,11 @@ namespace Carles.Engine2D {
         c.rb.freezeRotation = false;
       }
 
-      Swing();
-      Slide();
+      RopeSwing();
+      // Slide();
     }
 
-    private void Swing() {
+    private void RopeSwing() {
       // swing player left and right
       float x = c.move.xRaw;
       c.rb.AddForce(new Vector2(x * swingForce, 0));
@@ -45,28 +45,31 @@ namespace Carles.Engine2D {
     }
 
     public void RopeSlide(int dir) {
+      // float y = c.move.yRaw;
+      // if (Mathf.Abs(y) < 1f) return;
+      // int dir = (int)y;
+
+      if (dir == 0) return;
+
+      // get next node index in direction
+      int nextIndex = currentNodeIndex - dir;
+      if (nextIndex < 1) nextIndex = 1;
+      if (nextIndex > currentRope.Nodes.Count - 1) nextIndex = currentRope.Nodes.Count - 1;
+      // Debug.Log(currentNodeIndex + " + " + (-dir) + " = " + nextIndex);
+
+      // attach character to new node
+      RopeNode nextNode = currentRope.Nodes[nextIndex];
+      // currentRope.AttachCharacter(c, nextNode);
+
+      // attach character to rope joint
+      HingeJoint2D hj = c.GetComponent<HingeJoint2D>();
+      Rigidbody2D ropeBone = nextNode.transform.GetComponent<Rigidbody2D>();
+      hj.connectedBody = ropeBone;
+      hj.enabled = true;
+
+      // update current node index
+      currentNodeIndex = nextIndex;
     }
-
-    // public void RopeSlide(int dir) {
-    //   // float y = c.move.yRaw;
-    //   // if (Mathf.Abs(y) < 1f) return;
-    //   // int dir = (int)y;
-
-    //   if (dir == 0) return;
-
-    //   // get next node index in direction
-    //   int nextIndex = currentNodeIndex - dir;
-    //   if (nextIndex < 1) nextIndex = 1;
-    //   if (nextIndex > currentRope.Nodes.Count - 1) nextIndex = currentRope.Nodes.Count - 1;
-    //   // Debug.Log(currentNodeIndex + " + " + (-dir) + " = " + nextIndex);
-
-    //   // attach character to new node
-    //   RopeNode nextNode = currentRope.Nodes[nextIndex];
-    //   currentRope.AttachCharacter(c, nextNode);
-
-    //   // update current node index
-    //   currentNodeIndex = nextIndex;
-    // }
 
     public void StartRope(Rope rope, RopeNode node) {
       // reset any previous props
