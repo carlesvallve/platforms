@@ -18,8 +18,16 @@ namespace Carles.Engine2D {
     private int vertexCount = 2;
 
     void Awake() {
-      lineRenderer = GetComponent<LineRenderer>();
-      lineRenderer.sharedMaterial.SetColor("_Color", color);
+      Debug.Log(transform);
+      lineRenderer = transform.GetComponent<LineRenderer>();
+      Debug.Log(lineRenderer);
+
+      lineRenderer.startWidth = 0.04f;
+      lineRenderer.endWidth = 0.04f;
+
+      // lineRenderer.sharedMaterial.color = Color.white;
+      lineRenderer.startColor = color;
+      lineRenderer.endColor = color;
 
       GenerateRope();
     }

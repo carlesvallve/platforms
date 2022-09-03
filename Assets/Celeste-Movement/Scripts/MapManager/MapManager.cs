@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Tilemaps;
 
+// Tutorial: https://www.youtube.com/watch?v=XIqtZnqutGg
+
 public class MapManager : MonoBehaviour {
   private InputAction leftMouseClick;
 
