@@ -13,9 +13,12 @@ namespace Carles.Engine2D {
       CharController2D c = col.GetComponent<CharController2D>();
 
       // escape trigger if conditions are not met
+      if (c.coll.onGround) return;
+      if (c.coll.onWall) return;
       if (c.ropeClimb.isActive) return;
       if (c.hook.isActive) return;
-      if (c.move.yRaw < -0.5f) return; // if pressing down
+      if (c.move.yRaw <= -1f) return; // if pressing down
+
 
       // escape trigger if this rope already has an attached character
       Rope rope = transform.GetComponentInParent<Rope>();

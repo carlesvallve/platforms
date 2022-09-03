@@ -8,7 +8,7 @@ namespace Carles.Engine2D {
     public LayerMask collisionLayers;
     public Rope currentRope;
     public int currentNodeIndex;
-    public float climbDelay = 0.1f;
+    public float climbDelay = 0.15f;
     public float swingForce = 1.5f;
     public bool isActive;
 
