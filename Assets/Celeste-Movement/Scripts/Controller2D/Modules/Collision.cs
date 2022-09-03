@@ -31,7 +31,10 @@ namespace Carles.Engine2D {
     public CapsuleCollider2D blockerCollider;
     public bool canPushCharacters = true;
 
+    private CharController2D c;
+
     void Start() {
+      c = GetComponent<CharController2D>();
       Physics2D.IgnoreCollision(characterCollider, blockerCollider, true);
       blockerCollider.gameObject.SetActive(!canPushCharacters);
     }

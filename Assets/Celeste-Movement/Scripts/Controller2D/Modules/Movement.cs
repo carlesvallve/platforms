@@ -44,6 +44,16 @@ namespace Carles.Engine2D {
       UpdateCharSide(x);
       UpdateWalk(x, y);
       UpdateWalls(x, y);
+
+      c.rb.gravityScale = GetGravityScale();
+    }
+
+    private int GetGravityScale() {
+      if (wallGrab) return 0;
+      if (c.dash.isDashing) return 0;
+      if (c.ladderClimb.isLadder) return 0;
+
+      return 3;
     }
 
     // ------------------------------------------------------------------------------
@@ -57,7 +67,6 @@ namespace Carles.Engine2D {
 
       // escape walking if we are on any kind of rope
       if (!c.coll.onGround) {
-        if (c.hook.isActive) return;
         if (c.hook.isActive) return;
         // if (c.hook.isActive && !c.coll.onGround && !c.coll.onWall) return;
       }
@@ -111,7 +120,7 @@ namespace Carles.Engine2D {
         float speedModifier = y > 0 ? .5f : 1;
         c.rb.velocity = new Vector2(c.rb.velocity.x, y * (speed * speedModifier));
       } else {
-        c.rb.gravityScale = 3; // todo: expose default gravityScale prop
+        // c.rb.gravityScale = 3; // todo: expose default gravityScale prop
       }
 
       // wall slide
