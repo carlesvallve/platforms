@@ -87,24 +87,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "SlideUp",
-                    "type": "Button",
-                    "id": "ff940ba6-9d27-40fc-9765-f088a5f91a6f",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "SlideDown",
-                    "type": "Button",
-                    "id": "13a48761-35f2-4d63-a87b-2f6d89a94ce5",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "LeftMouse",
                     "type": "Button",
                     "id": "07c4dfc2-8801-43e1-8c9e-0a1af9cc09c2",
@@ -429,50 +411,6 @@
                     "processors": "",
                     "groups": "Controller",
                     "action": "CrankRight",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "63eeaa8f-f89f-49eb-821d-e6f633c72c1e",
-                    "path": "<Keyboard>/upArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "SlideUp",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "4caf2e7b-ca6d-4ac8-813a-f6fa1b7a242a",
-                    "path": "<Gamepad>/dpad/up",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Controller",
-                    "action": "SlideUp",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "c5f212c8-df0f-47ae-b2fd-9348ca3d71b5",
-                    "path": "<Keyboard>/downArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "SlideDown",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "5a95ecc4-e108-4efc-a255-0830c7421e9d",
-                    "path": "<Gamepad>/dpad/down",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Controller",
-                    "action": "SlideDown",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -31,6 +31,12 @@ namespace Carles.Engine2D {
       ThrowRopeInstant(destiny, 0.5f);
     }
 
+    public void Generate() {
+      origin = transform.position;
+      Vector2 destiny = new Vector2(transform.position.x, transform.position.y + ropeLength);
+      ThrowRopeInstant(destiny, 0.5f);
+    }
+
     void OnDrawGizmos() {
       Gizmos.color = Color.yellow;
       Gizmos.DrawWireCube(
