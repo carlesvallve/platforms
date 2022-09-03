@@ -6,17 +6,21 @@ namespace Carles.Engine2D {
 
   public class Rope : MonoBehaviour {
 
+    public Color color = Color.white;
+    public GameObject nodePrefab;
     public int ropeLength = 7;
     public float nodeDistance = 0.5f;
-    public GameObject nodePrefab;
+    public bool displayNodes = true;
     public List<RopeNode> Nodes = new List<RopeNode>();
     public CharController2D attachedCharacter;
 
-    private LineRenderer lr;
+    private LineRenderer lineRenderer;
     private int vertexCount = 2;
 
     void Awake() {
-      lr = GetComponent<LineRenderer>();
+      lineRenderer = GetComponent<LineRenderer>();
+      lineRenderer.sharedMaterial.SetColor("_Color", color);
+
       GenerateRope();
     }
 
@@ -47,17 +51,21 @@ namespace Carles.Engine2D {
     }
 
     void RenderLine() {
-      lr.positionCount = vertexCount - 1;
+      lineRenderer.positionCount = vertexCount - 1;
 
       // adjust line to each node
       for (int i = 0; i < Nodes.Count; i++) {
-        lr.SetPosition(i, Nodes[i].transform.position);
+        lineRenderer.SetPosition(i, Nodes[i].transform.position);
       }
     }
 
     private RopeNode CreateNode(RopeNode lastNode, Vector2 pos) {
       GameObject go = (GameObject)Instantiate(nodePrefab, pos, Quaternion.identity);
       go.transform.SetParent(transform);
+
+      SpriteRenderer sprite = go.GetComponent<SpriteRenderer>();
+      sprite.color = color; //sharedMaterial.SetColor("_Color", color);
+      sprite.enabled = displayNodes;
 
       RopeNode ropeNode = go.GetComponent<RopeNode>();
       ropeNode.index = Nodes.Count;
