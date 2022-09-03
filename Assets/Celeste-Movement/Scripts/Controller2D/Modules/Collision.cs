@@ -10,6 +10,7 @@ namespace Carles.Engine2D {
     // or otherwise things won't work properly
     [Header("Layers")]
     public LayerMask groundLayer;
+    public LayerMask oneWayPlatformLayer;
 
     [Space]
     [Header("States")]
@@ -18,6 +19,8 @@ namespace Carles.Engine2D {
     public bool onRightWall;
     public bool onLeftWall;
     public int wallSide;
+
+    public GameObject currentOneWayPlatform;
 
     [Space]
     [Header("Collision")]
@@ -41,6 +44,9 @@ namespace Carles.Engine2D {
 
     // Update is called once per frame
     void Update() {
+      Collider2D oneWayCollider = Physics2D.OverlapCircle((Vector2)transform.position + bottomOffset, collisionRadius, oneWayPlatformLayer);
+      currentOneWayPlatform = oneWayCollider ? oneWayCollider.gameObject : null;
+
       onGround = Physics2D.OverlapCircle((Vector2)transform.position + bottomOffset, collisionRadius, groundLayer);
       onWall = Physics2D.OverlapCircle((Vector2)transform.position + rightOffset, collisionRadius, groundLayer)
           || Physics2D.OverlapCircle((Vector2)transform.position + leftOffset, collisionRadius, groundLayer);

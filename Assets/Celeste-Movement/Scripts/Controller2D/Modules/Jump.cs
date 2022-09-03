@@ -17,7 +17,9 @@ namespace Carles.Engine2D {
     [Space] // debug
     public bool groundTouch;
     public bool wallJumped;
+    public bool oneWayPlatformJumped;
     public int jumpsAvailable;
+
 
     // jump flags
     [HideInInspector] public bool isJumpBeingPressed; // todo: change to isLongJumpEnabled
@@ -65,8 +67,11 @@ namespace Carles.Engine2D {
       c.transform.rotation = Quaternion.identity;
       c.rb.freezeRotation = true;
 
-      c.particles.jump.Play();
-      c.sounds.PlayFootstep();
+      // if (c.rb.velocity.y < 0 && !c.coll.currentOneWayPlatform) {
+      if (!oneWayPlatformJumped) {
+        c.particles.jump.Play();
+        c.sounds.PlayFootstep();
+      }
 
       if (c.combat.isDead && c.coll.onGround) {
         c.combat.DisableAfterDying();
@@ -92,6 +97,12 @@ namespace Carles.Engine2D {
     }
 
     public void SetJump(Vector2 dir, bool wall) {
+      // one-way-platform jump?
+      if (c.coll.currentOneWayPlatform && c.move.yRaw < 0) {
+        SetOneWayPlatformJump(dir, wall);
+        return;
+      }
+
       // multi-jump
       if (c.coll.onGround || c.coll.onWall) SetJumpsAvailable(maxJumps);
       if (jumpsAvailable == 0) return;
@@ -122,6 +133,32 @@ namespace Carles.Engine2D {
       SetJump((Vector2.up / 1.5f + wallDir / 1.5f), true);
 
       wallJumped = true;
+    }
+
+    private void SetOneWayPlatformJump(Vector2 dir, bool wall) {
+      c.anim.SetTrigger("jump");
+      c.sounds.PlayJump();
+
+      c.particles.slide.transform.parent.localScale = new Vector3(c.move.ParticleSide(), 1, 1);
+      ParticleSystem particle = wall ? c.particles.wallJump : c.particles.jump;
+
+      c.rb.velocity = new Vector2(c.rb.velocity.x, 0);
+      c.rb.velocity += dir * jumpForce * 0.5f;
+
+      particle.Play();
+
+      StartCoroutine(DisableOneWayPlatform());
+    }
+
+    private IEnumerator DisableOneWayPlatform() {
+      Collider2D playerCollider = c.GetComponent<Collider2D>();
+      Collider2D platformCollider = c.coll.currentOneWayPlatform.GetComponent<Collider2D>();
+
+      oneWayPlatformJumped = true;
+      Physics2D.IgnoreCollision(playerCollider, platformCollider, true);
+      yield return new WaitForSeconds(0.4f);
+      Physics2D.IgnoreCollision(playerCollider, platformCollider, false);
+      oneWayPlatformJumped = false;
     }
 
   }
