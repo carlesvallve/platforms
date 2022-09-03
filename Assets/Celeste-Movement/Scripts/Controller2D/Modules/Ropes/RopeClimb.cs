@@ -8,6 +8,7 @@ namespace Carles.Engine2D {
     public LayerMask collisionLayers;
     public Rope currentRope;
     public int currentNodeIndex;
+    public float climbDelay = 0.1f;
     public float swingForce = 1.5f;
     public bool isActive;
 
@@ -91,7 +92,7 @@ namespace Carles.Engine2D {
       waitingForSlide = true;
       Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Rope"), LayerMask.NameToLayer("Player"), true);
 
-      yield return new WaitForSeconds(0.15f);
+      yield return new WaitForSeconds(climbDelay);
 
       waitingForSlide = false;
       Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Rope"), LayerMask.NameToLayer("Player"), false);
