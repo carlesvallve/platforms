@@ -6,23 +6,25 @@ namespace Carles.Engine2D {
 
   public class HookRope : MonoBehaviour {
 
+    public Color color = Color.white;
     public float ropeLength = 5f;
     public float nodeDistance = 0.5f;
-
-    [Space]
-    [Header("Prefabs")]
     public GameObject nodePrefab;
-    public GameObject lastNode;
     public List<GameObject> Nodes = new List<GameObject>();
 
-    // public GameObject player;
     private CharController2D c;
-    private LineRenderer lr;
+    private LineRenderer lineRenderer;
+    private GameObject lastNode;
     private int vertexCount = 2;
 
     public void Init(CharController2D _c) {
+      lineRenderer = GetComponent<LineRenderer>();
+      lineRenderer.startColor = color;
+      lineRenderer.endColor = color;
+      lineRenderer.startWidth = 0.08f;
+      lineRenderer.endWidth = 0.08f;
+
       c = _c;
-      lr = GetComponent<LineRenderer>();
     }
 
     void Update() {
@@ -70,15 +72,15 @@ namespace Carles.Engine2D {
     }
 
     void RenderLine() {
-      lr.positionCount = vertexCount;
+      lineRenderer.positionCount = vertexCount;
 
       // adjust line to each node
       for (int i = 0; i < Nodes.Count; i++) {
-        lr.SetPosition(i, Nodes[i].transform.position);
+        lineRenderer.SetPosition(i, Nodes[i].transform.position);
       }
 
       // adjust line last segment to player's position
-      lr.SetPosition(Nodes.Count, c.transform.position);
+      lineRenderer.SetPosition(Nodes.Count, c.transform.position);
     }
 
 
