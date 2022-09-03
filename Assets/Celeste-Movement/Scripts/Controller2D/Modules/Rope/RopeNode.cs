@@ -11,14 +11,18 @@ namespace Carles.Engine2D {
       if (col.gameObject.tag != "Player") return;
 
       CharController2D c = col.GetComponent<CharController2D>();
-      if (c.hook.isHookActive) return;
-      if (c.move.yRaw < -0.5f) return; // if pressing down skip colliding
 
+      // escape trigger if conditions are not met
+      if (c.ropeClimb.isActive) return;
+      if (c.hook.isActive) return;
+      if (c.move.yRaw < -0.5f) return; // if pressing down
+
+      // escape trigger if this rope already has an attached character
       Rope rope = transform.GetComponentInParent<Rope>();
       if (rope.attachedCharacter == c) return;
 
-      // Debug.Log("Player contacted with rope trigger!");
-      rope.AttachCharacter(c, this);
+      // start rope climbing
+      c.ropeClimb.StartRope(rope, this);
     }
   }
 }

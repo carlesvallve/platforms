@@ -5,38 +5,27 @@ using UnityEngine;
 namespace Carles.Engine2D {
 
   public class Hook : MonoBehaviour {
-
-    public GameObject ropePrefab;
     public LayerMask collisionLayers;
+    public GameObject ropePrefab;
     public float maxLength = 5f;
-    public float swingForce = 1f;
+    public float swingForce = 1.5f;
 
     [Space] // debug
-    public bool isHookActive;
+    public bool isActive;
 
     private CharController2D c;
     private HookRope hookRope;
     private Vector2 currentDestiny;
-
-    [Space]
-    [Header("Rope")]
-    public Rope currentRope;
-    public int currentNodeIndex;
 
     void Start() {
       c = GetComponent<CharController2D>();
     }
 
     void Update() {
-      if (!isHookActive) return;
+      if (!isActive) return;
       UpdateRopePlayerState();
-      Swing();
+      HookSwing();
       HookSlide();
-
-      // float y = c.move.yRaw;
-      // if (Mathf.Abs(y) < 1f) return;
-      // int dir = y > 0 ? 1 : -1;
-      // Slide(dir);
     }
 
     private void UpdateRopePlayerState() {
@@ -51,35 +40,14 @@ namespace Carles.Engine2D {
       }
     }
 
-    private void Swing() {
+    private void HookSwing() {
       // swing player left and right
       float x = c.move.xRaw;
       c.rb.AddForce(new Vector2(x * swingForce, 0));
     }
 
-    public void RopeSlide(int dir) {
-      // float y = c.move.yRaw;
-      // if (Mathf.Abs(y) < 1f) return;
-      // int dir = (int)y;
-
-      if (dir == 0) return;
-
-      // get next node index in direction
-      int nextIndex = currentNodeIndex - dir;
-      if (nextIndex < 1) nextIndex = 1;
-      if (nextIndex > currentRope.Nodes.Count - 1) nextIndex = currentRope.Nodes.Count - 1;
-      // Debug.Log(currentNodeIndex + " + " + (-dir) + " = " + nextIndex);
-
-      // attach character to new node
-      RopeNode nextNode = currentRope.Nodes[nextIndex];
-      currentRope.AttachCharacter(c, nextNode);
-
-      // update current node index
-      currentNodeIndex = nextIndex;
-    }
-
     private void HookSlide() {
-      if (currentRope) return;
+      // if (currentRope) return; // todo
 
       float y = c.move.yRaw;
       if (Mathf.Abs(y) < 1f) return;
@@ -135,6 +103,7 @@ namespace Carles.Engine2D {
       // instantiate the rope
       GameObject go = (GameObject)Instantiate(ropePrefab, c.transform.position, Quaternion.identity);
       hookRope = go.GetComponent<HookRope>();
+      hookRope.Init(c);
 
       // throw the rope
       if (instant) {
@@ -146,13 +115,11 @@ namespace Carles.Engine2D {
       // when we are on a rope, reset jumps
       c.jump.SetJumpsAvailable(c.jump.maxJumps);
 
-      // if starting hood from a rope, end the current rope
-      if (currentRope) EndRope();
+      // if starting hook from a rope, end the current rope
+      if (c.ropeClimb.isActive) c.ropeClimb.EndRope();
 
       // activate hooking state
-      isHookActive = true;
-
-
+      isActive = true;
     }
 
     public void EndHook() {
@@ -161,17 +128,8 @@ namespace Carles.Engine2D {
         Destroy(hookRope.gameObject);
 
         // deactivate hooking state
-        isHookActive = false;
-
-        currentRope = null;
+        isActive = false;
       }
-    }
-
-    public void EndRope() {
-      // deactivate hooking state
-      isHookActive = false;
-
-      if (currentRope) currentRope.DetachCharacter(c);
     }
 
   }

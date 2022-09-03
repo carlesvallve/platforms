@@ -2,11 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 
-// todo: Create generic ropes that can be placed on maps with different lengths:
-// todo: player should be able to 'stick' to a rope when touching it,
-// todo: player should be able to climb up and down the rope
-// todo: player should be able to swing the rope left and right
-
 namespace Carles.Engine2D {
 
   public class HookRope : MonoBehaviour {
@@ -17,30 +12,21 @@ namespace Carles.Engine2D {
     [Space]
     [Header("Prefabs")]
     public GameObject nodePrefab;
-    public GameObject player;
-    private CharController2D c;
     public GameObject lastNode;
-    public LineRenderer lr;
-
-    int vertexCount = 2;
     public List<GameObject> Nodes = new List<GameObject>();
 
-    void Awake() {
-      player = GameObject.FindGameObjectWithTag("Player");
-      c = player.GetComponent<CharController2D>();
+    // public GameObject player;
+    private CharController2D c;
+    private LineRenderer lr;
+    private int vertexCount = 2;
+
+    public void Init(CharController2D _c) {
+      c = _c;
       lr = GetComponent<LineRenderer>();
     }
 
-    // void OnDrawGizmos() {
-    //   Gizmos.color = Color.yellow;
-    //   Gizmos.DrawWireCube(
-    //     (Vector2)transform.position + Vector2.up * ropeLength * 0.5f,
-    //     new Vector2(0.1f, ropeLength)
-    //   );
-    // }
-
     void Update() {
-      RenderLine(); // render a line though all the nodes
+      RenderLine();
     }
 
     public void ThrowRopeInstant(Vector2 destiny, float speed = 0.1f) {
@@ -69,14 +55,14 @@ namespace Carles.Engine2D {
       if ((Vector2)transform.position != destiny) {
         // If head has not reach the destiny point yet
         // create a node if last node's distance to the player is too much
-        if (Vector2.Distance(player.transform.position, lastNode.transform.position) > nodeDistance) {
+        if (Vector2.Distance(c.transform.position, lastNode.transform.position) > nodeDistance) {
           CreateNode();
         }
 
       } else {
         // when rope head reaches the destiny point
         // connect the lastNode to the player's rigidbody
-        lastNode.GetComponent<HingeJoint2D>().connectedBody = player.GetComponent<Rigidbody2D>();
+        lastNode.GetComponent<HingeJoint2D>().connectedBody = c.GetComponent<Rigidbody2D>();
         return false;
       }
 
@@ -92,12 +78,12 @@ namespace Carles.Engine2D {
       }
 
       // adjust line last segment to player's position
-      lr.SetPosition(Nodes.Count, player.transform.position);
+      lr.SetPosition(Nodes.Count, c.transform.position);
     }
 
 
     void CreateNode() {
-      Vector2 pos2Create = player.transform.position - lastNode.transform.position;
+      Vector2 pos2Create = c.transform.position - lastNode.transform.position;
       pos2Create.Normalize();
       pos2Create *= nodeDistance;
       pos2Create += (Vector2)lastNode.transform.position;

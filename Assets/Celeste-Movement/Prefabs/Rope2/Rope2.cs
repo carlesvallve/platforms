@@ -65,7 +65,7 @@ namespace Carles.Engine2D {
       // Debug.Log("RemoveLink");
 
       if (top.gameObject.GetComponent<RopeSegment>().isPlayerAttached) {
-        c.roping.Slide(-1);
+        // todo: c.roping.Slide(-1);
       }
 
       HingeJoint2D newTop = top.gameObject.GetComponent<RopeSegment>().connectedBelow.GetComponent<HingeJoint2D>();

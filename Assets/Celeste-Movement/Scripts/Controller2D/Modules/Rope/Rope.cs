@@ -8,7 +8,6 @@ namespace Carles.Engine2D {
 
     public float ropeLength = 5f;
     public float nodeDistance = 0.5f;
-    public float throwSpeed = 0.1f;
 
     [Space]
     [Header("Prefabs")]
@@ -42,16 +41,6 @@ namespace Carles.Engine2D {
 
     void Update() {
       RenderLine();
-
-      // if (attachedCharacter) {
-      //   CharController2D c = attachedCharacter;
-      //   if (c.coll.onGround) {
-      //     if (c.hook.currentRope) {
-      //       attachedCharacter = null;
-      //       c.hook.currentRope = null;
-      //     }
-      //   }
-      // }
     }
 
     public void ThrowRopeInstant(Vector2 destiny, float speed = 0.1f) {
@@ -90,7 +79,6 @@ namespace Carles.Engine2D {
       }
     }
 
-
     void CreateNode() {
       Vector2 pos2Create = origin - (Vector2)lastNode.transform.position;
       pos2Create.Normalize();
@@ -110,62 +98,11 @@ namespace Carles.Engine2D {
       vertexCount++;
     }
 
-    public void AttachCharacter(CharController2D c, RopeNode node) {
-      c.hook.EndHook(); // destroy hook if we are hooking
-
-      // reset any previous rope props
-      if (c.hook.currentRope) {
-        c.hook.currentRope.attachedCharacter = null;
-      }
-
-      // set current rope props
-      attachedCharacter = c;
-
-      // set character props
-      c.hook.isHookActive = true;
-      c.hook.currentRope = this;
-      c.hook.currentNodeIndex = node.index;
-
-      // when we are on a rope, reset jumps // we can always jump just once
-      c.jump.SetJumpsAvailable(c.jump.maxJumps);
-
-      // attach character to rope joint
-      HingeJoint2D hj = c.GetComponent<HingeJoint2D>();
-      Rigidbody2D ropeBone = node.transform.GetComponent<Rigidbody2D>();
-      hj.connectedBody = ropeBone;
-      hj.enabled = true;
-
-      // disable physics on rope vs character
-      // Physics2D.IgnoreLayerCollision(
-      //   LayerMask.NameToLayer("Player"),
-      //   LayerMask.NameToLayer("Rope"),
-      //   true
-      // );
-    }
-
-    public void DetachCharacter(CharController2D c) {
-      // reset and disable character joint right away
-      HingeJoint2D hj = c.GetComponent<HingeJoint2D>();
-      hj.connectedBody = null;
-      hj.enabled = false;
-
-      // enable physcis on rope vs character
-      // Physics2D.IgnoreLayerCollision(
-      //   LayerMask.NameToLayer("Player"),
-      //   LayerMask.NameToLayer("Rope"),
-      //   false
-      // );
-
-      // wait to completely reset the current rope 
-      // so we can safely de-attach from it
-      StartCoroutine(WaitToResetRope());
-    }
-
-    private IEnumerator WaitToResetRope() {
+    public IEnumerator WaitToResetRope() {
       yield return new WaitForSeconds(0.15f);
 
       if (attachedCharacter) {
-        attachedCharacter.hook.currentRope = null;
+        // attachedCharacter.ropeClimb.currentRope = null;
         attachedCharacter = null;
       }
     }

@@ -26,7 +26,7 @@ namespace Carles.Engine2D {
     }
 
     void Update() {
-      // c.hook.isHookActive = attached;
+      // c.hook.isActive = attached;
 
       if (attached) {
         UpdateRopePlayerState();

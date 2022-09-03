@@ -61,7 +61,7 @@ namespace Carles.Engine2D {
       int side = c.skin.GetSide();
 
       // reset attacker's velocity
-      if (!c.hook.isHookActive) {
+      if (!c.hook.isActive || !c.ropeClimb.isActive) {
         c.rb.velocity = new Vector2(0, c.rb.velocity.y);
       }
 
@@ -117,7 +117,7 @@ namespace Carles.Engine2D {
       isAttacking = true;
 
       // reset attacker's velocity
-      if (!c.hook.isHookActive) {
+      if (!c.hook.isActive || !c.ropeClimb.isActive) {
         c.rb.velocity = new Vector2(0, c.rb.velocity.y);
       }
 
