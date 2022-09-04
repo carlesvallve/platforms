@@ -17,6 +17,9 @@ namespace Carles.Engine2D {
     }
 
     void Update() {
+      // if (c.ropeClimb.isActive) return;
+      // if (c.hook.isActive) return;
+
       if (onLadder) {
         c.rb.velocity = new Vector2(c.rb.velocity.x, c.move.yRaw * speed);
         // if (c.move.yRaw != 0) isClimbing = true;
