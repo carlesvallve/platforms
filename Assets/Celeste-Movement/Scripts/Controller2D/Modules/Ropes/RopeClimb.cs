@@ -9,7 +9,7 @@ namespace Carles.Engine2D {
     public Rope currentRope;
     public int currentNodeIndex;
     public float climbDelay = 0.15f;
-    public float swingForce = 1.5f;
+    public float swingForce = 3f;
     public bool isActive;
 
     private CharController2D c;
