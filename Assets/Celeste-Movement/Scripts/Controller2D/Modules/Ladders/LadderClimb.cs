@@ -6,9 +6,9 @@ namespace Carles.Engine2D {
 
   public class LadderClimb : MonoBehaviour {
 
+    public LayerMask ladderLayer;
     public float speed = 6f;
-    public bool isLadder;
-    public bool isClimbing;
+    public bool onLadder;
 
     private CharController2D c;
 
@@ -17,28 +17,28 @@ namespace Carles.Engine2D {
     }
 
     void Update() {
-      // if (isLadder && c.move.yRaw != 0) {
-      //   isClimbing = true;
-      // }
-
-      if (isLadder) {
+      if (onLadder) {
         c.rb.velocity = new Vector2(c.rb.velocity.x, c.move.yRaw * speed);
-
-        if (c.move.yRaw != 0) {
-          isClimbing = true;
-        }
+        // if (c.move.yRaw != 0) isClimbing = true;
       }
+    }
+
+    public void EnterLadder(GameObject ladder) {
+      onLadder = true;
+    }
+
+    public void ExitLadder() {
+      onLadder = false;
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
       if (collision.tag != "Ladder") return;
-      isLadder = true;
+      EnterLadder(collision.gameObject);
     }
 
     private void OnTriggerExit2D(Collider2D collision) {
       if (collision.tag != "Ladder") return;
-      isLadder = false;
-      isClimbing = false;
+      ExitLadder();
     }
 
   }

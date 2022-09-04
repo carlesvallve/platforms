@@ -51,7 +51,7 @@ namespace Carles.Engine2D {
     private int GetGravityScale() {
       if (wallGrab) return 0;
       if (c.dash.isDashing) return 0;
-      if (c.ladderClimb.isLadder) return 0;
+      if (c.ladderClimb.onLadder) return 0;
 
       return 3;
     }

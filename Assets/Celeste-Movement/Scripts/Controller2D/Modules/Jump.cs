@@ -69,8 +69,12 @@ namespace Carles.Engine2D {
 
       // if (c.rb.velocity.y < 0 && !c.coll.currentOneWayPlatform) {
       if (!oneWayPlatformJumped) {
-        c.particles.jump.Play();
-        c.sounds.PlayFootstep();
+
+        if (c.rb.velocity.y <= 0) {
+          c.particles.jump.Play();
+          c.sounds.PlayFootstep();
+        }
+
       }
 
       if (c.combat.isDead && c.coll.onGround) {
@@ -107,6 +111,11 @@ namespace Carles.Engine2D {
       if (c.coll.onGround || c.coll.onWall) SetJumpsAvailable(maxJumps);
       if (jumpsAvailable == 0) return;
       jumpsAvailable -= 1;
+
+      // exit ladder if we are on it
+      if (c.ladderClimb.onLadder) {
+        c.ladderClimb.ExitLadder();
+      }
 
       c.anim.SetTrigger("jump");
       c.sounds.PlayJump();

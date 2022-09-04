@@ -6,6 +6,7 @@ namespace Carles.Engine2D {
 
   public class Ladder : MonoBehaviour {
     public int ladderHeight = 3;
+    public float ladderWidth = 0.6f;
     public GameObject ladderSegment;
     private GameObject ladderTop;
     private GameObject ladderBottom;
@@ -26,14 +27,14 @@ namespace Carles.Engine2D {
 
       col = transform.GetComponent<BoxCollider2D>();
       col.offset = new Vector2(0, ladderHeight * 0.5f);
-      col.size = new Vector2(0.25f, ladderHeight);
+      col.size = new Vector2(ladderWidth, ladderHeight);
     }
 
     void OnDrawGizmos() {
       Gizmos.color = Color.yellow;
       Gizmos.DrawWireCube(
         (Vector2)transform.position + Vector2.up * (ladderHeight * 0.5f),
-        new Vector2(0.25f, ladderHeight)
+        new Vector2(ladderWidth, ladderHeight)
       );
     }
 
