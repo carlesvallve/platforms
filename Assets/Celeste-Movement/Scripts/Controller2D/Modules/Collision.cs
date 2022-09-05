@@ -16,6 +16,7 @@ namespace Carles.Engine2D {
     [Space]
     [Header("States")]
     public bool onGround;
+    public bool onWater;
     public bool onWall;
     public bool onRightWall;
     public bool onLeftWall;
@@ -56,6 +57,10 @@ namespace Carles.Engine2D {
       onLeftWall = Physics2D.OverlapCircle((Vector2)transform.position + leftOffset, collisionRadius, wallLayer);
 
       wallSide = onRightWall ? -1 : 1;
+
+      // if (onWater) {
+      //   onGround = false; onWall = false; onRightWall = false; onLeftWall = false;
+      // }
     }
 
     void OnDrawGizmos() {

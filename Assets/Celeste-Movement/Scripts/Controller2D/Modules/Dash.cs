@@ -38,6 +38,9 @@ namespace Carles.Engine2D {
       c.rb.velocity = Vector2.zero;
       c.rb.velocity += dir.normalized * dashSpeed;
 
+      // for some reason vertical velocity is huge compared to horizontal, so dump it
+      c.rb.velocity = new Vector2(c.rb.velocity.x, c.rb.velocity.y * 0.35f);
+
       StartCoroutine(DashWait());
     }
 
@@ -58,7 +61,7 @@ namespace Carles.Engine2D {
       yield return new WaitForSeconds(.3f);
 
       c.particles.dash.Stop();
-      c.rb.gravityScale = 3;
+      c.rb.gravityScale = 1f; // 3;
       c.jump.isBetterJumpEnabled = true;
       c.jump.wallJumped = false;
       isDashing = false;

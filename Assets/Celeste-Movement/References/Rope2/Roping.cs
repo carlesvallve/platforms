@@ -43,7 +43,7 @@ namespace Carles.Engine2D {
         c.move.canMove = true;
         // c.rb.freezeRotation = true;
         // c.rb.angularDrag = 0.05f; // originalDrag;
-        c.rb.gravityScale = 3f;
+        c.rb.gravityScale = 1f; // 3f;
       } else {
         // while being in the air
         c.move.canMove = false;

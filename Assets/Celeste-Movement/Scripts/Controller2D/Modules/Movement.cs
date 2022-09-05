@@ -31,9 +31,21 @@ namespace Carles.Engine2D {
     }
 
     void Update() {
+      // get gravity scale
+      c.rb.gravityScale = GetGravityScale();
+
       // get movement increments
       float x = curMoveInput.x;
       float y = curMoveInput.y;
+
+      // if on water, swim
+      if (c.coll.onWater) {
+        if (x != 0 || y != 0) {
+          float down = 0; //-0.05f; // c.jump.isJumping ? 0 : -0.2f;
+          c.rb.velocity = new Vector2(x * 0.7f, (y + down) * 0.7f) * speed;
+        }
+        return;
+      }
 
       // move slower while blocking
       if (c.combat.isBlocking && c.coll.onGround) {
@@ -45,15 +57,15 @@ namespace Carles.Engine2D {
       UpdateWalk(x, y);
       UpdateWalls(x, y);
 
-      c.rb.gravityScale = GetGravityScale();
+
     }
 
-    private int GetGravityScale() {
+    private float GetGravityScale() {
       if (wallGrab) return 0;
       if (c.dash.isDashing) return 0;
       if (c.ladderClimb.onLadder) return 0;
 
-      return 3;
+      return 3f;
     }
 
     // ------------------------------------------------------------------------------

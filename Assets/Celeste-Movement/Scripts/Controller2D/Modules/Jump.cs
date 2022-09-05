@@ -14,6 +14,8 @@ namespace Carles.Engine2D {
     public float lowJumpMultiplier = 6f;
     public float wallJumpLerp = 10;
 
+    // public bool isJumping;
+
     [Space] // debug
     public bool groundTouch;
     public bool wallJumped;
@@ -100,15 +102,15 @@ namespace Carles.Engine2D {
       jumpsAvailable = _maxJumps;
     }
 
-    public void SetJump(Vector2 dir, bool wall) {
+    public void SetJump(Vector2 dir, bool fromWall, bool fromWater = false) {
       // one-way-platform jump?
       if (c.coll.currentOneWayPlatform && c.move.yRaw < 0) {
-        SetOneWayPlatformJump(dir, wall);
+        SetOneWayPlatformJump(dir, fromWall);
         return;
       }
 
       // multi-jump
-      if (c.coll.onGround || c.coll.onWall) SetJumpsAvailable(maxJumps);
+      if (c.coll.onGround || c.coll.onWall || fromWater) SetJumpsAvailable(maxJumps);
       if (jumpsAvailable == 0) return;
       jumpsAvailable -= 1;
 
@@ -118,10 +120,12 @@ namespace Carles.Engine2D {
       }
 
       c.anim.SetTrigger("jump");
-      c.sounds.PlayJump();
+      if (!c.coll.onWater) {
+        c.sounds.PlayJump();
+      }
 
       c.particles.slide.transform.parent.localScale = new Vector3(c.move.ParticleSide(), 1, 1);
-      ParticleSystem particle = wall ? c.particles.wallJump : c.particles.jump;
+      ParticleSystem particle = fromWall ? c.particles.wallJump : c.particles.jump;
 
       c.rb.velocity = new Vector2(c.rb.velocity.x, 0);
       c.rb.velocity += dir * jumpForce;
