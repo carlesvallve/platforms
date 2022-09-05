@@ -4,15 +4,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // todo
-// one way platforms
-// ladders
-// ropes
-// grappling hook
-// slopes
+// one way platforms -> Done!
+// ladders -> Done!
+// ropes -> Done!
+// grappling hook -> Done!
+// water  -> Done!
+
 // melee -> OK
 // shooting -> OK
 // damage -> OK
 // death -> OK
+
 // inventory
 // souls
 
