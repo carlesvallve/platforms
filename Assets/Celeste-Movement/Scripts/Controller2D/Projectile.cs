@@ -47,6 +47,8 @@ namespace Carles.Engine2D {
       if (!rb) return;
       if (collision.transform == shooter.transform) return;
       if (collision.tag == "Projectile") return;
+      if (collision.tag == "Ladder") return;
+      if (collision.tag == "Rope") return;
       if (collision.tag == "Player") return;
 
       transform.Translate(rb.velocity.normalized * side * penetration);

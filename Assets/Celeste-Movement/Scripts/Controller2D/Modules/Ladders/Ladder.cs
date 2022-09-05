@@ -8,10 +8,11 @@ namespace Carles.Engine2D {
     public int ladderHeight = 3;
     public float ladderWidth = 0.6f;
     public GameObject ladderSegment;
+
+    private GameObject oneWayPlatform;
     private GameObject ladderTop;
     private GameObject ladderBottom;
     private BoxCollider2D col;
-
 
     void Start() {
       ladderTop = transform.Find("Ladder-Top").gameObject;
@@ -28,6 +29,8 @@ namespace Carles.Engine2D {
       col = transform.GetComponent<BoxCollider2D>();
       col.offset = new Vector2(0, ladderHeight * 0.5f);
       col.size = new Vector2(ladderWidth, ladderHeight);
+
+      oneWayPlatform = transform.GetComponentInChildren<PlatformEffector2D>().gameObject;
     }
 
     void OnDrawGizmos() {
@@ -36,6 +39,10 @@ namespace Carles.Engine2D {
         (Vector2)transform.position + Vector2.up * (ladderHeight * 0.5f),
         new Vector2(ladderWidth, ladderHeight)
       );
+    }
+
+    public void ToggleOneWayPlatform(bool value) {
+      oneWayPlatform.SetActive(value);
     }
 
 

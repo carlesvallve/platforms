@@ -9,6 +9,7 @@ namespace Carles.Engine2D {
     public LayerMask ladderLayer;
     public float speed = 6f;
     public bool onLadder;
+    public Ladder currentLadder;
 
     private CharController2D c;
 
@@ -20,14 +21,24 @@ namespace Carles.Engine2D {
       // if (c.ropeClimb.isActive) return;
       // if (c.hook.isActive) return;
 
-      if (onLadder) {
-        c.rb.velocity = new Vector2(c.rb.velocity.x, c.move.yRaw * speed);
-        // if (c.move.yRaw != 0) isClimbing = true;
-      }
+      if (!onLadder) return;
+
+      c.rb.velocity = new Vector2(c.rb.velocity.x, c.move.yRaw * speed);
+
+      // if going down, disable ladder's one-way-platform
+      // if (c.move.yRaw < 0) {
+
+      // }
+
+      currentLadder.ToggleOneWayPlatform(c.move.yRaw >= 0);
+
+
+
     }
 
     public void EnterLadder(GameObject ladder) {
       onLadder = true;
+      currentLadder = ladder.GetComponent<Ladder>();
     }
 
     public void ExitLadder() {
