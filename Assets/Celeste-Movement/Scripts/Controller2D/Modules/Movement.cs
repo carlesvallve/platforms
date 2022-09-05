@@ -9,6 +9,7 @@ namespace Carles.Engine2D {
     private CharController2D c;
 
     public float speed = 6;
+    public float swimSpeed = 4.5f;
     public float slideSpeed = 2.5f;
 
     [Space] // debug
@@ -38,15 +39,6 @@ namespace Carles.Engine2D {
       float x = curMoveInput.x;
       float y = curMoveInput.y;
 
-      // if on water, swim
-      if (c.coll.onWater) {
-        if (x != 0 || y != 0) {
-          float down = 0; //-0.05f; // c.jump.isJumping ? 0 : -0.2f;
-          c.rb.velocity = new Vector2(x * 0.7f, (y + down) * 0.7f) * speed;
-        }
-        return;
-      }
-
       // move slower while blocking
       if (c.combat.isBlocking && c.coll.onGround) {
         x *= 0.5f;
@@ -56,8 +48,6 @@ namespace Carles.Engine2D {
       UpdateCharSide(x);
       UpdateWalk(x, y);
       UpdateWalls(x, y);
-
-
     }
 
     private float GetGravityScale() {
@@ -69,6 +59,15 @@ namespace Carles.Engine2D {
     }
 
     // ------------------------------------------------------------------------------
+    // Swim
+
+    private void UpdateSwim(float x, float y) {
+      if (x != 0 || y != 0) {
+        c.rb.velocity = new Vector2(x, y) * swimSpeed;
+      }
+    }
+
+    // ------------------------------------------------------------------------------
     // Walk
 
     private void UpdateWalk(float x, float y) {
@@ -76,6 +75,12 @@ namespace Carles.Engine2D {
       yRaw = y;
       Vector2 dir = new Vector2(x, y);
       incs = dir;
+
+      // escape walking if we are on water, and swim instead
+      if (c.coll.onWater) {
+        UpdateSwim(x, y);
+        return;
+      }
 
       // escape walking if we are on any kind of rope
       if (!c.coll.onGround) {
@@ -132,7 +137,7 @@ namespace Carles.Engine2D {
         float speedModifier = y > 0 ? .5f : 1;
         c.rb.velocity = new Vector2(c.rb.velocity.x, y * (speed * speedModifier));
       } else {
-        // c.rb.gravityScale = 3; // todo: expose default gravityScale prop
+        // c.rb.gravityScale = 1; // todo: expose default gravityScale prop
       }
 
       // wall slide

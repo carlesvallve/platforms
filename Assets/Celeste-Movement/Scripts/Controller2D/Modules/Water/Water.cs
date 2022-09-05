@@ -5,34 +5,48 @@ using UnityEngine;
 namespace Carles.Engine2D {
   public class Water : MonoBehaviour {
 
+    public GameObject splashPrefab;
+
     void Start() { }
 
-    private void EnterWater(GameObject target) {
-      StartCoroutine(WaitToSink(target));
+    private void PlaySplashParticles(GameObject target) {
+      Vector2 pos = new Vector2(target.transform.position.x, transform.position.y);
+      GameObject go = Instantiate(splashPrefab, pos, Quaternion.identity);
+      go.transform.SetParent(transform);
+
+      ParticleSystem splashParticle = go.GetComponent<ParticleSystem>();
+      splashParticle.Play();
     }
 
-    private IEnumerator WaitToSink(GameObject target) {
-      yield return new WaitForSeconds(0.25f);
-      CharController2D c = target.GetComponent<CharController2D>();
-      if (c) c.coll.onWater = true;
-    }
-
-    private void ExitWater(GameObject target) {
-      CharController2D c = target.GetComponent<CharController2D>();
-      if (c) {
-        c.coll.onWater = false;
-        c.jump.SetJump(Vector2.up, false, true);
-      }
+    private IEnumerator WaitToToggle(CharController2D c, float duration, bool value) {
+      yield return new WaitForSeconds(duration);
+      c.coll.onWater = value;
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
-      if (collision.tag != "Player") return;
-      EnterWater(collision.gameObject);
+      PlaySplashParticles(collision.gameObject);
+      // if (collision.tag != "Player") return;
+
+      CharController2D c = collision.gameObject.GetComponent<CharController2D>();
+      if (c) {
+        c.sounds.PlaySplash();
+
+        StartCoroutine(WaitToToggle(c, 0.25f, true));
+      }
     }
 
     private void OnTriggerExit2D(Collider2D collision) {
-      if (collision.tag != "Player") return;
-      ExitWater(collision.gameObject);
+      PlaySplashParticles(collision.gameObject);
+      // if (collision.tag != "Player") return;
+
+      CharController2D c = collision.gameObject.GetComponent<CharController2D>();
+      if (c) {
+        c.sounds.PlaySplash();
+
+        c.jump.SetJump(Vector2.up, false, true);
+
+        c.coll.onWater = false;
+      }
     }
 
   }

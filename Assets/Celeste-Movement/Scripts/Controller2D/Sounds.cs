@@ -13,6 +13,7 @@ namespace Carles.Engine2D {
     public AudioProps slide;
     public AudioProps jump;
     public AudioProps dash;
+    public AudioProps splash;
     [Space]
     public AudioProps attack;
     public AudioProps block;
@@ -33,6 +34,10 @@ namespace Carles.Engine2D {
 
     public void PlayDash() {
       PlaySound(dash);
+    }
+
+    public void PlaySplash() {
+      PlaySound(splash);
     }
 
     public void PlayAttack() {

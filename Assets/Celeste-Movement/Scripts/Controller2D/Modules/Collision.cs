@@ -58,9 +58,11 @@ namespace Carles.Engine2D {
 
       wallSide = onRightWall ? -1 : 1;
 
-      // if (onWater) {
-      //   onGround = false; onWall = false; onRightWall = false; onLeftWall = false;
-      // }
+      // don't compute walls if we are inside water
+      if (onWater) {
+        // onGround = false; 
+        onWall = false; onRightWall = false; onLeftWall = false;
+      }
     }
 
     void OnDrawGizmos() {

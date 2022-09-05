@@ -105,7 +105,7 @@ namespace Carles.Engine2D {
     public void SetJump(Vector2 dir, bool fromWall, bool fromWater = false) {
       // one-way-platform jump?
       if (c.coll.currentOneWayPlatform && c.move.yRaw < 0) {
-        SetOneWayPlatformJump(dir, fromWall);
+        SetOneWayPlatformJump(dir, fromWall, fromWater);
         return;
       }
 
@@ -120,17 +120,17 @@ namespace Carles.Engine2D {
       }
 
       c.anim.SetTrigger("jump");
-      if (!c.coll.onWater) {
-        c.sounds.PlayJump();
-      }
 
-      c.particles.slide.transform.parent.localScale = new Vector3(c.move.ParticleSide(), 1, 1);
-      ParticleSystem particle = fromWall ? c.particles.wallJump : c.particles.jump;
+      // todo: still triggering when we are jumping from water...
+      if (!c.coll.onWater || fromWater) {
+        c.sounds.PlayJump();
+        c.particles.slide.transform.parent.localScale = new Vector3(c.move.ParticleSide(), 1, 1);
+        ParticleSystem particle = fromWall ? c.particles.wallJump : c.particles.jump;
+        particle.Play();
+      }
 
       c.rb.velocity = new Vector2(c.rb.velocity.x, 0);
       c.rb.velocity += dir * jumpForce;
-
-      particle.Play();
     }
 
     public void SetWallJump() {
@@ -148,17 +148,18 @@ namespace Carles.Engine2D {
       wallJumped = true;
     }
 
-    private void SetOneWayPlatformJump(Vector2 dir, bool wall) {
+    private void SetOneWayPlatformJump(Vector2 dir, bool fromWall, bool fromWater) {
       c.anim.SetTrigger("jump");
-      c.sounds.PlayJump();
 
-      c.particles.slide.transform.parent.localScale = new Vector3(c.move.ParticleSide(), 1, 1);
-      ParticleSystem particle = wall ? c.particles.wallJump : c.particles.jump;
+      if (!c.coll.onWater || fromWater) {
+        c.sounds.PlayJump();
+        c.particles.slide.transform.parent.localScale = new Vector3(c.move.ParticleSide(), 1, 1);
+        ParticleSystem particle = fromWall ? c.particles.wallJump : c.particles.jump;
+        particle.Play();
+      }
 
       c.rb.velocity = new Vector2(c.rb.velocity.x, 0);
       c.rb.velocity += dir * jumpForce * 0.5f;
-
-      particle.Play();
 
       StartCoroutine(DisableOneWayPlatform());
     }
