@@ -35,6 +35,8 @@ public class MapManager : MonoBehaviour {
   }
 
   private void LeftMouseClicked() {
+    if (Camera.main == null) return;
+
     Vector2 mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
     Vector3Int gridPosition = map.WorldToCell(mousePos);
     print("Map - mousePos" + mousePos + " gridPos:" + gridPosition);

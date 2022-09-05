@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// todo;: Enter while onGround or if input y is presing up
+
 namespace Carles.Engine2D {
 
   public class LadderClimb : MonoBehaviour {
@@ -31,9 +33,6 @@ namespace Carles.Engine2D {
       // }
 
       currentLadder.ToggleOneWayPlatform(c.move.yRaw >= 0);
-
-
-
     }
 
     public void EnterLadder(GameObject ladder) {

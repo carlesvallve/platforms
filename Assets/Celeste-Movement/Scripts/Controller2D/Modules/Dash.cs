@@ -29,7 +29,7 @@ namespace Carles.Engine2D {
       float y = c.move.yRaw;
 
       // trigger ripple effect (component in main camera)
-      FindObjectOfType<RippleEffect>().Emit(Camera.main.WorldToViewportPoint(transform.position));
+      // FindObjectOfType<RippleEffect>().Emit(Camera.main.WorldToViewportPoint(transform.position));
 
       hasDashed = true;
       c.anim.SetTrigger("dash");
