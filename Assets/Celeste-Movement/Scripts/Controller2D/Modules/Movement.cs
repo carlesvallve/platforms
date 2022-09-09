@@ -62,9 +62,53 @@ namespace Carles.Engine2D {
     // Swim
 
     private void UpdateSwim(float x, float y) {
+      c.transform.rotation = Quaternion.identity;
+      c.rb.freezeRotation = true;
+
       if (x != 0 || y != 0) {
-        c.rb.velocity = new Vector2(x, y) * swimSpeed;
+        c.rb.velocity = new Vector2(x, y - 0.2f) * swimSpeed;
       }
+    }
+
+    private void RotateToVelocity() {
+      c.rb.freezeRotation = false;
+
+      Vector3 moveDirection = c.rb.velocity; // normalized
+
+      float angle = moveDirection == Vector3.zero ? 0 : -90 + Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg;
+
+      Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
+      c.rb.angularVelocity = rotation.eulerAngles.z;
+
+      // transform.rotation = rotation;
+
+      // Vector3 crossProduct = Vector3.Cross(moveDirection, transform.rotation.eulerAngles);
+      // float magnitude = crossProduct.magnitude;
+
+      // c.rb.angularVelocity = (crossProduct.normalized * swimSpeed * magnitude).z;
+
+      // transform.rotation = Quaternion.Lerp(transform.rotation, rotation, Time.deltaTime * swimSpeed);
+      // timeCount = timeCount + Time.deltaTime;
+    }
+
+    private void RotateToVelocity2() {
+      // Determine which direction to rotate towards
+      Vector2 targetDirection = c.rb.velocity.normalized;
+
+      // The step size is equal to speed times frame time.
+      float singleStep = speed * Time.deltaTime;
+
+      // Rotate the forward vector towards the target direction by one step
+      Vector3 newDirection = Vector3.RotateTowards((Vector2)transform.forward, targetDirection, singleStep, 0.0f);
+
+      // Draw a ray pointing at our target in
+      // Debug.DrawRay(transform.position, newDirection, Color.red);
+
+      // Calculate a rotation a step closer to the target and applies rotation to this object
+      // transform.rotation = Quaternion.LookRotation(newDirection);
+
+
     }
 
     // ------------------------------------------------------------------------------
