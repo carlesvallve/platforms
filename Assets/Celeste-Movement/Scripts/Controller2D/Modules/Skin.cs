@@ -22,7 +22,7 @@ namespace Carles.Engine2D {
     WhiteWizard,
   }
 
-  public class CharSkin : MonoBehaviour {
+  public class Skin : MonoBehaviour {
 
     public SpriteLibraryAsset[] spriteLibs;
     public bool randomizeOnStart = true;

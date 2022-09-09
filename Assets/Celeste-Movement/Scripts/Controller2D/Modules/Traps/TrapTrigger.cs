@@ -12,12 +12,14 @@ namespace Carles.Engine2D {
     private void OnTriggerEnter2D(Collider2D collision) {
       // if (collision.tag != "Player") return;
       // Debug.Log("Trap - OnTriggerEnter2D" + collision);
-      trap.StartCoroutine(trap.Activate());
+      trap.SetTarget(collision.gameObject);
+      trap.Activate();
     }
 
     private void OnTriggerExit2D(Collider2D collision) {
       // if (collision.tag != "Player") return;
       // Debug.Log("Trap - OnTriggerExit2D" + collision);
+      trap.SetTarget(null);
 
 
     }

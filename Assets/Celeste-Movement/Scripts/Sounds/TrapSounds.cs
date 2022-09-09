@@ -11,7 +11,7 @@ namespace Carles.Engine2D {
     [Space]
     public AudioProps trigger;
     public AudioProps trap;
-    // public AudioProps block;
+    public AudioProps rewind;
 
 
     public void PlayTrigger() {
@@ -22,9 +22,9 @@ namespace Carles.Engine2D {
       PlaySound(trap);
     }
 
-    // public void PlayBlock() {
-    //   PlaySound(block);
-    // }
+    public void PlayRewind() {
+      PlaySound(rewind);
+    }
 
     private void PlaySound(AudioProps audioProps) {
       if (audioProps.clip) {

@@ -5,13 +5,13 @@ using UnityEngine;
 
 namespace Carles.Engine2D {
 
-  [CustomEditor(typeof(CharSkin), true)]
-  public class CharSkinEditor : Editor {
+  [CustomEditor(typeof(Skin), true)]
+  public class SkinEditor : Editor {
 
-    CharSkin charSkin;
+    Skin charSkin;
 
     private void Awake() {
-      charSkin = (CharSkin)target;
+      charSkin = (Skin)target;
     }
 
     public override void OnInspectorGUI() {

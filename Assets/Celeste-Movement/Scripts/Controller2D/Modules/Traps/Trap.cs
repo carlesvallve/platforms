@@ -10,14 +10,20 @@ namespace Carles.Engine2D {
     public TMP_Text label;
     private TrapSounds sounds;
 
-    public float delayActivate = 0.3f;
-    public float delayReset = 2f;
-    public bool active = false;
+    public float delayActivate = 0.25f;
+    public float delayRewind = 0.5f;
+    public bool isActive = false;
+    public GameObject target;
 
     void Start() {
       sounds = GetComponent<TrapSounds>();
       Reset();
     }
+
+    public void SetTarget(GameObject _target) {
+      target = _target;
+    }
+
 
     public IEnumerator SetLabel(string str, float duration) {
       label.text = str;
@@ -30,20 +36,50 @@ namespace Carles.Engine2D {
       transform.localPosition = Vector2.up * -0.5f;
     }
 
-    public IEnumerator Activate() {
+    public void Activate() {
+      if (isActive) return;
+      StopAllCoroutines();
+      StartCoroutine(ActivateSeq());
+    }
+
+    // todo: interpolate correctly with given times in seconds
+
+    public IEnumerator ActivateSeq() {
+      isActive = true;
+      float d;
+
       // trigger trap
       yield return new WaitForSeconds(0);
       sounds.PlayTrigger();
-      StartCoroutine(SetLabel("Click!", 0.15f));
+      StartCoroutine(SetLabel("Click!", 0.35f));
 
       // activate trap
       yield return new WaitForSeconds(delayActivate);
       sounds.PlayTrap();
+
+      d = (0 - transform.localPosition.y) / 50;
+      while (Mathf.Abs(transform.localPosition.y) > 0.01) {
+        transform.Translate(0, d, 0);
+        yield return null;
+      }
       transform.localPosition = Vector2.up * 0;
 
-      // reset trap
-      yield return new WaitForSeconds(delayReset);
-      Reset();
+      // rewind trap
+      yield return new WaitForSeconds(delayRewind);
+      sounds.PlayRewind();
+
+      d = (-0.5f - transform.localPosition.y) / 500;
+      while (Mathf.Abs(transform.localPosition.y) < 0.49f) {
+        transform.Translate(0, d, 0);
+        yield return null;
+      }
+      transform.localPosition = Vector2.up * -0.5f;
+
+      isActive = false;
+
+      if (target) {
+        Activate();
+      }
 
     }
   }
