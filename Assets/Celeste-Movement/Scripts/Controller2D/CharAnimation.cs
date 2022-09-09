@@ -18,8 +18,10 @@ namespace Carles.Engine2D {
     void Update() {
       anim.SetBool("canMove", c.move.canMove);
       anim.SetBool("onGround", c.coll.onGround);
+      anim.SetBool("onWater", c.coll.onWater);
       anim.SetBool("wallGrab", c.move.wallGrab);
       anim.SetBool("wallSlide", c.move.wallSlide);
+      anim.SetBool("onLadder", c.ladderClimb.onLadder);
       anim.SetBool("isRoping", c.hook.isActive);
       anim.SetBool("isDashing", c.dash.isDashing);
       anim.SetBool("isAttacking", c.combat.isAttacking);

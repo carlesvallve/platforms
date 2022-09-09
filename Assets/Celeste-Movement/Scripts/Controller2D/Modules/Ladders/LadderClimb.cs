@@ -2,8 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// todo;: Enter while onGround or if input y is presing up
-
 namespace Carles.Engine2D {
 
   public class LadderClimb : MonoBehaviour {
@@ -20,17 +18,11 @@ namespace Carles.Engine2D {
     }
 
     void Update() {
+      if (!onLadder) return;
       // if (c.ropeClimb.isActive) return;
       // if (c.hook.isActive) return;
 
-      if (!onLadder) return;
-
       c.rb.velocity = new Vector2(c.rb.velocity.x, c.move.yRaw * speed);
-
-      // if going down, disable ladder's one-way-platform
-      // if (c.move.yRaw < 0) {
-
-      // }
 
       currentLadder.ToggleOneWayPlatform(c.move.yRaw >= 0);
     }
@@ -44,8 +36,9 @@ namespace Carles.Engine2D {
       onLadder = false;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision) {
+    private void OnTriggerStay2D(Collider2D collision) {
       if (collision.tag != "Ladder") return;
+      if (c.jump.isJumping && c.jump.ladderJumped) return;
       EnterLadder(collision.gameObject);
     }
 

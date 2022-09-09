@@ -14,10 +14,11 @@ namespace Carles.Engine2D {
     public float lowJumpMultiplier = 6f;
     public float wallJumpLerp = 10;
 
-    // public bool isJumping;
+    public bool isJumping;
 
     [Space] // debug
     public bool groundTouch;
+    public bool ladderJumped;
     public bool wallJumped;
     public bool oneWayPlatformJumped;
     public int jumpsAvailable;
@@ -60,6 +61,9 @@ namespace Carles.Engine2D {
     }
 
     void GroundTouch() {
+      isJumping = false;
+      ladderJumped = false;
+
       c.move.canMove = true;
       c.move.side = c.skin.GetSide();
 
@@ -102,6 +106,12 @@ namespace Carles.Engine2D {
       jumpsAvailable = _maxJumps;
     }
 
+    // private IEnumerator StartJumping() {
+    //   isJumpBeingPressed = true;
+    //   yield return new WaitForSeconds(0.3f);
+    //   isJumping 
+    // }
+
     public void SetJump(Vector2 dir, bool fromWall, bool fromWater = false) {
       // one-way-platform jump?
       if (c.coll.currentOneWayPlatform && c.move.yRaw < 0) {
@@ -116,6 +126,7 @@ namespace Carles.Engine2D {
 
       // exit ladder if we are on it
       if (c.ladderClimb.onLadder) {
+        ladderJumped = true;
         c.ladderClimb.ExitLadder();
       }
 
@@ -129,8 +140,12 @@ namespace Carles.Engine2D {
         particle.Play();
       }
 
+      float finalJumpForce = c.move.xRaw == 0 && c.move.yRaw < 0 ? jumpForce * 0.5f : jumpForce;
+
       c.rb.velocity = new Vector2(c.rb.velocity.x, 0);
-      c.rb.velocity += dir * jumpForce;
+      c.rb.velocity += dir * finalJumpForce;
+
+      isJumping = true;
     }
 
     public void SetWallJump() {
@@ -146,6 +161,7 @@ namespace Carles.Engine2D {
       SetJump((Vector2.up / 1.5f + wallDir / 1.5f), true);
 
       wallJumped = true;
+      isJumping = true;
     }
 
     private void SetOneWayPlatformJump(Vector2 dir, bool fromWall, bool fromWater) {
@@ -162,6 +178,8 @@ namespace Carles.Engine2D {
       c.rb.velocity += dir * jumpForce * 0.5f;
 
       StartCoroutine(DisableOneWayPlatform());
+
+      isJumping = true;
     }
 
     private IEnumerator DisableOneWayPlatform() {

@@ -58,11 +58,11 @@ namespace Carles.Engine2D {
 
       wallSide = onRightWall ? -1 : 1;
 
-      // don't compute walls if we are inside water
-      if (onWater) {
-        // onGround = false; 
-        onWall = false; onRightWall = false; onLeftWall = false;
-      }
+      // if on water obviously not on ground :)
+      if (onWater) onGround = false;
+
+      // ladders are considered onGround, so we can land and jump from them
+      if (c.ladderClimb.onLadder) onGround = true;
     }
 
     void OnDrawGizmos() {
