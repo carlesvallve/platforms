@@ -50,7 +50,7 @@ namespace Carles.Engine2D {
     [HideInInspector] public LadderClimb ladderClimb;
     //
     [HideInInspector] public CharAnimation anim;
-    [HideInInspector] public Sounds sounds;
+    [HideInInspector] public CharSounds sounds;
     [HideInInspector] public Particles particles;
 
     void Start() {
@@ -67,7 +67,7 @@ namespace Carles.Engine2D {
       ladderClimb = GetComponent<LadderClimb>();
       //
       anim = GetComponentInChildren<CharAnimation>();
-      sounds = GetComponentInChildren<Sounds>();
+      sounds = GetComponentInChildren<CharSounds>();
       particles = GetComponentInChildren<Particles>();
     }
 

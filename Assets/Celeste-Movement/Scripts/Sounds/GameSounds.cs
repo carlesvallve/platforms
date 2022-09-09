@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using CarlesModules;
 
+// todo: generate general game sounds instead of current
+
 namespace Carles.Engine2D {
 
-  public class Sounds : MonoBehaviour {
+  public class GameSounds : MonoBehaviour {
 
     [Header("Audio")]
     [Space]
@@ -19,6 +21,17 @@ namespace Carles.Engine2D {
     public AudioProps block;
     public AudioProps damage;
     public AudioProps die;
+
+    public static GameSounds instance { get; private set; }
+
+    private void Awake() {
+      // If there is an instance, and it's not me, delete myself.
+      if (instance != null && instance != this) {
+        Destroy(this);
+      } else {
+        instance = this;
+      }
+    }
 
     public void PlayFootstep() {
       PlaySound(footstep);
