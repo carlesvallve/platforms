@@ -8,8 +8,9 @@ namespace Carles.Engine2D {
   public class Trap : MonoBehaviour {
 
     public TMP_Text label;
-    private TrapSounds sounds;
+    protected TrapSounds sounds;
 
+    public int damage = 1;
     public float delayActivate = 0.25f;
     public float delayRewind = 0.5f;
     public bool isActive = false;
@@ -18,27 +19,28 @@ namespace Carles.Engine2D {
     public GameObject target;
 
     void Start() {
-      sounds = GetComponent<TrapSounds>();
+      sounds = GetComponentInParent<TrapSounds>();
+      label.transform.localPosition = Vector2.up * 1.5f;
       Reset();
     }
 
-    public void SetTarget(GameObject _target) {
+    public virtual void SetTarget(GameObject _target) {
       target = _target;
     }
 
 
-    public IEnumerator SetLabel(string str, float duration) {
+    public virtual IEnumerator SetLabel(string str, float duration) {
       label.text = str;
       yield return new WaitForSeconds(duration);
       label.text = "";
     }
 
-    public void Reset() {
+    protected virtual void Reset() {
       label.text = "";
       transform.localPosition = Vector2.up * -0.5f;
     }
 
-    public void Activate() {
+    public virtual void Activate() {
       if (isActive) return;
       StopAllCoroutines();
       StartCoroutine(ActivateSeq());
@@ -46,63 +48,72 @@ namespace Carles.Engine2D {
 
     // todo: interpolate correctly with given times in seconds
 
-    public IEnumerator ActivateSeq() {
+    protected virtual IEnumerator MoveTrigger() {
       isActive = true;
       isRewinding = false;
       hasHit = false;
-
-      float d;
 
       // trigger trap
       yield return new WaitForSeconds(0);
       sounds.PlayTrigger();
       StartCoroutine(SetLabel("Click!", 0.35f));
+    }
 
+    protected virtual IEnumerator MoveActivate() {
       // activate trap
       yield return new WaitForSeconds(delayActivate);
       sounds.PlayTrap();
 
-      d = (0 - transform.localPosition.y) / 50;
+      float d = (0 - transform.localPosition.y) / 50;
       while (Mathf.Abs(transform.localPosition.y) > 0.01) {
         transform.Translate(0, d, 0);
         yield return null;
       }
       transform.localPosition = Vector2.up * 0;
+    }
 
+    protected virtual IEnumerator MoveRewind() {
       // rewind trap
       yield return new WaitForSeconds(delayRewind);
       isRewinding = true;
       sounds.PlayRewind();
 
-      d = (-0.5f - transform.localPosition.y) / 500;
+      float d = (-0.5f - transform.localPosition.y) / 500;
       while (Mathf.Abs(transform.localPosition.y) < 0.49f) {
         transform.Translate(0, d, 0);
         yield return null;
       }
-      transform.localPosition = Vector2.up * -0.5f;
 
+      Reset();
+      // transform.localPosition = Vector2.up * -0.5f;
+    }
+
+    protected virtual IEnumerator MoveWait() {
       isActive = false;
       isRewinding = false;
 
-      if (target) {
-        Activate();
-      }
+      yield return new WaitForSeconds(0);
+
+      if (target) Activate();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision) {
+    public virtual IEnumerator ActivateSeq() {
+      yield return StartCoroutine(MoveTrigger());
+      yield return StartCoroutine(MoveActivate());
+      yield return StartCoroutine(MoveRewind());
+      yield return StartCoroutine(MoveWait());
+    }
+
+    protected virtual void OnTriggerEnter2D(Collider2D collision) {
       if (hasHit) return;
       if (isRewinding) return;
 
       Combat combat = collision.GetComponent<Combat>();
       if (combat) {
-        combat.StartCoroutine(combat.TakeDamage(gameObject, 1, 3f));
+        combat.StartCoroutine(combat.TakeDamage(gameObject, damage, 3f));
       }
 
       hasHit = true;
     }
-
-    // private void OnTriggerExit2D(Collider2D collision) {
-
-    // }
   }
 }
