@@ -19,8 +19,12 @@ namespace Carles.Engine2D {
 
     void Update() {
       if (!onLadder) return;
-      // if (c.ropeClimb.isActive) return;
-      // if (c.hook.isActive) return;
+
+      // snap to center of ladder
+      if (c.move.yRaw != 0) {
+        float d = currentLadder.transform.position.x - c.rb.position.x;
+        transform.Translate(d * 0.1f, 0, 0);
+      }
 
       c.rb.velocity = new Vector2(c.rb.velocity.x, c.move.yRaw * speed);
 

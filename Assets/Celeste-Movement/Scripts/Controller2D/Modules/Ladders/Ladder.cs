@@ -6,7 +6,7 @@ namespace Carles.Engine2D {
 
   public class Ladder : MonoBehaviour {
     public int ladderHeight = 3;
-    public float ladderWidth = 0.6f;
+    public float ladderWidth = 0.625f;
     public GameObject ladderSegment;
 
     private GameObject oneWayPlatform;
