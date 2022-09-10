@@ -24,6 +24,8 @@ namespace Carles.Engine2D {
     void OnValidate() { UnityEditor.EditorApplication.delayCall += _OnValidate; }
 
     void _OnValidate() {
+      if (this == null) return;
+
       Trap[] traps = transform.GetComponentsInChildren<Trap>(true);
       foreach (Trap trap in traps) {
         trap.gameObject.SetActive(false);
