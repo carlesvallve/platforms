@@ -41,7 +41,6 @@ namespace Carles.Engine2D {
 
       CharController2D c = collision.gameObject.GetComponent<CharController2D>();
       if (c) {
-        // c.sounds.PlaySplash();
         StartCoroutine(WaitToToggle(c, 0.25f, true));
       }
     }
@@ -55,7 +54,6 @@ namespace Carles.Engine2D {
 
       CharController2D c = collision.gameObject.GetComponent<CharController2D>();
       if (c) {
-        // c.sounds.PlaySplash();
         c.jump.SetJump(Vector2.up, false, true);
         c.coll.onWater = false;
       }
