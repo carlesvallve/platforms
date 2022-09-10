@@ -7,7 +7,21 @@ namespace Carles.Engine2D {
 
     public GameObject splashPrefab;
 
-    void Start() { }
+    private bool initialized = false;
+
+    void Awake() {
+      StartCoroutine(WaitToInitialize());
+    }
+
+    private IEnumerator WaitToInitialize() {
+      yield return new WaitForEndOfFrame();
+      initialized = true;
+    }
+
+    private IEnumerator WaitToToggle(CharController2D c, float duration, bool value) {
+      yield return new WaitForSeconds(duration);
+      c.coll.onWater = value;
+    }
 
     private void PlaySplashParticles(GameObject target) {
       Vector2 pos = new Vector2(target.transform.position.x, transform.position.y);
@@ -18,33 +32,31 @@ namespace Carles.Engine2D {
       splashParticle.Play();
     }
 
-    private IEnumerator WaitToToggle(CharController2D c, float duration, bool value) {
-      yield return new WaitForSeconds(duration);
-      c.coll.onWater = value;
-    }
-
     private void OnTriggerEnter2D(Collider2D collision) {
+      // objects already on water when game starts should not trigger
+      if (!initialized) return;
+
       PlaySplashParticles(collision.gameObject);
-      // if (collision.tag != "Player") return;
+      GameSounds.instance.PlaySplash();
 
       CharController2D c = collision.gameObject.GetComponent<CharController2D>();
       if (c) {
-        c.sounds.PlaySplash();
-
+        // c.sounds.PlaySplash();
         StartCoroutine(WaitToToggle(c, 0.25f, true));
       }
     }
 
     private void OnTriggerExit2D(Collider2D collision) {
+      // objects already on water when game starts should not trigger
+      if (!initialized) return;
+
       PlaySplashParticles(collision.gameObject);
-      // if (collision.tag != "Player") return;
+      GameSounds.instance.PlaySplash();
 
       CharController2D c = collision.gameObject.GetComponent<CharController2D>();
       if (c) {
-        c.sounds.PlaySplash();
-
+        // c.sounds.PlaySplash();
         c.jump.SetJump(Vector2.up, false, true);
-
         c.coll.onWater = false;
       }
     }

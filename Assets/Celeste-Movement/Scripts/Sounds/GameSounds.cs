@@ -9,18 +9,9 @@ namespace Carles.Engine2D {
 
   public class GameSounds : MonoBehaviour {
 
-    [Header("Audio")]
+    [Header("Game SFX")]
     [Space]
-    public AudioProps footstep;
-    public AudioProps slide;
-    public AudioProps jump;
-    public AudioProps dash;
     public AudioProps splash;
-    [Space]
-    public AudioProps attack;
-    public AudioProps block;
-    public AudioProps damage;
-    public AudioProps die;
 
     public static GameSounds instance { get; private set; }
 
@@ -33,40 +24,8 @@ namespace Carles.Engine2D {
       }
     }
 
-    public void PlayFootstep() {
-      PlaySound(footstep);
-    }
-
-    public void PlaySlide() {
-      PlaySound(slide);
-    }
-
-    public void PlayJump() {
-      PlaySound(jump);
-    }
-
-    public void PlayDash() {
-      PlaySound(dash);
-    }
-
     public void PlaySplash() {
       PlaySound(splash);
-    }
-
-    public void PlayAttack() {
-      PlaySound(attack);
-    }
-
-    public void PlayBlock() {
-      PlaySound(block);
-    }
-
-    public void PlayDamage() {
-      PlaySound(damage);
-    }
-
-    public void PlayDie() {
-      PlaySound(die);
     }
 
     private void PlaySound(AudioProps audioProps) {

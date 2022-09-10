@@ -7,18 +7,21 @@ namespace Carles.Engine2D {
 
   public class CharSounds : MonoBehaviour {
 
-    [Header("Audio")]
-    [Space]
+    [Header("Movement")]
     public AudioProps footstep;
     public AudioProps slide;
     public AudioProps jump;
     public AudioProps dash;
-    public AudioProps splash;
+
     [Space]
+
+    [Header("Combat")]
     public AudioProps attack;
     public AudioProps block;
     public AudioProps damage;
     public AudioProps die;
+
+    // movement
 
     public void PlayFootstep() {
       PlaySound(footstep);
@@ -36,9 +39,7 @@ namespace Carles.Engine2D {
       PlaySound(dash);
     }
 
-    public void PlaySplash() {
-      PlaySound(splash);
-    }
+    // combat
 
     public void PlayAttack() {
       PlaySound(attack);
@@ -55,6 +56,8 @@ namespace Carles.Engine2D {
     public void PlayDie() {
       PlaySound(die);
     }
+
+    // play sound method
 
     private void PlaySound(AudioProps audioProps) {
       if (audioProps.clip) {
