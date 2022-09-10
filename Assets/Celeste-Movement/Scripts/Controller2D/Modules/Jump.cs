@@ -103,23 +103,27 @@ namespace Carles.Engine2D {
       jumpsAvailable = _maxJumps;
     }
 
-    // private IEnumerator StartJumping() {
-    //   isJumpBeingPressed = true;
-    //   yield return new WaitForSeconds(0.3f);
-    //   isJumping 
-    // }
-
     public void SetJump(Vector2 dir, bool fromWall, bool fromWater = false) {
-      // one-way-platform jump?
+      // multi-jump
+      if (c.coll.onGround || c.coll.onWall || fromWater) SetJumpsAvailable(maxJumps);
+      if (jumpsAvailable == 0) return;
+      jumpsAvailable -= 1;
+
+      isJumping = true;
+
+      // is one-way-platform jump?
       if (c.coll.currentOneWayPlatform && c.move.yRaw < 0) {
         SetOneWayPlatformJump(dir, fromWall, fromWater);
         return;
       }
 
-      // multi-jump
-      if (c.coll.onGround || c.coll.onWall || fromWater) SetJumpsAvailable(maxJumps);
-      if (jumpsAvailable == 0) return;
-      jumpsAvailable -= 1;
+      // is wall jump?
+      if (c.coll.onWall && !c.coll.onGround) {
+        if ((c.coll.onRightWall && c.move.xRaw < 0) || (c.coll.onLeftWall && c.move.xRaw > 0)) {
+          SetWallJump();
+          return;
+        }
+      }
 
       // exit ladder if we are on it
       if (c.ladderClimb.onLadder) {
@@ -129,11 +133,15 @@ namespace Carles.Engine2D {
 
       c.anim.SetTrigger("jump");
 
-      // todo: still triggering when we are jumping from water...
       if (!c.coll.onWater || fromWater) {
         c.sounds.PlayJump();
+
         c.particles.slide.transform.parent.localScale = new Vector3(c.move.ParticleSide(), 1, 1);
         ParticleSystem particle = fromWall ? c.particles.wallJump : c.particles.jump;
+
+        // smaller particles if jumping on the air
+        particle.transform.localScale = c.coll.onGround ? new Vector2(1, 1) : new Vector2(0.5f, 0.5f);
+
         particle.Play();
       }
 
@@ -141,8 +149,6 @@ namespace Carles.Engine2D {
 
       c.rb.velocity = new Vector2(c.rb.velocity.x, 0);
       c.rb.velocity += dir * finalJumpForce;
-
-      isJumping = true;
     }
 
     public void SetWallJump() {
@@ -158,7 +164,6 @@ namespace Carles.Engine2D {
       SetJump((Vector2.up / 1.5f + wallDir / 1.5f), true);
 
       wallJumped = true;
-      isJumping = true;
     }
 
     private void SetOneWayPlatformJump(Vector2 dir, bool fromWall, bool fromWater) {
@@ -175,8 +180,6 @@ namespace Carles.Engine2D {
       c.rb.velocity += dir * jumpForce * 0.5f;
 
       StartCoroutine(DisableOneWayPlatform());
-
-      isJumping = true;
     }
 
     private IEnumerator DisableOneWayPlatform() {

@@ -7,10 +7,13 @@ namespace Carles.Engine2D {
 
   public class Trap : MonoBehaviour {
 
+    public TrapMode trapMode;
+
     public TMP_Text label;
     protected TrapSounds sounds;
 
     public int damage = 1;
+    public float knockback = 1f;
     public float delayActivate = 0.25f;
     public float delayRewind = 0.5f;
     public bool isActive = false;
@@ -85,7 +88,6 @@ namespace Carles.Engine2D {
       }
 
       Reset();
-      // transform.localPosition = Vector2.up * -0.5f;
     }
 
     protected virtual IEnumerator MoveWait() {
@@ -110,7 +112,7 @@ namespace Carles.Engine2D {
 
       Combat combat = collision.GetComponent<Combat>();
       if (combat) {
-        combat.StartCoroutine(combat.TakeDamage(gameObject, damage, 3f));
+        combat.StartCoroutine(combat.TakeDamage(gameObject, damage, knockback));
       }
 
       hasHit = true;

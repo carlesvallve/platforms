@@ -58,11 +58,7 @@ namespace Carles.Engine2D {
           c.ropeClimb.EndRope();
         }
 
-        if (c.coll.onWall && !c.coll.onGround) {
-          c.jump.SetWallJump();
-        } else {
-          c.jump.SetJump(Vector2.up, false);
-        }
+        c.jump.SetJump(Vector2.up, false);
       }
     }
 

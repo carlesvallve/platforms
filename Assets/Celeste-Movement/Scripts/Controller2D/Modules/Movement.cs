@@ -193,7 +193,7 @@ namespace Carles.Engine2D {
         }
       }
 
-      if (!c.coll.onWall || c.coll.onGround || c.combat.isAttacking) {
+      if (!c.coll.onWall || c.coll.onGround || c.combat.isAttacking || c.rb.velocity.y >= 0) {
         wallSlide = false;
       }
 

@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 
 namespace Carles.Engine2D {
 
   public class TrapSpike : Trap {
+
+    void Awake() {
+      trapMode = TrapMode.Spike;
+    }
 
     protected override void Reset() {
       base.Reset();
@@ -22,7 +25,8 @@ namespace Carles.Engine2D {
         transform.Translate(0, d, 0);
         yield return null;
       }
-      transform.localPosition = Vector2.up * 0;
+
+      Reset();
     }
 
     protected override IEnumerator MoveRewind() {
