@@ -13,6 +13,8 @@ namespace Carles.Engine2D {
     public float delayActivate = 0.25f;
     public float delayRewind = 0.5f;
     public bool isActive = false;
+    public bool isRewinding = false;
+    public bool hasHit = false;
     public GameObject target;
 
     void Start() {
@@ -46,6 +48,9 @@ namespace Carles.Engine2D {
 
     public IEnumerator ActivateSeq() {
       isActive = true;
+      isRewinding = false;
+      hasHit = false;
+
       float d;
 
       // trigger trap
@@ -66,6 +71,7 @@ namespace Carles.Engine2D {
 
       // rewind trap
       yield return new WaitForSeconds(delayRewind);
+      isRewinding = true;
       sounds.PlayRewind();
 
       d = (-0.5f - transform.localPosition.y) / 500;
@@ -76,11 +82,27 @@ namespace Carles.Engine2D {
       transform.localPosition = Vector2.up * -0.5f;
 
       isActive = false;
+      isRewinding = false;
 
       if (target) {
         Activate();
       }
-
     }
+
+    private void OnTriggerEnter2D(Collider2D collision) {
+      if (hasHit) return;
+      if (isRewinding) return;
+
+      Combat combat = collision.GetComponent<Combat>();
+      if (combat) {
+        combat.StartCoroutine(combat.TakeDamage(gameObject, 1, 3f));
+      }
+
+      hasHit = true;
+    }
+
+    // private void OnTriggerExit2D(Collider2D collision) {
+
+    // }
   }
 }

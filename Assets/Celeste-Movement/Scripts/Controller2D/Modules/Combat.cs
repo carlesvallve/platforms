@@ -8,11 +8,7 @@ namespace Carles.Engine2D {
 
     private CharController2D c;
 
-    [Header("Stats")]
-    public int health = 3;
-
     [Space]
-    [Header("Attack")]
     public LayerMask attackLayer;
     public float attackSpeed = 0.15f;
     public float attackCooldown = 0.15f;
@@ -91,7 +87,7 @@ namespace Carles.Engine2D {
         if (enemiesToDamage[i].transform.root == transform) continue;
         CharController2D enemy = enemiesToDamage[i].GetComponent<CharController2D>();
         if (!enemy.combat.isDead) {
-          StartCoroutine(enemy.combat.TakeDamage(c, attackDamage, 4f));
+          StartCoroutine(enemy.combat.TakeDamage(c.gameObject, attackDamage, 4f));
         }
       }
 
@@ -166,7 +162,7 @@ namespace Carles.Engine2D {
     // ------------------------------------------------------------------------------
     // Take Damage
 
-    public IEnumerator TakeDamage(CharController2D attacker, int damage, float knockbackForce = 0) {
+    public IEnumerator TakeDamage(GameObject attacker, int damage, float knockbackForce = 0) {
       isTakingDamage = true;
       c.move.canMove = false;
 
@@ -175,8 +171,8 @@ namespace Carles.Engine2D {
 
       Knockback(attacker, knockbackForce);
 
-      health -= damage;
-      if (health <= 0) {
+      c.stats.hp -= damage;
+      if (c.stats.hp <= 0) {
         StartCoroutine(Die());
         yield break;
       }
@@ -188,7 +184,7 @@ namespace Carles.Engine2D {
       c.move.canMove = true;
     }
 
-    public void Knockback(CharController2D attacker, float knockbackForce = 0) {
+    public void Knockback(GameObject attacker, float knockbackForce = 0) {
       Vector2 dir = (transform.position - attacker.transform.position).normalized;
 
       c.rb.AddForce(dir * knockbackForce * 1, ForceMode2D.Impulse);
@@ -202,11 +198,11 @@ namespace Carles.Engine2D {
       c.move.canMove = false;
       isTakingDamage = false;
       isDead = true;
-      health = 0;
+      c.stats.hp = 0;
 
       c.sounds.PlayDie();
 
-      yield return new WaitForSeconds(dazedDuration * 2);
+      yield return new WaitForSeconds(dazedDuration * 2f);
 
       if (c.coll.onGround) DisableAfterDying();
     }

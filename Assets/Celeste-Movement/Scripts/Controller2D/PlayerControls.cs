@@ -15,6 +15,10 @@ namespace Carles.Engine2D {
       c = GetComponent<CharController2D>();
     }
 
+    private bool isInputEnabled() {
+      return !c.combat.isDead;
+    }
+
     // ------------------------------------------------------------------------------
     // Mouse
 
@@ -36,10 +40,14 @@ namespace Carles.Engine2D {
     // Debug.Log("OnInput " + context.phase);
 
     public void OnInputMove(InputAction.CallbackContext context) {
+      if (!isInputEnabled()) return;
+
       c.move.curMoveInput = context.ReadValue<Vector2>();
     }
 
     public void OnInputJump(InputAction.CallbackContext context) {
+      if (!isInputEnabled()) return;
+
       c.jump.isJumpBeingPressed = context.phase != InputActionPhase.Canceled;
 
       // first frame that button is pressed down
@@ -59,6 +67,8 @@ namespace Carles.Engine2D {
     }
 
     public void OnInputDash(InputAction.CallbackContext context) {
+      if (!isInputEnabled()) return;
+
       // first frame that button is pressed down
       if (context.phase == InputActionPhase.Performed) {
         c.dash.SetDash();
@@ -66,6 +76,8 @@ namespace Carles.Engine2D {
     }
 
     public void OnInputAttack(InputAction.CallbackContext context) {
+      if (!isInputEnabled()) return;
+
       // first frame that button is pressed down
       if (context.phase == InputActionPhase.Performed) {
         c.combat.Attack();
@@ -73,6 +85,8 @@ namespace Carles.Engine2D {
     }
 
     public void OnInputBlock(InputAction.CallbackContext context) {
+      if (!isInputEnabled()) return;
+
       // first frame that button is pressed down
       if (context.phase == InputActionPhase.Performed) {
         c.combat.Block();
@@ -82,10 +96,14 @@ namespace Carles.Engine2D {
     }
 
     public void OnInputGrab(InputAction.CallbackContext context) {
+      if (!isInputEnabled()) return;
+
       c.move.isGrabBeingPressed = context.phase != InputActionPhase.Canceled;
     }
 
     public void OnInpuHook(InputAction.CallbackContext context) {
+      if (!isInputEnabled()) return;
+
       if (context.phase == InputActionPhase.Performed) {
         c.hook.StartHook();
       } else if (context.phase == InputActionPhase.Canceled) {

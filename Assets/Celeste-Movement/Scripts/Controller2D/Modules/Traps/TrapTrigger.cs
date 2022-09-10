@@ -20,8 +20,7 @@ namespace Carles.Engine2D {
       // if (collision.tag != "Player") return;
       // Debug.Log("Trap - OnTriggerExit2D" + collision);
       trap.SetTarget(null);
-
-
     }
+
   }
 }

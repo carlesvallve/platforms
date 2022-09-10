@@ -73,14 +73,11 @@ namespace Carles.Engine2D {
       c.transform.rotation = Quaternion.identity;
       c.rb.freezeRotation = true;
 
-      // if (c.rb.velocity.y < 0 && !c.coll.currentOneWayPlatform) {
       if (!oneWayPlatformJumped) {
-
         if (c.rb.velocity.y <= 0) {
           c.particles.jump.Play();
           c.sounds.PlayFootstep();
         }
-
       }
 
       if (c.combat.isDead && c.coll.onGround) {

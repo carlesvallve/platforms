@@ -38,6 +38,7 @@ namespace Carles.Engine2D {
     //
     [HideInInspector] public Rigidbody2D rb;
     //
+    [HideInInspector] public Stats stats;
     [HideInInspector] public Skin skin;
     [HideInInspector] public Collision coll;
     [HideInInspector] public Movement move;
@@ -56,6 +57,7 @@ namespace Carles.Engine2D {
     void Start() {
       rb = GetComponent<Rigidbody2D>();
       //
+      stats = GetComponent<Stats>();
       skin = GetComponent<Skin>();
       coll = GetComponent<Collision>();
       move = GetComponent<Movement>();
