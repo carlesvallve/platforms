@@ -23,7 +23,7 @@ namespace Carles.Engine2D {
       // snap to center of ladder
       if (c.move.yRaw != 0) {
         float d = currentLadder.transform.position.x - c.rb.position.x;
-        transform.Translate(d * 0.1f, 0, 0);
+        transform.Translate(d * 0.05f, 0, 0);
       }
 
       c.rb.velocity = new Vector2(c.rb.velocity.x, c.move.yRaw * speed);
