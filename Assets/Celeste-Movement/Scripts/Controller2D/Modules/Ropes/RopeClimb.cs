@@ -22,7 +22,7 @@ namespace Carles.Engine2D {
     void Update() {
       if (!isActive) return;
 
-      if (c.coll.onGround || c.coll.onWall) {
+      if (c.coll.onGround || c.coll.onWall || c.coll.onWater) {
         // while being on floor
         c.move.canMove = true;
         c.rb.freezeRotation = true;
@@ -57,7 +57,8 @@ namespace Carles.Engine2D {
       isActive = true;
       currentRope = rope;
       currentNodeIndex = node.index;
-      c.jump.SetJumpsAvailable(c.jump.maxJumps);
+
+      c.jump.StopJump();
 
       // attach character to rope joint
       HingeJoint2D hj = c.GetComponent<HingeJoint2D>();

@@ -61,9 +61,6 @@ namespace Carles.Engine2D {
     }
 
     void GroundTouch() {
-      isJumping = false;
-      ladderJumped = false;
-
       c.move.canMove = true;
       c.move.side = c.skin.GetSide();
 
@@ -83,6 +80,17 @@ namespace Carles.Engine2D {
       if (c.combat.isDead && c.coll.onGround) {
         c.combat.DisableAfterDying();
       }
+
+      StopJump();
+    }
+
+    public void StopJump() {
+      isJumping = false;
+      ladderJumped = false;
+      wallJumped = false;
+      oneWayPlatformJumped = false;
+
+      c.jump.SetJumpsAvailable(c.jump.maxJumps);
     }
 
     // ------------------------------------------------------------------------------

@@ -26,7 +26,7 @@ namespace Carles.Engine2D {
         yield return null;
       }
 
-      Reset();
+      transform.localPosition = Vector2.up * 0;
     }
 
     protected override IEnumerator MoveRewind() {
@@ -41,6 +41,7 @@ namespace Carles.Engine2D {
         yield return null;
       }
       transform.localPosition = Vector2.up * -0.5f;
+      Reset();
     }
 
   }

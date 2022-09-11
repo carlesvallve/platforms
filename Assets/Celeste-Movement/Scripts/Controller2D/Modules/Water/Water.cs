@@ -18,9 +18,13 @@ namespace Carles.Engine2D {
       initialized = true;
     }
 
-    private IEnumerator WaitToToggle(CharController2D c, float duration, bool value) {
-      yield return new WaitForSeconds(duration);
-      c.coll.onWater = value;
+    private IEnumerator WaitToMove(CharController2D c, float duration, bool value) {
+      yield return StartCoroutine(c.move.DisableMovement(duration));
+      c.jump.StopJump();
+      // yield return new WaitForSeconds(duration);
+      // c.coll.onWater = value;
+      //c.move.canMove = true;
+      // c.jump.StopJump();
     }
 
     private void PlaySplashParticles(GameObject target) {
@@ -41,7 +45,10 @@ namespace Carles.Engine2D {
 
       CharController2D c = collision.gameObject.GetComponent<CharController2D>();
       if (c) {
-        StartCoroutine(WaitToToggle(c, 0.25f, true));
+        c.coll.onWater = true;
+
+        // StartCoroutine(WaitToToggle(c, 0.25f, true));
+        StartCoroutine(WaitToMove(c, 0.3f, true));
       }
     }
 

@@ -27,8 +27,8 @@ namespace Carles.Engine2D {
       }
 
       col = transform.GetComponent<BoxCollider2D>();
-      col.offset = new Vector2(0, ladderHeight * 0.5f);
-      col.size = new Vector2(ladderWidth, ladderHeight);
+      col.offset = new Vector2(0, ladderHeight * 0.5f + 0.05f);
+      col.size = new Vector2(ladderWidth, ladderHeight + 0.1f);
 
       oneWayPlatform = transform.GetComponentInChildren<PlatformEffector2D>().gameObject;
     }
@@ -36,8 +36,8 @@ namespace Carles.Engine2D {
     void OnDrawGizmos() {
       Gizmos.color = Color.yellow;
       Gizmos.DrawWireCube(
-        (Vector2)transform.position + Vector2.up * (ladderHeight * 0.5f),
-        new Vector2(ladderWidth, ladderHeight)
+        (Vector2)transform.position + Vector2.up * (ladderHeight * 0.5f + 0.05f),
+        new Vector2(ladderWidth, ladderHeight + 0.1f)
       );
     }
 

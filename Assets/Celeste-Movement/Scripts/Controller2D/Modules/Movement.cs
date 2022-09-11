@@ -39,6 +39,13 @@ namespace Carles.Engine2D {
       float x = curMoveInput.x;
       float y = curMoveInput.y;
 
+      // store moving increments for using from aywhere else
+      xRaw = x;
+      yRaw = y;
+
+      // escape if we cannot move
+      if (!canMove) return;
+
       // move slower while blocking
       if (c.combat.isBlocking && c.coll.onGround) {
         x *= 0.5f;
@@ -46,7 +53,14 @@ namespace Carles.Engine2D {
       }
 
       UpdateCharSide(x);
-      UpdateWalk(x, y);
+
+      // escape walking if we are on water, and swim instead
+      if (c.coll.onWater) {
+        UpdateSwim(x, y);
+      } else {
+        UpdateWalk(x, y);
+      }
+
       UpdateWalls(x, y);
     }
 
@@ -115,22 +129,17 @@ namespace Carles.Engine2D {
     // Walk
 
     private void UpdateWalk(float x, float y) {
-      xRaw = x;
-      yRaw = y;
-      Vector2 dir = new Vector2(x, y);
-      incs = dir;
 
-      // escape walking if we are on water, and swim instead
-      if (c.coll.onWater) {
-        UpdateSwim(x, y);
-        return;
-      }
+
 
       // escape walking if we are on any kind of rope
-      if (!c.coll.onGround) {
-        if (c.hook.isActive) return;
-        // if (c.hook.isActive && !c.coll.onGround && !c.coll.onWall) return;
-      }
+      // if (!c.coll.onGround) {
+      //   if (c.hook.isActive) return;
+      //   // if (c.hook.isActive && !c.coll.onGround && !c.coll.onWall) return;
+      // }
+
+      Vector2 dir = new Vector2(x, y);
+      incs = dir;
 
       Walk(dir);
       c.anim.SetHorizontalCharController2D(x, y, c.rb.velocity.y);
