@@ -10,10 +10,10 @@ namespace Carles.Engine2D {
       trapMode = TrapMode.Spike;
     }
 
-    protected override void Reset() {
-      base.Reset();
-      transform.localPosition = Vector2.up * -0.5f;
-    }
+    // protected override void Reset() {
+    //   base.Reset();
+    //   transform.localPosition = Vector2.up * -0.5f;
+    // }
 
     protected override IEnumerator MoveActivate() {
       // activate trap
@@ -36,7 +36,7 @@ namespace Carles.Engine2D {
       sounds.PlayRewind();
 
       float d = (-0.5f - transform.localPosition.y) / 500;
-      while (Mathf.Abs(transform.localPosition.y) < 0.49f) {
+      while (Mathf.Abs(transform.localPosition.y) < Mathf.Abs(origin.y - 0.01f)) {
         transform.Translate(0, d, 0);
         yield return null;
       }

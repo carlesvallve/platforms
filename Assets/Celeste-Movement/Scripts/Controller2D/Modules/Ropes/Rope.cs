@@ -29,10 +29,18 @@ namespace Carles.Engine2D {
 
     void OnDrawGizmos() {
       Gizmos.color = Color.yellow;
-      Gizmos.DrawWireCube(
-        (Vector2)transform.position - Vector2.up * (ropeLength * nodeDistance * 0.5f),
-        new Vector2(0.1f, ropeLength * nodeDistance)
+
+      Gizmos.DrawLine(
+        (Vector2)transform.position, //  + Vector2.up * (ropeLength * nodeDistance * 0.5f),
+        (Vector2)transform.position - Vector2.up * ropeLength * nodeDistance
       );
+
+      Gizmos.DrawWireSphere((Vector2)transform.position - Vector2.up * ropeLength * nodeDistance, 0.1f);
+
+      // Gizmos.DrawWireCube(
+      //   (Vector2)transform.position - Vector2.up * (ropeLength * nodeDistance * 0.5f),
+      //   new Vector2(0.1f, ropeLength * nodeDistance)
+      // );
     }
 
     void GenerateRope() {

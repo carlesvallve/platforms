@@ -8,6 +8,8 @@ namespace Carles.Engine2D {
   public class Trap : MonoBehaviour {
 
     public TrapMode trapMode;
+    // traps ending point is always 0, and they have an origin vector, from which they start
+    public Vector2 origin;
 
     public TMP_Text label;
     protected TrapSounds sounds;
@@ -21,11 +23,27 @@ namespace Carles.Engine2D {
     public bool hasHit = false;
     public GameObject target;
 
+
     void Start() {
       sounds = GetComponentInParent<TrapSounds>();
       label.transform.localPosition = Vector2.up * 1.5f;
+      // origin = transform.localPosition;
       Reset();
     }
+
+    void OnDrawGizmos() {
+      Gizmos.color = Color.yellow;
+      Gizmos.DrawWireSphere((Vector2)transform.parent.position, 0.1f);
+      // Gizmos.DrawWireCube((Vector2)transform.position, new Vector2(0.2f, 0.2f));
+      Gizmos.DrawLine(transform.parent.position, (Vector2)transform.parent.position + origin);
+      Gizmos.DrawWireSphere((Vector2)transform.parent.position + origin, 0.1f);
+      // Gizmos.DrawWireCube((Vector2)transform.position + origin, new Vector2(0.2f, 0.2f));
+    }
+
+    // public void RefreshInEditor() {
+    //   gameObject.SetActive(true);
+    //   transform.localPosition = origin;
+    // }
 
     public virtual void SetTarget(GameObject _target) {
       target = _target;
@@ -40,7 +58,7 @@ namespace Carles.Engine2D {
 
     protected virtual void Reset() {
       label.text = "";
-      transform.localPosition = Vector2.up * -0.5f;
+      transform.localPosition = origin; // Vector2.up * -0.5f;
     }
 
     public virtual void Activate() {
@@ -78,11 +96,12 @@ namespace Carles.Engine2D {
     protected virtual IEnumerator MoveRewind() {
       // rewind trap
       yield return new WaitForSeconds(delayRewind);
+      isActive = false;
       isRewinding = true;
       sounds.PlayRewind();
 
-      float d = (-0.5f - transform.localPosition.y) / 500;
-      while (Mathf.Abs(transform.localPosition.y) < 0.49f) {
+      float d = (origin.y - transform.localPosition.y) / 500;
+      while (Mathf.Abs(transform.localPosition.y) < Mathf.Abs(origin.y - 0.01f)) {
         transform.Translate(0, d, 0);
         yield return null;
       }
@@ -109,6 +128,7 @@ namespace Carles.Engine2D {
     protected virtual void OnTriggerEnter2D(Collider2D collision) {
       if (hasHit) return;
       if (isRewinding) return;
+      if (!isActive) return;
 
       Combat combat = collision.GetComponent<Combat>();
       if (combat) {

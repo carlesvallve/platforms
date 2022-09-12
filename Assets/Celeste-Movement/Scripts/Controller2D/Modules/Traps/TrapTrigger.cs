@@ -33,6 +33,7 @@ namespace Carles.Engine2D {
 
       trap = GetTrap();
       trap.gameObject.SetActive(true);
+      // trap.RefreshInEditor();
     }
 #endif
 

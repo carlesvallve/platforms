@@ -10,10 +10,10 @@ namespace Carles.Engine2D {
       trapMode = TrapMode.Boulder;
     }
 
-    protected override void Reset() {
-      base.Reset();
-      transform.localPosition = Vector2.up * 3f;
-    }
+    // protected override void Reset() {
+    //   base.Reset();
+    //   transform.localPosition = origin; //Vector2.up * 3f;
+    // }
 
     protected override IEnumerator MoveActivate() {
       // activate trap
@@ -41,8 +41,8 @@ namespace Carles.Engine2D {
 
       // transform.GetComponent<Collider2D>().enabled = true;
 
-      float d = (3f - transform.localPosition.y) / 1000;
-      while (Mathf.Abs(transform.localPosition.y) < 2.99f) {
+      float d = (origin.y - transform.localPosition.y) / 1000;
+      while (Mathf.Abs(transform.localPosition.y) < Mathf.Abs(origin.y - 0.01f)) {
         transform.Translate(0, d, 0);
         yield return null;
       }
