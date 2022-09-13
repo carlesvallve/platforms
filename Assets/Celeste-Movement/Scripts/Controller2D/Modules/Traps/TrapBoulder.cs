@@ -6,31 +6,31 @@ namespace Carles.Engine2D {
 
   public class TrapBoulder : Trap {
 
+    public LayerMask collisionLayers;
+
+    private Rigidbody2D rb;
+    private float originalGravityScale;
+
     void Awake() {
       trapMode = TrapMode.Boulder;
+      rb = GetComponent<Rigidbody2D>();
+      originalGravityScale = rb.gravityScale;
     }
 
-    // protected override void Reset() {
-    //   base.Reset();
-    //   transform.localPosition = origin; //Vector2.up * 3f;
-    // }
+    protected override void Reset() {
+      base.Reset();
+      transform.localPosition = origin;
+      rb.gravityScale = 0;
+      rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+    }
 
     protected override IEnumerator MoveActivate() {
       // activate trap
       yield return new WaitForSeconds(delayActivate);
+
+      rb.gravityScale = originalGravityScale;
+
       sounds.PlayTrap();
-
-      // transform.GetComponent<Collider2D>().enabled = false;
-
-      // move to 0 pos
-      float d = (0 - transform.localPosition.y) / 50;
-      while (Mathf.Abs(transform.localPosition.y) > 0.01) {
-        transform.Translate(0, d, 0);
-        yield return null;
-      }
-      transform.localPosition = Vector2.up * 0;
-
-      sounds.PlayBoulder();
     }
 
     protected override IEnumerator MoveRewind() {
@@ -39,7 +39,7 @@ namespace Carles.Engine2D {
       isRewinding = true;
       sounds.PlayRewind();
 
-      // transform.GetComponent<Collider2D>().enabled = true;
+      rb.constraints = RigidbodyConstraints2D.FreezeAll;
 
       float d = (origin.y - transform.localPosition.y) / 1000;
       while (Mathf.Abs(transform.localPosition.y) < Mathf.Abs(origin.y - 0.01f)) {
@@ -48,6 +48,32 @@ namespace Carles.Engine2D {
       }
 
       Reset();
+
+      yield return StartCoroutine(MoveWait());
+    }
+
+    public override IEnumerator ActivateSeq() {
+      yield return StartCoroutine(MoveTrigger());
+      yield return StartCoroutine(MoveActivate());
+      // yield return StartCoroutine(MoveRewind());
+      // yield return StartCoroutine(MoveWait());
+    }
+
+    protected override void OnTriggerEnter2D(Collider2D collision) {
+      if (hasHit) return;
+      if (isRewinding) return;
+      if (!isActive) return;
+
+      Combat combat = collision.GetComponent<Combat>();
+      if (combat) {
+        combat.StartCoroutine(combat.TakeDamage(gameObject, damage, knockback));
+      }
+
+      sounds.PlayBoulder();
+
+      StartCoroutine(MoveRewind());
+
+      hasHit = true;
     }
 
   }
