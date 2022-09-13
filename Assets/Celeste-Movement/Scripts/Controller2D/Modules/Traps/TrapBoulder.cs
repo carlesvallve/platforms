@@ -21,7 +21,7 @@ namespace Carles.Engine2D {
       base.Reset();
       transform.localPosition = origin;
       rb.gravityScale = 0;
-      rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+      rb.constraints = RigidbodyConstraints2D.FreezeAll;
     }
 
     protected override IEnumerator MoveActivate() {
@@ -29,6 +29,7 @@ namespace Carles.Engine2D {
       yield return new WaitForSeconds(delayActivate);
 
       rb.gravityScale = originalGravityScale;
+      rb.constraints = RigidbodyConstraints2D.FreezeRotation;
 
       sounds.PlayTrap();
     }
